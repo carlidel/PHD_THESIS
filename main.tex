@@ -1,14 +1,61 @@
-\documentclass{article}
-\usepackage[utf8]{inputenc}
+\documentclass[12pt,twoside,a4paper]{book}
+\input{preamble.tex}
 
-\title{MONTANARI_phd_thesis}
-\author{Carlo Emilio Montanari}
-\date{August 2022}
+%DRAFT
+%\overfullrule=1mm
+%\usepackage{showframe}
+%
 
+\addbibresource{bib/shared_bibliography.bib}
 \begin{document}
+\frontmatter
+\pdfbookmark{Titlepage}{titlepage}
+\input{titlepage.tex}
+\cleardoublepage
 
-\maketitle
+%
+ \input{epigraph.tex}
+%
 
-\section{Introduction}
+%
+\cleardoublepage
+\input{abstract.tex}
+%
+
+%
+% \input{report_act.tex}
+%
+
+\microtypesetup{protrusion=false}
+\pdfbookmark{Contents}{toc}
+\tableofcontents
+\microtypesetup{protrusion=true}
+%
+\mainmatter
+\input{introduction.tex}
+\part{non-original part} %%??? change title!
+
+\input{1_mathematical_elements/math.tex}
+\input{2_accelerator_physics_fundamentals/acc_pys.tex}
+\input{3_the_diffusive_framework/diffusive_theory.tex}
+
+
+\part{original part} %%??? change title!
+
+
+\addtocontents{toc}{\protect\addvspace{2.25em}}
+\bookmarksetup{startatroot}
+\input{conclusions.tex}
+
+%%%BIBLIOGRAPHY
+\sloppy
+\printbibliography
+\addcontentsline{toc}{chapter}{Bibliography}  
+\chaptermark{Bibliography}
+\sectionmark{}
+\fussy
+\input{acknowledgements.tex}
+
+
 
 \end{document}
