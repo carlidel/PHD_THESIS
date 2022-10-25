@@ -3,7 +3,176 @@
 
 \section{Particle motion and Fernet-Serret co-ordinate system}
 
+The standard choice of co-ordinates in accelerator physics, which takes advantage on the toroidal symmetry of the circular accelerator system, is the Frenet-Serret co-ordinate system.
+
+Starting from the Cartesian system $(X,\, Y,\, Z)$, centered in the accelerator centre, the Fernet-Serret co-ordinate system considers as one curvilinear co-ordinate the reference orbit $s$, which describes the ideal longitudial motion of a particle inside the accelerator, and two Cartesian co-ordinates $x$ and $y$ for the transverse one. In Fig.~\ref{fig:frenserr}, we illustrate the co-ordinate system applied to a vector $\vb{r}$.
+
+Mapping the Cartesian system to the Fernet-Serret co-ordinate system reads:
+%
+\begin{equation} 
+    X = (x+\rho)\cos(\frac{s}{\rho})\,, \qquad Y=y\,, \qquad Z=(x+\rho)\sin(\frac{s}{\rho})\,.
+\end{equation}
+
+To keep the particles on a reference orbit of radius $\rho$, a linear electromagnetic field of intensity $B$ is applied. $\rho$ then is given by the equilibrium between the magnetic and the centrifugal force. This equilibrium is expressed within the quantity $B\rho$, defined as \textit{beam rigidity}, which corresponds to
+\begin{equation}
+    B\rho = \frac{p}{e}
+    \label{eq:beam_rigidity}
+\end{equation}
+where $p$ is the particle momentum and $e$ its charge.
+
+Starting from this co-ordinate system, it is possible to achieve a practical Hamiltonian expression for a particle in an accelerator.
+
+\begin{figure}
+\centering
+\def\svgwidth{0.75\columnwidth}
+\import{/home/camontan/Insync/carlo.montanari3@studio.unibo.it/OneDrive_Biz/phd_thesis/2_accelerator_physics_fundamentals/figs/}{fernet_nuovo.pdf_tex}
+\caption{The Frenet-Serret co-ordinate system applied to a vector $\vb{r}$ in the starting Cartesian system. The reference orbit represents an ideal particle trajectory in the accelerator, whose curvature radius is $\rho$. The $s$ co-ordinate is measured along the trajectory while $x$ and $y$ are orthogonal to it.}
+\label{fig:frenserr}
+\end{figure}
+
+Let us begin from the Hamiltonian of a relativistic charged particle under the effect of an electromagnetic field, which acts via the Lorentz force. The particles are accelerated in modulus by the action of an electric field $\mathbf{E}$ (or by the scalar potential $\Phi$), and their trajectories are bent, in order to keep them on the reference circular orbit, by a magnetic field $\mathbf{B}$, which can be expressed via the vector potential $\mathbf{A}$, i.e.\ $\mathbf{B}=\rot\mathbf{A}$.
+
+The Hamiltonian for a relativistic particle under Lorentz force reads
+%
+\begin{equation}
+    \ham = e\Phi + \sqrt{ m^2c^4 + (c\mathbf{p}-e\mathbf{A})^2 }\,. 
+\end{equation}
+%
+We then express the square norm of $(c\mathbf{p}-e\mathbf{A})$ in the Frenet-Serret system of co-ordinates $(x,\,y,\,s)$, whose metric tensor reads
+%
+\begin{equation} 
+    g_{ij} = \mathrm{diag}\qty(1,\,1,\,1+\frac{x}{\rho})\,. 
+\end{equation}
+%
+Leading to,
+%
+\begin{equation}
+    \ham = e\Phi + \sqrt{ m^2c^4 + \frac{(cp_s-eA_s)^2}{(1+x/\rho)^2 } + (cp_x-eA_x)^2+ (cp_y-eA_y)^2}\,.
+    \label{eq:ham_process_1}
+\end{equation}
+%
+It is convenient form this point fowrard to treat $s$ as the time co-ordinate. Consequently, due to canonical coupling, the conjugated momentum $-p_s$ will work as the Hamiltonian function $\tilde\ham$. Solving Eq.~\eqref{eq:ham_process_1} for $p_s$, we obtain
+%
+\begin{equation} 
+    \tilde{\ham} = -\qty(1-\frac{x}{\rho})\sqrt{\frac{E^2}{c^2}-m^2c^2-(p_x-eA_x)^2-(p_y-eA_y)^2} - eA_s\,,
+\end{equation}
+%
+where $E=\ham-e\Phi$. We have from special relativity that $E^2/c^2 = p^2 + m^2c^2$,this allows us to rewrite the Hamiltonian as
+\begin{equation}
+    \tilde{\ham} = -\qty(1-\frac{x}{\rho})\sqrt{p^2-(p_x-eA_x)^2-(p_y-eA_y)^2} - eA_s\,.
+\end{equation}
+
+In high-energy circular accelerators, like the ones considered for this study, the motion in the longitudinal direction is far faster than in the transverse ones, i.e.\ $p\gg p_x$ and $p\gg p_y$. This enables the $\sqrt{1+x}\approx 1+x/2$ expansion for Hamiltonian, leading to
+%
+\begin{equation} 
+	\tilde\ham = \qty(1+\frac{x}{\rho})\qty[-p + \frac{1}{2p}\qty(p_x^2+p_y^2)] -eA_s\,. 
+	\label{eq:hamem}
+\end{equation}
+
+If we are considering only transverse effects, we can assume that there is no magnetic field in the longitudinal direction. With this assumption, we only have contributions to the vector potential along $s$, and $A_x=A_y=0$, i.e.\ $\mathbf{B}=(B_x,\,B_y,\,0)$.
+
+A practical approach for evaluating the magnetic field contribution to $\tilde\ham$, $eA_s$, consists in expanding the magnetic field in its multipolar components.
+
+From Maxwell's equation $\rot\mathbf{B}=0$, one gets the Laplace equation $\laplacian\mathbf{A}$, which, for $A_s$ has the general solution that can be expressed in power series as
+%
+\begin{equation}
+	A_s = \Re\sum_{n}\qty[ \frac{k_n + ij_n}{n+1}(x+iy)^{n+1}]\, ,%%%TODO::controlla def
+	\label{eq:as}
+\end{equation}
+%
+which leads to the corresponding expansion of the magnetic field
+\begin{equation}
+	B_y + iB_x = \sum_n \frac{k_n + ij_n}{n!} (x+iy)^n\,.
+\end{equation}
+%
+The coefficients
+\begin{equation}
+	k_n = \pdv[n]{B_y}{x}\eval_{x=y=0}, \qquad 
+	j_n = \pdv[n]{B_x}{y}\eval_{x=y=0} 
+\end{equation}
+%
+are called, respectively, the \textit{normal} and \textit{skew} $2(n+1)$-polar coefficients of the magnetic field. In accelerator physics literature, usually considers magnetic elements that generate fields with only one multipolar component. These elements are in fact referred to as normal or skew dipoles, quadrupoles, sextupoles, octupoles and so on.
+
+%
 \section{Transverse motion definition}
+%
+
+From the Hamiltonian \eqref{eq:hamem}, we can derive the equations of motion of the particle in the transverse plane. We obtain
+%
+\begin{equation}
+    \begin{aligned}
+        x' &= \qty(1+\frac{x}{\rho})\frac{p_x}{p}\,, &\qquad p_x' &= \frac{p}{\rho}\qty(1+\frac{x}{\rho}) + e\pdv{A_s}{x}\,,\\ % TODO::CHECK
+        y' &= \qty(1+\frac{x}{\rho})\frac{p_y}{p}\,, &\qquad p_y' &= e\pdv{A_s}{y}\,.
+    \end{aligned}
+    \label{eq:ham_motion}
+\end{equation}
+
+In order to get an expression for the partial derivatives of $A_s$ as a function of the $x$ and $y$ components of the magnetic field $\mathbf{B}$, we consider the expression of $\curl \mathbf{A}$ in Frenet-Serret co-ordinates, which reads
+%
+\begin{equation}
+    \curl \mathbf{A} = \frac{\hat x}{1+x/\rho}\pdv{A_s}{y} - \frac{\hat y}{1+x/\rho}\pdv{A_s}{x} = B_x\hat x + B_y\hat y % TODO::CHECK
+\end{equation}
+%
+as only the $A_s$ component is nonzero. This leads to
+%
+\begin{equation}
+    \pdv{A_s}{x} = -\qty(1+\frac{x}{\rho})B_y\,, \qquad \pdv{A_s}{y} = \qty(1+\frac{x}{\rho})B_x\,,
+\end{equation}
+%
+which, substituted in Eq.~\eqref{eq:ham_motion}, reads
+%
+\begin{equation} 
+    \begin{aligned}
+        x' &= \qty(1+\frac{x}{\rho})\frac{p_x}{p}\,, &\qquad p'_x &= \qty(1+\frac{x}{\rho})\qty[ \frac{p}{\rho} - eB_y]\\
+        y' &= \qty(1+\frac{x}{\rho})\frac{p_y}{p}\,, &\qquad p'_y &= e\qty(1+\frac{x}{\rho})B_x\,.
+    \end{aligned}
+\end{equation}
+%
+Recalling the definition of the beam rigidity in Eq.~\eqref{eq:beam_rigidity}, we can rewrite the equations as second order differential equations using the fact that $p=eB\rho$. This leads to
+%
+\begin{equation}
+\begin{split}
+	x'' &= \frac{1}{\rho} + \frac{x}{\rho^2} + \frac{B_y}{B\rho}\qty(1+\frac{x}{\rho})^2\,,\\
+	y'' &= \frac{B_x}{B\rho}\qty(1+\frac{x}{\rho})^2\,.
+\end{split}
+\end{equation} 
+
+If we consider only linear terms for the magnetic fields $B_x$ and $B_y$, these equations can be expressed in the form 
+\begin{equation}
+	z''+K_z(s)z = 0\, ,
+\end{equation}
+where $z$ stands for either $x$ or $y$, and the function $K(s)$ represents the effect of the linear magnetic fields the particle is subject to in the accelerator.  For a circular accelerator of length $L$ the periodic condition $K_z(s)=K_z(s+L)$ holds. This equation with the periodic condition is referred in literature as \textit{Hill's equation}.
+
+
+An Ansatz for the solution of Hill's equation is in the form
+\begin{equation}
+	z(s)=A\sqrt{\beta_z(s)}\cos\left(\psi_z(s)\right)\,,
+	\label{eq:hill_zeta}
+\end{equation}
+%
+\ie an harmonic oscillator where the amplitude $\beta_x(s)$ and phase advance $\psi_z(s)$ is dependent on $s$. which, substituted into Hill's equation results in a relation between $\psi_z(s)$ and $\beta_z(s)$,
+%
+\begin{equation}
+	\frac{1}{\sqrt{\beta_z(s)}} \dv{s}(\beta_z(s)\psi_z(s)) = 0\,,
+\end{equation}
+%
+which can be solved as
+%
+\begin{equation}
+	\psi_z = \int_0^s \frac{\dd s'}{\beta_z(s')}\,
+\end{equation}
+%
+and a non-linear equation for $\beta_z(s)$:
+%
+\begin{equation}
+	\frac{1}{2}\beta_z\beta_z''-\frac{1}{4}\beta_z'^2+K_z(s)\beta_z^2=1\,.
+\end{equation}
+
+The phase advance over the ring is called \textit{tune}:
+\begin{equation}
+	\nu_z = \frac{1}{2\pi}\oint \frac{\dd s'}{\beta_z(s')}\,.
+\end{equation} 
+
 
 \section{Courant-Snyder ellipse}
 
