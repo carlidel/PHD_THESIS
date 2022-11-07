@@ -3,8 +3,181 @@
 
 \section{Hamiltonian mechanics}\label{sec:1:hamiltonian}
 
+We start by recalling some of the fundamental concepts of Hamiltonian dynamics. This will also define the core elements of nomenclature and notation that will be used for the entirety of this thesis. This theoretical recall mainly follows Ref.~\cite{Arnold:937549}.
+
+Let $(p_i(t),\,q_i(t))$ be a set of co-ordinates, and let $\ham(p_i,\, q_i,\, t)$ be a function, where $1\le i \le n$, the system is said to be \textit{Hamiltonian} if the following equations hold:
+%
+\begin{equation} 
+	%\begin{split}
+		\dot p_i = -\pdv{\ham}{q_i}\,,\qquad 		\dot q_i = \pdv{\ham}{p_i} \, .
+%	\end{split}
+	\label{hameq}
+ \end{equation} 
+
+These equations are referred to as \textit{Hamilton equations} with $\ham$ being the \textit{Hamiltonian} of the system. They are related to the Least Action Principle via the 1-form
+%
+\begin{equation} \omega = p_i \dd q_i -\ham \dd t \, .  \end{equation}
+
+In fact, the integral of the form on the trajectory $q_0\to q_1$ which is described by the motion of a particle in the time interval $[t_0,\,t_1]$ yields
+%
+\begin{equation}\int_{q_0=q(t_0)}^{q_1=q(t_1)} \qty(p_i \dd q_i - \ham \dd t) = \int_{t_0}^{t_1} \qty(p_i \dv{q_i}{t} - \ham)\dd t =  \int_{t_0}^{t_1} \mathcal{L} \dd t\,. \end{equation}
+%
+where $\mathcal{L}=p_i\dot q_i - \ham$ is the Lagrangian, obtained by Legendre transformation of the Hamiltonian. 
+
+\subsection{Canonical transformations}
+
+The main advantage of having an Hamiltonian formulation of a system is the freedom in co-ordinates choice. Differently from a Lagrangian formulation, positions and momenta are independent and can be both exchanged in role or mixed to archive optimal formulations, all while the Hamiltoinan equation maintain its form. Such changes in co-ordinates have however to maintain the fundamental property of the Hamiltonian equation defined in Eq.~\eqref{eq:hamem}, also referred to as \textit{symplectic conditions}.
+
+Let us consider an Hamiltonian $\ham(p,q,t)$, for which we wish to apply a co-ordinate transformation $(p_i,q_i)\to(P_i,Q_i)$. To maintain the Hamiltonian properties, we are then looking for a new function $\mathcal{K}(P,Q,t)$ for which
+%
+\begin{equation}
+    \dot P_i = -\pdv{\mathcal{K}}{Q_i}\,, \qquad \dot Q_i = \pdv{\mathcal{K}}{P_i}\,.
+\end{equation}
+%
+Both Hamiltonian formulations need to fulfil the same Least Action Principle:
+%
+\begin{equation}
+    \dd (p_i \dd q_i- \ham \dd t) = \dd(P_i \dd Q_i - \mathcal{K}\dd t)\,,
+\end{equation}
+%
+which implies that the differential
+%
+\begin{equation}
+    \dd F = p_i\dd q_i - P_i \dd Q_i + (\mathcal{K}-\ham)\dd t\, ,
+\end{equation}
+%
+must be exact. This gives us the Hamiltonian transformation laws
+%
+\begin{equation} 
+	p_i = \pdv{F}{q_i}\,, \qquad P_i = -\pdv{F}{Q_i}\,, \qquad \mathcal{K}=\ham+\pdv{F}{t}\,.
+\end{equation}
+%
+The form of the Hamiltonian needs to be changed only if the transformations are time-dependent. The function $F(q,Q,t)$ is referred to as the \textit{generating function} of the transformation.
+
+In the Hamiltonian formulation, the full freedom in co-ordinate choice is such that event the role of time can be re-assigned to another co-ordinate. We will see in the next chapter how this freedom enables the Courant-Snyder co-ordinate system, used in accelerator physics.
+
+When performing such role of time reassignment, we have that the momentum conjugate to that variable, with a minus sign, becomes the new Hamiltonian function.
+
+As an example, let us assign the role of time to $k-$th space co-ordinate $q_k$. Let us highlight the $k-$th term of the form as $p_k = \tilde p$, $q_k=\tilde q$. From here, we can the formally equivalent form
+%
+\begin{equation}
+    p_i \dd q_i - \ham \dd t = \sum_{i\neq k} p_i \dd q_i + (-\ham)\dd t + (-\tilde p)\dd\tilde q\,,
+\end{equation}
+%
+which highlights the new co-ordinate roles, as now it is possible to express the motion as a function of $\tilde q$, whilst $-\tilde p$ plays the role of the Hamiltonian. In this new form, the equivalent equations of motion become
+%
+\begin{equation} 
+\begin{split}
+	&\dv{p_i}{\tilde q} = -\pdv{\tilde p}{q_i}\,, \qquad \dv{q_i}{\tilde q} = \pdv{\tilde p}{p_i} \qquad (i\neq k)\,, \\
+	&\dv{\ham}{\tilde q} = -\pdv{\tilde p}{t}\,,  \qquad \dv{t}{\tilde q} = \pdv{\tilde p}{\ham}\,. 
+\end{split}
+\end{equation}
+
+Finally, the time evolution of an Hamiltonian system is a canonical transformation itself. This property justifies the construction of \textit{symplectic integrators}, i.e.\ algorithms of numerical integration of Hamilton equations that preserve the Hamiltonian structure of the system.
+
+
+\subsection{Action-angle variables}
+
+Let us consider a $n$-degree of freedom integrable Hamiltonian system, i.e. a $2n-$dimensional symplectic manifold described by the phase variables $(p_i,\,q_i)$, where $n$ integrals of motion $I_i=k_i$ in involution are known. a theorem due to Liouville states that, if the set $M_{k}$ of the points for which $I_i=k_i$, is compact, then it is diffeomorphic to the $n-$torus $\mathbb{T}^n$. We also find that for some functions $\omega_i$ which we will call \textit{frequencies}, we have
+%
+\begin{equation} \dot{\phi}_i = \omega_i(k_1\,\dots,\,k_n)\,. \end{equation}
+%
+This assures that, setting as the Hamiltonian one of the integrals, e.g. $\ham=I_1$, we have the equations
+%
+\begin{equation} \dot I_i = 0\,, \qquad \dot \phi_i = \omega_i(I_1\,\dots,\,I_n)  \end{equation} 
+%
+which describe the phase flow relative to the chosen Hamiltonian.
+
+Now we have the co-ordinates $(I_i,\,\phi_i)$ but nothing guarantees that they are symplectic, i.e. that the transformation $(p_i,\,q_i)\to(I_i,\,\phi_i)$ is canonical.
+
+It is possible, however, to introduce different functions $J_i = J_i(I_1,\dots,\,I_n)$ which fulfill
+%
+\begin{equation} \dot J_i = 0\,, \qquad \dot \phi_i = \omega_i(J_1\,\dots,\,J_n)\,,  \end{equation} 
+%
+and keep the canonical change of variables.
+
+These functions can be explicitly written. Let us start with the one-di\-men\-sio\-nal case, where the only integral is the Hamiltonian, and its conserved value $h$, and the set $M_k$ reduces to $M_h$.
+
+A canonical transformation is given by the generating function $S(J,q)$ and
+%
+\begin{equation}
+  p=\pdv{S}{q}\,, \qquad \phi=\pdv{S}{J}\,, \qquad \ham\qty(p=\pdv{S}{q},q) = h(J)\,.
+  \label{eq:transf1}
+  \end{equation} 
+%
+The invariant torus reduces to the closed curves that are identified just from the value of the energy $h$, and, being $h=h(J)$, by that of $J$. The differential $\dd S$, for constant $J$, reads
+%
+\begin{equation}  \dd S = \pdv{S}{q}\,\dd q = p\,\dd q\,,
+\end{equation} 
+%
+therefore
+%
+\begin{equation} S = \int p\, \dd q\,,
+\label{eq:S}
+\end{equation} 
+%
+which is the generating function.
+
+The $1-$form $p\,\dd q$ is closed, and therefore locally exact on invariant surfaces. Thus, on a level curve of energy, the whole change of $S$ is
+%
+\begin{equation} \Delta S(J) = \oint\displaylimits_{M_{h(J)}} p\, \dd q \end{equation} 
+%
+that, thanks to Stokes' theorem, corresponds to the area inside the curve.  From the second equation of (\ref{eq:transf1}),
+%
+\begin{equation} \oint\displaylimits_{M_{h(J)}} \dd\phi = 2\pi\,.  \end{equation} 
+%
+The periodicity of $\phi$ on the torus means that
+%
+\begin{equation} \oint\displaylimits_{M_{h(J)}} \dd\qty(\pdv{S}{J}) = \pdv{\Delta S(J)}{J} = 2\pi\,, \end{equation}
+%
+from which we finally get
+%
+\begin{equation}  J = \frac{1}{2\pi}\oint\displaylimits_{M_h} p\,\dd q\,.  \end{equation} 
+%
+On the other hand, differentiating (\ref{eq:S}) in $J$ we retrieve, from the definition of $\phi$
+%
+\begin{equation} \phi = \frac{1}{2\pi} \pdv{J}\int p\,\dd q\, . \end{equation}  
+
+The generalization to systems with more degrees of freedom is straightforward, if we are working in a $\mathbb{R}^{2n}$ phase space. In fact, being $\gamma_1,\dots, \gamma_n$ 1\textsc{d} cycles which form a basis on the torus $M_{k_i}$, which means that the variation of the angular variable $\phi_i$ on the cycle $\gamma_j$ is equal to $2\pi\delta_{ij}$,  $\delta_{ij}$ being the Kroenecker symbol.
+
+The actions $J_i$ are then defined to be
+%
+\begin{equation} J_i(k_1,\dots,k_n) = \frac{1}{2\pi}\int_{\gamma_i} p_j\, \dd q_j\, .  \end{equation} 
+%
+It can be shown that these integrals are independent from the choice of the $\gamma_i$.~\cite{Arnold:937549}
+
+\section{Averaging principle for Hamiltonian systems}\label{sec:1:averaging}
+
+Many physical systems can be modeled and described in terms of an ideal integrable Hamiltonian affected by small non-integrable perturbations. A common example is the problem of the motion of planets around the Sun, which can be treated as a perturbation of an ideal motion of non-interacting planets around a fixed attracting center. Another relevant example, as we will see in the next chapter, is how the motion of a particle inside a circular accelerator can be described as the perturbation of an otherwise ideal harmonic oscillator-like betatron motion around a reference orbit.
+
+Understanding how these perturbations may or may not affect the properties of an Hamiltonian system is an open problem, which was called by Poincaré as the \textit{``fundamental problem of dynamics''}. Multiple approaches to this problem have been explored and grouped under the general topic of \textit{perturbation theory}.
+
+If the timescale of the perturbation is far smaller than the timescale of the unperturbed system, a standard approach that is often proposed in perturbation theory is to \textit{average} over time these perturbations, under the core idea that motion can be divided in a global ``drift'' and rapid oscillations. This method is referred to as \textit{averaging principle}. We highlight this specific choice of words, as --- Arnol'd reminds --- it is ``not a theorem, but a physical proposition, that is, a vaguely stated and, strictly speaking, false assertion''. However --- he concludes --- ``Such assertions often happen to be fruitful sources for mathematical theorems''~\cite{Arnold:937549}.
+
+Let us consider a completely integrable Hamiltonian system $\ham_0$ with $n$ degrees of freedom. This defines a foliation of at least some domain of its phase space into invariant tori, which define the following action-angle variables $I=(I_1, \ldots, I_n)$, $\phi=(I_1, \ldots, I_n)$. We consider angle variables of period $2\pi$.
+
+The Hamiltonian $\ham_0$ depends only on the action variables $\ham_0=\ham_0(I)$. The equations of motion in the unperturbed case have the standard form:
+\begin{equation}
+    \dot{I}=0\,, \qquad \dot{\phi} = \pdv{\ham_0}{I} = \omega_j(I_1,\dots,I_n) \,.
+\end{equation}
+
+Let us now add a small Hamiltonian perturbation to $\ham_0$. We consider a perturbing Hamiltonian $\ham_1(I, \phi, \epsilon)$ of period $2\pi$, with $\epsilon$ being a small parameter which represents the magnitude of the perturbation. The resulting perturbed Hamiltonian reads:
+\begin{equation}
+    \ham = \ham_0 + \epsilon \ham_1\,.
+\end{equation}
+%
+If $\ham_0$ is integrable, we can write the equations of motion in terms of action-angle variables $(I_j,\phi_j)$:
+%
+\begin{equation}
+    \dot I_j = -\epsilon \pdv{\ham_1}{\phi_j}\,,\qquad
+	\dot \phi_j = \omega_j + \epsilon \pdv{\ham_1}{I_j}\, .
+\end{equation}
+%
+
+The same notation can be used if the perturbation is also periodical in time with frequency $\omega$, as one can extend the phase space to introduce two new degrees of freedom: the angle $\psi=\omega t$ and the conjugated momentum $J_\psi$.
+
+
 \section{Kolmogorov-Arnold-Moser (KAM) theorem}\label{sec:1:kam}
 
 \section{Nekhoroshev theorem}\label{sec:1:nekhoroshev}
 
-\section{Averaging principle}\label{sec:1:averaging}
