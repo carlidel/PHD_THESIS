@@ -154,7 +154,7 @@ Understanding how these perturbations may or may not affect the properties of an
 
 If the timescale of the perturbation is far smaller than the timescale of the unperturbed system, a standard approach that is often proposed in perturbation theory is to \textit{average} over time these perturbations, under the core idea that motion can be divided in a global ``drift'' and rapid oscillations. This method is referred to as \textit{averaging principle}. We highlight this specific choice of words, as --- Arnol'd reminds --- it is ``not a theorem, but a physical proposition, that is, a vaguely stated and, strictly speaking, false assertion''. However --- he concludes --- ``Such assertions often happen to be fruitful sources for mathematical theorems''~\cite{Arnold:937549}.
 
-Let us consider a completely integrable Hamiltonian system $\ham_0$ with $n$ degrees of freedom. This defines a foliation of at least some domain of its phase space into invariant tori, which define the following action-angle variables $I=(I_1, \ldots, I_n)$, $\phi=(I_1, \ldots, I_n)$. We consider angle variables of period $2\pi$.
+Let us consider a completely integrable Hamiltonian system $\ham_0$ with $n$ degrees of freedom. This defines a foliation of at least some domain of its phase space into invariant tori, which define the following action-angle variables $I=(I_1, \ldots, I_n)$, $\phi=(\phi_1, \ldots, \phi_n)$. We consider angle variables of period $2\pi$.
 
 The Hamiltonian $\ham_0$ depends only on the action variables $\ham_0=\ham_0(I)$. The equations of motion in the unperturbed case have the standard form:
 \begin{equation}
@@ -174,8 +174,35 @@ If $\ham_0$ is integrable, we can write the equations of motion in terms of acti
 \end{equation}
 %
 
-The same notation can be used if the perturbation is also periodical in time with frequency $\omega$, as one can extend the phase space to introduce two new degrees of freedom: the angle $\psi=\omega t$ and the conjugated momentum $J_\psi$.
+The same notation can be used if the perturbation is also periodical in time with frequency $\omega$, as one can extend the phase space to introduce two new degrees of freedom: the angle $\psi=\omega t$ and the conjugated momentum $I_\psi$.
 
+If we apply the concept of the averaging principle to the perturbed Hamiltonian system, we transform the perturbed system into a simpler one, where the fast periodic oscillations induced by $\ham_1$ are averaged out. These oscillations are treated eventually as an extra drift element on the original unperturbed solution. We then define a new averaged Hamiltonian $\av{\ham}$ which reads
+%
+\begin{equation} 
+	\av\ham(I) = \ham_0(I)+\epsilon \av{ \ham_1(\phi_i, I_i, \epsilon=0) }\,,
+\end{equation}
+%
+where we are considering the standard definition of integral average
+%
+\begin{equation} 
+	\av{f} = \frac{1}{(2\pi)^n}\oint_{\mathbb{T}^n}\dd^n\phi\, f(\epsilon=0) \, .
+\end{equation}
+%
+where $\mathbb{T}^n$ is the $n$-dimensional torus.
+
+To be able to apply correctly the averaging principle, it is fundamental that all the frequencies $\omega_j$, and, in case, the perturbation frequency $\omega$, are not in any resonant conditions. Namely, there must be no vector of frequencies $\omega_{1,\ldots,r}\,(r\leq n)$ such that exists a vector $k_j \in \mathbb{Z}^r$ for which $\sum k_j \omega_j \approx 0$.
+
+If this condition holds, it is immediate to observe that the action variables $I_j$, evolves at an order of magnitude $\mathcal{O}(\epsilon)$, while instead the angles $\phi_j$ evolve at $\mathcal{O}(1)$. As $\epsilon \ll 1$, we can classify the action variables as \textit{slow variables} and the angle variables as \textit{fast}.
+
+If instead there are two or more resonant frequencies, it is not possible to perform this kind of averaging, as it would neglect significant effects of the perturbation on the dynamics. This can be seen in a simple example $r=2$, i.e.\ where, in an $n-$dimensional system with $\omega_n$ frequencies, we consider $\omega_1$ and $\omega_2$ to be in resonant condition with resonance numbers $k_1$ and $k_2$. If we consider the following linear symplectic transformation
+\begin{equation}
+    \theta_1 = k_1 \phi_1 + k_2 \phi_2\,,\qquad \theta_j=\phi_j,\, \text{for}\ 2\leq j \leq n\,,
+\end{equation}
+which also implies the linear transform of the momenta $I_j$ into $\tilde I_j$ due to the symplectic conditions. We obtain that the new equation of motion for $\theta_1$ is
+\begin{equation}
+    \dot\theta_1 = k_1\omega_1 + k_2\omega_2 + \epsilon \pdv{\ham_1}{\tilde I_1} \approx \epsilon \pdv{\ham_1}{\tilde I_1} = \mathcal{O}(\epsilon)\,.
+\end{equation}
+As $\theta_1$ evolves as a slow variable, it does not meet the conditions for being averaged. All the other $n - 1$ angles $\theta_j$, however, does, as they exhibit an evolution $\mathcal{O}(1)$. This canonical transformation can be extended for all cases $r>2$, and the resulting system will be a system with $r - 1$ slow evolving angles and $n - r + 1$ fast angles.  
 
 
 % qui a quale teorema ti riferisci? Dal momento che la tua tesi utilizza un approccio diffusivo alla dinamica Hamiltoniana io vedrei bene una parte che sul caos e indicatori correlati in modo da inserire l'approccio stocastico, In questo senso i teoremi delle media sarebbero sulle variabili stocastiche angolari non nel caso deterministico
