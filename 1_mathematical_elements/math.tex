@@ -210,6 +210,89 @@ As $\theta_1$ evolves as a slow variable, it does not meet the conditions for be
 \section{Kolmogorov-Arnold-Moser (KAM) theorem}\label{sec:1:kam}
 % Questa parte dovrebbe essere breve e precisa (ovvero i teoremi vanno citati in modo rigoroso). La focalizzerei sulle mappe per le applicazioni agli acceleratori e sulla nascita delle aree debolmente caotiche. La facciamo a quattro mani (ovvero imposta il file tex e poi intervengo io)
 
+As stated in the previous section, the averaging principle is not a mathematically proved theorem to be applied to every physical system. However, for Hamiltonian system, there are rigorous results which offer better insights on the effects of perturbations. One of the most important results is the theorem of Kolmogorov~\cite{} for \textit{non-degenerate} Hamiltonian systems, then extended by Arnold~\cite{} for \textit{isoenergetically non-degenerate} ones, which shows what happens to the non-resonant tori of an unperturbed system $\ham_0$ under a small perturbation $\ham_1$.
+
+Let us consider a perturbed Hamiltonian system in the form of
+\begin{equation}
+    \ham(I, \phi, \epsilon) = \ham_0(I) + \epsilon\ham_1(I,\phi,\epsilon)\,,
+    \label{eq:1:hamperturbed}
+\end{equation}
+when considering the unperturbed Hamiltonian $\ham_0$, we have that its phase-space will be foliated into invariant tori of constant $I$. The tori that have non-resonant frequencies will have its trajectories filling the toroidal space everywhere densely. Conversely, the tori with resonant frequencies will be foliated into invariant tori of lower dimension.
+
+The unperturbed system $\ham_0$ is classified as \textit{non-degenerate} if its frequencies are functionally independent, namely, if
+\begin{equation}
+    \det\left(\pdv{\omega}{I}\right) = \det\left(\pdv[2]{\ham_0}{I}\right) \neq 0 \,.
+\end{equation}
+In such a non-degenerate system, the non-resonant tori form a set in the phase-space of full measure that is densely populated by the orbits. The resonant tori, instead, form a set of measure zero, which however are still densely populated by the orbits. Most importantly, we have that the application
+\begin{equation}
+    \begin{array}{r}
+    F: \mathbb{R}^{n} \longrightarrow \mathbb{R}^n \\
+    (I) \longrightarrow(\omega)
+    \end{array}
+\end{equation}
+is a diffeomorphism. This means that the invariant tori are equally well described by the action variables $I$ or by their corresponding frequencies $\omega$.
+
+The unperturbed system $\ham_0$ is classified as \textit{isoenergetically non-degenerate} if the following condition holds:
+\begin{equation}
+    \operatorname{det}\left(\begin{array}{cc}
+    \frac{\partial \omega}{\partial I} & \omega \\
+    \omega & 0
+    \end{array}\right)=\operatorname{det}\left(\begin{array}{cc}
+    \frac{\partial^2 \ham_0}{\partial I^2} & \frac{\partial \ham_0}{\partial I} \\
+    \frac{\partial \ham_0}{\partial I} & 0
+    \end{array}\right) \neq 0 \,,
+\end{equation}
+i.e.\ one of the frequencies does not vanish, and the ratio of the other $n-1$ frequencies to it are functionally independent on the value of $\ham_0$. Likewise to the non-degenerate condition, also this condition guarantees the existence on every energy level surface of a set of densely populated invariant tori, which will have full measure for non-resonant frequencies and zero measure for resonant frequencies. The non-degenerate and the isoenergetically non-degenerate conditions are independent.
+
+Now that we have recalled these definitions, we can present the KAM theorem, which proves the integrability of $\ham$ in a closed phase-space subset of large measure:
+\begin{theorem}[KAM~\cite{}]
+If the unperturbed Hamiltonian system $\ham_0$ is non-degenerate or isoenergetically non-degenerate, then, in the perturbed Hamiltoinan system such as Eq.~\eqref{eq:1:hamperturbed}, most of the non-resonant invariant tori do not disappear but are only slightly deformed. More specifically, there exist positive constants $\epsilon_0,\ a_1,\ a_2,$ and $a_3$, independent of $\epsilon$, such that for any $\epsilon < \epsilon_0$ one can find:
+\begin{enumerate}
+    \item [(a).] a near to identity canonical transformation
+    \begin{equation}
+        \begin{array}{r}
+        \mathcal{C}_\epsilon: V'\times\mathbb{T}^{n} \longrightarrow V\times\mathbb{T}^n \\
+        (I', \phi') \longrightarrow(I, \phi)
+        \end{array}
+    \end{equation}
+    with $V' \subseteq \mathbb{R}^n$ open;
+    \item [(b).] a set $V_\epsilon \subseteq V \bigcap V'$;
+    \item [(c).] a smooth function $h'_\epsilon(I', \phi)$ defined on $V'\times \mathbb{T}^n$;
+\end{enumerate}
+which satisfy
+\begin{enumerate}
+    \item [(i).] $\operatorname{Vol}(V/V_\epsilon) \leq a_1\sqrt{\epsilon}$;
+    \item [(ii).] $\norm{I-I'}\leq a_2 \sqrt{\epsilon}$, $\norm{\phi - \phi'} \leq a_3 \sqrt{\epsilon}$;
+    \item [(iii).] $\ham_\epsilon \circ \mathcal{C}_\epsilon (I', \phi) = h'_\epsilon (I', \phi)$ whenever $I'\in V_\epsilon$.
+\end{enumerate}
+
+\end{theorem}
+
+From this theorem, we can define a set $\mathcal{S}_\epsilon = \mathcal{C}_\epsilon(V_\epsilon \times \mathbb{T}^n) \subseteq V \times \mathbb{T}^n$ of large measure composed of invariant tori. This set is also reffered to as the \textit{KAM set}, which is composed by \textit{KAM tori}. Within this set, due to \textit{(ii)}, we have that any orbit $(I(t), \phi(t))$ having initial condition $(I(0), \phi(0)) \in \mathcal{S}_\epsilon$ satisfies the relation
+\begin{equation}
+    \norm{I(t) - I(0)} \leq 2 a_2 \sqrt{\epsilon} \,.
+\end{equation}
+This set of invariant tori $\mathcal{S}_\epsilon$ is constructed as a complement of a neighbourhood of all the resonances. Meaning, if we consider any vector $k\in \mathbb{Z}^n$ defining a resonance order, we have a resulting resonant mainfold which reads
+\begin{equation}
+    \mathcal{R}_k = \left\{I\in V \, \big| \, \sum_i k_i \omega_i(I) = 0\right\} \,
+\end{equation}  
+and we exclude a neighbourhood of $\mathcal{R}_k$ following a Diophantine law:
+\begin{equation}
+    \left|\sum_i k_i \omega_i(I)\right| \leq \frac{\gamma_0 \sqrt{\epsilon}}{|k|^\tau} \,,
+\end{equation}
+where $\gamma_0 > 0$ is a suitable positive constant and $\tau > n-1$. This excluded neighbourhood of resonances is reffered to as \textit{Arnol'd web}~\cite{}.
+
+The proof of the KAM theorem is based on the possibility to define a converging procedure for consistently eliminating the fast phases of $\ham$ in incresasingly high orders in the small parameter. Such procedure has the property of quadratic convergence, as after $m$ successive changes of variables, the phase-dependent discrepancy in the new Hamiltonian is of order $\epsilon^{2^m}$.
+
+At each step, the generating function is constructed on the sum of the Fourier harmonics of $\ham_1$ whose order do not exceed an integer $N$. The integer $N$ is then chosen so that the absolute value of the remainder $R_{1N} = \ham_1 - \ham_{1N}$ of the Fourier series does not exceed $\epsilon$. These progressive steps gradually lead to a superconvergence to the non-resonant KAM set.
+
+The KAM theorem has important consequences for the analysis of stability of perturbed Hamiltonian systems. The most immediate one being the existence of large reagions with absence of evolution for systems with two degrees of freedom:
+\begin{theorem}(\cite{})
+    In an isoenergetically non-degenerate system with two degrees of freedom, all initial conditions will have their action variables remaining near their initial value.
+\end{theorem} 
+This theorem has immediate proof, as such a system has a four-dimensional phase space with three-dimensional energy levels which are highly populated by two-dimensional KAM tori. Since a two-dimensional torus has the topological property to divide a three-dimensional energy level, an orbit starting in a gap between two KAM tori will be forever trapped between those tori. Resulting action variable oscillations will not exceed the order of magnitude of $\sqrt{\epsilon}$, following the estimates given by KAM theorem. 
+
+
 \section{Nekhoroshev theorem}\label{sec:1:nekhoroshev}
 %  Qui come sopra: il th di Nekhoroshev ha molte formulazioni (soprattutto per la questione dell'esponente nella stima ottimale). Io non entrerei nei dettagli ma nella generalità del risultato correlato all'analiticità delle serie perturbative
 
