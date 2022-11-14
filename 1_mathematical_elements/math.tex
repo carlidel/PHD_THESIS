@@ -78,71 +78,91 @@ Finally, the time evolution of an Hamiltonian system is a canonical transformati
 
 \subsection{Action-angle variables}
 
-Let us consider a $n$-degree of freedom integrable Hamiltonian system, i.e. a $2n-$dimensional symplectic manifold described by the phase variables $(p_i,\,q_i)$, where $n$ integrals of motion $I_i=k_i$ in involution are known. a theorem due to Liouville states that, if the set $M_{k}$ of the points for which $I_i=k_i$, is compact, then it is diffeomorphic to the $n-$torus $\mathbb{T}^n$. We also find that for some functions $\omega_i$ which we will call \textit{frequencies}, we have
-%
-\begin{equation} \dot{\phi}_i = \omega_i(k_1\,\dots,\,k_n)\,. \end{equation}
-%
-This assures that, setting as the Hamiltonian one of the integrals, e.g. $\ham=I_1$, we have the equations
-%
-\begin{equation} \dot I_i = 0\,, \qquad \dot \phi_i = \omega_i(I_1\,\dots,\,I_n)  \end{equation} 
-%
+We consider an $n$-degree of freedom integrable Hamiltonian system, which will have a $2n-$dimensional phase-space with a symplectic manifold described by the phase variables $(p_i,\,q_i)$, where $n$ integrals of motion $J_i=k_i$ in involution are known.
+
+The Liouville states that, if the set $M_{k}$ of the points for which $J_i=k_i$, is compact, then it is diffeomorphic to the $n-$torus $\mathbb{T}^n$, meaning, it is possible to map all orbits to a precise torus. We also have that some functions $\omega_i$ exist so that we have
+\begin{equation}
+    \dot{\phi}_i = \omega_i(k_1\,\dots,\,k_n)\,, 
+\end{equation}
+and we denote these functions as \textit{frequencies}.
+
+This implies that, if we set as Hamiltonian one of the integrals of the motion, for example, $\ham=J_1$, we have that the new equation of motion reads
+\begin{equation} 
+    \dot I_i = 0\,, \qquad \dot \phi_i = \omega_i(J_1\,\dots,\,J_n) \,,
+\end{equation} 
 which describe the phase flow relative to the chosen Hamiltonian.
 
-Now we have the co-ordinates $(I_i,\,\phi_i)$ but nothing guarantees that they are symplectic, i.e. that the transformation $(p_i,\,q_i)\to(I_i,\,\phi_i)$ is canonical.
+This transformation gives us the new co-ordinates $(I_i,\,\phi_i)$, which might not necessarily be symplectic, as $(p_i,\,q_i)\to(I_i,\,\phi_i)$ may not be canonical.
 
-It is possible, however, to introduce different functions $J_i = J_i(I_1,\dots,\,I_n)$ which fulfill
-%
-\begin{equation} \dot J_i = 0\,, \qquad \dot \phi_i = \omega_i(J_1\,\dots,\,J_n)\,,  \end{equation} 
-%
-and keep the canonical change of variables.
-
-These functions can be explicitly written. Let us start with the one-di\-men\-sio\-nal case, where the only integral is the Hamiltonian, and its conserved value $h$, and the set $M_k$ reduces to $M_h$.
-
-A canonical transformation is given by the generating function $S(J,q)$ and
+To be sure of the canonical character of the transformation, one can introduce different functions $I_i = I_i(J_1,\dots,\,J_n)$ which fulfill
 %
 \begin{equation}
-  p=\pdv{S}{q}\,, \qquad \phi=\pdv{S}{J}\,, \qquad \ham\qty(p=\pdv{S}{q},q) = h(J)\,.
+    \dot I_i = 0\,, \qquad \dot \phi_i = \omega_i(I_1\,\dots,\,I_n)\,,
+\end{equation} 
+%
+and keep the change of variables canonical.
+
+These functions $I_i$ can be explicitly written. Let us start with the one-di\-men\-sio\-nal case, where the only integral of motion is the Hamiltonian $\ham$ itself, and its conserved value $h$, and the set $M_k$ reduces to $M_h$.
+
+We then can define a canonical transformation starting from the generating function $S(I,q)$, which yields
+%
+\begin{equation}
+  p=\pdv{S}{q}\,, \qquad \phi=\pdv{S}{I}\,, \qquad \ham\qty(p=\pdv{S}{q},q) = h(I)\,.
   \label{eq:transf1}
   \end{equation} 
 %
-The invariant torus reduces to the closed curves that are identified just from the value of the energy $h$, and, being $h=h(J)$, by that of $J$. The differential $\dd S$, for constant $J$, reads
+The invariant torus reduces to the closed curves that are identified just from the value of the energy $h$, and, being $h=h(I)$, by that of $I$. When $I$ is constant, the differential of the generating function $\dd S$ reads
 %
-\begin{equation}  \dd S = \pdv{S}{q}\,\dd q = p\,\dd q\,,
+\begin{equation} 
+    \dd S = \pdv{S}{q}\,\dd q = p\,\dd q\,,
 \end{equation} 
 %
-therefore
+which impies
 %
-\begin{equation} S = \int p\, \dd q\,,
-\label{eq:S}
+\begin{equation}
+    S = \int p\, \dd q\,,
+    \label{eq:S}
 \end{equation} 
 %
-which is the generating function.
+which is, ultimately, the generating function.
 
-The $1-$form $p\,\dd q$ is closed, and therefore locally exact on invariant surfaces. Thus, on a level curve of energy, the whole change of $S$ is
+The $1-$form $p\,\dd q$ is closed, and therefore locally exact on invariant surfaces. Thus, on a level curve of energy $h(I)$, $M_{h(I)}$, the whole change of $S$ is
 %
-\begin{equation} \Delta S(J) = \oint\displaylimits_{M_{h(J)}} p\, \dd q \end{equation} 
+\begin{equation}
+    \Delta S(I) = \oint\displaylimits_{M_{h(I)}} p\, \dd q \,.
+\end{equation} 
 %
-that, thanks to Stokes' theorem, corresponds to the area inside the curve.  From the second equation of (\ref{eq:transf1}),
+Due to Stokes' theorem, this last integral corresponds to the area inside the curve.  Considering now the second equation of \eqref{eq:transf1}, as we have that
 %
-\begin{equation} \oint\displaylimits_{M_{h(J)}} \dd\phi = 2\pi\,.  \end{equation} 
+\begin{equation} 
+    \oint\displaylimits_{M_{h(J)}} \dd\phi = 2\pi\,,  
+\end{equation} 
 %
-The periodicity of $\phi$ on the torus means that
+the periodicity of $\phi$ on the torus implies
 %
-\begin{equation} \oint\displaylimits_{M_{h(J)}} \dd\qty(\pdv{S}{J}) = \pdv{\Delta S(J)}{J} = 2\pi\,, \end{equation}
+\begin{equation} 
+    \oint\displaylimits_{M_{h(I)}} \dd\qty(\pdv{S}{I}) = \pdv{\Delta S(I)}{I} = 2\pi\,, 
+\end{equation}
 %
-from which we finally get
+from which we finally get the expression for the canonical action variable $I$
 %
-\begin{equation}  J = \frac{1}{2\pi}\oint\displaylimits_{M_h} p\,\dd q\,.  \end{equation} 
+\begin{equation}  
+    I = \frac{1}{2\pi}\oint\displaylimits_{M_h} p\,\dd q\,.  
+\end{equation} 
 %
-On the other hand, differentiating (\ref{eq:S}) in $J$ we retrieve, from the definition of $\phi$
+On the other hand, differentiating (\ref{eq:S}) in $I$ we retrieve, from the definition of $\phi$
 %
-\begin{equation} \phi = \frac{1}{2\pi} \pdv{J}\int p\,\dd q\, . \end{equation}  
+\begin{equation} 
+    \phi = \frac{1}{2\pi} \pdv{I}\int p\,\dd q\, . 
+\end{equation}  
 
-The generalization to systems with more degrees of freedom is straightforward, if we are working in a $\mathbb{R}^{2n}$ phase space. In fact, being $\gamma_1,\dots, \gamma_n$ 1\textsc{d} cycles which form a basis on the torus $M_{k_i}$, which means that the variation of the angular variable $\phi_i$ on the cycle $\gamma_j$ is equal to $2\pi\delta_{ij}$,  $\delta_{ij}$ being the Kroenecker symbol.
+The generalization to systems with an arbitrary amount of degrees of freedom is straightforward, if we are working in an $\mathbb{R}^{2n}$ phase space. In fact, we can formulate $\gamma_1,\dots, \gamma_n$ 1\textsc{d} cycles to form a basis on the torus $M_{k_i}$. We will then have that the variation of the angular variable $\phi_i$ on the cycle $\gamma_j$ is equal to $2\pi\delta_{ij}$, where $\delta_{ij}$ is the Kroenecker symbol.
 
-The actions $J_i$ are then defined to be
+In such scenario, the actions variables $I_i$ then read as
 %
-\begin{equation} J_i(k_1,\dots,k_n) = \frac{1}{2\pi}\int_{\gamma_i} p_j\, \dd q_j\, .  \end{equation} 
+\begin{equation}
+    I_i(k_1,\dots,k_n) = \frac{1}{2\pi}\int_{\gamma_i} p_j\, \dd q_j\, .  
+\end{equation} 
 %
 It can be shown that these integrals are independent from the choice of the $\gamma_i$.~\cite{Arnold:937549}
 
