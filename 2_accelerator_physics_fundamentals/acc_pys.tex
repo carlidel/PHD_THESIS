@@ -76,19 +76,19 @@ A practical approach for evaluating the magnetic field contribution to $\tilde\h
 From Maxwell's equation $\rot\mathbf{B}=0$, one gets the Laplace equation $\laplacian\mathbf{A}$, which, for $A_s$ has the general solution that can be expressed in power series as
 %
 \begin{equation}
-	A_s = \Re\sum_{n}\qty[ \frac{k_n + ij_n}{n+1}(x+iy)^{n+1}]\, ,%%%TODO::controlla def
+	A_s = \Re\sum_{n}\qty[ \frac{k_n + ij_n}{(n+1)}(x+iy)^{n+1}]\, ,%%%TODO::controlla def
 	\label{eq:as}
 \end{equation}
 %
 which leads to the corresponding expansion of the magnetic field
 \begin{equation}
-	B_y + iB_x = \sum_n \frac{k_n + ij_n}{n!} (x+iy)^n\,.
+	B_y + iB_x = \sum_n (k_n + ij_n) (x+iy)^n\,.
 \end{equation}
 %
 The coefficients
 \begin{equation}
-	k_n = \pdv[n]{B_y}{x}\eval_{x=y=0}, \qquad 
-	j_n = \pdv[n]{B_x}{y}\eval_{x=y=0} 
+	k_n = \frac{1}{n!} \pdv[n]{B_y}{x}\eval_{x=y=0}, \qquad 
+	j_n = \frac{1}{n!} \pdv[n]{B_x}{y}\eval_{x=y=0} 
 \end{equation}
 %
 are called, respectively, the \textit{normal} and \textit{skew} $2(n+1)$-polar coefficients of the magnetic field. In accelerator physics literature, usually considers magnetic elements that generate fields with only one multipolar component. These elements are in fact referred to as normal or skew dipoles, quadrupoles, sextupoles, octupoles and so on.
@@ -171,13 +171,402 @@ and a non-linear equation for $\beta_z(s)$:
 The phase advance over the ring is called \textit{tune}:
 \begin{equation}
 	\nu_z = \frac{1}{2\pi}\oint \frac{\dd s'}{\beta_z(s')}\,.
+    \label{eq:tune_def}
 \end{equation} 
 
 
 \section{Courant-Snyder ellipse}
 
+Solving $\beta_z(s)$ only determines the scaling of the solution $z(s)$ given in \eqref{eq:hill_zeta} at each value $s$. As we are interested in the particle transverse motion, we want to consider its evolution each time it crosses the position $s=s_0$, i.e.\ we want to consider the Poincaré section of the dynamics. At each iteration, we will have a phase advance of $\psi_z$ equal to $2\pi\nu_z$.
+
+It is possible to decouple the envelope dynamics described by $\beta_z(s)$ from the particle transverse motion with a co-ordinate transformation, which leads to the definition of the Courant-Snyder ellipse, and other important objects in accelerator physics.
+
+Starting from Eq.~\eqref{eq:hill_zeta}, we have that the momentum $z'(s)$ reads
+%
+\begin{equation}
+	z'(s)=-\frac{z}{\beta_z(s)}\qty(\alpha_z(s)+\tan\psi_z(s))\,
+\end{equation}
+%
+where $\alpha_z=-\beta'_z/2$. We then consider for our co-ordinate transformation the angular variable $\phi_z=\psi_z$ and the generating function
+%
+\begin{equation}
+	F=\int \dd z\, z' = -\frac{z^2}{2\beta_z}(\alpha_z+\tan\phi_z) \,,
+\end{equation}
+%
+which then yileds the canonical action variable $I_z$, which then reads
+%
+\begin{equation}
+	I_z=\pdv{F}{\phi_z}=\frac{z^2}{2\beta_z}(1+\tan^2\phi_z)=\frac{1}{2\beta_z}\qty[z^2+(\beta_z z'+\alpha_z z)^2]\,.
+	\label{eq:jz}
+\end{equation}
+
+In the new variables, the Hamiltonian of Hill's equation
+\begin{equation} 
+    \ham = \frac{z'^2}{2} + \frac{K_z z^2}{2} \,,
+\end{equation}
+taking into account the derivative $\pdv*{F}{s}$, reduces to the simple expression
+\begin{equation}
+	\ham(\phi,I,s) = \frac{I}{\beta(s)}\, .
+\end{equation}
+From this new Hamiltonian, we have that the equation of motion for the variable $\phi_z$ reads $\phi'_z = 1/\beta(s)$. We are now interested in making $\phi_z$ proportional to $s$, and remove any dependence from the $\beta$ function in the equations of motion.
+
+To archieve this, we define the frequency
+\begin{equation}
+    \omega_z = \frac{2\pi\nu_z}{L} \,,
+\end{equation}
+where, we recall, $L$ is the circumference of the accelerator and $\nu_z$ the tune defined in Eq.~\eqref{eq:tune_def}. We then have the final change of variables $(\phi_z,I_z)\to(\tilde\phi_z, \tilde I_z)$, which is given by the generating function
+%
+\begin{equation}
+	G(\phi_z,\tilde I_z) = \tilde I_z\qty(\omega_z s - \int_0^s\frac{\dd s'}{\beta(s')})+\phi\tilde I\, ,
+\end{equation}
+%
+which results in the Hamiltonian
+%
+\begin{equation}
+	\ham(\tilde \phi_z,\tilde I_z) = \omega_z \tilde I_z\,,
+	\label{eq:harm_ham}
+ \end{equation}
+%
+which is the well known Hamiltonian of a harmonic oscillator (note how $I_z$ = $\tilde{I}_z$).
+
+From this final Hamiltonian, one can introduce and operate with normalised Cartesian co-ordinates 
+\begin{equation}
+    \hat z=\sqrt{2I_z}\cos\tilde{\phi}_z\,,\quad \hat p_z=\sqrt{2I_z}\sin\tilde{\phi}_z \,,
+    \label{eq:2:cart_eq}
+\end{equation}
+and treat consequently the transverse linear motion on both the $x-p_x$ and $y-p_y$ planes using an intuitive normalised Cartesian Hamiltonian
+%
+\begin{equation}
+	\ham(\hat x,\, \hat p_x,\, \hat y,\, \hat p_y) = \frac{\omega_x}{2}(\hat x^2 +\hat p_x^2) + \frac{\omega_y}{2}(\hat y^2+\hat p_y^2)\, .
+	\label{eq:linham}
+\end{equation}
+%
+
+\begin{figure}
+    \centering
+% \begin{tikzpicture}
+% \draw [rotate around={45.:(0.,0.)},thick] (0.,0.) ellipse (2 and 1);
+% \draw [dotted] (1.591,1)-- (1.591,0.)  node[below] {$\sqrt{2\beta I_z}$};
+% \draw [dotted] (1,1.591)-- (0,1.591) node[left] {$\sqrt{2\gamma I_z}$};
+% \draw[->] (-3,0) -- (3,0) node[below] {$z$};
+% \draw[->] (0,-3) -- (0,3) node[right] {$z'$};
+% \end{tikzpicture}
+    \def\svgwidth{0.75\columnwidth}
+    \import{2_accelerator_physics_fundamentals/figs/}{ellisse.pdf_tex}
+    \caption{The Courant-Snyder ellipse $\gamma z^2 + 2\alpha zz' + \beta z'^2=2I_z$. The area enclosed by the ellipse is equal to $2\pi I_z$. }
+    \label{fig:coursnyd}
+\end{figure}
+
+
+The Hamiltonian of Eq.~\eqref{eq:linham} describes circular trajectories in the decoupled phase spaces $(\hat x,\,\hat p_x)$ and $(\hat y\,, \hat p_y)$. Moreover, two corresponding action variables, namely,
+\begin{equation}
+    I_x = \frac{\hat x^2 +\hat p_x^2}{2}\,, \quad I_y=\frac{\hat y^2+\hat p_y^2}{2} \,,
+\end{equation}
+can be defined. $I_x$ and $I_y$ follow the standard definition of the trajectory area divided by $2\pi$ are conserved. For historical reasons, however, the value $2I_z$ is called the \text{Courant-Snyder invariant}.
+
+Following its definition in the physical co-ordinates $(z,\, z')$, given in Eq.~\eqref{eq:jz}, it is possible to draw the constant-$I$ surfaces in the $(z,z')$ phase space, as in Fig.~\ref{fig:coursnyd}, which correspond to concentric ellipses, as its expanded form reads:
+%
+\begin{equation}
+I_z = \frac{1}{2\beta_z}\qty[z^2 + (\alpha z + \beta z'))^2] = \frac{1}{2}\qty(\gamma z^2 + 2\alpha z z' + \beta z'^2)\,, \end{equation}
+%
+where we have defined $\gamma=(1+\alpha^2)/\beta$. The area of the ellipse is equal to $2\pi I_z$, and is conserved at any value of $s$. It can be observed, finally, how the $(z,z')\to(\hat z,\hat p_z)$ co-ordinate transformation modifies the physical co-ordinates ellipses into circles with the same area, from which their name \textit{``normalised co-ordinates''}.
+
+A single particle following the linear transveral dynamics will have its own constant Courant-Snyder invariant. When instead we want to consider a beam distribution, a standard property, called \textit{emittance} is defined as the average of the Courant-Snyder invariant:
+\begin{equation}
+    \eps_z = \av{I_z} \,.
+\end{equation}
+The emittance is related to the second moments of the beam distribution in $(\hat z,\hat p_z)$. In fact, averaging over $I_z$ and $\phi_z$ in the definitions of $\hat z$ and $\hat p_z$ given in Eq.~\eqref{eq:2:cart_eq}, we obtain
+%
+\begin{equation}
+	\av{\hat z^2} = \beta_z \eps_z, \qquad \av{\hat p_z^2}=\gamma_z \eps_z, \qquad \av{\hat z\,\hat p_z}=-\alpha_z\eps_z\,,
+\end{equation}
+%
+from there, using the definition of $I_z$ yields
+\begin{equation}
+	\eps_z = \sqrt{ \av{\hat z^2}\av{\hat p_z^2} - \av{\hat z \, \hat p_z}^2 }\,.
+\end{equation}
+
+The beam emittance can then be considered either as the average Courant-Snyder invariant of a distribution, or as the area (up to a $2\pi$ factor) of the orbit of the rms particle of the beam. A useful implication of this is that a Gaussian beam distribution in $(\phi_z,\,I_z)$ co-ordinate assumes the practical form:
+%
+\begin{equation}
+\rho_z = \frac{1}{\eps_z}\exp(-\frac{I_z}{\eps_z})\,.
+\end{equation}
+%
+
+
 \section{One-turn maps}
 
-\section{Non-linear beam dynamics}
+\section{Non-linear beam dynamics}\label{sec:non-linear}
+
+The transverse dynamics we treated so far with Hill's equation and formalism takes into consideration only the effects of a linear magnetic field (we recall the passage between Eq.~\eqref{} and Eq.~\eqref{}, where we dropped all the non-linear terms for the magnetic fields $B_x$ and $B_y$). This tractation takes into account only the elements generated by a set of ideal dipole and quadrupole magnets.
+
+To include higher order terms of the magnetic field power series, it is possible to include non-linear terms directly into Hill's Hamiltonian. This can be done in order to both represents the unavoidable higher-order magnet imperfections inside the accelerator machine, or to represent explicit sextupolar and octupolar elements one might want to include to cancel out specific sources of non-linear effects. 
+
+As Hill's Hamiltonian is equivalent to two detached harmonic oscillators, non-linear components can be included in the Hamiltonian as anharmonic perturbation to such harmonic oscillators. We start by considering higher order terms $n \ge 2$ of the power series $A_s$, which we presented in Eq.~\eqref{eq:as}, and we perform the change of variables $(x,\,y) \to (\hat x, \hat y)$. We have then that the non-linear part of the Hamiltonian reads:
+%
+\begin{equation}
+    \ham_\text{nlin}(\hat x, \hat p_x, s) = \Re \sum_{n\ge 2} \qty[\frac{k_n(s) + ij_n(s)}{(n+1)} \left(\sqrt{\beta_x(s)}\ \hat x + i\sqrt{\beta_y(s)}\ \hat y\right)^n]\,.
+\end{equation}  
+
+To simplify this notation, we introduce the quantity $\beta(s)=\beta_y(s)/\beta_x(s)$, and its value $\bar\beta$ averaged over an accelerator turn which reads
+\begin{equation}
+    \bar\beta = \oint \dd s\, \frac{\beta_y(s)}{\beta_x(s)} \,.
+\end{equation}
+We can now substitute the strengths $k_n(s)$ and $j_n(s)$ (which, we recall, they represent the effect of a normal or a skew $(2n+2)$-polar magnetic field) with the integrated coefficients $K_n$, $J_n$, which will be scaled by the value of $\beta_x(s)$ and $\beta_y(s)$, i.e.\ we weight the integral average with the envelope value of the beam where the magnetic elements are placed. These coefficients read
+%
+\begin{equation} 
+	K_n = \oint \dd s\, k_n(s) \beta_x^{\frac{n+1}{2}}(s)\,,\qquad
+	J_n = \oint \dd s\, j_n(s) \beta_x^{\frac{n+1}{2}}(s)\,.
+\end{equation} 
+%
+where the integrations are evaluated over the accelerator turn. With this notation, the non-linear Hamiltonian has the simpler form
+% 
+\begin{equation} \ham_\text{nlin}(\hat x, \hat p_x) = \Re \sum_{n\ge 2} \qty[\frac{K_n + iJ_n}{(n+1)} (\hat x + i\bar\beta^{1/2} \hat y)^n]\,.\end{equation}
+
+From this Hamiltonian, one can for example write a 1\textsc{d} beam model with normal multipoles
+\begin{equation}
+	\ham(\hat x,\hat p) = \omega \frac{\hat x^2 + \hat p^2}{2} + \sum_{n>2} K_n \frac{x^{n+1}}{(n+1)}\, ,
+	\label{eq:hamxp_nl}
+\end{equation}
+such simple model can be used to understand many phenomenons caused by non-linear effects.
+
+In an accelerator, non-linear effects can be used to represent either unwanted elements, such as linear magnets imperfectos, or to represent specifically added non-linear magnetic elements, such as sextupoles and octupoles. Such components can be introduced inside an accelerator optics in order to correct specific unwanted effects, like \textit{chromaticity}, i.e.\ the fact that particles with different momentum are differently focused by quadrupoles. Chromaticity, specifically, can be tackled by the introduction of sextupole magnets~\cite{}. Another important source of non-linearities are space charge effects and \textit{beam-beam interaction} effects, caused by the electromagnetic interaction of charged particles with other charged particles, respectively in the same or in another beam during collisions.
+
+The introduction of non-linear elements in a circular accelerator is the cause of three main effects~\cite{herr}: amplitude-dependent detuning, excitation of non-linear resonances, and reduction of the dynamic aperture. We will present the first two phenomenon very briefly, and focus a little more on the core characteristics of the last one.
+
+\subsubsection{Amplitude-dependent detuning}
+
+Adding non-linear elements in the transverse motion has the inevitable consequence of modifying the tune, i.e.\ the rotation frequency of the harmonic oscillator, into an amplitude dependent function, where the aplitude.
+The second effect of non-linear elements on transverse motion is the fact that the rotation frequency --- the tune --- becomes a function of the amplitude, that is, the value of the action $I$. In the linear Hamiltonian~\eqref{eq:linham}, the frequency $\Omega$ is given by
+\begin{equation}
+	\Omega = \pdv{\ham}{I} = \omega\,,
+\end{equation}
+where, we recall, $I=(\hat x^2 + \hat p^2)/2$. The tune $\omega$ is constant at any $I$, therefore particles have the same tune.
+
+If we now add an octupolar component to the Hamiltonian, that is, an $n=3$ element of the power series in Eq.~\ref{eq:hamxp_nl}, we end up with the new Hamiltonian
+\begin{equation}
+	\ham = \omega \frac{\hat x^2 + \hat p^2}{2} + \frac{K_3}{5} x^4 = \omega I + \frac{K_3}{5} I^2 \cos^4\phi\, .
+\end{equation}
+
+Averaging over the angular variable $\phi$, one gets
+\begin{equation}
+	\av{\ham} = \omega I + \frac{3}{40}K_3 I^2,
+\end{equation}
+%
+and
+%
+\begin{equation}
+	\Omega(I) = \pdv{\av{\ham}}{I} = \omega + \frac{3K_3}{20} I\,.
+\end{equation}
+Meaning, there is now a linear dependence of the tune on the action $I$. This implies that each particle will have a different rotation frequency depending on its current amplitude.
+
+The averaging approach used here to archieve an expression of the detuning highlights only the first-oreder effects in the frequency. For more complex Hamiltonians with multiple non-linear components, archieving a complete analytical expression of the detuning is not a trivial problem.
+
+It is possible to numerically evaluate the amplitude-dependent detuning in single-particle tracking simulations, as the tune can be measured by performing a numerical estimate of the fundamental frequency of the orbit history of the transverse orbit. We will present the topic of tune evaluation later in Chapter~\ref{}, in the context of dynamic indicators, as such methods are the foundation for consolidated tools in accelerator physics like the Frequency Map Analysis.
+
+\subsubsection{Non-linear resonances}
+
+In an accelerator machine, it is usual to have the non-linear components at $10^{-3} - 10^{-4}$ the intensity of the linear components. However, if a resonance condition is encountered in the tunes, the non-linear magnetic field can lead to a geometric aberration of the phase-space and lead to severe particle loss.
+
+Let us start from the linear Hamiltonian~\eqref{eq:harm_ham} using one degree of freedom, and we add a non-linear perturbation $U$ with a small parameter $\epsilon$. The Hamiltonian reads
+%
+\begin{equation}
+	\ham(\phi, J, \theta) = \omega J + \epsilon U(\phi, J, \theta)\,.
+\end{equation}
+
+We follow the perturbation-theoretical approach of Ref.~\cite{wilson}. A transformation into new variables $(\tilde \phi, \tilde J)$ is done via a generating function
+\begin{equation}
+	F(\phi, \tilde J) = \tilde J \phi + \epsilon\chi(\phi,\tilde J,\theta)
+\end{equation}
+%
+and reads
+\begin{equation}
+	\tilde J = J - \epsilon\pdv{\chi}{\phi},\qquad \tilde \phi = \phi + \epsilon \pdv{\chi}{\tilde J},\qquad \tilde\ham = \ham + \epsilon \pdv{\chi}{\theta}\,.
+\end{equation}
+
+The new Hamiltonian, up to first order in $\epsilon$, reads
+%
+\begin{equation}
+	\tilde\ham = \omega \tilde J + \epsilon\qty[\omega \pdv{\chi}{\phi} + \pdv{\chi}{\theta} + U(\phi, \tilde J, \theta)]\,. 
+\end{equation}
+
+Setting the $\epsilon$-proportional term equal to zero makes the Hamiltonian independent on the pseudo-time variable $\theta$. The resulting differential equation is solved for $\chi$ after expanding in Fourier series. The perturbation potential $U$ becomes
+%
+\begin{equation}
+	U(\phi, \tilde J, \theta) = \sum_{m,n} U_{m,n}(\tilde J) e^{i(n\phi - m\theta)}
+\end{equation}
+%
+where
+%
+\begin{equation}
+	U_{m,n} = \frac{1}{4\pi^2}\int\dd\theta\dd\phi\, U(\phi,\tilde J,\theta) e^{-i(n\phi-m\theta)}\, ,
+\end{equation}
+%
+and the differential equation has the solution
+%
+\begin{equation}
+	\chi(\phi, \tilde J, \theta) = i\sum_{m,n} \frac{U_{m,n}(\tilde J)}{n(\omega-\omega_\text{r})} e^{i(n\phi - m\theta)}\,,
+\end{equation}
+%
+where we introduced the resonant frequency $\omega_\text{r} = m/n$, resulting in the Hamiltonian
+%
+\begin{equation}
+	\tilde\ham = \omega \tilde J + \sum_{m,n} U_{m,n}(\tilde J) e^{i(n\phi-m\theta)}\,.
+\end{equation}
+
+If the frequency $\omega$ is close to $\omega_\text{r}$, $\chi$ is divergent. However, in resonant conditions, it is possible to write an averaged Hamiltonian where all non-resonant terms in the sum become zero, only resonant terms appear, i.e.\
+\begin{equation}
+	\ham = \omega \tilde J + U_{0,0}(\tilde J) + U_{m,n}e^{i(n\phi-m\theta)}\,,
+\end{equation}
+%
+where $\omega \approx \omega_\text{r}=m/n$.
+
+Introducing a rotating frame, with the new angle $\gamma = \phi - \omega_r\theta$, the Hamiltonian becomes
+%
+\begin{equation}
+	\ham(\gamma, J) = (\omega-\omega_\text{r}) J + \alpha(J) + \Re[U_{m,n}e^{in\gamma}]\, .
+\end{equation}
+
+This Hamiltonian has a peculiar phase space close to resonance. For example, let us introduce a non-linear magnetic potential $U=K_3 x^4/4$, which can be driven by an octupole, or, at an higher perturbation order, also by a sextupole). In action-angle co-ordinates, the potential becomes $U= K_3 J^2 \cos^4 \phi$. Writing $\cos^4\phi = (\cos 4\phi + 4\cos 2\phi + 3/2)/16$, and averaging close to resonance, using $\omega_{r}=1/4$, one gets the Hamiltonian
+%
+\begin{equation}
+\ham(\gamma, J) = (\omega-\omega_\text{r}) J + \frac{3}{8}K_3J^2 + \frac{K_3}{16} J^2 \cos 4\gamma\, . %controlla espansione o metti variabili
+\end{equation}
+
+When the frequency $\omega$ is close to $1/4 \times 2\pi$, a chain of islands, with their extra fixed points, appear, consistently with Poincaré-Birkhoff theorem.
+%, as in the phase space portrait shown in Fig.~\ref{fig:ham_isl}.
+
+%immagini spazio fasi
+
+In normal accelerator operations, these islands reduce the dynamic aperture and, close to separatrices, cause the onset of chaotic motion. When a resonance is crossed due to small, undesired variations of the magnetic field, a beam amplitude growth is observed~\cite{Guignard:185921}, impacting beam lifetime.
+
+We can also consider systems with two degrees of freedom, where a resonant condition is found between the $x$ and $y$ frequency, i.e.\ $m\omega_x-n\omega_y\approx \ell$. In that case, the Hamiltonian assumes the form
+%
+\begin{equation}
+	\ham(\phi_x,\phi_y,J_x,J_y) = \omega_x J_x + \omega_y J_y + \alpha(J_x,J_y) + U_{m,n}\cos(m\phi_x- n\omega_y + \ell \theta)\, .
+\end{equation}
+
+Only difference resonances ($m>0$, $n>0$) are stable, although they couple the motion between the two planes (it is possible to reduce the Hamiltonian to one degree of freedom), while sum resonances (when $m$ and $n$ have different signs) result in unstable motion. We will discuss the non-linear difference resonances more deeply, using Normal Form Hamiltonians in Chapter~\ref{chap:emex}.
+
+\begin{figure}
+	\centering
+	% \includegraphics[width=.7\textwidth]{img/resdiag.pdf}
+	\caption{Resonance diagram in the $(\omega_x,\,\omega_y)$ space up to order $4$. The same scheme is repeated for every integer $\ell$. Dashed lines represent 1\textsc{d} resonances while continuous lines are for 2\textsc{d} resonances. Colours encode resonance order: red for order $2$, blue for order $3$ and orange for order $4$.}
+	\label{fig:res}
+\end{figure}
+
+In general, the possible 1\textsc{d} and 2\textsc{d} resonances (up to order $4$) are represented by lines in the $(\omega_x, \omega_y)$ diagram of Fig.~\ref{fig:res}, where different colors show the resonance order. As higher-order resonances are generally weaker, one should select the accelerator working point quite far from the main resonances. Furthermore, it is possible to cancel the effect of some resonances by introducing super-periodicities in the accelerator magnetic lattice.
+
+\subsubsection{Dynamic aperture}
+
+Hamiltonian~\eqref{eq:linham}, which describes the linear transverse motion, corresponds to the Hamiltonian of an harmonic oscillator with two degrees of freedom, which is always stable. When a non-linearity is introduced, the stability region  is reduced. For instance, introducing a normal sextupole in Hamiltonian~\eqref{eq:hamxp_nl}, one has the potential
+\begin{equation}
+	V(\hat x) = \omega \frac{\hat x^2}{2} + K_2\frac{\hat x^3}{3}
+\end{equation}
+which has an hyperbolic point at $\hat x = -\omega/K_2$, and the separatrix delimits the stability region, which is further reduced by a stronger sextupole.
+
+%In a similar map model, the Hénon map, which accounts for a rotation and a sextupolar kick,
+%\begin{equation} 
+%	\begin{pmatrix} \hat x' \\ \hat p' \end{pmatrix} = \mathbf{R}(\omega) \begin{pmatrix} \hat x \\ \hat p + \hat x^2 \end{pmatrix}
+%\end{equation}
+%
+%one has a stable fixed point in the origin and an unstable one in $\hat x_0 = 2\tan(\omega/2),\,\hat p_{0} = -2\tan[2](\omega/2)$.
+
+Due to unavoidable high-order resonance effects, close to the unstable fixed points the phase space is populated by tiny-scale island chains: this means that particles getting too close to the border of the stability region enter in a chaotic region where the motion is stochastic, and can get lost. \textit{Dynamic aperture} is defined as the volume of the region of stability of the phase space. Usually, it is computed via extremely long time particle tracking simulations, while studies are on-going to predict the dynamic aperture using less computing resources.~\cite{PhysRevAccelBeams.22.104003}
+
+\parseparator
+
+Transverse non-linear effects in accelerator, whose theoretical description we did briefly report, have been experimentally observed and measured at Fermilab Tevatron~\cite{PhysRevLett.61.2752} and at the Indiana university \textsc{iucf} cooler ring~\cite{leeiucf}. However, the focus of these studies was the \textit{observation} of these effects --- they detected amplitude detuning and were able to distinguish stable resonant islands in the particles' phase space. We want to go further: we want to \textit{exploit} non-linear effects, as we will discuss in the next chapter. But first, we need to open a digression on the two possible methods to describe transverse motion, both in the linear and in the non-linear case: the Hamiltonian approach and the method of symplectic transfer maps.
+
 
 \section{Dynamic aperture}
+
+A complete discussion on the DA definition, its computation, and its accuracy can be found in Refs.~\cite{todesco1996dynamic, giovannozzi1998dynamic}.
+
+In the application to particle accelerators it is convenient to introduce the concept of DA in these terms: 
+\begin{definition}
+	(Dynamic Aperture). Let \(A\) be the physical aperture of the accelerator, i.e.\ the subset of the phase space that can be confined in the beam pipe, and let \(\vb{M}\) the one-turn map of the magnetic lattice. We define the formal DA as
+	\begin{equation}
+		\mathcal{D}(N)=\bigcap_{n=0}^N \vb{M}^{(n)}(A)
+	\end{equation}
+	We recall that \(\vb{M}\) has an elliptic fixed point at the origin.\par\noindent 
+	Let \(z\in \mathcal{D}(N)\), we define \(\Pi_X z=x\) as the projection of \(z\) on the configuration space; the set
+	\begin{equation}
+		\Pi_X\mathcal{D}(N)
+	\end{equation}
+	may have a very complex topology (it is a measurable set) so that it is convenient to compute the convex envelope of the connected component containing the origin, i.e.\ we neglect the islands of stability.\par\noindent 
+	To define the measure of such a component, we proceed as follow: for each direction \(\hat \theta\in S^d\)  (where \(S^d\) is the unit sphere or a sector of the unit sphere) in the configuration space, we define
+	\begin{equation}
+	R(\hat \theta; N)=\lambda_\ast\quad s.t.\quad \lambda \hat\theta\in \Pi_X \mathcal{D}(N)\quad \forall \quad \lambda\in[0,\lambda_\ast]
+	\label{eq:ideal-R}
+	\end{equation}
+	so that we can finally define the Dynamic Aperture as
+	\begin{equation}
+	D(N)=\frac{1}{\mu(S^d)}\int_{S^d} R(\hat \theta; N)d\hat\theta
+	\label{eq:formal_da}
+	\end{equation}
+	where \(\mu\) is the volume measure in the configuration space.
+	\label{def:dynamic_aperture}
+\end{definition}
+
+The value of \(N\) needs to be adapted for a proper time frame. In a mathematical sense, stable motion implies bounded motion for \(N\rightarrow\infty\). In our accelerator context, stable motion and particle stability can be linked to a maximum number of turns \(N_{\text{max}}\), where the value of \(N_{\text{max}}\) is set on the basis of the specific device or application under consideration, e.g.\ in LHC the revolution frequency is \(\SI{11.245}{\kHz}\)~\cite{lhc:faqs}, which implies \(\sim 10^9\) turns for a standard 10-hour luminosity fill. 
+
+A valid numerical declination of Def.~\ref{def:dynamic_aperture} for four-dimensional symplectic mappings which model betatron motion is provided in Ref.~\cite{todesco1996dynamic}. More specifically, it presents a valid method for fast numerical estimation of DA, as well as estimation of the associated errors and optimisations of the integration steps. 
+
+Let us operate on a 4D phase space on which we have defined a one-turn map \(\vb{M}\) for the betatron motion with the formalism presented in Chapter~\ref{chp:symplectic-maps-and-nonlinear}. If we consider an ensemble of initial conditions defined on a polar grid (\(x=r\cos\theta, p_x=0, y=r\sin\theta, p_y=0\)), \(0\leq\theta\leq\pi/2\), where \(x,y\) are expressed in units \(\sigma_x, \sigma_y\) of beam dimension, and we track them for up to \(N_{\text{max}}\) turns to assess their stability, then we can define the DA as:
+\begin{equation}
+	D(N) = \frac{2}{\pi}\int_0^{\pi/2} r(\theta;N)\,d\theta \equiv \langle r(\theta;N)\rangle
+	\label{eq:dynamic_aperture_numerical}
+\end{equation}
+where \(r(\theta;N)\) is the last stable amplitude, i.e.\ \(x^2 + y^2 < r_{\mathrm{max}}\) for every iteration of \(\vb{M}\), not disconnected from the origin for up to \(N\) turns in the direction \(\theta\). We can say that \(r\) is the computable version of the `ideal' \(R(\theta;N)\) given in Eq.~\eqref{eq:ideal-R}.
+
+In order to evaluate the error on the DA numerical estimation~\eqref{eq:dynamic_aperture_numerical}, we just need to consider that its implementation into a computer code implies a discretization over the radial variable \(r\) and one over the angular variable \(\theta\)~\cite{giovannozzi1998dynamic}. Assuming we execute a complete tracking over \(N_\theta\) different angles and \(N_r\) different amplitudes for initial condition, we have \(\Delta r = r_\text{max}/N_r\) and \(\Delta\theta = \pi/(2N_\theta)\). Then, we can obtain an error estimation via Gaussian sum in quadrature
+\begin{equation}
+	\Delta D = \sqrt{\left(\pdv{D}{r}\/\frac{\Delta r}{2}\right)^2 + \left(\pdv{D}{\theta}\/\frac{\Delta\theta}{2}\right)^2}
+\end{equation}
+which leads us to
+\begin{equation}
+	\Delta D = \sqrt{\frac{(\Delta r)^2}{4} + \left\langle\abs{\pdv{r}{\theta}\/}\right\rangle^2 \frac{(\Delta\theta)^2}{4}}
+\end{equation}
+where \(\langle\abs{\partial r/\partial\theta}\rangle\) is the average of the finite differential measures obtained in the simulation process.
+From this last equation we can deduce that the step in \(r\) must be equal to the step in \(\theta\) times \(\langle\abs{\partial r/\partial\theta}\rangle\) to optimize the numerical integration steps.
+
+%\section{Functional dependence}
+%\label{sec:interpolating-the-dynamic-aperture}
+
+Simulating entire sets of initial conditions on different one-turn map setups is a CPU-intense task that becomes unsustainable when considering extremely high \(N_{\text{max}}\) values or complex symplectic tracking models\footnote{Researches like~\cite{giovannozzi1998dynamic} presents simulations at \(N_{\text{max}}\sim 10^6-10^7\), while instead it would be necessary to reach values \(\sim 10^9\).}. Moreover, the multipolar components of the various superconducting magnets are known only with a limited precision, so that one has to perform parametric studies in order to consider different realisations of the magnetic lattice. While it might not be a problem to execute scalable parallel batches of different realisations and initial conditions~\cite{giovannozzi1997development}, realistic time scales in tracking simulation are still out of reach for proper accelerator physics reaserch.
+
+Because of that, a robust model for the time dependence of DA would be essential for speeding up the reaserch and development of better machines. Therefore, it is in our interest to explore and build models to fit and, ideally, extrapolate the dependency of the DA on the number of turns and allow us the execution of shorter simulation for the same amount of information.
+
+The main idea behind this framework is that long-term behaviour of DA, which is a heavy task to attack directly, can be extrapolated from the knowledge gained from numerical simulations performed over a smaller number of turns, but with a detailed scan of the phase space. Moreover, since it is possible to execute parallel computing over different initial conditions, it is possible to work with high fineness numerical estimation of DA and hope for `high quality' coefficients for such interpolations.
+
+Studies have explored possible models for this fit~\cite{giovannozzi1996prediction, giovannozzi1998dynamic} and an answer was provided by a combination of the fundamental results of KAM theory and Nekhoroshev theorem. More specifically, a model was based on the hypothesis that the phase space can be partitioned into two regions:
+\begin{enumerate}
+	\item a central core, with \(r < D_\infty\), where the phase space is full of KAM tori so that the Arnold diffusion phenomenon takes place for a set of orbits of extremely small measure (to the point that the physical value of the phenomenon itself is still debated);
+	\item an outer part, with \(r > D_\infty\), where the stability and escape rate can be estimated with a Nekhoroshev-like estimate
+	\begin{equation}
+		N(r) = N_0 \exp\left[\left(\frac{r_\ast}{r}\right)^{1/\kappa}\right]
+	\end{equation}
+	where \(N(r)\) is the number of turns that are estimated to be stable for a particle with initial amplitude smaller than \(r\).
+\end{enumerate}
+From this separation, the following scaling law is formulated:
+\begin{equation}
+	D(N) = D_\infty + \frac{b}{(\log N)^\kappa}
+	\label{eq:giova_interpolation}
+\end{equation}
+where \(D_\infty\) represents the asymptotic value of the stability domain (region 1) amplitude and \(b, \kappa\) are additional parameters connected to the Nekhoroshev-like process (region 2).
+
+%TODOTODOTODO:::COMPLETE THE MATERIAL
+This model has provided good results in literature, however, experiences with the data analysis of numerical simulation of various configuration of LHC~\cite{giovannozzi1998dynamic} and of experimental data obtained from Tevatron~\cite{giovannozzi2012proposed} showed that the fit parameters \(b, \kappa, D_\infty\) can assume signs that go beyond the boundaries predicted by the strict application of the model based on Nekhoroshev theorem.
+
+Another thing we are interested in is the establishment of a direct link between the DA and the expected beam lifetime in a synchrotron, in order to transform a DA interpolating law into an expected beam-quality model. The approach proposed in~\cite{giovannozzi2012proposed} considers an initial 2D Gaussian distribution for a beam
+\begin{equation}
+	\rho_G(x,y) = \frac{1}{2\pi\sigma_x\sigma_y}e^{-\left(\frac{x^2}{2\sigma_x^2}+\frac{y^2}{2\sigma_y^2}\right)}
+	\label{eq:initial_gaussian_beam}
+\end{equation}
+then, transforming~\eqref{eq:initial_gaussian_beam} to polar coordinates and applying the DA definition~\eqref{eq:dynamic_aperture_numerical}, i.e.\ assuming that all particles with starting amplitude beyond \(D(N)\) are lost after \(N\) turns, we can directly compute the evolution of beam intensity \(N_b\) with the following equation
+\begin{equation}
+	\frac{N_b(N)}{N_b(1)} = 1 - \int_{D(N)}^{+\infty} e^{-\frac{r^2}{2}} r \, dr = 1 - e^{-\frac{D^2(N)}{2}}
+	\label{eq:measuring_da}
+\end{equation}
+with \(D(N) \xrightarrow[N \to 0]{} +\infty \). This last equation represents a starting point for building the direct connection we are looking for, and also allows us to establish some experimental procedures for evaluating DA from beam losses in a circular accelerator.
