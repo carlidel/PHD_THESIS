@@ -292,7 +292,7 @@ From this theorem, we can define a set $\mathcal{S}_\epsilon = \mathcal{C}_\epsi
 \begin{equation}
     \norm{I(t) - I(0)} \leq 2 a_2 \sqrt{\epsilon} \,.
 \end{equation}
-This set of invariant tori $\mathcal{S}_\epsilon$ is constructed as a complement of a neighbourhood of all the resonances. Meaning, if we consider any vector $k\in \mathbb{Z}^n$ defining a resonance order, we have a resulting resonant mainfold which reads
+This set of invariant tori $\mathcal{S}_\epsilon$ is constructed as a complement of a neighbourhood of all the resonances. Meaning, if we consider any vector $k\in \mathbb{Z}^n$ defining a resonance order, we have a resulting resonant manifold which reads
 \begin{equation}
     \mathcal{R}_k = \left\{I\in V \, \big| \, \sum_i k_i \omega_i(I) = 0\right\} \,
 \end{equation}  
@@ -312,8 +312,43 @@ The KAM theorem has important consequences for the analysis of stability of pert
 \end{theorem} 
 This theorem has immediate proof, as such a system has a four-dimensional phase space with three-dimensional energy levels which are highly populated by two-dimensional KAM tori. Since a two-dimensional torus has the topological property to divide a three-dimensional energy level, an orbit starting in a gap between two KAM tori will be forever trapped between those tori. Resulting action variable oscillations will not exceed the order of magnitude of $\sqrt{\epsilon}$, following the estimates given by KAM theorem. 
 
+When instead we are considering a system with more than two degrees of freedom, we have that the $n-$dimensional invariant tori do not divide a $(2n-1)$-dimensional energy-level manifold. The tori instead are located in it like points on a plane or lines in a space. Consequently, the gaps between tori, related by different resonance spaces, are all connected with each other. This does not prevent a phase curve originated near a resonance region to eventually evolve far away from its initial action value. 
 
 \section{Nekhoroshev theorem}\label{sec:1:nekhoroshev}
 %  Qui come sopra: il th di Nekhoroshev ha molte formulazioni (soprattutto per la questione dell'esponente nella stima ottimale). Io non entrerei nei dettagli ma nella generalità del risultato correlato all'analiticità delle serie perturbative
 
+As stated in the previos section, even though the stability set $\mathcal{S}_\epsilon$ has large relative measure, its complement can be open, dense, and if the number of degrees of freedom is larger than two, also connected, enabling evolution at different energy levels.
+
+Therefore, the possibility for solutions to wandering the complement of $\mathcal{S}_\epsilon$, such as the so called Arnol’d diffusion, can prevent any result of stability over an infinite time.
+
+Because of this, it becomes difficult (if not impossible) to treat the problem of the evolution of a perturbed Hamiltoinan system with the ``classical'' definition of stability, as in, confinement in a region to infinite times. But it is possible to operate with asymptotic estimates, which are limited to very long times\footnote{For example, orders of magnitudes higher than the usual operation time of an accelerator machine.}, such estimates can be formulated as:
+\begin{equation}
+    |I(t)-I(0)| \leq r(\epsilon)
+\end{equation}
+which are valid for times $|t| \leq T(\epsilon)$ such that $r \rightarrow 0$ and $T \rightarrow \infty$ in the limit $\epsilon \rightarrow 0$. 
+
+In the case $\ham$ satisfies a technical property called \textit{steepness}\footnote{The notion of steepness was introduced by Nekhoroshev in~\cite{}. The definition we report here is a necessary and sufficient condition for steepness~\cite{}.}, a very important result on the estimate of diffusion scale times holds. An analytic function is said to be \textit{steep} if it has no stationary points and its restriction to any plane of any dimension has only isolated stationary points.
+
+Such result is stated by Nekhoroshev in his celebrated theorem, named after him:
+\begin{theorem}[Nekhoroshev's theorem~\cite{}]
+    Let us consider a perturbed Hamiltonian system in the form of Eq~\eqref{eq:1:hamperturbed}. If the unperturbed Hamiltonian $\ham_0$ is steep, there exist positive constants $\epsilon_0, a, b, t_0, r$ such that for any $\epsilon<\epsilon_0$, and for any motion $(I(t), \phi(t))$ with $(I(0), \phi(0)) \in V \times \mathbb{T}^n$ it is
+    \begin{equation}
+        |I(t)-I(0)| \leq r \epsilon^a \,,
+    \end{equation}
+    for any time t satisfying:
+    \begin{equation}
+        0 \leq t \leq t_0 \exp \left(\frac{\epsilon_0}{\epsilon}\right)^b \,,  
+    \end{equation}
+    where the value of the constants $a, b$ depend on the steepness properties of $\ham_0$.
+\end{theorem}
+
+A complete overview of the theorem's proof is presented in~\cite{}, the outline of it is that the long-term behaviour of the orbits can be studied removing from $\ham$ only a finite number of harmonics $\epsilon \ham_{1k}(I) e^{i k \cdot \phi}$, precisely those with order $|k|=\sum_{i=1}^n\left|k_i\right|$ up to a given threshold $K$. The harmonics with $|k| \geq K$ can then be estimated to be exponentially small. As a consequence, if one chooses $K$ suitably large, these terms turn out to be very small, and they can determine large deviations of the actions only after long exponential times.
+
+\section{Symplectic maps}
+
+\subsection{Poincaré-Birkhoff theorem}
+
+\subsection{Normal form theory}
+
+\subsection{KAM and Nekhoroshev theorems for symplectic maps}
 
