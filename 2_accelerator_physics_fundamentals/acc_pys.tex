@@ -451,143 +451,174 @@ These models, despite their simplicity, already manifest multiple features that 
 
 \section{Dynamic aperture}
 
-A complete discussion on the DA definition, its computation, and its accuracy can be found in Refs.~\cite{todesco1996dynamic, giovannozzi1998dynamic}.
+As shown before, the linear transverse motion can be described as an always stable harmonic oscillator with two degrees of freedom. When instead non-linearities are introduced, the stability of the system is affected and the occurrence of hyperbolic points and resonances makes the motion of various particles initial condition chaotic, eventually leading to their loss as they hit the mechanical aperture of the accelerator machine.
 
-In the application to particle accelerators it is convenient to introduce the concept of DA in these terms: 
+In this scenario, where the region of stable motion in the phase-space is affected by the non-linear elements in the Hamiltonian, we can introduce the concept of \textit{Dynamic Aperture} (DA), as a measurement of the volume of the phase-space region where stable motion up to a given number of turns $N$ occours.
+
+A complete discussion on the DA definition, its computation, and its accuracy can be found in Refs.~\cite{todesco1996dynamic, giovannozzi1998dynamic}, which provide a fundamental starting point on the topic.
+
+A formal definition of DA reads:
 \begin{definition}
-	(Dynamic Aperture). Let \(A\) be the physical aperture of the accelerator, i.e.\ the subset of the phase space that can be confined in the beam pipe, and let \(\mathrm{M}\) the one-turn map of the magnetic lattice. We define the formal DA as
+	(Dynamic Aperture). Let \(A\) be the physical aperture of the accelerator, i.e.\ the subset of the phase space that can be confined in the beam pipe, and let \(\mathrm{M}\) be the one-turn map of the magnetic lattice. We define the formal DA as
 	\begin{equation}
-		\mathcal{D}(N)=\bigcap_{n=0}^N \mathrm{M}^{(n)}(A)
+		\mathcal{D}(N)=\bigcap_{n=0}^N \mathrm{M}^{(n)}(A)\,.
 	\end{equation}
-	We recall that \(\mathrm{M}\) has an elliptic fixed point at the origin.\par\noindent 
+	We recall that \(\mathrm{M}\) has an elliptic fixed point at the origin.
+
 	Let \(z\in \mathcal{D}(N)\), we define \(\Pi_X z=x\) as the projection of \(z\) on the configuration space; the set
 	\begin{equation}
 		\Pi_X\mathcal{D}(N)
 	\end{equation}
-	may have a very complex topology (it is a measurable set) so that it is convenient to compute the convex envelope of the connected component containing the origin, i.e.\ we neglect the islands of stability.\par\noindent 
-	To define the measure of such a component, we proceed as follow: for each direction \(\hat \theta\in S^d\)  (where \(S^d\) is the unit sphere or a sector of the unit sphere) in the configuration space, we define
+	may have a very complex topology so that it is convenient to compute the convex envelope of the connected component containing the origin, i.e.\ we neglect the islands of stability which might be given by the Poincaré-Birkhoff theorem.
+
+	To define the measure of such a component, we proceed as follows: for each direction \(\hat \phi\in S^d\)  (where \(S^d\) is the unit sphere or a sector of the unit sphere) in the configuration space, we define
 	\begin{equation}
-	R(\hat \theta; N)=\lambda_\ast\quad s.t.\quad \lambda \hat\theta\in \Pi_X \mathcal{D}(N)\quad \forall \quad \lambda\in[0,\lambda_\ast]
-	\label{eq:ideal-R}
+	    R(\hat \phi; N)=\lambda_\ast\quad s.t.\quad \lambda \hat\phi\in \Pi_X \mathcal{D}(N)\quad \forall \quad \lambda\in[0,\lambda_\ast]\,,
+	    \label{eq:ideal-R}
 	\end{equation}
 	so that we can finally define the Dynamic Aperture as
 	\begin{equation}
-	D(N)=\frac{1}{\mu(S^d)}\int_{S^d} R(\hat \theta; N)d\hat\theta
-	\label{eq:formal_da}
+        DA(N)=\frac{1}{\mu(S^d)}\int_{S^d} R(\hat \phi; N)d\hat\phi\,,
+        \label{eq:formal_da}
 	\end{equation}
 	where \(\mu\) is the volume measure in the configuration space.
 	\label{def:dynamic_aperture}
 \end{definition}
 
-The value of \(N\) needs to be adapted for a proper time frame. In a mathematical sense, stable motion implies bounded motion for \(N\rightarrow\infty\). In our accelerator context, stable motion and particle stability can be linked to a maximum number of turns \(N_{\text{max}}\), where the value of \(N_{\text{max}}\) is set on the basis of the specific device or application under consideration, e.g.\ in LHC the revolution frequency is \(\SI{11.245}{\kHz}\)~\cite{lhc:faqs}, which implies \(\sim 10^9\) turns for a standard 10-hour luminosity fill. 
+The value of \(N\) needs to be adapted for a proper time frame. In a mathematical sense, stable motion implies bounded motion for \(N\rightarrow\infty\). In our accelerator context, stable motion and particle stability can be linked to a maximum number of turns \(N_{\text{max}}\), where the value of \(N_{\text{max}}\) is set on the basis of the specific device or application under consideration, e.g.\ in the LHC the revolution frequency is \(\SI{11.245}{\kHz}\)~\cite{lhc:faqs}, which implies \(\sim 10^9\) turns for a standard 10-hour luminosity fill.
 
-A valid numerical declination of Def.~\ref{def:dynamic_aperture} for four-dimensional symplectic mappings which model betatron motion is provided in Ref.~\cite{todesco1996dynamic}. More specifically, it presents a valid method for fast numerical estimation of DA, as well as estimation of the associated errors and optimisations of the integration steps. 
+A consolidated numerical declination of Def.~\ref{def:dynamic_aperture} for four-dimensional symplectic mappings which model betatron motion is provided in Ref.~\cite{todesco1996dynamic}.
 
-Let us operate on a 4\textsc{d} phase space on which we have defined a one-turn map \(\mathrm{M}\) for the betatron motion with the formalism presented in Chapter~\ref{chp:symplectic-maps-and-nonlinear}. If we consider an ensemble of initial conditions defined on a polar grid (\(x=r\cos\theta, p_x=0, y=r\sin\theta, p_y=0\)), \(0\leq\theta\leq\pi/2\), where \(x,y\) are expressed in units \(\sigma_x, \sigma_y\) of beam dimension, and we track them for up to \(N_{\text{max}}\) turns to assess their stability, then we can define the DA as:
+Let us operate on a 4\textsc{d} phase space on which we have a one-turn map \(\mathrm{M}\). If we consider an ensemble of initial conditions defined on a polar grid (\(x=r\cos\phi, p_x=0, y=r\sin\phi, p_y=0\)), \(0\leq\phi\leq\pi/2\), where \(x,y\) are expressed in units \(\sigma_x, \sigma_y\), i.e.\ nominal beam emittance units, and we track them for up to \(N_{\text{max}}\) turns to assess their stability, then we can define the DA as:
 \begin{equation}
-	D(N) = \frac{2}{\pi}\int_0^{\pi/2} r(\theta;N)\,d\theta \equiv \langle r(\theta;N)\rangle
+	DA(N) = \frac{2}{\pi}\int_0^{\pi/2} r(\phi;N)\,d\phi \equiv \langle r(\phi;N)\rangle
 	\label{eq:dynamic_aperture_numerical}
 \end{equation}
-where \(r(\theta;N)\) is the last stable amplitude, i.e.\ \(x^2 + y^2 < r_{\mathrm{max}}\) for every iteration of \(\mathrm{M}\), not disconnected from the origin for up to \(N\) turns in the direction \(\theta\). We can say that \(r\) is the computable version of the `ideal' \(R(\theta;N)\) given in Eq.~\eqref{eq:ideal-R}.
+where \(r(\phi;N)\) is the last stable amplitude, i.e.\ \(x^2 + y^2 < r_{\mathrm{max}}\) for every iteration of \(\mathrm{M}\), not disconnected from the origin for up to \(N\) turns in the direction \(\phi\). We can say that \(r\) is the computable version of the `ideal' \(R(\phi;N)\) given in Eq.~\eqref{eq:ideal-R}.
 
-In order to evaluate the error on the DA numerical estimation~\eqref{eq:dynamic_aperture_numerical}, we just need to consider that its implementation into a computer code implies a discretization over the radial variable \(r\) and one over the angular variable \(\theta\)~\cite{giovannozzi1998dynamic}. Assuming we execute a complete tracking over \(N_\theta\) different angles and \(N_r\) different amplitudes for initial condition, we have \(\Delta r = r_\text{max}/N_r\) and \(\Delta\theta = \pi/(2N_\theta)\). Then, we can obtain an error estimation via Gaussian sum in quadrature
-\begin{equation}
-	\Delta D = \sqrt{\left(\pdv{D}{r}\/\frac{\Delta r}{2}\right)^2 + \left(\pdv{D}{\theta}\/\frac{\Delta\theta}{2}\right)^2}
-\end{equation}
-which leads us to
-\begin{equation}
-	\Delta D = \sqrt{\frac{(\Delta r)^2}{4} + \left\langle\abs{\pdv{r}{\theta}\/}\right\rangle^2 \frac{(\Delta\theta)^2}{4}}
-\end{equation}
-where \(\langle\abs{\partial r/\partial\theta}\rangle\) is the average of the finite differential measures obtained in the simulation process.
-From this last equation we can deduce that the step in \(r\) must be equal to the step in \(\theta\) times \(\langle\abs{\partial r/\partial\theta}\rangle\) to optimize the numerical integration steps.
+Other than this consolidated ``radial scan'' method, other techniques have been under study to improve the convergence speed of DA numerical measurements, such as the one presented in Ref.~\cite{}, where a Support Vector Machine algorithm is employed to perform an optimised sampling and border detection of the phase-space stable region.
 
-%\section{Functional dependence}
-%\label{sec:interpolating-the-dynamic-aperture}
+\subsection{Dynamic aperture scale-laws}
 
-Simulating entire sets of initial conditions on different one-turn map setups is a CPU-intense task that becomes unsustainable when considering extremely high \(N_{\text{max}}\) values or complex symplectic tracking models\footnote{Researches like~\cite{giovannozzi1998dynamic} presents simulations at \(N_{\text{max}}\sim 10^6-10^7\), while instead it would be necessary to reach values \(\sim 10^9\).}. Moreover, the multipolar components of the various superconducting magnets are known only with a limited precision, so that one has to perform parametric studies in order to consider different realisations of the magnetic lattice. While it might not be a problem to execute scalable parallel batches of different realisations and initial conditions~\cite{giovannozzi1997development}, realistic time scales in tracking simulation are still out of reach for proper accelerator physics reaserch.
+Simulating entire sets of initial conditions on different one-turn maps is a computational intense task that becomes unsustainable when considering extremely high \(N_{\text{max}}\) values or complex symplectic tracking models\footnote{Researches like~\cite{giovannozzi1998dynamic} presents simulations at \(N_{\text{max}}\sim 10^6-10^7\), while instead it would be necessary to reach values \(\sim 10^9\).}. Moreover, the multipolar components of the various superconducting magnets are known only with a limited precision, so that one has to perform parametric studies in order to consider different realisations of the magnetic lattice. Because of these reasons, realistic time scales in tracking simulation are still out of reach for proper accelerator physics reaserch.
 
-Because of that, a robust model for the time dependence of DA would be essential for speeding up the reaserch and development of better machines. Therefore, it is in our interest to explore and build models to fit and, ideally, extrapolate the dependency of the DA on the number of turns and allow us the execution of shorter simulation for the same amount of information.
+This limitation motivated the search for a robust model for the time dependence of DA, as such model could offer insights on the long-term evolution of DA by extrapolating short-term tracking simulation data. The most recent developments on the topic of DA scale-laws can be found in~\cite{} and references therein.
 
-The main idea behind this framework is that long-term behaviour of DA, which is a heavy task to attack directly, can be extrapolated from the knowledge gained from numerical simulations performed over a smaller number of turns, but with a detailed scan of the phase space. Moreover, since it is possible to execute parallel computing over different initial conditions, it is possible to work with high fineness numerical estimation of DA and hope for `high quality' coefficients for such interpolations.
-
-Studies have explored possible models for this fit~\cite{giovannozzi1996prediction, giovannozzi1998dynamic} and an answer was provided by a combination of the fundamental results of KAM theory and Nekhoroshev theorem. More specifically, a model was based on the hypothesis that the phase space can be partitioned into two regions:
+The models presented in~\cite{} are based on a combination of the fundamental results of KAM theory and Nekhoroshev theorem. More specifically, it is based on the hypothesis that the phase-space can be partitioned into two regions: 
 \begin{enumerate}
-	\item a central core, with \(r < D_\infty\), where the phase space is full of KAM tori so that the Arnold diffusion phenomenon takes place for a set of orbits of extremely small measure (to the point that the physical value of the phenomenon itself is still debated);
-	\item an outer part, with \(r > D_\infty\), where the stability and escape rate can be estimated with a Nekhoroshev-like estimate
+	\item a central core, where the phase space is full of KAM tori so that the Arnold diffusion phenomenon takes place for a set of orbits of extremely small measure, to the point that the physical value of the phenomenon itself is still debated;
+	\item an outer part, where the stability and escape rate can be estimated with a Nekhoroshev-like estimate
 	\begin{equation}
-		N(r) = N_0 \exp\left[\left(\frac{r_\ast}{r}\right)^{1/\kappa}\right]
+		\frac{N(r)}{N_0} = \sqrt{\frac{r}{r_\ast}} \exp\left[\left(\frac{r_\ast}{r}\right)^{\frac{1}{\kappa}}\right]\,,
 	\end{equation}
-	where \(N(r)\) is the number of turns that are estimated to be stable for a particle with initial amplitude smaller than \(r\).
+	where \(N(r)\) is the number of turns that are estimated to be stable for a particle with initial amplitude smaller than \(r\). A more generalised form of this estimate reads
+    \begin{equation}
+        \frac{N(r)}{N_0} = \left(\frac{r}{r_\ast}\right)^{\lambda} \exp\left[\left(\frac{r_\ast}{r}\right)^{\frac{1}{\kappa}}\right]\,.
+    \end{equation}
 \end{enumerate}
-From this separation, the following scaling law is formulated:
+
+From this woriking hypothesis, the latest scaling law inspected in~\cite{}, based on inverting the functional form of the Nekhoroshev estimate, reads:
 \begin{equation}
-	D(N) = D_\infty + \frac{b}{(\log N)^\kappa}
+	DA(N) = \frac{\rho_\ast}{\left[-2 \mathrm{e} \lambda \mathcal{W}_{-1}\left(-\frac{1}{2 \mathrm{e} \lambda}\left(\frac{\rho_*}{6}\right)^{1 / \kappa}\left(\frac{8}{7} N\right)^{-1 /(\lambda \kappa)}\right)\right]^\kappa}\,,
 	\label{eq:giova_interpolation}
 \end{equation}
-where \(D_\infty\) represents the asymptotic value of the stability domain (region 1) amplitude and \(b, \kappa\) are additional parameters connected to the Nekhoroshev-like process (region 2).
-
-%TODOTODOTODO:::COMPLETE THE MATERIAL
-This model has provided good results in literature, however, experiences with the data analysis of numerical simulation of various configuration of LHC~\cite{giovannozzi1998dynamic} and of experimental data obtained from Tevatron~\cite{giovannozzi2012proposed} showed that the fit parameters \(b, \kappa, D_\infty\) can assume signs that go beyond the boundaries predicted by the strict application of the model based on Nekhoroshev theorem.
-
-Another thing we are interested in is the establishment of a direct link between the DA and the expected beam lifetime in a synchrotron, in order to transform a DA interpolating law into an expected beam-quality model. The approach proposed in~\cite{giovannozzi2012proposed} considers an initial 2\textsc{d} Gaussian distribution for a beam
+where the free parameters are $\rho_\ast$, $\kappa$ and, possibly, $\lambda$, unless it is set at $1/2$. The $\rho_\ast$ parameter is related to the Nekhoroshev parameters in Eq.~\eqref{} with the following relation:
 \begin{equation}
-	\rho_G(x,y) = \frac{1}{2\pi\sigma_x\sigma_y}e^{-\left(\frac{x^2}{2\sigma_x^2}+\frac{y^2}{2\sigma_y^2}\right)}
-	\label{eq:initial_gaussian_beam}
+    \rho_\ast = \left(\frac{\kappa}{2e}\right)^{-\kappa} r_\ast \,.
 \end{equation}
-then, transforming~\eqref{eq:initial_gaussian_beam} to polar co-ordinates and applying the DA definition~\eqref{eq:dynamic_aperture_numerical}, i.e.\ assuming that all particles with starting amplitude beyond \(D(N)\) are lost after \(N\) turns, we can directly compute the evolution of beam intensity \(N_b\) with the following equation
-\begin{equation}
-	\frac{N_b(N)}{N_b(1)} = 1 - \int_{D(N)}^{+\infty} e^{-\frac{r^2}{2}} r \, dr = 1 - e^{-\frac{D^2(N)}{2}}
-	\label{eq:measuring_da}
-\end{equation}
-with \(D(N) \xrightarrow[N \to 0]{} +\infty \). This last equation represents a starting point for building the direct connection we are looking for, and also allows us to establish some experimental procedures for evaluating DA from beam losses in a circular accelerator.
+
+% Another thing we are interested in is the establishment of a direct link between the DA and the expected beam lifetime in a synchrotron, in order to transform a DA interpolating law into an expected beam-quality model. The approach proposed in~\cite{giovannozzi2012proposed} considers an initial 2\textsc{d} Gaussian distribution for a beam
+% \begin{equation}
+% 	\rho_G(x,y) = \frac{1}{2\pi\sigma_x\sigma_y}e^{-\left(\frac{x^2}{2\sigma_x^2}+\frac{y^2}{2\sigma_y^2}\right)}
+% 	\label{eq:initial_gaussian_beam}
+% \end{equation}
+% then, transforming~\eqref{eq:initial_gaussian_beam} to polar co-ordinates and applying the DA definition~\eqref{eq:dynamic_aperture_numerical}, i.e.\ assuming that all particles with starting amplitude beyond \(DA(N)\) are lost after \(N\) turns, we can directly compute the evolution of beam intensity \(N_b\) with the following equation
+% \begin{equation}
+% 	\frac{N_b(N)}{N_b(1)} = 1 - \int_{DA(N)}^{+\infty} e^{-\frac{r^2}{2}} r \, dr = 1 - e^{-\frac{D^2(N)}{2}}
+% 	\label{eq:measuring_da}
+% \end{equation}
+% with \(DA(N) \xrightarrow[N \to 0]{} +\infty \). This last equation represents a starting point for building the direct connection we are looking for, and also allows us to establish some experimental procedures for evaluating DA from beam losses in a circular accelerator.
 
 \section{Longitudinal motion fundamentals}
 
 While the focus of this work is on the transversal part of beam dynamics, it is important to include an essential presentation of the core concepts behind the longitudial part of dynamics, i.e.\ the theory behind synchrotron oscillations. In fact, a particle that exhibits a longitudinal displacement over the reference trajectory, or that has a longitudial momentum different to the reference one, will manifest a different transversal dynamics as well, with a mechanism that is referred to as \textit{syncrobetatron coupling}. The main effects of syncrobetatron coupling can be represented as a turn-dependent \textit{modulation} of the transversal tunes.
 
-From Eq. (1.7), it can be derived that only electric fields in the direction of propagation of the particle can increase its energy. Modern high-energy circular accelerators use timevarying EM fields to accelerate the beam. The high-frequency accelerating field is confined to dedicated elements along the beamline, called RF cavities, which are installed in straight sections of the machine, where no other EM fields exist. In most cases, an RF cavity contains a resonant structure that is powered by a high-frequency power source to produce a standing EM wave of a specified angular frequency $\omega_{\mathrm{rf}}$, with an accelerating voltage $V$ in the longitudinal direction given by $[10]$,
-$$
-V=V_0 \sin \left(\omega_{\mathrm{rf}} t+\phi_s\right),
-$$
+In modern high-energy circular accelerators, the acceleration of particles is archieved via the use of timevarying electromagnetic fields. This high-frequency accelerating field is generated in dedicated straight elements along the circular design, called RF cavities. In these cavities, a high-frequency accelerating voltage $V$ is generated along the longitudial direction with a specified angular frequency $\omega_{\mathrm{rf}}$, and reads
+\begin{equation}
+    V=V_0 \sin \left(\omega_{\mathrm{rf}} t+\phi_s\right),
+\end{equation}
 where $V_0$ is the amplitude of the RF voltage and $\phi_s$ is a phase factor.
-As a particle in an accelerator gains energy, its revolution frequency $f$ changes. The change in the revolution frequency depends on the particle's momentum $p$ as [13],
-$$
-\frac{\mathrm{d} f}{f}=\left(\frac{1}{\gamma_r^2}-\alpha_{\mathrm{p}}\right) \frac{\mathrm{d} p}{p},
-$$
-where $\gamma_r$ is the Lorentz factor and $\alpha_{\mathrm{p}}$ is known as the momentum compaction factor and it depends on the lattice. The dependence of the revolution frequency on the momentum is important for the stability of the longitudinal motion in an accelerator. At low particle energies $\left(\gamma_r^2<\alpha_p\right)$, the revolution frequency decreases with increasing momentum, while at high particle energies $\left(\gamma_r^2>\alpha_{\mathrm{p}}\right)$ it increases. The energy corresponding to $\gamma_{\mathrm{tr}}=1 / \sqrt{\alpha_{\mathrm{p}}}$ is known as the transition energy and it delimits two different regimes. The following discussion is focussed on the regime below the transition energy.
 
-An example of the longitudinal motion in an accelerator below the transition energy is shown in Fig. 1.4. A particle with phase $\phi=\phi_s$, momentum $p_0$ and a revolution period $T_0$ is called the synchronous-particle and is labelled as $\phi_2$ in Fig. 1.4. For optimal acceleration, the angular frequencies of the RF and the synchronous particle must match,
-$$
-\omega_{\mathrm{rf}}=h \omega_0,
-$$
-where $\omega_0=\beta_0 c / R_0$ is the angular revolution frequency of the synchronous particle with $\beta_0, R_0$ denoting the speed and average orbit radius of the synchronous particle respectively, $c$ is the speed of light and $h$ is an integer called the harmonic number.
+When a particle's energy in an accelerator changes, its revolution frequency $f$ changes as well, following a relation which reads:
+\begin{equation}
+    \frac{\mathrm{d} f}{f}=\left(\frac{1}{\gamma_r^2}-\alpha_{\mathrm{p}}\right) \frac{\mathrm{d} p}{p}\,,
+\end{equation}
+where $\gamma_r$ is the Lorentz factor and $\alpha_{\mathrm{p}}$ is referred to as the momentum compaction factor, it depends on the lattice and it is the   ratio   between the  relative   orbit   difference (given by the different trajectory in the magnetic lattice)  and the relative   momentum   error.
 
-The energy gain of a particle traversing the RF cavity will hence depend on the phase of that particle relative to the phase of the cavity. The synchronous particle will gain energy of $\Delta E=e V_0 \sin \left(\phi_s\right)$ per passage through the RF cavity. In a real beam there is a spread of beam particle momenta about the reference momentum and each particle will follow a different off-momentum closed orbit as described in Section 1.1.4 and therefore will have a different revolution frequency. Below transition, a higher momentum particle, $\phi_1$ in Fig. 1.4, will arrive at the RF cavity ahead of the synchronous particle $\left(\phi<\phi_s\right)$ and will receive less energy. Conversely, a particle with a lower momentum, $\phi_3$ in Fig. 1.4, will arrive at the RF cavity behind the synchronous particle $\left(\phi>\phi_s\right)$ and gain more energy. As long as the phase of the RF cavity obeys the condition $0<\phi_s<\pi / 2$, this effect provides phase stability of the longitudinal motion.
-The motion in the longitudinal plane is called synchrotron motion and the oscillations are called synchrotron oscillations. The fractional off-momentum deviation is defined as,
-$$
-\delta=\frac{\Delta p}{p_0}=\frac{\omega_0}{\beta^2 E} \frac{\delta E}{\omega_0} .
-$$
-The differential equations of motion can then be obtained,
-$$
-\begin{aligned}
-\frac{d \delta}{d t} &=\frac{\omega_0}{2 \pi \beta^2 E} e V_0\left[\sin (\phi)-\sin \left(\phi_s\right)\right], \\
-\frac{d \phi}{d t} &=h \omega_0 \eta \delta,
-\end{aligned}
-$$
-where $\eta$ is called the slip factor and has the form,
-$$
-\eta=\frac{\Delta \omega / \omega_0}{\Delta p / p_0} .
-$$
-For small oscillation amplitudes, the synchroton motion can be treated as a harmonic oscillator, with the linearised equation of motion in the variable $\Delta \phi=\phi-\phi_s$ being,
-$$
-\frac{d^2}{d t^2} \Delta \phi-\frac{h \omega_0^2 e V \eta_0 \cos \left(\phi_s\right)}{2 \pi \beta^2 E} \Delta \phi=0 .
-$$
-The phase stability condition below the transition energy then takes the form,
-$$
-\eta_0 \cos \left(\phi_s\right)<0 .
-$$
-The phase stability condition delimits different areas in phase space. The area of stable motion is called the RF bucket and the largest phase space trajectory is called the separatrix and forms the boundary between stable and unstable motion. An example of the
+From this equation we can distinguish two separate regimes. At $\left(\gamma_r^2<\alpha_p\right)$, corresponding to low energies, the revolution frequency decreases with increasing momentum. At $\left(\gamma_r^2>\alpha_{\mathrm{p}}\right)$, corresponding to high energies, it increases. The energy corresponding to $\gamma_{\mathrm{tr}}=1 / \sqrt{\alpha_{\mathrm{p}}}$ is referred to as the \textit{transition energy}, and it delimits two different regimes. We will now focus on the regime below the transition energy.
 
+Let us consider particle with longitudinal phase $\phi=\phi_s$, momentum $p_0$ and a revolution period $T_0$, we will refer to this particle as the \textit{synchronous-particle}. For an ideal acceleration, we must have that the angular frequency of the RF cavity must match the frequency of the synchronous particle. Such requirement reads
+\begin{equation}
+    \omega_{\mathrm{rf}}=h \omega_0\,,
+\end{equation}
+where $\omega_0$ and $h$ is an integer, which is referred to as the harmonic number, which also represents the number of equally spaced synchronous particles one can have along the circular accelerator.
 
+The energy gained by the synchronous particle at each passage trhough the RF cavity will then be dependent on $\phi_s$ and equal to $\Delta E=e V_0 \sin \left(\phi_s\right)$. However, in a real beam, we will have a spread of particles with different particle momenta, and each of these particles will follow a different off-momentum closed orbit. Therefore, each one of these different particles will have a different revolution frequency and recieve a different $\Delta E$ from the RF cavity.
+
+In the regime below transition, a higher momentum particle will arrive at the RF cavity ahead of the synchronous particle, i.e.\ $\left(\phi_1<\phi_s\right)$, and will have a lower $\Delta E$. Conversely, a particle with a lower momentum will arrive at the RF cavity behind the synchronous particle, i.e.\ $\left(\phi_2>\phi_s\right)$, and have a higher $\Delta E$. A simple scheme of this regime is plotted in Fig.~\ref{fig:long_1}.
+
+\begin{figure}
+    \centering
+    \def\svgwidth{0.85\columnwidth}
+    \import{2_accelerator_physics_fundamentals/figs/}{longitudinal_1.pdf_tex}
+    \caption{Schetch of the different $V$ provided at particles with different $\phi$, and consequent phase evolution in the regime below transition energy. $\phi_s$ represents the synchronous particle phase, $\phi_1$ and $\phi_2$ are respectively the phase of a particle with higher and lower longitudial momentum. The frequency of the RF voltage provides a restoring force towards $\phi_s$.}
+    \label{fig:long_1}
+\end{figure}
+
+As long as the phase of the RF cavity obeys the condition $0<\phi_s<\pi / 2$, this regime ensures the phase stability of the longitudinal motion. The resulting motion in the longitudinal plane is referred to as \textit{synchrotron motion}, which is characterised by \textit{synchrotron oscillations}. The fractional off-momentum deviation is then defined as,
+\begin{equation}
+    \delta=\frac{\Delta p}{p_0}=\frac{\omega_0}{\beta^2 E} \frac{\delta E}{\omega_0} \,.
+\end{equation}
+
+From here, we can then obtain the equations of motion for the longitudinal variables
+\begin{equation}
+    \begin{aligned}
+    \frac{\mathrm{d} \delta}{\mathrm{d} t} &=\frac{\omega_0}{2 \pi \beta^2 E} e V_0\left[\sin (\phi)-\sin \left(\phi_s\right)\right] \,, \\
+    \frac{\mathrm{d} \phi}{\mathrm{d} t} &=h \omega_0 \eta \delta,
+    \end{aligned}
+\end{equation}
+where $\eta$ is the \textit{slip factor} and reads
+\begin{equation}
+    \eta=\frac{\Delta \omega / \omega_0}{\Delta p / p_0} \,.
+\end{equation}
+
+When considering small oscillation amplitudes, we can treat the synchroton motion as a harmonic oscillator, where we consider the linearised equation of motion in the variable $\Delta \phi=\phi-\phi_s$. This approach leads us to the differential equation
+\begin{equation}
+    \frac{\mathrm{d}^2}{\mathrm{d} t^2} \Delta \phi-\frac{h \omega_0^2 e V \eta \cos \left(\phi_s\right)}{2 \pi \beta^2 E} \Delta \phi=0 \,.
+\end{equation}
+
+We then have the following condition for phase stability, which is valid below the transition energy,
+\begin{equation}
+    \eta_0 \cos \left(\phi_s\right)<0 .
+\end{equation}
+This condition delimits different stable areas in phase space. The area of stable motion is referred to as the \textit{RF bucket}. %In Fig.~\ref{} we show a simple schetch of an RF bucket, along with the separatrix orbit that delimits it.
+
+Particles with small off-momentum deviations undergo a synchrotron oscillation during their orbit. This oscillation periodically alters the magnetic lattice effect on their transversal dynamics as well, leading to what we referred to as syncrobetatron coupling.
+
+In the context of particle tracking simulations (which, including also longitudinal dynamics, will be a 6\textsc{d} tracking), different sets of longitudinal variables can be used along the transveral ones~\cite{}:
+\begin{equation}
+    \begin{aligned}
+    \xi &= s \frac{\beta}{\beta_0}-\beta c t \,,\quad& \tau &= \frac{s}{\beta_0}-c t \,,\quad& \zeta &= s-\beta_0 c t \,;\\
+    \delta &= \frac{p-p_0}{p_0} \,,\quad& p_\tau &= \frac{1}{\beta_0} \frac{E-E_0}{E_0} \,,\quad& p_\zeta &= \frac{1}{\beta_0^2} \frac{E-E_0}{E_0}\,; \\
+    \end{aligned}
+\end{equation}
+where variables in the same columns are canonically conjugate.
+The different variables can be easily related to each other:
+\begin{equation}
+    \begin{aligned}
+    &\xi=\beta \tau=\frac{\beta}{\beta_0} \zeta \,,\\
+    &\delta=\beta p_\tau+\frac{\beta-\beta_0}{\beta_0}=\beta \beta_0 p_\zeta+\frac{\beta-\beta_0}{\beta_0} \,.
+    \end{aligned}
+\end{equation}
 
 \parseparator
