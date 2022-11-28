@@ -230,7 +230,7 @@ As $\theta_1$ evolves as a slow variable, it does not meet the conditions for be
 \section{Kolmogorov-Arnold-Moser (KAM) theorem}\label{sec:1:kam}
 % Questa parte dovrebbe essere breve e precisa (ovvero i teoremi vanno citati in modo rigoroso). La focalizzerei sulle mappe per le applicazioni agli acceleratori e sulla nascita delle aree debolmente caotiche. La facciamo a quattro mani (ovvero imposta il file tex e poi intervengo io)
 
-As stated in the previous section, the averaging principle is not a mathematically proved theorem to be applied to every physical system. However, for Hamiltonian system, there are rigorous results which offer better insights on the effects of perturbations. One of the most important results is the theorem of Kolmogorov~\cite{} for \textit{non-degenerate} Hamiltonian systems, then extended by Arnold~\cite{} for \textit{isoenergetically non-degenerate} ones, which shows what happens to the non-resonant tori of an unperturbed system $\ham_0$ under a small perturbation $\ham_1$.
+As stated in the previous section, the averaging principle is not a mathematically proved theorem to be applied to every physical system. However, for Hamiltonian system, there are rigorous results which offer better insights on the effects of perturbations. One of the most important results is the theorem of Kolmogorov~\cite{KAM1} for \textit{non-degenerate} Hamiltonian systems, then extended by Arnold~\cite{KAM3} for \textit{isoenergetically non-degenerate} ones, which shows what happens to the non-resonant tori of an unperturbed system $\ham_0$ under a small perturbation $\ham_1$.
 
 Let us consider a perturbed Hamiltonian system in the form of
 \begin{equation}
@@ -265,7 +265,7 @@ The unperturbed system $\ham_0$ is classified as \textit{isoenergetically non-de
 i.e.\ one of the frequencies does not vanish, and the ratio of the other $n-1$ frequencies to it are functionally independent on the value of $\ham_0$. Likewise to the non-degenerate condition, also this condition guarantees the existence on every energy level surface of a set of densely populated invariant tori, which will have full measure for non-resonant frequencies and zero measure for resonant frequencies. The non-degenerate and the isoenergetically non-degenerate conditions are independent.
 
 Now that we have recalled these definitions, we can present the KAM theorem, which proves the integrability of $\ham$ in a closed phase-space subset of large measure:
-\begin{theorem}[KAM~\cite{}]
+\begin{theorem}[KAM~\cite{KAM1, KAM2, KAM3}]\label{th:kam}
 If the unperturbed Hamiltonian system $\ham_0$ is non-degenerate or isoenergetically non-degenerate, then, in the perturbed Hamiltoinan system such as Eq.~\eqref{eq:1:hamperturbed}, most of the non-resonant invariant tori do not disappear but are only slightly deformed. More specifically, there exist positive constants $\epsilon_0,\ a_1,\ a_2,$ and $a_3$, independent of $\epsilon$, such that for any $\epsilon < \epsilon_0$ one can find:
 \begin{enumerate}
     \item [(a).] a near to identity canonical transformation
@@ -299,15 +299,16 @@ This set of invariant tori $\mathcal{S}_\epsilon$ is constructed as a complement
 and we exclude a neighbourhood of $\mathcal{R}_k$ following a Diophantine law:
 \begin{equation}
     \left|\sum_i k_i \omega_i(I)\right| \leq \frac{\gamma_0 \sqrt{\epsilon}}{|k|^\tau} \,,
+    \label{eq:Diophantine-law}
 \end{equation}
-where $\gamma_0 > 0$ is a suitable positive constant and $\tau > n-1$. This excluded neighbourhood of resonances is reffered to as \textit{Arnol'd web}~\cite{}.
+where $\gamma_0 > 0$ is a suitable positive constant and $\tau > n-1$. This excluded neighbourhood of resonances is reffered to as \textit{Arnol'd web}.
 
 The proof of the KAM theorem is based on the possibility to define a converging procedure for consistently eliminating the fast phases of $\ham$ in incresasingly high orders in the small parameter. Such procedure has the property of quadratic convergence, as after $m$ successive changes of variables, the phase-dependent discrepancy in the new Hamiltonian is of order $\epsilon^{2^m}$.
 
 At each step, the generating function is constructed on the sum of the Fourier harmonics of $\ham_1$ whose order do not exceed an integer $N$. The integer $N$ is then chosen so that the absolute value of the remainder $R_{1N} = \ham_1 - \ham_{1N}$ of the Fourier series does not exceed $\epsilon$. These progressive steps gradually lead to a superconvergence to the non-resonant KAM set.
 
 The KAM theorem has important consequences for the analysis of stability of perturbed Hamiltonian systems. The most immediate one being the existence of large reagions with absence of evolution for systems with two degrees of freedom:
-\begin{theorem}(\cite{})
+\begin{theorem}(\cite{KAM1})
     In an isoenergetically non-degenerate system with two degrees of freedom, all initial conditions will have their action variables remaining near their initial value.
 \end{theorem} 
 This theorem has immediate proof, as such a system has a four-dimensional phase space with three-dimensional energy levels which are highly populated by two-dimensional KAM tori. Since a two-dimensional torus has the topological property to divide a three-dimensional energy level, an orbit starting in a gap between two KAM tori will be forever trapped between those tori. Resulting action variable oscillations will not exceed the order of magnitude of $\sqrt{\epsilon}$, following the estimates given by KAM theorem. 
@@ -327,10 +328,10 @@ Because of this, it becomes difficult (if not impossible) to treat the problem o
 \end{equation}
 which are valid for times $|t| \leq T(\epsilon)$ such that $r \rightarrow 0$ and $T \rightarrow \infty$ in the limit $\epsilon \rightarrow 0$. 
 
-In the case $\ham$ satisfies a technical property called \textit{steepness}\footnote{The notion of steepness was introduced by Nekhoroshev in~\cite{}. The definition we report here is a necessary and sufficient condition for steepness~\cite{}.}, a very important result on the estimate of diffusion scale times holds. An analytic function is said to be \textit{steep} if it has no stationary points and its restriction to any plane of any dimension has only isolated stationary points.
+In the case $\ham$ satisfies a technical property called \textit{steepness}\footnote{The notion of steepness was introduced by Nekhoroshev in~\cite{N_N_Nehorošev_1973}. The definition we report here is a necessary and sufficient condition for steepness~\cite{AIF_2006__56_3_795_0}.}, a very important result on the estimate of diffusion scale times holds. An analytic function is said to be \textit{steep} if it has no stationary points and its restriction to any plane of any dimension has only isolated stationary points.
 
 Such result is stated by Nekhoroshev in his celebrated theorem, named after him:
-\begin{theorem}[Nekhoroshev's theorem~\cite{}]
+\begin{theorem}[Nekhoroshev's theorem~\cite{Nekhoroshev:1977aa}]
     Let us consider a perturbed Hamiltonian system in the form of Eq~\eqref{eq:1:hamperturbed}. If the unperturbed Hamiltonian $\ham_0$ is steep, there exist positive constants $\epsilon_0, a, b, t_0, r$ such that for any $\epsilon<\epsilon_0$, and for any motion $(I(t), \phi(t))$ with $(I(0), \phi(0)) \in V \times \mathbb{T}^n$ it is
     \begin{equation}
         |I(t)-I(0)| \leq r \epsilon^a \,,
@@ -342,7 +343,7 @@ Such result is stated by Nekhoroshev in his celebrated theorem, named after him:
     where the value of the constants $a, b$ depend on the steepness properties of $\ham_0$.
 \end{theorem}
 
-A complete overview of the theorem's proof is presented in~\cite{}, the outline of it is that the long-term behaviour of the orbits can be studied removing from $\ham$ only a finite number of harmonics $\epsilon \ham_{1k}(I) e^{i k \cdot \phi}$, precisely those with order $|k|=\sum_{i=1}^n\left|k_i\right|$ up to a given threshold $K$. The harmonics with $|k| \geq K$ can then be estimated to be exponentially small. As a consequence, if one chooses $K$ suitably large, these terms turn out to be very small, and they can determine large deviations of the actions only after long exponential times.
+A complete overview of the theorem's proof is presented in~\cite{Guzzo2007}, the outline of it is that the long-term behaviour of the orbits can be studied removing from $\ham$ only a finite number of harmonics $\epsilon \ham_{1k}(I) e^{i k \cdot \phi}$, precisely those with order $|k|=\sum_{i=1}^n\left|k_i\right|$ up to a given threshold $K$. The harmonics with $|k| \geq K$ can then be estimated to be exponentially small. As a consequence, if one chooses $K$ suitably large, these terms turn out to be very small, and they can determine large deviations of the actions only after long exponential times.
 
 \section{Symplectic maps}
 
@@ -397,6 +398,7 @@ As every value of $I$ has its own different frequency of rotation of $\phi$, we 
 Now let us introduce a perturbation of the map $T_{k,\epsilon} = T_k + \epsilon T^{(1)}_k$, the resulting map reads
 \begin{equation}
 	\begin{pmatrix} \phi_{k+1} \\ I_{k+1} \end{pmatrix}  = \begin{pmatrix} \phi_k + \omega(I_k) + \epsilon f(I_k, \phi_k) \\ I_k  + \epsilon g(I_k, \phi_k) \end{pmatrix} \, ,
+    \label{eq:area_perturbed_map}
 \end{equation}
 with $f, g$ regular on their domains. The Poincaré-Birkhoff theorem states that the unperturbed resonant invariant curves $\Gamma_{I*}$, with $n\omega(I*)=2\pi \ell$, will no longer have the same properties in the perturbed map $T_\epsilon^n$ so that $T_\epsilon^n \mathbf{x} = \mathbf{x}$. However, $\mathrm{T}^n_\epsilon$ will have a chain of $2n$ fixed points close to the unperturbed commensurable invariant curve, half of them elliptic and half of them hyperbolic.
 
@@ -420,15 +422,15 @@ If we inspect the arrows represented in Fig.~\ref{fig:tnepsilon}, we can disting
 
 The Poincaré-Birkhoff theorem suggests that the effect of a small perturbation on a symplectic map has mostly a deformation effects on the original invariant curves given by the unperturbed map. A more precise statement on this can be obtained by extending the KAM theorem to a symplectic map. Such extension is also inspired by the connection between periodic Hamiltoinan systems and symplectic maps being their Poincaré sections.
 
-Likewise, also the results presented in the Nekhoroshev theorem can be extended to symplectic maps. However, for both theorems, the final statements are not necessary identical to the Hamiltoinan version, and differences in the implications of these theorems are present~\cite{}. An analysis of such theorems on the topic of area preserving maps can be found in~\cite{} and references therin.
+Likewise, also the results presented in the Nekhoroshev theorem can be extended to symplectic maps. However, for both theorems, the final statements are not necessary identical to the Hamiltoinan version, and differences in the implications of these theorems are present. An analysis of such theorems on the topic of area preserving maps can be found in~\cite{Bazzani:262179} and references therin.
 
 \begin{theorem}[KAM, area-preserving maps]
-    Let us consider a pertrubed area-preserving map like the one in Eq.~\eqref{}, where $f$ and $g$ are analytic on their domains, and let $\omega$ be a frequency vector that follows a Diophantine law like the one presented in Eq.~\eqref{}. Then, an invariant orbit with frequency vector $\omega$ in the unperturbed system is mapped into a closed orbit of the perturbed system for $\epsilon$ sufficiently small. Moreover, the measure of the closed orbits in a polydisc $\norm{I} \ll R$ approaches the measure of the disc itself as $\epsilon \to 0$. 
+    Let us consider a pertrubed area-preserving map like the one in Eq.~\eqref{eq:area_perturbed_map}, where $f$ and $g$ are analytic on their domains, and let $\omega$ be a frequency vector that follows a Diophantine law like the one presented in Eq.~\eqref{eq:Diophantine-law}. Then, an invariant orbit with frequency vector $\omega$ in the unperturbed system is mapped into a closed orbit of the perturbed system for $\epsilon$ sufficiently small. Moreover, the measure of the closed orbits in a polydisc $\norm{I} \ll R$ approaches the measure of the disc itself as $\epsilon \to 0$. 
 \end{theorem}
 
-The theorem is extremely similar to Theorem~\ref{}, however, for area-preserving maps we have that the KAM theorem guarantees stability of motion only for maps up to 2\textsc{d}, where a 1\textsc{d} invariant curve constitues a topological barrier to the motion. For higher dimensions, the existence of invariant tori does not constitue such a barrier. For example, in a 4\textsc{d} map, a KAM tori will be a 2\textsc{d} tori (i.e.\ the direct product of two circles), which does not constitue a topological barrier as its complement is a connected set of dimension two~\cite{}.
+The theorem is very similar to Theorem~\ref{th:kam}, however, for area-preserving maps we have that the KAM theorem guarantees stability of motion only for maps up to 2\textsc{d}, where a 1\textsc{d} invariant curve constitues a topological barrier to the motion. For higher dimensions, the existence of invariant tori does not constitue such a barrier. For example, in a 4\textsc{d} map, a KAM tori will be a 2\textsc{d} tori (i.e.\ the direct product of two circles), which does not constitue a topological barrier as its complement is a connected set of dimension two.
 
-A more broad stability result is obtained by generalising the Nekhoroshev theorem for Hamiltonian flows to symplectic maps~\cite{}.
+A more broad stability result is obtained by generalising the Nekhoroshev theorem for Hamiltonian flows to symplectic maps~\cite{Bazzani:1990aa, Turchetti:1990aa}.
 
 \begin{theorem}[Nekhoroshev, symplectic maps]
     Let us consider a symplectic map in a phase space of dimension 2\textsc{d}, with \textsc{d}$\geq 2$, analytic in a polydisc of unit radius, having the origin as an elliptic fixed point. If the frequency vector $\omega$ satisfies the Diophantine condition, then any orbit with initial point in a polydisc of radius $I/2$ will remain in a polydisc of radius $I$ for a time $t\leq T$, with
