@@ -19,16 +19,16 @@ These equations are referred to as \textit{Hamilton equations} with $\ham$ being
 \begin{equation} \omega = p_i \dd q_i -\ham \dd t \, .  \end{equation}
 
 In fact, the integral of the form on the trajectory $q_0\to q_1$ which is described by the motion of a particle in the time interval $[t_0,\,t_1]$ yields
-%
-\begin{equation}\int_{q_0=q(t_0)}^{q_1=q(t_1)} \qty(p_i \dd q_i - \ham \dd t) = \int_{t_0}^{t_1} \qty(p_i \dv{q_i}{t} - \ham)\dd t =  \int_{t_0}^{t_1} \mathcal{L} \dd t\,. \end{equation}
-%
+\begin{equation}
+    \int_{q_0=q(t_0)}^{q_1=q(t_1)} \qty(p_i \dd q_i - \ham \dd t) = \int_{t_0}^{t_1} \qty(p_i \dv{q_i}{t} - \ham)\dd t =  \int_{t_0}^{t_1} \mathcal{L} \dd t\,, 
+\end{equation}
 where $\mathcal{L}=p_i\dot q_i - \ham$ is the Lagrangian, obtained by Legendre transformation of the Hamiltonian. 
 
 \subsection{Canonical transformations}
 
-The main advantage of having an Hamiltonian formulation of a system is the freedom in co-ordinates choice. Differently from a Lagrangian formulation, positions and momenta are independent and can be both exchanged in role or mixed to archive optimal formulations, all while the Hamiltoinan equation maintain its form. Such changes in co-ordinates have however to maintain the fundamental property of the Hamiltonian equation defined in Eq.~\eqref{eq:hamem}, also referred to as \textit{symplectic conditions}.
+The main advantage of having a Hamiltonian formulation of a system is the freedom in co-ordinates choice. Differently from a Lagrangian formulation, positions and momenta are independent and can be both exchanged in role or mixed to archive optimal formulations, all while the Hamiltonian equation maintain its form. Such changes in co-ordinates have however to maintain the fundamental property of the Hamiltonian equation defined in Eq.~\eqref{eq:hamem}, also referred to as \textit{symplectic conditions}.
 
-Let us consider an Hamiltonian $\ham(p,q,t)$, for which we wish to apply a co-ordinate transformation $(p_i,q_i)\to(P_i,Q_i)$. To maintain the Hamiltonian properties, we are then looking for a new function $\mathcal{K}(P,Q,t)$ for which
+Let us consider a Hamiltonian $\ham(p,q,t)$, for which we wish to apply a co-ordinate transformation $(p_i,q_i)\to(P_i,Q_i)$. To maintain the Hamiltonian properties, we are then looking for a new function $\mathcal{K}(P,Q,t)$ for which
 %
 \begin{equation}
     \dot P_i = -\pdv{\mathcal{K}}{Q_i}\,, \qquad \dot Q_i = \pdv{\mathcal{K}}{P_i}\,.
@@ -73,7 +73,7 @@ which highlights the new co-ordinate roles, as now it is possible to express the
 \end{split}
 \end{equation}
 
-Finally, the time evolution of an Hamiltonian system is a canonical transformation itself. This property justifies the construction of \textit{symplectic integrators}, i.e.\ algorithms of numerical integration of Hamilton equations that preserve the Hamiltonian structure of the system.
+Finally, the time evolution of a Hamiltonian system is a canonical transformation itself. This property justifies the construction of \textit{symplectic integrators}, i.e.\ algorithms of numerical integration of Hamilton equations that preserve the Hamiltonian structure of the system.
 
 
 \subsection{Action-angle variables}
@@ -94,7 +94,7 @@ which describe the phase flow relative to the chosen Hamiltonian.
 
 This transformation gives us the new co-ordinates $(I_i,\,\phi_i)$, which might not necessarily be symplectic, as $(p_i,\,q_i)\to(I_i,\,\phi_i)$ may not be canonical.
 
-To be sure of the canonical character of the transformation, one can introduce different functions $I_i = I_i(J_1,\dots,\,J_n)$ which fulfill
+To be sure of the canonical character of the transformation, one can introduce different functions $I_i = I_i(J_1,\dots,\,J_n)$ which fulfil
 %
 \begin{equation}
     \dot I_i = 0\,, \qquad \dot \phi_i = \omega_i(I_1\,\dots,\,I_n)\,,
@@ -117,7 +117,7 @@ The invariant torus reduces to the closed curves that are identified just from t
     \dd S = \pdv{S}{q}\,\dd q = p\,\dd q\,,
 \end{equation} 
 %
-which impies
+which implies
 %
 \begin{equation}
     S = \int p\, \dd q\,,
@@ -156,7 +156,7 @@ On the other hand, differentiating (\ref{eq:S}) in $I$ we retrieve, from the def
     \phi = \frac{1}{2\pi} \pdv{I}\int p\,\dd q\, . 
 \end{equation}  
 
-The generalization to systems with an arbitrary amount of degrees of freedom is straightforward, if we are working in an $\mathbb{R}^{2n}$ phase space. In fact, we can formulate $\gamma_1,\dots, \gamma_n$ 1\textsc{d} cycles to form a basis on the torus $M_{k_i}$. We will then have that the variation of the angular variable $\phi_i$ on the cycle $\gamma_j$ is equal to $2\pi\delta_{ij}$, where $\delta_{ij}$ is the Kroenecker symbol.
+The generalization to systems with an arbitrary amount of degrees of freedom is straightforward, if we are working in an $\mathbb{R}^{2n}$ phase space. In fact, we can formulate $\gamma_1,\dots, \gamma_n$ 1\textsc{d} cycles to form a basis on the torus $M_{k_i}$. We will then have that the variation of the angular variable $\phi_i$ on the cycle $\gamma_j$ is equal to $2\pi\delta_{ij}$, where $\delta_{ij}$ is the Kronecker symbol.
 
 In such scenario, the actions variables $I_i$ then read as
 %
@@ -164,13 +164,13 @@ In such scenario, the actions variables $I_i$ then read as
     I_i(k_1,\dots,k_n) = \frac{1}{2\pi}\int_{\gamma_i} p_j\, \dd q_j\, .  
 \end{equation} 
 %
-It can be shown that these integrals are independent from the choice of the $\gamma_i$.~\cite{Arnold:937549}
+It can be shown that these integrals are independent of the choice of the $\gamma_i$.~\cite{Arnold:937549}
 
 \section{Averaging principle for Hamiltonian systems}\label{sec:1:averaging}
 
-Many physical systems can be modeled and described in terms of an ideal integrable Hamiltonian affected by small non-integrable perturbations. A common example is the problem of the motion of planets around the Sun, which can be treated as a perturbation of an ideal motion of non-interacting planets around a fixed attracting center. Another relevant example, as we will see in the next chapter, is how the motion of a particle inside a circular accelerator can be described as the perturbation of an otherwise ideal harmonic oscillator-like betatron motion around a reference orbit.
+Many physical systems can be modelled and described in terms of an ideal integrable Hamiltonian affected by small non-integrable perturbations. A common example is the problem of the motion of planets around the Sun, which can be treated as a perturbation of an ideal motion of non-interacting planets around a fixed attracting centre. Another relevant example, as we will see in the next chapter, is how the motion of a particle inside a circular accelerator can be described as the perturbation of an otherwise ideal harmonic oscillator-like betatron motion around a reference orbit.
 
-Understanding how these perturbations may or may not affect the properties of an Hamiltonian system is an open problem, which was called by Poincaré as the \textit{``fundamental problem of dynamics''}. Multiple approaches to this problem have been explored and grouped under the general topic of \textit{perturbation theory}.
+Understanding how these perturbations may or may not affect the properties of a Hamiltonian system is an open problem, which was called by Poincaré as the \textit{``fundamental problem of dynamics''}. Multiple approaches to this problem have been explored and grouped under the general topic of \textit{perturbation theory}.
 
 If the timescale of the perturbation is far smaller than the timescale of the unperturbed system, a standard approach that is often proposed in perturbation theory is to \textit{average} over time these perturbations, under the core idea that motion can be divided in a global ``drift'' and rapid oscillations. This method is referred to as \textit{averaging principle}. We highlight this specific choice of words, as, Arnol'd reminds, it is ``not a theorem, but a physical proposition, that is, a vaguely stated and, strictly speaking, false assertion''. However, ``Such assertions often happen to be fruitful sources for mathematical theorems''~\cite{Arnold:937549}.
 
@@ -205,7 +205,7 @@ If we apply the concept of the averaging principle to the perturbed Hamiltonian 
 where we are considering the standard definition of integral average
 %
 \begin{equation} 
-	\av{f} = \frac{1}{(2\pi)^n}\oint_{\mathbb{T}^n}\dd^n\phi\, f(\epsilon=0) \, .
+	\av{f} = \frac{1}{(2\pi)^n}\oint_{\mathbb{T}^n}\dd^n\phi\, f(\epsilon=0) \, ,
 \end{equation}
 %
 where $\mathbb{T}^n$ is the $n$-dimensional torus.
@@ -266,7 +266,7 @@ i.e.\ one of the frequencies does not vanish, and the ratio of the other $n-1$ f
 
 Now that we have recalled these definitions, we can present the KAM theorem, which proves the integrability of $\ham$ in a closed phase-space subset of large measure:
 \begin{theorem}[KAM~\cite{KAM1, KAM2, KAM3}]\label{th:kam}
-If the unperturbed Hamiltonian system $\ham_0$ is non-degenerate or isoenergetically non-degenerate, then, in the perturbed Hamiltoinan system such as Eq.~\eqref{eq:1:hamperturbed}, most of the non-resonant invariant tori do not disappear but are only slightly deformed. More specifically, there exist positive constants $\epsilon_0,\ a_1,\ a_2,$ and $a_3$, independent of $\epsilon$, such that for any $\epsilon < \epsilon_0$ one can find:
+If the unperturbed Hamiltonian system $\ham_0$ is non-degenerate or isoenergetically non-degenerate, then, in the perturbed Hamiltonian system such as Eq.~\eqref{eq:1:hamperturbed}, most of the non-resonant invariant tori do not disappear but are only slightly deformed. More specifically, there exist positive constants $\epsilon_0,\ a_1,\ a_2,$ and $a_3$, independent of $\epsilon$, such that for any $\epsilon < \epsilon_0$ one can find:
 \begin{enumerate}
     \item [(a).] a near to identity canonical transformation
     \begin{equation}
@@ -288,26 +288,26 @@ which satisfy
 
 \end{theorem}
 
-From this theorem, we can define a set $\mathcal{S}_\epsilon = \mathcal{C}_\epsilon(V_\epsilon \times \mathbb{T}^n) \subseteq V \times \mathbb{T}^n$ of large measure composed of invariant tori. This set is also reffered to as the \textit{KAM set}, which is composed by \textit{KAM tori}. Within this set, due to \textit{(ii)}, we have that any orbit $(I(t), \phi(t))$ having initial condition $(I(0), \phi(0)) \in \mathcal{S}_\epsilon$ satisfies the relation
+From this theorem, we can define a set $\mathcal{S}_\epsilon = \mathcal{C}_\epsilon(V_\epsilon \times \mathbb{T}^n) \subseteq V \times \mathbb{T}^n$ of large measure composed of invariant tori. This set is also referred to as the \textit{KAM set}, which is composed by \textit{KAM tori}. Within this set, due to \textit{(ii)}, we have that any orbit $(I(t), \phi(t))$ having initial condition $(I(0), \phi(0)) \in \mathcal{S}_\epsilon$ satisfies the relation
 \begin{equation}
     \norm{I(t) - I(0)} \leq 2 a_2 \sqrt{\epsilon} \,.
 \end{equation}
 This set of invariant tori $\mathcal{S}_\epsilon$ is constructed as a complement of a neighbourhood of all the resonances. Meaning, if we consider any vector $k\in \mathbb{Z}^n$ defining a resonance order, we have a resulting resonant manifold which reads
 \begin{equation}
-    \mathcal{R}_k = \left\{I\in V \, \big| \, \sum_i k_i \omega_i(I) = 0\right\} \,
+    \mathcal{R}_k = \left\{I\in V \, \big| \, \sum_i k_i \omega_i(I) = 0\right\} \,,
 \end{equation}  
 and we exclude a neighbourhood of $\mathcal{R}_k$ following a Diophantine law:
 \begin{equation}
     \left|\sum_i k_i \omega_i(I)\right| \leq \frac{\gamma_0 \sqrt{\epsilon}}{|k|^\tau} \,,
     \label{eq:Diophantine-law}
 \end{equation}
-where $\gamma_0 > 0$ is a suitable positive constant and $\tau > n-1$. This excluded neighbourhood of resonances is reffered to as \textit{Arnol'd web}.
+where $\gamma_0 > 0$ is a suitable positive constant and $\tau > n-1$. This excluded neighbourhood of resonances is referred to as \textit{Arnol'd web}.
 
-The proof of the KAM theorem is based on the possibility to define a converging procedure for consistently eliminating the fast phases of $\ham$ in incresasingly high orders in the small parameter. Such procedure has the property of quadratic convergence, as after $m$ successive changes of variables, the phase-dependent discrepancy in the new Hamiltonian is of order $\epsilon^{2^m}$.
+The proof of the KAM theorem is based on the possibility to define a converging procedure for consistently eliminating the fast phases of $\ham$ in increasingly high orders in the small parameter. Such procedure has the property of quadratic convergence, as after $m$ successive changes of variables, the phase-dependent discrepancy in the new Hamiltonian is of order $\epsilon^{2^m}$.
 
 At each step, the generating function is constructed on the sum of the Fourier harmonics of $\ham_1$ whose order do not exceed an integer $N$. The integer $N$ is then chosen so that the absolute value of the remainder $R_{1N} = \ham_1 - \ham_{1N}$ of the Fourier series does not exceed $\epsilon$. These progressive steps gradually lead to a superconvergence to the non-resonant KAM set.
 
-The KAM theorem has important consequences for the analysis of stability of perturbed Hamiltonian systems. The most immediate one being the existence of large reagions with absence of evolution for systems with two degrees of freedom:
+The KAM theorem has important consequences for the analysis of stability of perturbed Hamiltonian systems. The most immediate one being the existence of large regions with absence of evolution for systems with two degrees of freedom:
 \begin{theorem}(\cite{KAM1})
     In an isoenergetically non-degenerate system with two degrees of freedom, all initial conditions will have their action variables remaining near their initial value.
 \end{theorem} 
@@ -318,11 +318,11 @@ When instead we are considering a system with more than two degrees of freedom, 
 \section{Nekhoroshev theorem}\label{sec:1:nekhoroshev}
 %  Qui come sopra: il th di Nekhoroshev ha molte formulazioni (soprattutto per la questione dell'esponente nella stima ottimale). Io non entrerei nei dettagli ma nella generalità del risultato correlato all'analiticità delle serie perturbative
 
-As stated in the previos section, even though the stability set $\mathcal{S}_\epsilon$ has large relative measure, its complement can be open, dense, and if the number of degrees of freedom is larger than two, also connected, enabling evolution at different energy levels.
+As stated in the previous section, even though the stability set $\mathcal{S}_\epsilon$ has large relative measure, its complement can be open, dense, and if the number of degrees of freedom is larger than two, also connected, enabling evolution at different energy levels.
 
 Therefore, the possibility for solutions to wandering the complement of $\mathcal{S}_\epsilon$, such as the so called Arnol’d diffusion, can prevent any result of stability over an infinite time.
 
-Because of this, it becomes difficult (if not impossible) to treat the problem of the evolution of a perturbed Hamiltoinan system with the ``classical'' definition of stability, as in, confinement in a region to infinite times. But it is possible to operate with asymptotic estimates, which are limited to very long times\footnote{For example, orders of magnitudes higher than the usual operation time of an accelerator machine.}, such estimates can be formulated as:
+Because of this, it becomes difficult (if not impossible) to treat the problem of the evolution of a perturbed Hamiltonian system with the ``classical'' definition of stability, as in, confinement in a region to infinite times. But it is possible to operate with asymptotic estimates, which are limited to very long times\footnote{For example, orders of magnitudes higher than the usual operation time of an accelerator machine.}, such estimates can be formulated as:
 \begin{equation}
     |I(t)-I(0)| \leq r(\epsilon)
 \end{equation}
@@ -369,7 +369,7 @@ is a symplectic matrix for every $\vb{x}$, meaning
 The symplectic condition for a map can be considered as the natural generalization of
 the area-preserving condition to higher dimensionality.
 
-An example of symplectic map that is relevant in the field of accelerator physics,  as we will see in the next Chapter, is a Poincaré section of the symplectic evolution of an Hamiltonian system whose equations have a periodic condition. That is, for a time-dependent Hamiltonian $\ham(\vb{x}, t)$, with periodic condition $\ham(\vb{x}, t=t') = \ham(\vb{x}, t=0)$, one can define a symplectic map $\mathrm{M}$ as the Poincaré section of $\ham$ at $t=0$, which will represent the propagation of an initial condition $\vb{x}(0)$ to $\vb{x}(t')$, a simple coneptual scheme of a Poincaré section is shown in Fig.~\ref{fig:poincare}. 
+An example of symplectic map that is relevant in the field of accelerator physics,  as we will see in the next Chapter, is a Poincaré section of the symplectic evolution of a Hamiltonian system whose equations have a periodic condition. That is, for a time-dependent Hamiltonian $\ham(\vb{x}, t)$, with periodic condition $\ham(\vb{x}, t=t') = \ham(\vb{x}, t=0)$, one can define a symplectic map $\mathrm{M}$ as the Poincaré section of $\ham$ at $t=0$, which will represent the propagation of an initial condition $\vb{x}(0)$ to $\vb{x}(t')$, a simple conceptual scheme of a Poincaré section is shown in Fig.~\ref{fig:poincare}. 
 
 \begin{figure}
 	\centering
@@ -381,7 +381,7 @@ An example of symplectic map that is relevant in the field of accelerator physic
 
 \subsection{Poincaré-Birkhoff theorem}
 
-After we have seen the most important theorems on how small perturbations can affect the dynamics of an Hamiltonian system, we are interested in seeing how such additions can affect the dynamics described by an area-preserving map.
+After we have seen the most important theorems on how small perturbations can affect the dynamics of a Hamiltonian system, we are interested in seeing how such additions can affect the dynamics described by an area-preserving map.
 
 The first important theorem we will present is the Poincaré-Birkhoff theorem~\cite{poincare, birkhoff}. This theorem shows how the interplay between the perturbation and the natural resonances present in the map leads to the creation of a chain of stable regions, also referred to as \textit{islands}, which appear in the phase space at given amplitudes, with their own set of fixed points.
 
@@ -402,9 +402,9 @@ Now let us introduce a perturbation of the map $T_{k,\epsilon} = T_k + \epsilon 
 \end{equation}
 with $f, g$ regular on their domains. The Poincaré-Birkhoff theorem states that the unperturbed resonant invariant curves $\Gamma_{I*}$, with $n\omega(I*)=2\pi \ell$, will no longer have the same properties in the perturbed map $T_\epsilon^n$ so that $T_\epsilon^n \mathbf{x} = \mathbf{x}$. However, $\mathrm{T}^n_\epsilon$ will have a chain of $2n$ fixed points close to the unperturbed commensurable invariant curve, half of them elliptic and half of them hyperbolic.
 
-The schetch of the proof is based on some considerations on the shape of the function $\omega(I_k)$. If at action $I^*$, on the invariant curve $\Gamma_{I^*}$, we have a resonant $\omega$, the map $\mathrm{T}^n$ transforms a point into itself. Because of that, the resulting rotation is $n\omega(I^*)=0 \pmod{2\pi}$. This implies that exist also a curve $\Gamma_+$, where $I_+>I^*$, and $\Gamma_-$, where $I_-<I^*$, on which $\phi$ rotates, under the action of $\mathrm{T}^n$, with opposite direction. We can assume, for example, that $n\omega(I_-)<n\omega(I^*)<n\omega(I_+)$ and therefore $\omega(I_-)<0$ and $\omega(I_+)>0$.
+The sketch of the proof is based on some considerations on the shape of the function $\omega(I_k)$. If at action $I^*$, on the invariant curve $\Gamma_{I^*}$, we have a resonant $\omega$, the map $\mathrm{T}^n$ transforms a point into itself. Because of that, the resulting rotation is $n\omega(I^*)=0 \pmod{2\pi}$. This implies that exist also a curve $\Gamma_+$, where $I_+>I^*$, and $\Gamma_-$, where $I_-<I^*$, on which $\phi$ rotates, under the action of $\mathrm{T}^n$, with opposite direction. We can assume, for example, that $n\omega(I_-)<n\omega(I^*)<n\omega(I_+)$ and therefore $\omega(I_-)<0$ and $\omega(I_+)>0$.
 
-This reasonment can also brought to the perturbation case $\mathrm{T}_\epsilon$. Due to the regularity of $f$ and $g$, we know that each angle $\phi$ exists a value of $I$, $I_\phi$, for which $\mathrm{T}^n_\epsilon$ has rotation zero, i.e.\ the orbit for $(\phi, I_\phi)$ is completely radial and $\phi$ is fixed. The set of all pairs $(\phi, I_\phi)$ describe a closed curve that we name $R_\epsilon$, which will describe a full radial variation under the action of $\mathrm{T}^n_\epsilon$. This curve $R_\epsilon$ will be close to the unperturbed invariant curve $\Gamma$. Let us now define as $R'_\epsilon$ the resulting curve having applied $\mathrm{T}^n_\epsilon$ at each point of $R_\epsilon$, as stated before, the difference will be a variation in radius. As the map is area-preserving, the area enclosed by the evolved curve $R'_\epsilon$ cannot be nor greater nor smaller than the area enclosed by the starting curve $R_\epsilon$. Therefore, it is impossible that one of the two curves surround the other one, and they must intersect in an even number of points, and the points of intersection are fixed points of $\mathrm{T}^n_\epsilon$. A schematic picture of this scenario is given in Fig.~\ref{fig:tnepsilon}.
+This reasoning can also be brought to the perturbation case $\mathrm{T}_\epsilon$. Due to the regularity of $f$ and $g$, we know that each angle $\phi$ exists a value of $I$, $I_\phi$, for which $\mathrm{T}^n_\epsilon$ has rotation zero, i.e.\ the orbit for $(\phi, I_\phi)$ is completely radial and $\phi$ is fixed. The set of all pairs $(\phi, I_\phi)$ describe a closed curve that we name $R_\epsilon$, which will describe a full radial variation under the action of $\mathrm{T}^n_\epsilon$. This curve $R_\epsilon$ will be close to the unperturbed invariant curve $\Gamma$. Let us now define as $R'_\epsilon$ the resulting curve having applied $\mathrm{T}^n_\epsilon$ at each point of $R_\epsilon$, as stated before, the difference will be a variation in radius. As the map is area-preserving, the area enclosed by the evolved curve $R'_\epsilon$ cannot be nor greater nor smaller than the area enclosed by the starting curve $R_\epsilon$. Therefore, it is impossible that one of the two curves surround the other one, and they must intersect in an even number of points, and the points of intersection are fixed points of $\mathrm{T}^n_\epsilon$. A schematic picture of this scenario is given in Fig.~\ref{fig:tnepsilon}.
 
 To determine the nature of these fixed points, i.e.\ to assess if they are stable elliptic points or unstable hyperbolic points, we have to consider the flow of $\mathrm{T}^n$ in the neighbourhood of $\Gamma^+$ and $\Gamma^-$ and look how it connects to the dynamics of the orbits given by $R_\epsilon \to T^n R_\epsilon$.
 
@@ -414,28 +414,28 @@ If we inspect the arrows represented in Fig.~\ref{fig:tnepsilon}, we can disting
 	\centering
 	\def\svgwidth{0.75\columnwidth}
     \import{1_mathematical_elements/figs}{poincare.pdf_tex}
-    \caption{Schematic picture of the concept behind the Poincaré-Birkhoff theorem proof. The invariant curves $\Gamma_-$ and $\Gamma_+$ are characterised by rotation frequencies different in sign under the perturbed map $\mathrm{T}^n_\epsilon$. The curve $R_\epsilon$ is made of points with no rotation, and it's mapped into $R_\epsilon'$ by the map. As the map is area-preserving, we observe an even number of intersections between $R_\epsilon$ and $R_\epsilon'$, which correspond to the fixed points given by the theorem. These fixed points can be distinguished between elliptic and hyperbolic by inspecting the direction of the arrows in the pictures, which ultimately represents the dynamic flow near them. Elliptic points (blue stars) have arrows rotating around them, hyperbolic points (red stars) have arrows pointing away from them.}
+    \caption{Schematic picture of the concept behind the Poincaré-Birkhoff theorem proof. The invariant curves $\Gamma_-$ and $\Gamma_+$ are characterized by rotation frequencies different in sign under the perturbed map $\mathrm{T}^n_\epsilon$. The curve $R_\epsilon$ is made of points with no rotation, and it's mapped into $R_\epsilon'$ by the map. As the map is area-preserving, we observe an even number of intersections between $R_\epsilon$ and $R_\epsilon'$, which correspond to the fixed points given by the theorem. These fixed points can be distinguished between elliptic and hyperbolic by inspecting the direction of the arrows in the pictures, which ultimately represents the dynamic flow near them. Elliptic points (blue stars) have arrows rotating around them, hyperbolic points (red stars) have arrows pointing away from them.}
     \label{fig:tnepsilon}
 \end{figure}
 
 \subsection{KAM and Nekhoroshev theorems for symplectic maps}
 
-The Poincaré-Birkhoff theorem suggests that the effect of a small perturbation on a symplectic map has mostly a deformation effects on the original invariant curves given by the unperturbed map. A more precise statement on this can be obtained by extending the KAM theorem to a symplectic map. Such extension is also inspired by the connection between periodic Hamiltoinan systems and symplectic maps being their Poincaré sections.
+The Poincaré-Birkhoff theorem suggests that the effect of a small perturbation on a symplectic map has mostly a deformation effects on the original invariant curves given by the unperturbed map. A more precise statement on this can be obtained by extending the KAM theorem to a symplectic map. Such extension is also inspired by the connection between periodic Hamiltonian systems and symplectic maps being their Poincaré sections.
 
-Likewise, also the results presented in the Nekhoroshev theorem can be extended to symplectic maps. However, for both theorems, the final statements are not necessary identical to the Hamiltoinan version, and differences in the implications of these theorems are present. An analysis of such theorems on the topic of area preserving maps can be found in~\cite{Bazzani:262179} and references therin.
+Likewise, also the results presented in the Nekhoroshev theorem can be extended to symplectic maps. However, for both theorems, the final statements are not necessary identical to the Hamiltonian version, and differences in the implications of these theorems are present. An analysis of such theorems on the topic of area preserving maps can be found in~\cite{Bazzani:262179} and references therein.
 
 \begin{theorem}[KAM, area-preserving maps]
-    Let us consider a pertrubed area-preserving map like the one in Eq.~\eqref{eq:area_perturbed_map}, where $f$ and $g$ are analytic on their domains, and let $\omega$ be a frequency vector that follows a Diophantine law like the one presented in Eq.~\eqref{eq:Diophantine-law}. Then, an invariant orbit with frequency vector $\omega$ in the unperturbed system is mapped into a closed orbit of the perturbed system for $\epsilon$ sufficiently small. Moreover, the measure of the closed orbits in a polydisc $\norm{I} \ll R$ approaches the measure of the disc itself as $\epsilon \to 0$. 
+    Let us consider a perturbed area-preserving map like the one in Eq.~\eqref{eq:area_perturbed_map}, where $f$ and $g$ are analytic on their domains, and let $\omega$ be a frequency vector that follows a Diophantine law like the one presented in Eq.~\eqref{eq:Diophantine-law}. Then, an invariant orbit with frequency vector $\omega$ in the unperturbed system is mapped into a closed orbit of the perturbed system for $\epsilon$ sufficiently small. Moreover, the measure of the closed orbits in a polydisc $\norm{I} \ll R$ approaches the measure of the disc itself as $\epsilon \to 0$. 
 \end{theorem}
 
-The theorem is very similar to Theorem~\ref{th:kam}, however, for area-preserving maps we have that the KAM theorem guarantees stability of motion only for maps up to 2\textsc{d}, where a 1\textsc{d} invariant curve constitues a topological barrier to the motion. For higher dimensions, the existence of invariant tori does not constitue such a barrier. For example, in a 4\textsc{d} map, a KAM tori will be a 2\textsc{d} tori (i.e.\ the direct product of two circles), which does not constitue a topological barrier as its complement is a connected set of dimension two.
+The theorem is very similar to Theorem~\ref{th:kam}, however, for area-preserving maps we have that the KAM theorem guarantees stability of motion only for maps up to 2\textsc{d}, where a 1\textsc{d} invariant curve constitutes a topological barrier to the motion. For higher dimensions, the existence of invariant tori does not constitute such a barrier. For example, in a 4\textsc{d} map, a KAM tori will be a 2\textsc{d} tori (i.e.\ the direct product of two circles), which does not constitute a topological barrier as its complement is a connected set of dimension two.
 
-A more broad stability result is obtained by generalising the Nekhoroshev theorem for Hamiltonian flows to symplectic maps~\cite{Bazzani:1990aa, Turchetti:1990aa}.
+A more broad stability result is obtained by generalizing the Nekhoroshev theorem for Hamiltonian flows to symplectic maps~\cite{Bazzani:1990aa, Turchetti:1990aa}.
 
 \begin{theorem}[Nekhoroshev, symplectic maps]
     Let us consider a symplectic map in a phase space of dimension 2\textsc{d}, with \textsc{d}$\geq 2$, analytic in a polydisc of unit radius, having the origin as an elliptic fixed point. If the frequency vector $\omega$ satisfies the Diophantine condition, then any orbit with initial point in a polydisc of radius $I/2$ will remain in a polydisc of radius $I$ for a time $t\leq T$, with
     \begin{equation}
         T = T_0 \exp\left[\left(\frac{I_\ast}{I}\right)^A\right]\,,
     \end{equation}
-    whith the constants $A$, $T_0$, and $I_\ast$ depending on the Diophantine law constants.
+    with the constants $A$, $T_0$, and $I_\ast$ depending on the Diophantine law constants.
 \end{theorem}

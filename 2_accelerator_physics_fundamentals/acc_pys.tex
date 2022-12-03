@@ -1,13 +1,13 @@
 
 \chapter{Accelerator Physics Fundamentals}\label{ch:accelerator_physics_fundamentals}
 
-\section{Particle motion and Fernet-Serret co-ordinate system}
+\section{Particle motion and Frenet-Serret co-ordinate system}
 
 The standard choice of co-ordinates in accelerator physics, which takes advantage on the toroidal symmetry of the circular accelerator system, is the Frenet-Serret co-ordinate system.
 
-Starting from the Cartesian system $(X,\, Y,\, Z)$, centered in the accelerator centre, the Fernet-Serret co-ordinate system considers as one curvilinear co-ordinate the reference orbit $s$, which describes the ideal longitudial motion of a particle inside the accelerator, and two Cartesian co-ordinates $x$ and $y$ for the transverse one. In Fig.~\ref{fig:frenserr}, we illustrate the co-ordinate system applied to a vector $\vb{r}$.
+Starting from the Cartesian system $(X,\, Y,\, Z)$, centred in the accelerator centre, the Frenet-Serret co-ordinate system considers as one curvilinear co-ordinate the reference orbit $s$, which describes the ideal longitudinal motion of a particle inside the accelerator, and two Cartesian co-ordinates $x$ and $y$ for the transverse one. In Fig.~\ref{fig:frenserr}, we illustrate the co-ordinate system applied to a vector $\vb{r}$.
 
-Mapping the Cartesian system to the Fernet-Serret co-ordinate system reads:
+Mapping the Cartesian system to the Frenet-Serret co-ordinate system reads:
 %
 \begin{equation} 
     X = (x+\rho)\cos(\frac{s}{\rho})\,, \qquad Y=y\,, \qquad Z=(x+\rho)\sin(\frac{s}{\rho})\,.
@@ -51,7 +51,7 @@ Leading to,
     \label{eq:ham_process_1}
 \end{equation}
 %
-It is convenient form this point fowrard to treat $s$ as the time co-ordinate. Consequently, due to canonical coupling, the conjugated momentum $-p_s$ will work as the Hamiltonian function $\tilde\ham$. Solving Eq.~\eqref{eq:ham_process_1} for $p_s$, we obtain
+It is convenient from this point forward to treat $s$ as the time co-ordinate. Consequently, due to canonical coupling, the conjugated momentum $-p_s$ will work as the Hamiltonian function $\tilde\ham$. Solving Eq.~\eqref{eq:ham_process_1} for $p_s$, we obtain
 %
 \begin{equation} 
     \tilde{\ham} = -\qty(1-\frac{x}{\rho})\sqrt{\frac{E^2}{c^2}-m^2c^2-(p_x-eA_x)^2-(p_y-eA_y)^2} - eA_s\,,
@@ -113,7 +113,7 @@ In order to get an expression for the partial derivatives of $A_s$ as a function
     \curl \mathbf{A} = \frac{\hat x}{1+x/\rho}\pdv{A_s}{y} - \frac{\hat y}{1+x/\rho}\pdv{A_s}{x} = B_x\hat x + B_y\hat y % TODO::CHECK
 \end{equation}
 %
-as only the $A_s$ component is nonzero. This leads to
+as only the $A_s$ component is non-zero. This leads to
 %
 \begin{equation}
     \pdv{A_s}{x} = -\qty(1+\frac{x}{\rho})B_y\,, \qquad \pdv{A_s}{y} = \qty(1+\frac{x}{\rho})B_x\,,
@@ -152,7 +152,7 @@ An Ansatz for the solution of Hill's equation is in the form
 	\label{eq:hill_zeta}
 \end{equation}
 %
-\ie an harmonic oscillator where the amplitude $\beta_x(s)$ and phase advance $\psi_z(s)$ is dependent on $s$. which, substituted into Hill's equation results in a relation between $\psi_z(s)$ and $\beta_z(s)$,
+\ie a harmonic oscillator where the amplitude $\beta_x(s)$ and phase advance $\psi_z(s)$ is dependent on $s$. Which, substituted into Hill's equation results in a relation between $\psi_z(s)$ and $\beta_z(s)$,
 %
 \begin{equation}
 	\frac{1}{\sqrt{\beta_z(s)}} \dv{s}(\beta_z(s)\psi_z(s)) = 0\,,
@@ -195,7 +195,7 @@ where $\alpha_z=-\beta'_z/2$. We then consider for our co-ordinate transformatio
 	F=\int \dd z\, z' = -\frac{z^2}{2\beta_z}(\alpha_z+\tan\phi_z) \,,
 \end{equation}
 %
-which then yileds the canonical action variable $I_z$, which then reads
+which then yields the canonical action variable $I_z$, which then reads
 %
 \begin{equation}
 	I_z=\pdv{F}{\phi_z}=\frac{z^2}{2\beta_z}(1+\tan^2\phi_z)=\frac{1}{2\beta_z}\qty[z^2+(\beta_z z'+\alpha_z z)^2]\,.
@@ -212,7 +212,7 @@ taking into account the derivative $\pdv*{F}{s}$, reduces to the simple expressi
 \end{equation}
 From this new Hamiltonian, we have that the equation of motion for the variable $\phi_z$ reads $\phi'_z = 1/\beta(s)$. We are now interested in making $\phi_z$ proportional to $s$, and remove any dependence from the $\beta$ function in the equations of motion.
 
-To archieve this, we define the frequency
+To achieve this, we define the frequency
 \begin{equation}
     \omega_z = \frac{2\pi\nu_z}{L} \,,
 \end{equation}
@@ -231,12 +231,12 @@ which results in the Hamiltonian
 %
 which is the well known Hamiltonian of a harmonic oscillator (note how $I_z$ = $\tilde{I}_z$).
 
-From this final Hamiltonian, one can introduce and operate with normalised Cartesian co-ordinates 
+From this final Hamiltonian, one can introduce and operate with normalized Cartesian co-ordinates 
 \begin{equation}
     \hat z=\sqrt{2I_z}\cos\tilde{\phi}_z\,,\quad \hat p_z=\sqrt{2I_z}\sin\tilde{\phi}_z \,,
     \label{eq:2:cart_eq}
 \end{equation}
-and treat consequently the transverse linear motion on both the $x-p_x$ and $y-p_y$ planes using an intuitive normalised Cartesian Hamiltonian
+and treat consequently the transverse linear motion on both the $x-p_x$ and $y-p_y$ planes using an intuitive normalized Cartesian Hamiltonian
 %
 \begin{equation}
 	\ham(\hat x,\, \hat p_x,\, \hat y,\, \hat p_y) = \frac{\omega_x}{2}(\hat x^2 +\hat p_x^2) + \frac{\omega_y}{2}(\hat y^2+\hat p_y^2)\, .
@@ -264,9 +264,9 @@ Following its definition in the physical co-ordinates $(z,\, z')$, given in Eq.~
 \begin{equation}
 I_z = \frac{1}{2\beta_z}\qty[z^2 + (\alpha z + \beta z'))^2] = \frac{1}{2}\qty(\gamma z^2 + 2\alpha z z' + \beta z'^2)\,, \end{equation}
 %
-where we have defined $\gamma=(1+\alpha^2)/\beta$. The area of the ellipse is equal to $2\pi I_z$, and is conserved at any value of $s$. It can be observed, finally, how the $(z,z')\to(\hat z,\hat p_z)$ co-ordinate transformation modifies the physical co-ordinates ellipses into circles with the same area, from which their name \textit{``normalised co-ordinates''}.
+where we have defined $\gamma=(1+\alpha^2)/\beta$. The area of the ellipse is equal to $2\pi I_z$, and is conserved at any value of $s$. It can be observed, finally, how the $(z,z')\to(\hat z,\hat p_z)$ co-ordinate transformation modifies the physical co-ordinates ellipses into circles with the same area, from which their name \textit{``normalized co-ordinates''}.
 
-A single particle following the linear transveral dynamics will have its own constant Courant-Snyder invariant. When instead we want to consider a beam distribution, a standard property, called \textit{emittance} is defined as the average of the Courant-Snyder invariant:
+A single particle following the linear transversal dynamics will have its own constant Courant-Snyder invariant. When instead we want to consider a beam distribution, a standard property, called \textit{emittance} is defined as the average of the Courant-Snyder invariant:
 \begin{equation}
     \eps_z = \av{I_z} \,.
 \end{equation}
@@ -281,7 +281,7 @@ from there, using the definition of $I_z$ yields
 	\eps_z = \sqrt{ \av{\hat z^2}\av{\hat p_z^2} - \av{\hat z \, \hat p_z}^2 }\,.
 \end{equation}
 
-The beam emittance can then be considered either as the average Courant-Snyder invariant of a distribution, or as the area (up to a $2\pi$ factor) of the orbit of the rms particle of the beam. A useful implication of this is that a Gaussian beam distribution in $(\phi_z,\,I_z)$ co-ordinate assumes the practical form:
+The beam emittance can then be considered either as the average Courant-Snyder invariant of a distribution, or as the area (up to a $2\pi$ factor) of the orbit of the RMS particle of the beam. A useful implication of this is that a Gaussian beam distribution in $(\phi_z,\,I_z)$ co-ordinate assumes the practical form:
 %
 \begin{equation}
 \rho_z = \frac{1}{\eps_z}\exp(-\frac{I_z}{\eps_z})\,.
@@ -292,7 +292,7 @@ The beam emittance can then be considered either as the average Courant-Snyder i
 
 \section{Non-linear beam dynamics}\label{sec:non-linear}
 
-The transverse dynamics we treated so far with Hill's equation and formalism takes into consideration only the effects of a linear magnetic field (we recall the passage between Eq.~\eqref{eq:acc_step_1} and Eq.~\eqref{eq:acc_step_2}, where we dropped all the non-linear terms for the magnetic fields $B_x$ and $B_y$). This tractation takes into account only the elements generated by a set of ideal dipole and quadrupole magnets.
+The transverse dynamics we treated so far with Hill's equation and formalism takes into consideration only the effects of a linear magnetic field (we recall the passage between Eq.~\eqref{eq:acc_step_1} and Eq.~\eqref{eq:acc_step_2}, where we dropped all the non-linear terms for the magnetic fields $B_x$ and $B_y$). This method, however, takes into account only the elements generated by a set of ideal dipole and quadrupole magnets.
 
 To include higher order terms of the magnetic field power series, it is possible to include non-linear terms directly into Hill's Hamiltonian. This can be done in order to both represents the unavoidable higher-order magnet imperfections inside the accelerator machine, or to represent explicit sextupolar and octupolar elements one might want to include to cancel out specific sources of non-linear effects. 
 
@@ -310,7 +310,7 @@ We can now substitute the strengths $k_n(s)$ and $j_n(s)$ (which, we recall, the
 %
 \begin{equation} 
 	K_n = \oint \dd s\, k_n(s) \beta_x^{\frac{n+1}{2}}(s)\,,\qquad
-	J_n = \oint \dd s\, j_n(s) \beta_x^{\frac{n+1}{2}}(s)\,.
+	J_n = \oint \dd s\, j_n(s) \beta_x^{\frac{n+1}{2}}(s)\,,
 \end{equation} 
 %
 where the integrations are evaluated over the accelerator turn. With this notation, the non-linear Hamiltonian has the simpler form
@@ -324,13 +324,13 @@ From this Hamiltonian, one can for example write a 1\textsc{d} beam model with n
 \end{equation}
 such simple model can be used to understand many phenomenons caused by non-linear effects.
 
-In an accelerator, non-linear effects can be used to represent either unwanted elements, such as linear magnets imperfectos, or to represent specifically added non-linear magnetic elements, such as sextupoles and octupoles. Such components can be introduced inside an accelerator optics in order to correct specific unwanted effects, like \textit{chromaticity}, i.e.\ the fact that particles with different momentum are differently focused by quadrupoles. Chromaticity, specifically, can be tackled by the introduction of sextupole magnets. Another important source of non-linearities are space charge effects and \textit{beam-beam interaction} effects, caused by the electromagnetic interaction of charged particles with other charged particles, respectively in the same or in another beam during collisions.
+In an accelerator, non-linear effects can be used to represent either unwanted elements, such as linear magnets imperfections, or to represent specifically added non-linear magnetic elements, such as sextupoles and octupoles. Such components can be introduced inside an accelerator optics in order to correct specific unwanted effects, like \textit{chromaticity}, i.e.\ the fact that particles with different momentum are differently focused by quadrupoles. Chromaticity, specifically, can be tackled by the introduction of sextupole magnets. Another important source of non-linearities is space charge effects and \textit{beam-beam interaction} effects, caused by the electromagnetic interaction of charged particles with other charged particles, respectively in the same or in another beam during collisions.
 
-The introduction of non-linear elements in a circular accelerator is the cause of three main effects~\cite{herr}: amplitude-dependent detuning, excitation of non-linear resonances, and reduction of the dynamic aperture. We will present the first two phenomenon very briefly, and focus a little more on the core characteristics of the last one.
+The introduction of non-linear elements in a circular accelerator is the cause of three main effects~\cite{herr}: amplitude-dependent detuning, excitation of non-linear resonances, and reduction of the dynamic aperture. We will present the first two phenomena very briefly, and focus a little more on the core characteristics of the last one.
 
 \subsubsection{Amplitude-dependent detuning}
 
-Adding non-linear elements in the transverse motion has the inevitable consequence of modifying the tune, i.e.\ the rotation frequency of the harmonic oscillator, into an amplitude dependent function, where the aplitude.
+Adding non-linear elements in the transverse motion has the inevitable consequence of modifying the tune, i.e.\ the rotation frequency of the harmonic oscillator, into an amplitude dependent function, where the amplitude.
 The second effect of non-linear elements on transverse motion is the fact that the rotation frequency, the tune, becomes a function of the amplitude, that is, the value of the action $I$. In the linear Hamiltonian~\eqref{eq:linham}, the frequency $\Omega$ is given by
 \begin{equation}
 	\Omega = \pdv{\ham}{I} = \omega\,,
@@ -354,7 +354,7 @@ and
 \end{equation}
 Meaning, there is now a linear dependence of the tune on the action $I$. This implies that each particle will have a different rotation frequency depending on its current amplitude.
 
-The averaging approach used here to archieve an expression of the detuning highlights only the first-oreder effects in the frequency. For more complex Hamiltonians with multiple non-linear components, archieving a complete analytical expression of the detuning is not a trivial problem.
+The averaging approach used here to achieve an expression of the detuning highlights only the first-order effects in the frequency. For more complex Hamiltonians with multiple non-linear components, achieving a complete analytical expression of the detuning is not a trivial problem.
 
 It is possible to numerically evaluate the amplitude-dependent detuning in single-particle tracking simulations, as the tune can be measured by performing a numerical estimate of the fundamental frequency of the orbit history of the transverse orbit. We will present the topic of tune evaluation later in Chapter~\ref{}, in the context of dynamic indicators, as such methods are the foundation for consolidated tools in accelerator physics like the Frequency Map Analysis.
 
@@ -373,7 +373,7 @@ Other than 1\textsc{d} resonances $n\omega_z \approx \ell$, where $\ell$ is an i
 	\label{fig:res}
 \end{figure}
 
-The possible 1\textsc{d} and 2\textsc{d} resonances (up to order $4$) are represented by lines in the $(\omega_x, \omega_y)$ diagram of Fig.~\ref{fig:res}, where different colors show the resonance order. As higher-order resonances are generally weaker than lower-order ones, one should select the accelerator working point quite far from the main resonances, the LHC does so by operating at the fractional tunes $(\omega_x, \omega_y)=(0.28, 0.31)$ during injection and $(\omega_x, \omega_y)=(0.31, 0.32)$ during collisions~\cite{Benedikt:823808}.
+The possible 1\textsc{d} and 2\textsc{d} resonances (up to order $4$) are represented by lines in the $(\omega_x, \omega_y)$ diagram of Fig.~\ref{fig:res}, where different colours show the resonance order. As higher-order resonances are generally weaker than lower-order ones, one should select the accelerator working point quite far from the main resonances, the LHC does so by operating at the fractional tunes $(\omega_x, \omega_y)=(0.28, 0.31)$ during injection and $(\omega_x, \omega_y)=(0.31, 0.32)$ during collisions~\cite{Benedikt:823808}.
 
 \section{One-turn maps}
 
@@ -407,7 +407,7 @@ When considering only the linear components in the magnetic lattice, the resulti
 
 In general, it is not possible to compute exactly the transfer map of a non-linear element. Therefore, approximation techniques become necessary. The standard approach that is used in standard tracking codes such as SixTrack~\cite{sixtrack}, is the \textit{one-kick approximation}, i.e.\ it is assumed that the higher order polynomial effects on the magnetic potential are all located at a precise $s_l$ position, and act with a $\delta(s - s_l)$ potential.
 
-The main advantages of this approximation is the fact that the resulting one-turn map $\mathrm{M}$ maintains its symplectic character, and enables efficient tracking. This approximation holds when the higher order magnetic contributions are small in lenght.
+The main advantages of this approximation is the fact that the resulting one-turn map $\mathrm{M}$ maintains its symplectic character, and enables efficient tracking. This approximation holds when the higher order magnetic contributions are small in length.
 
 A one-turn map with a single non-linear contribution, added 
 with the one-kick approximation at $s = s_0$, will then read  
@@ -456,7 +456,7 @@ These models, despite their simplicity, already manifest multiple features that 
 
 As shown before, the linear transverse motion can be described as an always stable harmonic oscillator with two degrees of freedom. When instead non-linearities are introduced, the stability of the system is affected and the occurrence of hyperbolic points and resonances makes the motion of various particles initial condition chaotic, eventually leading to their loss as they hit the mechanical aperture of the accelerator machine.
 
-In this scenario, where the region of stable motion in the phase-space is affected by the non-linear elements in the Hamiltonian, we can introduce the concept of \textit{Dynamic Aperture} (DA), as a measurement of the volume of the phase-space region where stable motion up to a given number of turns $N$ occours.
+In this scenario, where the region of stable motion in the phase-space is affected by the non-linear elements in the Hamiltonian, we can introduce the concept of \textit{Dynamic Aperture} (DA), as a measurement of the volume of the phase-space region where stable motion up to a given number of turns $N$ occurs.
 
 A complete discussion on the DA definition, its computation, and its accuracy can be found in Refs.~\cite{PhysRevE.53.4067, invlog}, which provide a fundamental starting point on the topic.
 
@@ -499,11 +499,11 @@ Let us operate on a 4\textsc{d} phase space on which we have a one-turn map \(\m
 \end{equation}
 where \(r(\phi;N)\) is the last stable amplitude, i.e.\ \(x^2 + y^2 < r_{\mathrm{max}}\) for every iteration of \(\mathrm{M}\), not disconnected from the origin for up to \(N\) turns in the direction \(\phi\). We can say that \(r\) is the computable version of the `ideal' \(R(\phi;N)\) given in Eq.~\eqref{eq:ideal-R}.
 
-Other than this consolidated ``radial scan'' method, other techniques have been under study to improve the convergence speed of DA numerical measurements, such as the one presented in Ref.~\cite{vanderveken:ipac2022-mopost047}, where a Support Vector Machine algorithm is employed to perform an optimised sampling and border detection of the phase-space stable region.
+Other than this consolidated ``radial scan'' method, other techniques have been under study to improve the convergence speed of DA numerical measurements, such as the one presented in Ref.~\cite{vanderveken:ipac2022-mopost047}, where a Support Vector Machine algorithm is employed to perform an optimized sampling and border detection of the phase-space stable region.
 
 \subsection{Dynamic aperture scale-laws}
 
-Simulating entire sets of initial conditions on different one-turn maps is a computational intense task that becomes unsustainable when considering extremely high \(N_{\text{max}}\) values or complex symplectic tracking models\footnote{Researches like~\cite{invlog} presents simulations at \(N_{\text{max}}\sim 10^6-10^7\), while instead it would be necessary to reach values \(\sim 10^9\).}. Moreover, the multipolar components of the various superconducting magnets are known only with a limited precision, so that one has to perform parametric studies in order to consider different realisations of the magnetic lattice. Because of these reasons, realistic time scales in tracking simulation are still out of reach for proper accelerator physics reaserch.
+Simulating entire sets of initial conditions on different one-turn maps is a computational intense task that becomes unsustainable when considering extremely high \(N_{\text{max}}\) values or complex symplectic tracking models\footnote{Researches like~\cite{invlog} presents simulations at \(N_{\text{max}}\sim 10^6-10^7\), while instead it would be necessary to reach values \(\sim 10^9\).}. Moreover, the multipolar components of the various superconducting magnets are known only with a limited precision, so that one has to perform parametric studies in order to consider different realizations of the magnetic lattice. Because of these reasons, realistic time scales in tracking simulation are still out of reach for proper accelerator physics research.
 
 This limitation motivated the search for a robust model for the time dependence of DA, as such model could offer insights on the long-term evolution of DA by extrapolating short-term tracking simulation data. The most recent developments on the topic of DA scale-laws can be found in~\cite{Bazzani:2019csk} and references therein.
 
@@ -515,13 +515,13 @@ The models presented in~\cite{Bazzani:2019csk} are based on a combination of the
 		\frac{N(r)}{N_0} = \sqrt{\frac{r}{r_\ast}} \exp\left[\left(\frac{r_\ast}{r}\right)^{\frac{1}{\kappa}}\right]\,,
         \label{eq:specific_nek_estimate}
 	\end{equation}
-	where \(N(r)\) is the number of turns that are estimated to be stable for a particle with initial amplitude smaller than \(r\). A more generalised form of this estimate reads
+	where \(N(r)\) is the number of turns that are estimated to be stable for a particle with initial amplitude smaller than \(r\). A more generalized form of this estimate reads
     \begin{equation}
         \frac{N(r)}{N_0} = \left(\frac{r}{r_\ast}\right)^{\lambda} \exp\left[\left(\frac{r_\ast}{r}\right)^{\frac{1}{\kappa}}\right]\,.
     \end{equation}
 \end{enumerate}
 
-From this woriking hypothesis, the latest scaling law inspected in~\cite{Bazzani:2019csk}, based on inverting the functional form of the Nekhoroshev estimate, reads:
+From this working hypothesis, the latest scaling law inspected in~\cite{Bazzani:2019csk}, based on inverting the functional form of the Nekhoroshev estimate, reads:
 \begin{equation}
 	DA(N) = \frac{\rho_\ast}{\left[-2 \mathrm{e} \lambda \mathcal{W}_{-1}\left(-\frac{1}{2 \mathrm{e} \lambda}\left(\frac{\rho_*}{6}\right)^{1 / \kappa}\left(\frac{8}{7} N\right)^{-1 /(\lambda \kappa)}\right)\right]^\kappa}\,,
 	\label{eq:giova_interpolation}
@@ -545,9 +545,9 @@ where the free parameters are $\rho_\ast$, $\kappa$ and, possibly, $\lambda$, un
 
 \section{Longitudinal motion fundamentals}
 
-While the focus of this work is on the transversal part of beam dynamics, it is important to include an essential presentation of the core concepts behind the longitudial part of dynamics, i.e.\ the theory behind synchrotron oscillations. In fact, a particle that exhibits a longitudinal displacement over the reference trajectory, or that has a longitudial momentum different to the reference one, will manifest a different transversal dynamics as well, with a mechanism that is referred to as \textit{syncrobetatron coupling}. The main effects of syncrobetatron coupling can be represented as a turn-dependent \textit{modulation} of the transversal tunes.
+While the focus of this work is on the transversal part of beam dynamics, it is important to include an essential presentation of the core concepts behind the longitudinal part of dynamics, i.e.\ the theory behind synchrotron oscillations. In fact, a particle that exhibits a longitudinal displacement over the reference trajectory, or that has a longitudinal momentum different to the reference one, will manifest a different transversal dynamics as well, with a mechanism that is referred to as \textit{syncrobetatron coupling}. The main effects of syncrobetatron coupling can be represented as a turn-dependent \textit{modulation} of the transversal tunes.
 
-In modern high-energy circular accelerators, the acceleration of particles is archieved via the use of timevarying electromagnetic fields. This high-frequency accelerating field is generated in dedicated straight elements along the circular design, called RF cavities. In these cavities, a high-frequency accelerating voltage $V$ is generated along the longitudial direction with a specified angular frequency $\omega_{\mathrm{rf}}$, and reads
+In modern high-energy circular accelerators, the acceleration of particles is achieved via the use of time varying electromagnetic fields. This high-frequency accelerating field is generated in dedicated straight elements along the circular design, called RF cavities. In these cavities, a high-frequency accelerating voltage $V$ is generated along the longitudinal direction with a specified angular frequency $\omega_{\mathrm{rf}}$, and reads
 \begin{equation}
     V=V_0 \sin \left(\omega_{\mathrm{rf}} t+\phi_s\right),
 \end{equation}
@@ -557,7 +557,7 @@ When a particle's energy in an accelerator changes, its revolution frequency $f$
 \begin{equation}
     \frac{\mathrm{d} f}{f}=\left(\frac{1}{\gamma_r^2}-\alpha_{\mathrm{p}}\right) \frac{\mathrm{d} p}{p}\,,
 \end{equation}
-where $\gamma_r$ is the Lorentz factor and $\alpha_{\mathrm{p}}$ is referred to as the momentum compaction factor, it depends on the lattice and it is the   ratio   between the  relative   orbit   difference (given by the different trajectory in the magnetic lattice)  and the relative   momentum   error.
+where $\gamma_r$ is the Lorentz factor and $\alpha_{\mathrm{p}}$ is referred to as the momentum compaction factor, it depends on the lattice, and it is the   ratio   between the  relative   orbit   difference (given by the different trajectory in the magnetic lattice)  and the relative   momentum   error.
 
 From this equation we can distinguish two separate regimes. At $\left(\gamma_r^2<\alpha_p\right)$, corresponding to low energies, the revolution frequency decreases with increasing momentum. At $\left(\gamma_r^2>\alpha_{\mathrm{p}}\right)$, corresponding to high energies, it increases. The energy corresponding to $\gamma_{\mathrm{tr}}=1 / \sqrt{\alpha_{\mathrm{p}}}$ is referred to as the \textit{transition energy}, as it delimits the two different regimes. We will now focus on the regime below the transition energy.
 
@@ -567,7 +567,7 @@ Let us consider particle with longitudinal phase $\phi=\phi_s$, momentum $p_0$ a
 \end{equation}
 where $\omega_0$ and $h$ is an integer, which is referred to as the harmonic number, which also represents the number of equally spaced synchronous particles one can have along the circular accelerator.
 
-The energy gained by the synchronous particle at each passage trhough the RF cavity will then be dependent on $\phi_s$ and equal to $\Delta E=e V_0 \sin \left(\phi_s\right)$. However, in a real beam, we will have a spread of particles with different particle momenta, and each of these particles will follow a different off-momentum closed orbit. Therefore, each one of these different particles will have a different revolution frequency and recieve a different $\Delta E$ from the RF cavity.
+The energy gained by the synchronous particle at each passage through the RF cavity will then be dependent on $\phi_s$ and equal to $\Delta E=e V_0 \sin \left(\phi_s\right)$. However, in a real beam, we will have a spread of particles with different particle momenta, and each of these particles will follow a different off-momentum closed orbit. Therefore, each one of these different particles will have a different revolution frequency and receive a different $\Delta E$ from the RF cavity.
 
 In the regime below transition, a higher momentum particle will arrive at the RF cavity ahead of the synchronous particle, i.e.\ $\left(\phi_1<\phi_s\right)$, and will have a lower $\Delta E$. Conversely, a particle with a lower momentum will arrive at the RF cavity behind the synchronous particle, i.e.\ $\left(\phi_2>\phi_s\right)$, and have a higher $\Delta E$. A simple scheme of this regime is plotted in Fig.~\ref{fig:long_1}.
 
@@ -575,11 +575,11 @@ In the regime below transition, a higher momentum particle will arrive at the RF
     \centering
     \def\svgwidth{0.85\columnwidth}
     \import{2_accelerator_physics_fundamentals/figs/}{longitudinal_1.pdf_tex}
-    \caption{Schetch of the different $V$ provided at particles with different $\phi$, and consequent phase evolution in the regime below transition energy. $\phi_s$ represents the synchronous particle phase, $\phi_1$ and $\phi_2$ are respectively the phase of a particle with higher and lower longitudial momentum. The frequency of the RF voltage provides a restoring force towards $\phi_s$.}
+    \caption{Sketch of the different $V$ provided at particles with different $\phi$, and consequent phase evolution in the regime below transition energy. $\phi_s$ represents the synchronous particle phase, $\phi_1$ and $\phi_2$ are respectively the phase of a particle with higher and lower longitudinal momentum. The frequency of the RF voltage provides a restoring force towards $\phi_s$.}
     \label{fig:long_1}
 \end{figure}
 
-As long as the phase of the RF cavity obeys the condition $0<\phi_s<\pi / 2$, this regime ensures the phase stability of the longitudinal motion. The resulting motion in the longitudinal plane is referred to as \textit{synchrotron motion}, which is characterised by \textit{synchrotron oscillations}. The fractional off-momentum deviation is then defined as,
+As long as the phase of the RF cavity obeys the condition $0<\phi_s<\pi / 2$, this regime ensures the phase stability of the longitudinal motion. The resulting motion in the longitudinal plane is referred to as \textit{synchrotron motion}, which is characterized by \textit{synchrotron oscillations}. The fractional off-momentum deviation is then defined as,
 \begin{equation}
     \delta=\frac{\Delta p}{p_0}=\frac{\omega_0}{\beta^2 E} \frac{\delta E}{\omega_0} \,.
 \end{equation}
@@ -596,7 +596,7 @@ where $\eta$ is the \textit{slip factor} and reads
     \eta=\frac{\Delta \omega / \omega_0}{\Delta p / p_0} \,.
 \end{equation}
 
-When considering small oscillation amplitudes, we can treat the synchroton motion as a harmonic oscillator, where we consider the linearised equation of motion in the variable $\Delta \phi=\phi-\phi_s$. This approach leads us to the differential equation
+When considering small oscillation amplitudes, we can treat the synchrotron motion as a harmonic oscillator, where we consider the linearized equation of motion in the variable $\Delta \phi=\phi-\phi_s$. This approach leads us to the differential equation
 \begin{equation}
     \frac{\mathrm{d}^2}{\mathrm{d} t^2} \Delta \phi-\frac{h \omega_0^2 e V \eta \cos \left(\phi_s\right)}{2 \pi \beta^2 E} \Delta \phi=0 \,.
 \end{equation}
@@ -609,7 +609,7 @@ This condition delimits different stable areas in phase space. The area of stabl
 
 Particles with small off-momentum deviations undergo a synchrotron oscillation during their orbit. This oscillation periodically alters the magnetic lattice effect on their transversal dynamics as well, leading to what we referred to as syncrobetatron coupling.
 
-In the context of particle tracking simulations (which, including also longitudinal dynamics, will be a 6\textsc{d} tracking), different sets of longitudinal variables can be used along the transveral ones~\cite{xsuite:physics}:
+In the context of particle tracking simulations (which, including also longitudinal dynamics, will be a 6\textsc{d} tracking), different sets of longitudinal variables can be used along the transversal ones~\cite{xsuite:physics}:
 \begin{equation}
     \begin{aligned}
     \xi &= s \frac{\beta}{\beta_0}-\beta c t \,,\quad& \tau &= \frac{s}{\beta_0}-c t \,,\quad& \zeta &= s-\beta_0 c t \,;\\
