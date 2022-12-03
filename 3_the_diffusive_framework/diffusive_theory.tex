@@ -9,282 +9,351 @@
 \subsection{Diffusion over a toroidal surface}
 \label{subsec:diffusion-over-a-toroidal-surface}
 
-We shall now investigate the process of fast diffusion of a probability distribution over a toroidal surface. We are interested in this process as such situations happens in action-angle Hamiltonian systems for the angle variable.
+We start by investigating the process of fast diffusion of a probability distribution over a toroidal surface. We are interested in this process as such situations happens in action-angle Hamiltonian systems for the angle variable.
 
 We start by defining the following notation for the noise of a Wiener process and its integral:
 \begin{equation}
-	w(t) = \int_0^t \xi(s)\,ds \quad\quad w_1(t)=\int_0^t w(t)\,ds
+	w(t) = \int_0^t \xi(s)\,\mathrm{d}s \,, \qquad w_1(t)=\int_0^t w(t)\,\mathrm{d}s \,,
 \end{equation}
-we can write \(w_1(t)\) in the form
+where $\xi(s)$ is a regular stationary stochastic gaussian process, i.e.\ we assume that the realisations $\xi(t)$ are continuous, with a correlation function that reads
 \begin{equation}
-	w_1(t) = \int_0^t \int_0^s \xi(u)\,du\,ds' = \int_0^t \xi(u)\int_u^s\,ds'\,du = \int_0^t (s'-u)\xi(u)\,du
-\end{equation}
-This can be convenient if we want to display the processes \(w(t)\) and \(w_1(s)\) in the standard form 
-\begin{equation}
-	\int_0^t K(t,s)\xi(s)\,ds
-\end{equation}
-where in this context \(K(t,s)\) is called the \textbf{kernel} of the noise. We have that \(K=1\) for \(w(t)\) and \(K=t-s\) for \(w_1(t)\). This implies \(\sigma^2 = t\) for Wiener noise \(w(t)\) while instead, for its integral \(w_1(t)\), we have
-\begin{equation}
-	\sigma^2(t) = \int_0^t (t-u)^2\,du = \frac{t^3}{3}
+    \langle\xi(t)\xi(t+\tau)\rangle = \sigma^2 \Omega(\gamma\tau) \,,\qquad \Omega(\gamma\tau) \simeq e^{-\gamma|\tau|}\,.
 \end{equation}
 
-Let us consider now a basic example of angular diffusion. Let \(x\) be an angular variable defined over the interval \([0,1]\). Let us define then
+We can write \(w_1(t)\) in the form
+\begin{equation}
+	w_1(t) = \int_0^t \int_0^s \xi(u)\,\mathrm{d}u\,\mathrm{d}s' = \int_0^t \xi(u)\int_u^s\,\mathrm{d}s'\,\mathrm{d}u = \int_0^t (s'-u)\xi(u)\,\mathrm{d}u \,.
+\end{equation}
+This form is convenient if we want to present the processes \(w(t)\) and \(w_1(s)\) in the standard form 
+\begin{equation}
+	\int_0^t K(t,s)\xi(s)\,\mathrm{d}s \,
+\end{equation}
+where \(K(t,s)\) is referred to as the \textit{kernel} of the noise. We have that \(K=1\) for \(w(t)\) and \(K=t-s\) for \(w_1(t)\). This implies \(\sigma^2 = t\) for Wiener noise \(w(t)\) while instead, for its integral \(w_1(t)\), we have
+\begin{equation}
+	\sigma^2(t) = \int_0^t (t-u)^2\,\mathrm{d}u = \frac{t^3}{3} \,.
+\end{equation}
+
+Let us consider a simple example of angular diffusion. Let \(x\) be an angular variable defined over the interval \([0,1]\). Let us define then
 \begin{equation}
 	\begin{aligned}
-		\dot{x} &= \omega + y \mod{1} \\
-		\dot{y} &= \epsilon\xi(t)	
+		\dot{x} &= \omega + y \mod{1}\,, \\
+		\dot{y} &= \epsilon\xi(t)	\,.
 	\end{aligned}
 	\label{eq:langevin_toro}
 \end{equation}
 A diffusive solution for an \(\hat{x}\) defined on all \(\mathbb{R}\) in the form \(\rho(\hat{x},t)\) can be converted as a solution valid for \(x\) defined on the torus \(\rho_T(x,t)\) by using the following periodicization
 \begin{equation}
-	\rho_T(x,t) = \sum_{k=-\infty}^{+\infty} \rho(x+k,t) \quad x\in[0,1],\,k = 0,\pm 1, \pm 2, \ldots
+	\rho_T(x,t) = \sum_{k=-\infty}^{+\infty} \rho(x+k,t) \quad x\in[0,1]\,,\quad k = 0,\pm 1, \pm 2, \ldots \,.
 \end{equation}
 
 The solution of~\eqref{eq:langevin_toro} on \(\mathbb{R}\) is given by
 \begin{equation}
-	y = y_0 + \epsilon w(t) \qquad x = x_0 + (\omega + \epsilon y_0) t + \epsilon w_1(t)
+	y = y_0 + \epsilon w(t)\,, \qquad x = x_0 + (\omega + \epsilon y_0) t + \epsilon w_1(t) \,,
 \end{equation}
 by writing the deterministic part of \(x(t)\) in the form \(\langle x(t) \rangle = x_0 + (\omega + \epsilon y_0) t\), we can write the probability density in \(\mathbb{R}\) in the form
 \begin{equation}
-	\rho(x,t) = \frac{\exp{\frac{-(x-\langle x(t)\rangle)^2}{2\sigma^2}}}{\sqrt{2\pi\sigma^2}} \qquad \sigma^2 = \epsilon^2 \frac{t^3}{3}
+	\rho(x,t) = \frac{\exp{\frac{-(x-\langle x(t)\rangle)^2}{2\sigma^2}}}{\sqrt{2\pi\sigma^2}}\,, \qquad \sigma^2 = \epsilon^2 \frac{t^3}{3}\,,
 \end{equation}
-we can apply the periodization and then obtain
+we can then apply the periodization and finally obtain
 \begin{equation}
-	\rho_T(x,t) = \sum_{n=-\infty}^{+\infty} \frac{\exp{\frac{-(x-\langle x(t)\rangle + n)^2}{2\sigma^2}}}{\sqrt{2\pi\sigma^2}} \qquad n = 0,\pm 1, \pm 2, \ldots
+	\rho_T(x,t) = \sum_{n=-\infty}^{+\infty} \frac{\exp{\frac{-(x-\langle x(t)\rangle + n)^2}{2\sigma^2}}}{\sqrt{2\pi\sigma^2}} \,\qquad n = 0,\pm 1, \pm 2, \ldots\,.
 \end{equation}
 
-If we then represent the solution in the form of Fourier series
+If we represent the solution in the form of Fourier series
 \begin{equation}
-	\rho_T(x,t) = \sum_{k=-\infty}^{+\infty} f_k(t)e^{2\pi i k x}
+	\rho_T(x,t) = \sum_{k=-\infty}^{+\infty} f_k(t)e^{2\pi i k x} \,,
 \end{equation}
 the \(f_k\) coefficients are given by
 \begin{align}
-	f_k &= \int_0^1 e^{-2\pi i k x} \rho_T(x,t)\,dx \\
-	&= \sum_{n=-\infty}^{+\infty} \frac{1}{\sqrt{2\pi\sigma^2}} \int_0^1 \exp{\frac{-(x-\langle x(t) \rangle + n)^2}{2\sigma^2} -2\pi i k x}\,dx
+	f_k &= \int_0^1 e^{-2\pi i k x} \rho_T(x,t)\,\mathrm{d}x \\
+	&= \sum_{n=-\infty}^{+\infty} \frac{1}{\sqrt{2\pi\sigma^2}} \int_0^1 \exp{\frac{-(x-\langle x(t) \rangle + n)^2}{2\sigma^2} -2\pi i k x}\,\mathrm{d}x \,.
 \end{align}
-by assuming real \(f_k\) coefficients, we obtain
+By assuming real \(f_k\) coefficients, we obtain
 \begin{equation}
-	\rho_T(x,t) = 1+2\sum_{k=1}^\infty e^{-2\pi^2\sigma^2k^2} f_k \cos(2\pi k (x-\langle x(t) \rangle))
+	\rho_T(x,t) = 1+2\sum_{k=1}^\infty e^{-2\pi^2\sigma^2k^2} f_k \cos(2\pi k (x-\langle x(t) \rangle)) \,.
 \end{equation}
 
-The most important consequence of this example, is noticing how \(\rho_T\) relaxes to the uniform distribution as \(e^{-\sigma^2}\), where, in this scenario, we have
+The most important aspect of this example, is how \(\rho_T\) relaxes to the uniform distribution as \(e^{-\sigma^2}\), where, in this scenario, we have
 \begin{equation}
-	\sigma^2 \propto t^{3}
+	\sigma^2 \propto t^{3} \,,
 \end{equation}
-while, instead, for a Wiener process, i.e.\ the one that affects \(y\), we expect to have
+while, instead, for the Wiener process that affects \(y\), we expect to have
 \begin{equation}
-	\sigma^2 \propto t
+	\sigma^2 \propto t \,.
 \end{equation}
 
 \subsubsection*{Application to an Hamiltonian system}
 
-Considering the following Hamiltonian
+Let us consider the following perturbed Hamiltonian system
 \begin{equation}
-	\ham = \ham_0(I) - \epsilon \theta \xi(t)
+	\ham = \ham_0(I) - \epsilon \phi \xi(t)\,.
 \end{equation}
-we have that
+From this Hamiltonian, we have the equations of motion
 \begin{equation}
 	\begin{aligned}
-		\dot{I} &= \epsilon\xi \\
-		\dot{\theta} &= \omega(I)
+		{I'} &= \epsilon\xi\,, \\
+		{\phi'} &= \omega(I)\,,
 	\end{aligned}
 \end{equation}
 from which follows immediately
 \begin{equation}
-	I = I_0 + \epsilon w(t)
+	I = I_0 + \epsilon w(t)\,.
 \end{equation}
-executing than a Taylor expansion for \(\dot{\theta}\), we obtain
+If we now execute a Taylor expansion for \({\phi'}\), we obtain
 \begin{equation}
-	\dot{\theta} = \omega(I_0) + \omega'(I_0)\epsilon w(t) + \mathcal{O}\epsilon^2)
+	{\phi'} = \omega(I_0) + \omega'(I_0)\epsilon w(t) + \mathcal{O}\epsilon^2)\,,
 \end{equation}
-which, if integrated, brings
+which, if integrated, leads to
 \begin{equation}
-	\theta = \theta_0 + \omega(I_0)t + \epsilon \omega'(I_0) w_1(t)
+	\phi = \phi_0 + \omega(I_0)t + \epsilon \omega'(I_0) w_1(t)\,.
 \end{equation}
-this solution, as seen at the beginning of the Section, implies a variance
+This kind of solution, as seen above, implies the following variance for $\phi$
 \begin{equation}
-	\sigma_{\theta}^2 \propto t^3
+	\sigma_{\phi}^2 \propto t^3\,,
 \end{equation}
-while instead, for the action variable \(I\), we have a variance
+while instead, for \(I\), the variance reads
 \begin{equation}
-	\sigma_{I}^2 \propto t
+	\sigma_{I}^2 \propto t\,.
 \end{equation}
 
-\subsection{Averaging a 1D stochastic Hamiltonian}
+\subsection{Averaging a 1\textsc{d} stochastic Hamiltonian}
 \label{ssc:averaging-1D}
 
-Let us consider a 1D stochastically perturbed Hamiltonian system, described in action-angle coordinates, with the origin in a critical stable point of \(H_0\), in the form
+Let us consider generic 1\textsc{d} stochastically perturbed Hamiltonian system in action-angle coordinates, with the origin $I=0$ in an elliptic point of \(\ham_0\). The Hamiltonian reads
 \begin{equation}
-	\ham = \ham_0(I) + \epsilon \xi(t) \ham_1(\theta, I).
+	\ham = \ham_0(I) + \epsilon \xi(t) \ham_1(\phi, I) \,.
 \end{equation}
-We have that the probability density \(\rho(\theta, I, t)\) satisfies the equation
+We have that the probability density \(\rho(\phi, I; t)\) satisfies the equation
 \begin{equation}
-	\pdv{\rho}{t}\/ + \Omega \pdv{\rho}{\theta}\/ = \frac{\epsilon^2 \sigma^2}{2}\{\ham_1, \{\ham_1,\rho\}\}
+	\pdv{\rho}{t}\/ + \Omega \pdv{\rho}{\phi}\/ = \frac{\epsilon^2 \sigma^2}{2}\{\ham_1, \{\ham_1,\rho\}\}
 	\label{eq:stoc_ham_complex_starting}
 \end{equation}
-where \(\{,\}\) are the Poisson brackets and \(\Omega(I) = \partial \ham_0/\partial I\).
+where \(\{\ ,\}\) are the Poisson brackets and \(\Omega(I) = \partial \ham_0/\partial I\).
 
-From the analysis in the previous Section, we know that a toroidal angle variable relaxes in much faster times compared to the action relaxation scales (\(t_{\theta} \propto \epsilon^{-2/3}\) for the angle variable while for the action we have instead \(t_{I} \propto \epsilon^{-2}\)). Because of that it is possible to simplify this last equation into a Fokker-Planck equation for \(t\gg t_{\theta}\): the distribution for the action variable \(\rho(I,t)\), averaged over the angle variable, satisfies the equation
+From the results presented above, we know that a toroidal angle variable relaxes in much faster times compared to the action relaxation scales. This allows us to simplify this last equation into a Fokker-Planck equation for \(t\gg t_{\phi}\). The resulting equation, describing the distribution evolution for the action variable \(\rho(I,t)\), averaged over the angle variable, will then read
 \begin{equation}
-	\pdv{}{t}\/\rho(I,t) = \pdv{}{I}\/D(I)\pdv{}{I}\/\rho(I,t)
+	\pdv{}{t}\/\rho(I,t) = \pdv{}{I}\/D(I)\pdv{}{I}\/\rho(I,t) \,,
 \end{equation}
 where
 \begin{equation}
-	D(I) = \frac{\epsilon^2 \sigma^2}{2}\frac{1}{2\pi}\int_0^{2\pi}\left(\pdv{\ham_1}{\theta}\/\right)^2 \,d\theta \equiv \frac{\epsilon^2 \sigma^2}{2} \left\langle \left( \pdv{\ham_1}{\theta}\/  \right)^2 \right\rangle_\theta
+	D(I) = \frac{\epsilon^2 \sigma^2}{2}\frac{1}{2\pi}\int_0^{2\pi}\left(\pdv{\ham_1}{\phi}\/\right)^2 \,d\phi \equiv \frac{\epsilon^2 \sigma^2}{2} \left\langle \left( \pdv{\ham_1}{\phi}\/  \right)^2 \right\rangle_\phi \,.
 \end{equation}
 
-\paragraph{Proof:}
-Let us start by considering the stochastic Liouville equation
+\subsubsection*{Proof}
+Let us start from the following stochastic Liouville equation
 \begin{equation}
-	\pdv{\rho}{t}\/ + \Omega(I) \pdv{\rho}{\theta}\/ + \epsilon\xi(t)\{\rho,\ham_1\} = 0
+	\pdv{\rho}{t}\/ + \Omega(I) \pdv{\rho}{\phi}\/ + \epsilon\xi(t)\{\rho,\ham_1\} = 0\,,
 	\label{eq:dimo_liouville}
 \end{equation}
-let us then write \(\rho\) in the form \(\rho = \rho_0 + \epsilon\rho_1\), where \(\rho_0\) is the average component and \(\rho_1\) the fluctuating component with zero average. Considering that \(\langle\xi\rangle = 0\), we have that the average value of Eq.~\eqref{eq:dimo_liouville} is
+from here, we can write \(\rho\) in the form \(\rho = \rho_0 + \epsilon\rho_1\), where \(\rho_0\) is the average component of the distribution and \(\rho_1\) the fluctuating component with zero mean. Considering that \(\langle\xi\rangle = 0\), we have that the average value of Eq.~\eqref{eq:dimo_liouville} can be written as
 \begin{equation}
-	\pdv{\rho_0}{t}\/ + \Omega(I)\pdv{\rho_0}{\theta}\/ + \epsilon^2\{\langle\xi(t)\rho_1\rangle, \ham_1\} = 0
+	\pdv{\rho_0}{t}\/ + \Omega(I)\pdv{\rho_0}{\phi}\/ + \epsilon^2\{\langle\xi(t)\rho_1\rangle, \ham_1\} = 0,.
 	\label{eq:dimo_media}
 \end{equation}
-Subtracting now~\eqref{eq:dimo_media} from~\eqref{eq:dimo_liouville}, we obtain the equation
+If we now subtract~\eqref{eq:dimo_media} from~\eqref{eq:dimo_liouville}, we obtain the equation
 \begin{equation}
-	%TODOTODOTODO... MANCA QUALCOSA??? (da correzioni giovannozzi)
-	\pdv{\rho_1}{t}\/ + \Omega(I) \pdv{\rho_1}{\theta}\/ = -\xi(t)\{\rho_0, \ham_1\} + O(\epsilon)
+	%TODO: check this passages again (never trust past Carlo too much...)
+	\pdv{\rho_1}{t}\/ + \Omega(I) \pdv{\rho_1}{\phi}\/ = -\xi(t)\{\rho_0, \ham_1\} + O(\epsilon)\,
 \end{equation}
-which we want to solve for \(\rho_1\) so that we can substitute it into Eq.~\eqref{eq:dimo_media}.
+which we now want to solve for \(\rho_1\), and substitute it into Eq.~\eqref{eq:dimo_media}.
 
-To do so, let us first execute the following change of variables
+To archive this, let us consider the following change of variables:
 \begin{equation}
 	\begin{aligned}
-		\theta &\to \theta - \Omega \tau \\
-		t &\to t - \tau
+		\phi &\to \phi - \Omega \tau\,, \\
+		t &\to t - \tau\,.
 	\end{aligned}		
 \end{equation}
-which allows us to write
+This change of variables allows us to group the last equation in the form
 \begin{equation}
-	\dv{}{\tau}\/\rho_1(\theta - \Omega \tau, I, t - \tau) = \xi(t- \tau)\{\rho_0, \ham_1\}(\theta - \Omega \tau, I, t - \tau)
+	\dv{}{\tau}\/\rho_1(\phi - \Omega \tau, I; t - \tau) = \xi(t- \tau)\{\rho_0, \ham_1\}(\phi - \Omega \tau, I; t - \tau)\,.
 \end{equation}
-integrating this last equation from \(\tau = 0\) to \(\tau = t\), we obtain
+If we now integrate this last equation from \(\tau = 0\) to \(\tau = t\), we reach the following expression
 \begin{equation}
-	\rho_1(\theta, I, t) = -\int_0^t\{\rho_0, \ham_1\}(\theta - \Omega \tau, I, t - \tau)\xi(t-\tau)\,d\tau
+	\rho_1(\phi, I, t) = -\int_0^t\{\rho_0, \ham_1\}(\phi - \Omega \tau, I, t - \tau)\xi(t-\tau)\,\mathrm{d}\tau\,,
 \end{equation}
-where we took advantage over the fact that \(\rho_1(\theta, I, 0)=0\). Multiplying then both members for \(\xi(t)\) and computing the average over all the noise realizations, we have, in the case of a Wiener noise:
+where we took advantage of the fact that \(\rho_1(\phi, I; 0)=0\). If we now multiply both members by \(\xi(t)\), and compute the average over all the noise realisations, we have, for the case of a Wiener noise:
 \begin{equation}
-	\langle \xi(t)\rho_1(\theta, I, t) \rangle = -\frac{1}{2}\sigma^2 \{\rho_0, \ham_1\}(\theta, I, t)
-\end{equation}
-if we then replace this result into Eq.~\eqref{eq:dimo_media}, we obtain, excluding terms of order \(\epsilon^3\) and higher, the equation for the average density
-\begin{equation}
- 	\pdv{\rho_0}{t}\/ + \Omega (I) \pdv{\rho_0}{\theta}\/ = \frac{\epsilon^2 \sigma^2}{2}\{\{\rho_0, \ham_0\}, \ham_0\}.
+	\langle \xi(t)\rho_1(\phi, I; t) \rangle = -\frac{1}{2}\sigma^2 \{\rho_0, \ham_1\}(\phi, I; t)\,.
 \end{equation}
 
-And, if we have that the relaxation time scale of the angle is faster than the action diffusion time scale, we can say in good approximation that \(\rho=\rho(I,t)\) does not depend on the angle variable \(\theta\). This leads us to the double Poisson bracket expansion
+Finally, if we insert this last result into Eq.~\eqref{eq:dimo_media}, we obtain, neglecting terms of order \(\epsilon^3\) or higher, the equation for the average density
 \begin{equation}
-	\{\{\rho_0, \ham_0\}, \ham_0\} = \pdv{}{I}\/\left[\left(\pdv{\ham_1}{\theta}\/\right)^2 \pdv{\rho_0}{I}\/\right] - \pdv{}{\theta}\/\left[\pdv{\rho_0}{I}\/\pdv{\ham_1}{\theta}\/\pdv{\ham_1}{I}\/\right]
+ 	\pdv{\rho_0}{t}\/ + \Omega (I) \pdv{\rho_0}{\phi}\/ = \frac{\epsilon^2 \sigma^2}{2}\{\{\rho_0, \ham_0\}, \ham_0\}.
 \end{equation}
-by taking then the angular average of this last equation, the second term in the r.h.s\ becomes zero and we found the expression of \(D(I)\) to be integrated over the whole torus.
+
+If we have that the relaxation timescale of the angle is faster than the action diffusion timescale, we can say, with good approximation, that \(\rho=\rho(I,t)\) does not depend on the angle variable \(\phi\). With this motivation, we can expand the double Poisson bracket expression, which reads
+\begin{equation}
+	\{\{\rho_0, \ham_0\}, \ham_0\} = \pdv{}{I}\/\left[\left(\pdv{\ham_1}{\phi}\/\right)^2 \pdv{\rho_0}{I}\/\right] - \pdv{}{\phi}\/\left[\pdv{\rho_0}{I}\/\pdv{\ham_1}{\phi}\/\pdv{\ham_1}{I}\/\right]\,,
+\end{equation}
+and take the angular average of this last equation. The second term in the r.h.s\ will then become zero, while the first term constitues the expression of \(D(I)\), which now has to be integrated over the whole torus.
 
 \subsection{Averaging principle for generic stochastic Hamiltonians}
 
-We still consider an perturbed Hamiltonian system in action-angle coordinates in presence of a weak chaotic dynamics in phase space, but this time we will consider a more generic approach valid for higher dimensions. We will work with the following stochastically-perturbed Hamiltonian system
+We now generalise this last result to stochastically perturbed Hamiltonian systems at higher dimensions. Let us start by considering a generic Hamiltonian system
 \begin{equation}
-	\ham = \ham_0(I) + \xi(t)\ham_1(\theta, I)
+	\ham = \ham_0(I) + \xi(t)\ham_1(\phi, I)\,,
 \end{equation}
-where \((\theta, I)\) are the multidimensional action-angle variables and the noise realization \(\xi(t)\) depends on the initial conditions of the orbit.
+where \((\phi, I)\) are now, respectively, variables in $\mathbb{T}^n$ and $\mathbb{R}^n$ with $n>1$, and the noise realisation \(\xi(t)\) depends on the initial condition of the orbit.
 
-Let us start by introducing the slow variable
+We now introduce the slow variable
 \begin{equation}
-	\phi = \theta - \Omega(I)t
+	\phi = \phi - \Omega(I)t\,,
 \end{equation}
-where \(\Omega(I) = \frac{\partial \ham_0}{\partial I}(I)\). This leads us to the following new Hamiltonian
+where \(\Omega(I) = \frac{\partial \ham_0}{\partial I}(I)\). This leads us the new Hamiltonian
 \begin{equation}
-	\ham = \xi(t)\ham_1(\phi+\Omega(I)t,I)
+	\ham = \xi(t)\ham_1(\phi+\Omega(I)t,I)\,,
 \end{equation}
 via the generating function
 \begin{equation}
-	F(\theta,I) = \theta I - \ham_0(I)t
+	F(\phi,I) = \phi I - \ham_0(I)t\,.
 \end{equation}
-In order to find an approximate solution of the previous dynamics, we consider the evolution of the angle-action variables for a time \(T\gg \lambda\). This leads us to the map
+
+To find an approximate solution of the stochastic dynamic, we can consider the evolution of the angle-action variables for a time \(T\gg \lambda\). From the new Hamiltonian we now have
 \begin{equation}
 	\begin{aligned}
-		\Delta\phi_j(T) &= \int_0^T\pdv{\ham_1}{I_j}\/(\phi+\Omega(I)t, I)\xi(t)\,dt -\\
-		&\qquad - \int_0^T t\pdv{\ham_1}{\theta_k}\/(\phi + \Omega(I)t,I)\pdv{\Omega_k}{I_j}\xi(t)\,dt\\
-		\Delta I_j(T) &= -\int_0^T\pdv{\ham_1}{\theta_j}\/(\phi+\Omega(I)t,I)\xi(t)\,dt
+		\Delta\phi_j(T) &= \int_0^T\pdv{\ham_1}{I_j}\/(\phi+\Omega(I)t, I)\xi(t)\,\mathrm{d}t -\\
+		&\qquad - \int_0^T t\pdv{\ham_1}{\phi_k}\/(\phi + \Omega(I)t,I)\pdv{\Omega_k}{I_j}\xi(t)\,\mathrm{d}t\\ \,,
+		\Delta I_j(T) &= -\int_0^T\pdv{\ham_1}{\phi_j}\/(\phi+\Omega(I)t,I)\xi(t)\,\mathrm{d}t\,,
 	\end{aligned}
 	\label{eq:averaging-generic-hams}
 \end{equation}
-where \(\Delta \phi_j(T)=\phi(T)-\phi(0)\) and \(\Delta I(T)=I(T)-I(0)\). We want to inspect the second integral in the formula of \(\Delta\phi_j(T)\) by performing the following integration by parts (we are of course truncating the expansion while doing so)
+where \(\Delta \phi_j(T)=\phi(T)-\phi(0)\) and \(\Delta I(T)=I(T)-I(0)\).
+
+We now focus our attention on the second integral in the expression of \(\Delta\phi_j(T)\). By performing an integration by parts, where we also truncate the expansion to higher orders, we reach the expression
 \begin{multline}
-	\int_0^T t\pdv{\ham_1}{\theta_k}\/(\phi+\Omega(I)t,I)\pdv{\Omega_k}{I_j}\xi(t)\,dt \simeq \\
-	\simeq \pdv{\Omega_k}{I_j}\/\bigg[T\int_0^T\pdv{\ham_1}{\theta_k}\/(\phi+\Omega(I)t,I)\xi(t)\,dt\, - \\
-	- \int_0^T\int_0^t\pdv{\ham_1}{\theta_j}\/(\phi+\Omega(I)s, I)\xi(s)\,ds\,dt\bigg]
+	\int_0^T t\pdv{\ham_1}{\phi_k}\/(\phi+\Omega(I)t,I)\pdv{\Omega_k}{I_j}\xi(t)\,\mathrm{d}t \simeq \\
+	\simeq \pdv{\Omega_k}{I_j}\/\bigg[T\int_0^T\pdv{\ham_1}{\phi_k}\/(\phi+\Omega(I)t,I)\xi(t)\,\mathrm{d}t\, - \\
+	- \int_0^T\int_0^t\pdv{\ham_1}{\phi_j}\/(\phi+\Omega(I)s, I)\xi(s)\,\mathrm{d}s\,\mathrm{d}t\bigg]\,,
 \end{multline}
-where we can combine these two integrals and replace their arguments using the second equation in~\eqref{eq:averaging-generic-hams} and obtain
+from here, we can combine the resulting two integrals toghether and replace their arguments using the expression for $\Delta I_j(T)$ given in Eq.~\eqref{eq:averaging-generic-hams}, and obtain
 \begin{equation}
-	\int_0^T t\pdv{\ham_1}{\theta_k}\/(\phi+\Omega(I)t,I)\pdv{\Omega_k}{I_j}\xi(t)\,dt \simeq \pdv{\Omega_k}{I_j}\int_0^T[\Delta I_k(T)-\Delta I_k(t)]\,dt
+	\int_0^T t\pdv{\ham_1}{\phi_k}\/(\phi+\Omega(I)t,I)\pdv{\Omega_k}{I_j}\xi(t)\,\mathrm{d}t \simeq \pdv{\Omega_k}{I_j}\int_0^T[\Delta I_k(T)-\Delta I_k(t)]\,\mathrm{d}t\,.
 \end{equation}
-Therefore, we can say that if the action dynamics can be considered a stationary process, the main contribution to the angular dynamics is given by
+This implies that, if the action dynamics can be considered a stationary process, the main contribution to the angular dynamics is given by
 \begin{equation}
-	\Delta \phi_j \simeq -\pdv{\Omega_k}{I_j}\int_0^T\Delta I_k(t)\,dt
+	\Delta \phi_j \simeq -\pdv{\Omega_k}{I_j}\int_0^T\Delta I_k(t)\,\mathrm{d}t\,.
 \end{equation}
-Therefore if the system is non-degenerate, i.e.\ the matrix \(\partial\Omega_k/\partial I_j\) is not singular, the increment of the angle variables are the integral of the increments of the action and, as we saw in the previous sections, we expect a much faster relaxation to a uniform distribution. From this result we have that in the evolution of the action variables we can approximate the distribution of the angle variables with a uniform distribution. To get an approximation of the action dynamics, we consider the change of the action up to terms of order \(\mathcal{O}(\norm{\ham_1}^2)\)
+
+If the system is non-degenerate,% i.e.\ the matrix \(\partial\Omega_k/\partial I_j\) is not singular,
+the increment of $\phi$ are the integral of the increments of $I$ and, as illustrated above in this Chapter, we expect consequently a faster relaxation to a uniform distribution. From these considerations we have that, when considering the evolution of $I$, we can approximate the $\phi$ distribution with a uniform one. If we now expand the expression of $\Delta I_j$ up to terms of order \(\mathcal{O}(\norm{\ham_1}^2)\), we obtain the following:
 \begin{multline}
-	\Delta I_j = \int_0^T \pdv{\ham_1}{\theta_j}\xi(s)\,ds + \int_0^T\int_0^t \pdv{\ham_1}{I_k}{\theta_j}\pdv{\ham_1}{\theta_k}\xi(t)\xi(s)\,ds\,dt - \\
-	- \int_0^T\int_0^t\pdv{\ham_1}{\theta_k}{\theta_j}\left[\pdv{\ham_1}{I_k}-\pdv{\Omega}{I_k}\pdv{\ham_1}{\theta_k}t\right]\xi(t)\xi(s)\,ds\,dt
+	\Delta I_j = \int_0^T \pdv{\ham_1}{\phi_j}\xi(s)\,\mathrm{d}s + \int_0^T\int_0^t \pdv{\ham_1}{I_k}{\phi_j}\pdv{\ham_1}{\phi_k}\xi(t)\xi(s)\,\mathrm{d}s\,\mathrm{d}t - \\
+	- \int_0^T\int_0^t\pdv{\ham_1}{\phi_k}{\phi_j}\left[\pdv{\ham_1}{I_k}-\pdv{\Omega}{I_k}\pdv{\ham_1}{\phi_k}t\right]\xi(t)\xi(s)\,\mathrm{d}s\,\mathrm{d}t\,.
 \end{multline}
-Let us then assume that the angles \(\phi\) are uniformly distributed so that we can average on the noise realizations and on the angles in a single step. The actions \(I\) perform a stochastic dynamics, whose average value is
+
+If then we assume that the distribution of \(\phi\) is uniform, we can average on both the noise realisations and on $\phi$. We then can consider the average of the stochastic dynamics of \(I\), which now reads
 \begin{equation}
 	\begin{aligned}
-		\langle\Delta I_j\rangle_\phi &= \pdv{}{I_k}\int_0^T\int_0^t \left\langle\pdv{\ham_1}{\theta_j}\pdv{\ham_1}{\theta_k}\right\rangle e^{-(t-s)/\lambda}\,ds\,dt\\
-		&= \frac{1}{2}\pdv{}{I_k}\left\langle\pdv{\ham_1}{\theta_j}\pdv{\ham_1}{\theta_k}\right\rangle\int_0^T\int_0^T e^{-\abs{t-s}/\lambda}\,ds\,dt
+		\langle\Delta I_j\rangle_\phi &= \pdv{}{I_k}\int_0^T\int_0^t \left\langle\pdv{\ham_1}{\phi_j}\pdv{\ham_1}{\phi_k}\right\rangle e^{-(t-s)/\lambda}\,\mathrm{d}s\,\mathrm{d}t\\
+		&= \frac{1}{2}\pdv{}{I_k}\left\langle\pdv{\ham_1}{\phi_j}\pdv{\ham_1}{\phi_k}\right\rangle\int_0^T\int_0^T e^{-\abs{t-s}/\lambda}\,\mathrm{d}s\,\mathrm{d}t\,,
 	\end{aligned}
 \end{equation}
-where we have neglected the terms that are derivatves with respect to an angle variable and used the decorrelation law of \(\xi(t)\). The corresponding variance is estimated by % (TODO:UNDERSTAND THIS PASSAGE!!!)
+where we have neglected the terms that are pure derivatives of $\phi$, and considered the mean and decorrelation properties of \(\xi(t)\). The corresponding variance is then estimated by
 \begin{multline}
 	\left\langle(\Delta I_j - \langle\Delta I_j\rangle_\phi)(\Delta I_k - \langle\Delta I_k\rangle_\phi)\right\rangle_\phi =\\
-	= \left\langle\pdv{\ham_1}{\theta_j}\pdv{\ham_1}{\theta_k}\right\rangle\int_0^T\int_0^T e^{-\abs{t-s}/\lambda}\,ds\,dt
+	= \left\langle\pdv{\ham_1}{\phi_j}\pdv{\ham_1}{\phi_k}\right\rangle\int_0^T\int_0^T e^{-\abs{t-s}/\lambda}\,\mathrm{d}s\,\mathrm{d}t\,.
 \end{multline}
-In the limit of slow diffusion time and in the approximation of a fast angle relaxation, we can describe the action dynamics by a stochastic process of the form
+
+We can then describe the action dynamics as a stochastic process of the form
 \begin{equation}
-	\Delta I_j = -\sqrt{T\lambda\norm{\ham_1}^2}\sqrt{\left\langle\pdv{\ham_1}{\theta_j}\pdv{\ham_1}{\theta_l}\right\rangle}\,\hat{\xi}_l + \frac{T\lambda\norm{\ham_1}^2}{2}\pdv{}{I_k}\left\langle\pdv{\ham_1}{\theta_j}\pdv{\ham_1}{\theta_k}\right\rangle
+	\Delta I_j = -\sqrt{T\lambda\norm{\ham_1}^2}\sqrt{\left\langle\pdv{\hat\ham_1}{\phi_j}\pdv{\hat\ham_1}{\phi_l}\right\rangle}\,\hat{\xi}_l + \frac{T\lambda\norm{\ham_1}^2}{2}\pdv{}{I_k}\left\langle\pdv{\hat\ham_1}{\phi_j}\pdv{\hat\ham_1}{\phi_k}\right\rangle\,
 	\label{eq:generic-ham-average-almost}
 \end{equation}
-where \(\hat{\ham_1}=\ham_1/\norm{\ham_1}\) and \(\hat{\xi}_l\) are identical independent distributed random variables with zero mean value and unitary variance. We can interpret the quantity \(T\lambda\norm{\ham_1}^2\) as the time step \(\Delta\tau\) of the diffusion time (even though it has a dimension of an action): the continuous limit is recovered when \(T\to\infty\) (so that \(T\gg\lambda\)) and \(\norm{\ham_1}^2T\to 0\). In other words, \(T\) should be sufficiently long in order to consider the angles relaxing to a uniform distribution and the noise decorrelated, but \(\norm{\ham_1}^2\) has to be so small that the actions do not evolve in a time \(T\). We also recall the limit requested for the validity of the stochastic Langevine equation
+where \(\hat{\ham_1}=\ham_1/\norm{\ham_1}\) and \(\hat{\xi}_l\) are identical independent distributed random variables with zero mean value and unitary variance. We can interpret the quantity \(T\lambda\norm{\ham_1}^2\) as the time step \(\Delta\tau\) of the diffusion time, we highlight however that it has a dimension of an action. We will then require that \(T\) should be sufficiently long in order to consider the angles relaxing to a uniform distribution and the noise decorrelated, but \(\norm{\ham_1}^2\) has to be so small that the actions do not evolve in a time \(T\). 
+
+If these conditions are maintained, introducing the notation \(\tau = \lambda\norm{\ham_1}^2 t\), we have that Eq.~\eqref{eq:generic-ham-average-almost} is the approximation of the solution of the stochastic differential equation
 \begin{equation}
-	\lim_{T\to\infty}\frac{1}{T\lambda}\int_0^T\int_0^T e^{-\abs{t-s}/\lambda}\,ds\,dt = 1
-\end{equation}
-Finally, introducing the diffusion time notation \(\tau = \lambda\norm{\ham_1}^2 t\), we have that Eq.~\eqref{eq:generic-ham-average-almost} is the approximation of the solution of the stochastic differential equation
-\begin{equation}
-	dI_j = -\sqrt{\left\langle\pdv{\ham_1}{\theta_j}\pdv{\ham_1}{\theta_l}\right\rangle}\,d\omega_l(\tau) + \frac{1}{2}\pdv{}{I_k}\left\langle\pdv{\ham_1}{\theta_j}\pdv{\ham_1}{\theta_k}\right\rangle\,d\tau
+	\mathrm{d}I_j = -\sqrt{\left\langle\pdv{\hat\ham_1}{\phi_j}\pdv{\hat\ham_1}{\phi_l}\right\rangle}\,\mathrm{d}\omega_l(\tau) + \frac{1}{2}\pdv{}{I_k}\left\langle\pdv{\hat\ham_1}{\phi_j}\pdv{\hat\ham_1}{\phi_k}\right\rangle\,\mathrm{d}\tau\,.
 	\label{eq:final-ham-approximation}
 \end{equation}
 
-In order to completely check the consistency of our claims, let us consider again the angle dynamics in the diffusion time (we omit for convenience the indices)
-\begin{equation}
-	\Delta \phi = \left\langle\pdv{\hat{\ham}_1}{I}\right\rangle_{\phi}\sqrt{T\lambda\norm{\ham_1}^2}\,\xi -\pdv{\Omega}{I}\int_0^T(I(T)-I(t))\,dt
-\end{equation}
-by applying the approximation~\eqref{eq:final-ham-approximation} we just obtained, we can compute directly the fluctuating part of the action term \((I(T)-I(t))\) and obtain
-\begin{equation}
-	\operatorname{Var}[I(T)-I(t)]=\left\langle\left(\pdv{\hat{\ham}_1}{\theta}\right)^2\right\rangle(\lambda\norm{\ham_1}^2)\frac{T^3}{2}
-\end{equation}
-At this point, if \(\partial\Omega/\partial I\propto \mathcal{O}(1)\) the stochastic approximation of the action variables we performed implies that the relaxation process for the angles \(\phi\) must be archived after a time \(t_\phi\), where \(\lambda\norm{\ham_1}^2 t_\phi^3 \simeq \mathcal{O}(1)\). Then, we can estimate
-\begin{equation}
-	t_\phi \simeq \lambda^{-1/3}\norm{\ham_1}^{-2/3}
-\end{equation}
-so that the choice \(T\simeq t_\phi\) provides the result
-\begin{equation}
-	\Delta \tau \simeq \lambda^{2/3}\norm{\ham_1}^{4/3}
-\end{equation}
-which vastly proves the assumption of fast angle relaxation, when compared to the diffusion time scale.
+% In order to completely check the consistency of our claims, let us consider again the angle dynamics in the diffusion time (we omit for convenience the indices)
+% \begin{equation}
+% 	\Delta \phi = \left\langle\pdv{\hat{\ham}_1}{I}\right\rangle_{\phi}\sqrt{T\lambda\norm{\ham_1}^2}\,\xi -\pdv{\Omega}{I}\int_0^T(I(T)-I(t))\,dt
+% \end{equation}
+% by applying the approximation~\eqref{eq:final-ham-approximation} we just obtained, we can compute directly the fluctuating part of the action term \((I(T)-I(t))\) and obtain
+% \begin{equation}
+% 	\operatorname{Var}[I(T)-I(t)]=\left\langle\left(\pdv{\hat{\ham}_1}{\phi}\right)^2\right\rangle(\lambda\norm{\ham_1}^2)\frac{T^3}{2}
+% \end{equation}
+% At this point, if \(\partial\Omega/\partial I\propto \mathcal{O}(1)\) the stochastic approximation of the action variables we performed implies that the relaxation process for the angles \(\phi\) must be archived after a time \(t_\phi\), where \(\lambda\norm{\ham_1}^2 t_\phi^3 \simeq \mathcal{O}(1)\). Then, we can estimate
+% \begin{equation}
+% 	t_\phi \simeq \lambda^{-1/3}\norm{\ham_1}^{-2/3}
+% \end{equation}
+% so that the choice \(T\simeq t_\phi\) provides the result
+% \begin{equation}
+% 	\Delta \tau \simeq \lambda^{2/3}\norm{\ham_1}^{4/3}
+% \end{equation}
+% which vastly proves the assumption of fast angle relaxation, when compared to the diffusion timescale.
 
-The assumption on the fast relaxation of the angles \(\phi\), necessary to derive the equation~\eqref{eq:final-ham-approximation}, can be satisfied if the estimate \(\norm{\ham_1}^2 \ll \lambda^{-1}\) holds for the decorrelation time scale of the random fluctuations. This condition is necessary to describe the stochastic Hamiltonian dynamics as a diffusion process and it implies that the approach is consistent even if the Ljapounov exponent, characterizing the chaotic region, is small.
+% The assumption on the fast relaxation of the angles \(\phi\), necessary to derive the equation~\eqref{eq:final-ham-approximation}, can be satisfied if the estimate \(\norm{\ham_1}^2 \ll \lambda^{-1}\) holds for the decorrelation timescale of the random fluctuations. This condition is necessary to describe the stochastic Hamiltonian dynamics as a diffusion process and it implies that the approach is consistent even if the Ljapounov exponent, characterizing the chaotic region, is small.
 
-The evolution of the distribution function \(\rho(I,\tau)\) at the diffusion time scale is well approximated by the solution of the Fokker-Planck equation
+From this, we have that the evolution of the distribution function \(\rho(I,\tau)\) at the diffusion timescale is well approximated by the solution of the Fokker-Planck equation
 \begin{equation}
-	\pdv{\rho}{\tau}=\frac{1}{2}\pdv{}{I_j}\left\langle\pdv{\ham_1}{\theta_j}\pdv{\ham_1}{\theta_k}\right\rangle\pdv{}{I_k}\rho(I,\tau)
+	\pdv{\rho}{\tau}=\frac{1}{2}\pdv{}{I_j}\left\langle\pdv{\hat\ham_1}{\phi_j}\pdv{\hat\ham_1}{\phi_k}\right\rangle\pdv{}{I_k}\rho(I,\tau)
 \end{equation}
 where in this equation the slow diffusion time coefficient \(\tau\) has the dimension of the square of an action, so that the diffusion coefficient is adimensional.
 
 
 \section{Functional form for $D(I)$}
 
+We have reached the result that, under certain conditions, the evolution of an action distribution function $\rho_0(I, t)$ can be described by a Fokker-Planck equation in the form
+\begin{equation}
+    \pdv{\rho}{\tau}=\frac{1}{2}\pdv{}{I_j} D_{j,k}(I) \pdv{}{I_k}\rho(I,\tau)\,,
+    \label{eq:final-fp}
+\end{equation} 
+where the diffusion coefficient $D_{j,k}(I)$ reads
+\begin{equation}
+    D_{j,k}(I) = \left\langle\pdv{\hat\ham_1}{\phi_j}\pdv{\hat\ham_1}{\phi_k}\right\rangle \,.
+\end{equation}
+
+In the context of accelerator physics, we have seen how the betatron motion can be described in terms of two action variables $(I_x, I_y)$, which define the two non-linear invariants for the two separate transverse planes. However, if we make the assumption that such a diffusive process takes place mainly along a one-dimensional direction, we can giustify a 1\textsc{d} approach and reduce Eq.~\eqref{eq:final-fp} to the one degree of freedom case.
+
+With the generic Hamiltonian notation, the resulting Fokker-Planck equation reads
+\begin{equation}
+    \pdv{\rho}{\tau}=\frac{1}{2}\pdv{}{I_j} D(I) \pdv{}{I_k}\rho(I,\tau)\,,
+\end{equation}
+with the diffusion coefficient given by
+\begin{equation}
+    D(I) = \frac{1}{\norm{\ham_1}^2} \left\langle \left( \pdv{\hat\ham_1}{\phi} \right)^2 \right\rangle_\phi \,.
+\end{equation}
+
+If we want to work with regular time units $t$, we can consider this form of Fokker-Plank equation:
+\begin{equation}
+    \pdv{\rho}{t}=\frac{\epsilon^2}{2}\pdv{}{I_j} D(I) \pdv{}{I_k}\rho(I,t)\,,
+\end{equation}
+where now $\epsilon^2 = \lambda\norm{\ham_1}^2$ represents the timescale constant of the diffusive process.
+
+We are now interested in having an effective generic functional form for $D(I)$. To archive this, we follow the construction presented in~\cite{}, and references therin.
+
+To estimate the norm of $\ham_1$, we have that perturbation theory suggests a possible estimate based on the asymptotic character of the perturbation series. Assuming that there are no low-order resonances in the phase-space, we can rely on the progressive expansion of the perturbative series, which gives us the following generic estimate~\cite{}:
+\begin{equation}
+    \norm{R_n(I)} \propto (n!)^\kappa \left(\frac{I}{I_\ast}\right)^{n/2}\,,
+\end{equation}
+where the factorial term takes into account the number of contributions due to the structure of the functional equations defining the perturbation series, the exponent $\kappa$ is related to the number of degrees of freedom, and the parameter $I_\ast$ represents an apparent radius of convergence of the perturbative series, and corresponds to the amplitude above which fast escape to infinity occurs.
+
+For each $I$, we then have an optimal order for the Normal Form remainder defined by the relations
+\begin{equation}
+    n^\kappa=\left(\frac{I}{I_\ast}\right)^{1 / 2} \quad \Rightarrow \quad n=\left(\frac{I_\ast}{I}\right)^{1 / 2 \kappa} \,.
+\end{equation}
+If we then substitue this relation in the previos equation, we obtain a Nekhoroshev-like estimate that reads
+\begin{equation}
+    \left\|R_{\text {opt }}(I)\right\| \propto \exp \left[-\kappa\left(\frac{I_*}{I}\right)^{1 / 2 \kappa}\right] \,.
+\end{equation}
+This relation shows how the optimal estimate scales as a function of the action $I$. 
+
+From this optimal remainder for the perturbation series, which can also be used as a measure of the long-term stability of the orbits at specific amplitudes, we can finally assume the following estimate for $\ham_1$:
+\begin{equation}
+    \left\|\ham_1(\phi, I)\right\| \simeq \exp \left[-\left(\frac{I_\ast}{I}\right)^{1/2\kappa}\right] \,.
+\end{equation}
+This estimate, enables us to define the following functional form for the diffusion coefficient
+\begin{equation}
+    D(I) = c \exp\left[-2\left(\frac{I_\ast}{I}\right)^{1/2\kappa}\right]\,,
+\end{equation}
+where $c$ is a normalisation constant evaluated according to
+\begin{equation}
+    c \int_0^{I_\text{a}} D(I)\,\mathrm{d}I = 1 \,,
+\end{equation}
+so that $D(I)$ is normalised over the boundaries considered for the Fokker-Planck system, as $I_\text{a}$ represents the absorbing boundary condition, i.e.\ a barrier over which we can consider a particle as ``lost''. With this notation, the timescale of the process is entireley determined by $\epsilon^2$, however, variation of this notation can be freely considered.
 
 \section{State of the art in diffusion measurements}

@@ -1,0 +1,46 @@
+\chapter{Diffusive model application on wire compensators losses}
+
+\section{LHC beam-beam wire compensators fundamentals}
+
+One of the most significative limits in the present LHC design and future HL-LHC design is given by the electromagnetic interactions between the two counter-rotating beams in the shared sections of the machine, the \textit{interaction points}. These interactions lead to the so-called \textit{beam-beam effects}, and can be distinguished as head-on beam-beam effects, which happens when the beam bunches are overlapping in the interaction point, and long-range beam-beam effects, caused by having the two beams close toghether for the whole lenght of the shared region.
+
+To tackle the long-range beam-beam effects, a corrective approach, based on electro-magnet lenses, was presented in~\cite{}, and further developed in~\cite{}. The idea of this approach is to compensate the perturbation pattern given by long-range effects by using DC wires. The idea of using specifically DC wires comes from the observation on how these long-range effects were similar to the $1/r$ depndence similar to the electic field potential given by a simple wire~\cite{}.
+
+The resulting equippment is referred to as \textit{``beam-beam wire compensator''} (BBCW), and it has been tested in multiple iterations on various accelerator complex (refer to~\cite{}, and references therin).
+
+\section{Overview of experimental data}
+
+For the application of our diffusive framework, we consider the experimental data gathered at the CERN LHC during the 2018 LHC Machine Development (MD) prgoram, during the measurements campaign of the BBCW~\cite{}. More specifically, we consider the data gathered during fill 7386, as it has the configuration closest to an operational scenario.
+
+During this MD measurement, BBCW prototipes were installed for Beam2 on both sides of IP1 and IP5 which are, respectively, the location of the ATLAS~\cite{} and CMS~\cite{} experiments. These prototypes were embedded in the jaws of Beam2 tetiary collimators, for a total of 8 wires installed. The technical details of such implementation are reported in~\cite{}.
+
+A fill with three trains of symmetric bunches was then loaded inside the LHC and tested at flat top energy with beams colliding at different crossing angles. During this operational-like fill, the quadrupolar setup for the wire compensator was set. The loss signals measured by the BLMs for the two beams are displayed in Fig.~\ref{fig:wire-data}. Along with the BLM data, the beam intensity measured by the BSRTs, the wire power, the octupoles power, and the crossing angles are also reported. 
+
+\begin{figure}
+    \centering
+    % \includegraphics[]{}
+    \caption{}
+    \label{fig:wire-data}
+\end{figure}
+
+It is possible to see how the data provides a various number of crossing angles configurations, along with on-off alternations of both BBCW power and octupoles current. Qualitatively, one can see how the BBCW equipped in Beam2 do lead to a lower loss signal when they are turned on, while instead having them turned suddenly off lead to a strong peak in losses.
+
+We will now discuss how our diffusive framework can be applied to this loss signal, along with some necessary considerations on how one must pre-process this data. 
+
+\section{Application of the diffusve model}
+
+Let us consider the Fokker-Planck equation presented in Eq.~\eqref{}, with the Nekhoroshev-inspired functional diffusion coefficient of Eq.~\eqref{}. We recall that the system is fully characterised by the three free parameters $\epsilon$, $I_\ast$, and $\kappa$.
+
+Along the various assumptions made in order to enable the application of the Nekhoroshev estimate, along with the averaging principle on the angular variables, it is important to highlight that this model makes the strong hypothesis that $D(I)$ does not evolve over time. This implies that the magnetic lattice of the accelerator must not manifest stronger variations than the ones given by the small stochastic perturbation. Such strong assumption requires some preliminary consideration on the BLM loss signal we have at hand.
+
+When the BBCW, the crossing angle, and the octupoles are in a fixed state, we can state that the parameters of the Fokker-Planck equation can be considered as constant over time, since the magnetic lattice is not undergoing significative variations. We can define this state as stationary, and have the beam distribution $\rho(I, t)$ following the evolution defined by the Fokker-Planck.
+
+When instead a variation in any of the elements happen, e.g.\ a BBCW is switched on or the crossing angle is varied, we have the parameters of the Fokker-Planck equation will vary as well into a new value. Such variation does not happen necessarily in a neglegible time: as it can be seen in Fig.~\ref{}, the BBCW DC current being switched on to the target voltage takes a significative number fo seconds, leading to a time interval in which the system is undergoing a transient state. but it must instead be properly transient time, during which we can not make assumptions on their value evolution.
+
+we can state that these three parameters undergo a strong variation.
+
+This
+
+\section{Numerical results}
+
+\section{Final remarks}
