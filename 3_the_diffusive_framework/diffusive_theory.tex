@@ -11,11 +11,11 @@
 
 We start by investigating the process of fast diffusion of a probability distribution over a toroidal surface. We are interested in this process as such situations happens in action-angle Hamiltonian systems for the angle variable.
 
-We start by defining the following notation for the noise of a Wiener process and its integral:
+Let us start by defining the following notation for the noise of a Wiener process and its integral:
 \begin{equation}
 	w(t) = \int_0^t \xi(s)\,\mathrm{d}s \,, \qquad w_1(t)=\int_0^t w(t)\,\mathrm{d}s \,,
 \end{equation}
-where $\xi(s)$ is a regular stationary stochastic gaussian process, i.e.\ we assume that the realisations $\xi(t)$ are continuous, with a correlation function that reads
+where $\xi(s)$ is a regular stationary stochastic Gaussian process, i.e.\ we assume that the realizations $\xi(t)$ are continuous, with a correlation function that reads
 \begin{equation}
     \langle\xi(t)\xi(t+\tau)\rangle = \sigma^2 \Omega(\gamma\tau) \,,\qquad \Omega(\gamma\tau) \simeq e^{-\gamma|\tau|}\,.
 \end{equation}
@@ -33,7 +33,7 @@ where \(K(t,s)\) is referred to as the \textit{kernel} of the noise. We have tha
 	\sigma^2(t) = \int_0^t (t-u)^2\,\mathrm{d}u = \frac{t^3}{3} \,.
 \end{equation}
 
-Let us consider a simple example of angular diffusion. Let \(x\) be an angular variable defined over the interval \([0,1]\). Let us define then
+Let us consider a simple example of angular diffusion. Let \(x\) be an angular variable defined over the interval \([0,1]\). We define then
 \begin{equation}
 	\begin{aligned}
 		\dot{x} &= \omega + y \mod{1}\,, \\
@@ -41,7 +41,7 @@ Let us consider a simple example of angular diffusion. Let \(x\) be an angular v
 	\end{aligned}
 	\label{eq:langevin_toro}
 \end{equation}
-A diffusive solution for an \(\hat{x}\) defined on all \(\mathbb{R}\) in the form \(\rho(\hat{x},t)\) can be converted as a solution valid for \(x\) defined on the torus \(\rho_T(x,t)\) by using the following periodicization
+A diffusive solution for an \(\hat{x}\) defined on all \(\mathbb{R}\) in the form \(\rho(\hat{x},t)\) can be converted as a solution valid for \(x\) defined on the torus \(\rho_T(x,t)\) by using the following periodization
 \begin{equation}
 	\rho_T(x,t) = \sum_{k=-\infty}^{+\infty} \rho(x+k,t) \quad x\in[0,1]\,,\quad k = 0,\pm 1, \pm 2, \ldots \,.
 \end{equation}
@@ -82,7 +82,7 @@ while, instead, for the Wiener process that affects \(y\), we expect to have
 	\sigma^2 \propto t \,.
 \end{equation}
 
-\subsubsection*{Application to an Hamiltonian system}
+\subsubsection*{Application to a Hamiltonian system}
 
 Let us consider the following perturbed Hamiltonian system
 \begin{equation}
@@ -172,7 +172,7 @@ If we now integrate this last equation from \(\tau = 0\) to \(\tau = t\), we rea
 \begin{equation}
 	\rho_1(\phi, I, t) = -\int_0^t\{\rho_0, \ham_1\}(\phi - \Omega \tau, I, t - \tau)\xi(t-\tau)\,\mathrm{d}\tau\,,
 \end{equation}
-where we took advantage of the fact that \(\rho_1(\phi, I; 0)=0\). If we now multiply both members by \(\xi(t)\), and compute the average over all the noise realisations, we have, for the case of a Wiener noise:
+where we took advantage of the fact that \(\rho_1(\phi, I; 0)=0\). If we now multiply both members by \(\xi(t)\), and compute the average over all the noise realizations, we have, for the case of a Wiener noise:
 \begin{equation}
 	\langle \xi(t)\rho_1(\phi, I; t) \rangle = -\frac{1}{2}\sigma^2 \{\rho_0, \ham_1\}(\phi, I; t)\,.
 \end{equation}
@@ -186,15 +186,15 @@ If we have that the relaxation timescale of the angle is faster than the action 
 \begin{equation}
 	\{\{\rho_0, \ham_0\}, \ham_0\} = \pdv{}{I}\/\left[\left(\pdv{\ham_1}{\phi}\/\right)^2 \pdv{\rho_0}{I}\/\right] - \pdv{}{\phi}\/\left[\pdv{\rho_0}{I}\/\pdv{\ham_1}{\phi}\/\pdv{\ham_1}{I}\/\right]\,,
 \end{equation}
-and take the angular average of this last equation. The second term in the r.h.s\ will then become zero, while the first term constitues the expression of \(D(I)\), which now has to be integrated over the whole torus.
+and take the angular average of this last equation. The second term in the r.h.s\ will then become zero, while the first term constitutes the expression of \(D(I)\), which now has to be integrated over the whole torus.
 
 \subsection{Averaging principle for generic stochastic Hamiltonians}
 
-We now generalise this last result to stochastically perturbed Hamiltonian systems at higher dimensions. Let us start by considering a generic Hamiltonian system
+We now generalize this last result to stochastically perturbed Hamiltonian systems at higher dimensions. Let us start by considering a generic Hamiltonian system
 \begin{equation}
 	\ham = \ham_0(I) + \xi(t)\ham_1(\phi, I)\,,
 \end{equation}
-where \((\phi, I)\) are now, respectively, variables in $\mathbb{T}^n$ and $\mathbb{R}^n$ with $n>1$, and the noise realisation \(\xi(t)\) depends on the initial condition of the orbit.
+where \((\phi, I)\) are now, respectively, variables in $\mathbb{T}^n$ and $\mathbb{R}^n$ with $n>1$, and the noise realization \(\xi(t)\) depends on the initial condition of the orbit.
 
 We now introduce the slow variable
 \begin{equation}
@@ -226,7 +226,7 @@ We now focus our attention on the second integral in the expression of \(\Delta\
 	\simeq \pdv{\Omega_k}{I_j}\/\bigg[T\int_0^T\pdv{\ham_1}{\phi_k}\/(\phi+\Omega(I)t,I)\xi(t)\,\mathrm{d}t\, - \\
 	- \int_0^T\int_0^t\pdv{\ham_1}{\phi_j}\/(\phi+\Omega(I)s, I)\xi(s)\,\mathrm{d}s\,\mathrm{d}t\bigg]\,,
 \end{multline}
-from here, we can combine the resulting two integrals toghether and replace their arguments using the expression for $\Delta I_j(T)$ given in Eq.~\eqref{eq:averaging-generic-hams}, and obtain
+from here, we can combine the resulting two integrals together and replace their arguments using the expression for $\Delta I_j(T)$ given in Eq.~\eqref{eq:averaging-generic-hams}, and obtain
 \begin{equation}
 	\int_0^T t\pdv{\ham_1}{\phi_k}\/(\phi+\Omega(I)t,I)\pdv{\Omega_k}{I_j}\xi(t)\,\mathrm{d}t \simeq \pdv{\Omega_k}{I_j}\int_0^T[\Delta I_k(T)-\Delta I_k(t)]\,\mathrm{d}t\,.
 \end{equation}
@@ -235,14 +235,14 @@ This implies that, if the action dynamics can be considered a stationary process
 	\Delta \phi_j \simeq -\pdv{\Omega_k}{I_j}\int_0^T\Delta I_k(t)\,\mathrm{d}t\,.
 \end{equation}
 
-If the system is non-degenerate,% i.e.\ the matrix \(\partial\Omega_k/\partial I_j\) is not singular,
+If the system is non-degenerate, % i.e.\ the matrix \(\partial\Omega_k/\partial I_j\) is not singular,
 the increment of $\phi$ are the integral of the increments of $I$ and, as illustrated above in this Chapter, we expect consequently a faster relaxation to a uniform distribution. From these considerations we have that, when considering the evolution of $I$, we can approximate the $\phi$ distribution with a uniform one. If we now expand the expression of $\Delta I_j$ up to terms of order \(\mathcal{O}(\norm{\ham_1}^2)\), we obtain the following:
 \begin{multline}
 	\Delta I_j = \int_0^T \pdv{\ham_1}{\phi_j}\xi(s)\,\mathrm{d}s + \int_0^T\int_0^t \pdv{\ham_1}{I_k}{\phi_j}\pdv{\ham_1}{\phi_k}\xi(t)\xi(s)\,\mathrm{d}s\,\mathrm{d}t - \\
 	- \int_0^T\int_0^t\pdv{\ham_1}{\phi_k}{\phi_j}\left[\pdv{\ham_1}{I_k}-\pdv{\Omega}{I_k}\pdv{\ham_1}{\phi_k}t\right]\xi(t)\xi(s)\,\mathrm{d}s\,\mathrm{d}t\,.
 \end{multline}
 
-If then we assume that the distribution of \(\phi\) is uniform, we can average on both the noise realisations and on $\phi$. We then can consider the average of the stochastic dynamics of \(I\), which now reads
+If then we assume that the distribution of \(\phi\) is uniform, we can average on both the noise realizations and on $\phi$. We then can consider the average of the stochastic dynamics of \(I\), which now reads
 \begin{equation}
 	\begin{aligned}
 		\langle\Delta I_j\rangle_\phi &= \pdv{}{I_k}\int_0^T\int_0^t \left\langle\pdv{\ham_1}{\phi_j}\pdv{\ham_1}{\phi_k}\right\rangle e^{-(t-s)/\lambda}\,\mathrm{d}s\,\mathrm{d}t\\
@@ -260,7 +260,7 @@ We can then describe the action dynamics as a stochastic process of the form
 	\Delta I_j = -\sqrt{T\lambda\norm{\ham_1}^2}\sqrt{\left\langle\pdv{\hat\ham_1}{\phi_j}\pdv{\hat\ham_1}{\phi_l}\right\rangle}\,\hat{\xi}_l + \frac{T\lambda\norm{\ham_1}^2}{2}\pdv{}{I_k}\left\langle\pdv{\hat\ham_1}{\phi_j}\pdv{\hat\ham_1}{\phi_k}\right\rangle\,
 	\label{eq:generic-ham-average-almost}
 \end{equation}
-where \(\hat{\ham_1}=\ham_1/\norm{\ham_1}\) and \(\hat{\xi}_l\) are identical independent distributed random variables with zero mean value and unitary variance. We can interpret the quantity \(T\lambda\norm{\ham_1}^2\) as the time step \(\Delta\tau\) of the diffusion time, we highlight however that it has a dimension of an action. We will then require that \(T\) should be sufficiently long in order to consider the angles relaxing to a uniform distribution and the noise decorrelated, but \(\norm{\ham_1}^2\) has to be so small that the actions do not evolve in a time \(T\). 
+where \(\hat{\ham_1}=\ham_1/\norm{\ham_1}\) and \(\hat{\xi}_l\) are identical independent distributed random variables with zero mean value and unitary variance. We can interpret the quantity \(T\lambda\norm{\ham_1}^2\) as the time step \(\Delta\tau\) of the diffusion time, we highlight however that it has a dimension of an action. Consequently, we then require that \(T\) should be sufficiently long in order to consider the angles relaxing to a uniform distribution and the noise decorrelated, but \(\norm{\ham_1}^2\) has to be so small that the actions do not evolve in a time \(T\). 
 
 If these conditions are maintained, introducing the notation \(\tau = \lambda\norm{\ham_1}^2 t\), we have that Eq.~\eqref{eq:generic-ham-average-almost} is the approximation of the solution of the stochastic differential equation
 \begin{equation}
@@ -307,7 +307,7 @@ where the diffusion coefficient $D_{j,k}(I)$ reads
     D_{j,k}(I) = \left\langle\pdv{\hat\ham_1}{\phi_j}\pdv{\hat\ham_1}{\phi_k}\right\rangle \,.
 \end{equation}
 
-In the context of accelerator physics, we have seen how the betatron motion can be described in terms of two action variables $(I_x, I_y)$, which define the two non-linear invariants for the two separate transverse planes. However, if we make the assumption that such a diffusive process takes place mainly along a one-dimensional direction, we can giustify a 1\textsc{d} approach and reduce Eq.~\eqref{eq:final-fp} to the one degree of freedom case.
+In the context of accelerator physics, we have seen how the betatron motion can be described in terms of two action variables $(I_x, I_y)$, which define the two non-linear invariants for the two separate transverse planes. However, if we make the assumption that such a diffusive process takes place mainly along a one-dimensional direction, we can justify a 1\textsc{d} approach and reduce Eq.~\eqref{eq:final-fp} to the one degree of freedom case.
 
 With the generic Hamiltonian notation, the resulting Fokker-Planck equation reads
 \begin{equation}
@@ -324,7 +324,7 @@ If we want to work with regular time units $t$, we can consider this form of Fok
 \end{equation}
 where now $\epsilon^2 = \lambda\norm{\ham_1}^2$ represents the timescale constant of the diffusive process.
 
-We are now interested in having an effective generic functional form for $D(I)$. To archive this, we follow the construction presented in~\cite{}, and references therin.
+We are now interested in having an effective generic functional form for $D(I)$. To archive this, we follow the construction presented in~\cite{}, and references therein.
 
 To estimate the norm of $\ham_1$, we have that perturbation theory suggests a possible estimate based on the asymptotic character of the perturbation series. Assuming that there are no low-order resonances in the phase-space, we can rely on the progressive expansion of the perturbative series, which gives us the following generic estimate~\cite{}:
 \begin{equation}
@@ -336,7 +336,7 @@ For each $I$, we then have an optimal order for the Normal Form remainder define
 \begin{equation}
     n^\kappa=\left(\frac{I}{I_\ast}\right)^{1 / 2} \quad \Rightarrow \quad n=\left(\frac{I_\ast}{I}\right)^{1 / 2 \kappa} \,.
 \end{equation}
-If we then substitue this relation in the previos equation, we obtain a Nekhoroshev-like estimate that reads
+If we then substitute this relation in the previous equation, we obtain a Nekhoroshev-like estimate that reads
 \begin{equation}
     \left\|R_{\text {opt }}(I)\right\| \propto \exp \left[-\kappa\left(\frac{I_*}{I}\right)^{1 / 2 \kappa}\right] \,.
 \end{equation}
