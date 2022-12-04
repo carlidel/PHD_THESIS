@@ -349,6 +349,7 @@ From this optimal remainder for the perturbation series, which can also be used 
 This estimate, enables us to define the following functional form for the diffusion coefficient
 \begin{equation}
     D(I) = c \exp\left[-2\left(\frac{I_\ast}{I}\right)^{1/2\kappa}\right]\,,
+    \label{eq:diffusion}
 \end{equation}
 where $c$ is a normalisation constant evaluated according to
 \begin{equation}
@@ -356,4 +357,31 @@ where $c$ is a normalisation constant evaluated according to
 \end{equation}
 so that $D(I)$ is normalised over the boundaries considered for the Fokker-Planck system, as $I_\text{a}$ represents the absorbing boundary condition, i.e.\ a barrier over which we can consider a particle as ``lost''. With this notation, the timescale of the process is entireley determined by $\epsilon^2$, however, variation of this notation can be freely considered.
 
+Let us now consider this last form of Fokker-Planck equation, along with an absorbing boundary condition at $I_{\mathrm{a}}$, i.e.\ the phase-space limit beyond which an initial condition is considered lost. Note that $D(I)$ and $\rho$ have dimensions $[I^2t^{-1}]$ and $[I^{-1}]$, respectively.
+
+In Fig.~\ref{fig:1} (top and centre), we consider the behaviour of $D(I)$ from Eq.~\eqref{eq:diffusion} for some values of $\kappa$ and for $\epsilon^2 = 1$. We can distinguish three regions for this type of function: $(i)$ a stable-core region for $I \ll I_\ast$, for which $D(I)$ has values decreasing to zero exponentially fast; $(ii)$ a ramp-up region for $I \lesssim I_\ast$, where $D(I)$ starts to have non-negligible values and changes from an exponential growth to an almost linear one; $(iii)$ a region for $I >  I_\ast$, where $D(I)$ features an almost linear growth (in logarithmic scale a saturation appears). These three regions are more or less distinguishable depending on the value of $\kappa$. 
+
+In Fig.~\ref{fig:1} (bottom) we also display the result of the numerical integration of Eq.~\eqref{eq:fp} for some values of $\kappa$, performed on an initial distribution $\rho_0(I)=1$ with a Crank-Nicolson scheme~\cite{crank1947practical} (see Appendix~\ref{app_sec:numerical_integration_with_crank_nicolson} for some detail on the integration scheme used in our studies).
+%, using $\varepsilon^2 = 1$ in all numerical simulations performed, and setting the absorbing boundary condition at $I/I_\ast=1.5$. 
+It is also possible to observe in the shape of the distribution function a stable-core region, corresponding to $I/I_\ast \ll 1$, where $D(I)$ starts having values very close to zero, a fast decrease region and, finally, a saturation region, for $I/I_\ast = 1$ and beyond, where $\rho(I, t)$ assumes small values.
+
+\begin{figure*}[htp]
+    \centering
+    \includegraphics[width=\textwidth]{4_probing_the_diffusive_behavior/figs/diffusion_coefficient.pdf}
+    \caption{Top and centre: plot of $D(I)$ both in linear and logarithmic scale for three values of $\kappa$ as a function of $I/I_\ast$.
+    %For the cases shown here, the choice $c=1$ has been made, to have comparable curves.
+    Bottom: evolution of an uniform distribution (in grey) over the same time interval corresponding to $(t=10.0 \, [\text{a. u.}])$ for three values of $\kappa$. (Simulations parameter: $(I_\ast = 1.0\,[\sigma^2])$).}
+    \label{fig:1}
+\end{figure*}
+
 \section{State of the art in diffusion measurements}
+
+The concept of using a diffusive model to describe the behavior of beam halo and characterise the transverse loss rate is not a novel concept, as archiving a valid modeling of such phenomenon can lead to a better characterisation of long term losses and beam-halo formation.
+
+A rather broad literature exist on the topic of diffusive models applied on accelerator machines, see, e.g.\ Refs.~{\cite{Burnod:205343,Meddahi:223301,PhysRevLett.68.33,gerasimov1992applicability,zimmermann1994transverse,PhysRevLett.77.1051,PhysRevSTAB.5.074001,flilleriii:pac03-rpag004} and references therein. %TODO:expand
+
+An interesting line of research, which provided a valid approach for gathering local information about the value of the diffusion coefficient, is given by the usage of collimator scans presented in~\cite{MESS1994279}. Collimator scans can be used to probe the beam-halo dynamics and, in particular, to reconstruct the behaviour of the diffusion coefficient as a function of transverse amplitude~\cite{stancari2011diffusion,PhysRevSTAB.16.021003,PhysRevAccelBeams.23.044802}. The method of collimator scans has been intensively used at the LHC: it is based on small displacements of the jaws combined with the measurement of the beam losses. The displacements can be either inward or outward, and depending on the direction, the local losses feature different behaviour. The inspection of such features at different amplitudes finally provides local information about the diffusion coefficient.
+
+The latest diffusion measurements, based on~\cite{stancari2011diffusion} diffusive framework, were taken during LHC Run2~\cite{Valentino:2280928}, and provided a consistent amound of collimator scan data which provided an overview of the halo diffusive phenomenology~\cite{PhysRevAccelBeams.23.044802}.  
+
+Finally, the framework on which this work is based on has been developed and proposed in~\cite{Bazzani:2019lse,bazzani2020diffusion}, where the long-term behaviour of the beam dynamics and particle losses in circular accelerators is described by means of a global diffusive model. In this framework, the evolution of the beam distribution is described by means of a Fokker-Planck equation, in which the diffusion coefficient represents the key quantity to describe the beam dynamics. An excellent agreement between the data collected and the predictions from the FP model, where the approach consists in fitting the values of the model parameters $I_\ast$ and $\kappa$ to the collected data, has been observed.
