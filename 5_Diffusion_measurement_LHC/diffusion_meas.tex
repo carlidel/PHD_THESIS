@@ -59,12 +59,12 @@ Between 2016 and 2018, collimator scans were performed at the CERN LHC with phys
 
 The scan was performed after executing a beam-based alignment~\cite{valentino2012semiautomatic} of the collimator, which is a procedure in which the TCP jaws are progressively set closer to the beam until the halo is touched. By performing such procedure, one is sure that the collimator gap centre is precisely around the local closed orbit.
 
-The measurement is performed with the local beam loss monitoring (BLM) system, and is provided in unit of \SI{}{Gy \per s} with \SI{1}{Hz} sampling rate, processed over different running sums (RS)~\cite{Bruning:782076}. In Fig.~\ref{fig:raw_data} we present the data gathered during fill 6052 of type RS06, i.e.\ sampling the maximum spike measured by the BLM over a time window of \SI{10.24}{ms}. The collimator jaw positions here is reported in millimetres from the nominal centre of the beam.
+The measurement is performed with the local beam loss monitoring (BLM) system, and is provided in unit of \SI{}{Gy \per s} with \SI{1}{Hz} sampling rate, processed over different running sums (RS)~\cite{Bruning:782076}. In Fig.~\ref{fig:raw_data} we present the data gathered during fill 6052 of type RS06, i.e.\ sampling the maximum spike measured by the BLM over a time window of \SI{10.24}{ms}. The collimator jaw positions here is reported in millimetres from the centre of the beam measured after the beam-based alignment.
 
 \begin{figure}[htp]
     \centering
-    % \includegraphics[trim={0 2.5mm 0 4mm}, clip, width=\textwidth]{5_Diffusion_measurement_LHC/figs/raw.pdf}
-    \caption{Beam loss data from the BLM monitor at RS06 (i.e.\ the maximum spike over a time window of \SI{10.24}{ms}) for Beam1 and Beam2, and positions of IR7 TCP jaws measured in the vertical and horizontal plane for the collimator scans carried out in fill 6052. The data acquired represent a complete collimator scan on both planes. (Data from Ref.~\cite{PhysRevAccelBeams.23.044802})}
+    \includegraphics[width=\textwidth]{5_Diffusion_measurement_LHC/figs/raw.pdf}
+    \caption{Beam loss data from the BLM monitor at RS06 (i.e.\ the maximum spike over a time window of \SI{10.24}{ms}) for Beam1 and Beam2, and positions of IR7 TCP jaws measured in the vertical and horizontal plane for the collimator scans carried out in fill 6052. The data acquired represent a complete collimator scan on both planes. The jaw positions are considered from the beam centre position, measured after a beam-based alignment. (Data from Ref.~\cite{PhysRevAccelBeams.23.044802})}
     \label{fig:raw_data}
 \end{figure}
 
@@ -80,8 +80,8 @@ To address the lack of alternating jaw movements, we selected a region of intere
 
 \begin{figure}[htp]
     \centering
-    \includegraphics[trim={0 2.5mm 0 4mm}, clip, width=\textwidth]{5_Diffusion_measurement_LHC/figs/first.pdf}
-    \caption{Selected data from fill 6052 (i.e.\ Fig.~\ref{fig:raw_data}). The data shown correspond to outward jaw movements in the vertical plane. The yellow-marked region of interest (ROI) represents a subset of data meeting our quality requirements for applying the fitting of our diffusive model. (Data from Ref.~\cite{PhysRevAccelBeams.23.044802})}
+    \includegraphics[width=\textwidth]{5_Diffusion_measurement_LHC/figs/first.pdf}
+    \caption{Selected data from fill 6052 (i.e.\ Fig.~\ref{fig:raw_data}). The data shown correspond to outward jaw movements in the vertical plane. The yellow-marked region of interest (ROI) represents a subset of data meeting our quality requirements for applying the fitting of our diffusive model. The jaw positions are considered from the beam centre position, measured after a beam-based alignment. A corresponding position in measured $\sigma$ units is also reported. (Data from Ref.~\cite{PhysRevAccelBeams.23.044802})}
     \label{fig:first}
 \end{figure}
 
