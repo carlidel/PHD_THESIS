@@ -41,7 +41,7 @@ The primary collimators, which are also referred to as \textit{Target Collimator
 
 These particles, scattered by the TCPs, form the secondary halo, which is then tackled by the secondary collimators, \textit{Target Collimator Secondary-Graphite} (TCSG). The particles leaving the collimator finally form the tertiary halo, which finally interacts with the active absorbers, \textit{Target Collimator Long Absorber} (TCLA), which are installed downstream of the TCSGs, and \textit{Target Collimator Tertiarys} (TCTs), which make up a final third collimation stage for local protection for the aperture bottlenecks in the machine.
 
-The secondary particle showers represent the point of observation for measuring the amount of particles lost at the TCPs. To quantify this amount, the LHC is equipped with multiple ionization chambers, with constitute the Beam Loss Monitor (BLM) system~\cite{blmSystem1, blmSystem2}. The charged particles traversing the ionization chambers finally provide a measure of \SI{}{Gy \per s}, which can be converted into a corresponding measure of \SI{}{p \per s} lost using a calibration factor, evaluated via controlled collimator-induced losses~\cite{arek}, which are also quantified in parallel by the \textit{DC Beam Current Transformer} (BCT) system~\cite{Denard:1213275}. A picture of an LHC BLM is presented in Fig.~\ref{fig:blm}. This calibrated BLM data is the precise loss signal that we finally expect to use for reconstructing the diffusion behaviour in the transverse plane.
+The secondary particle showers represent the point of observation for measuring the amount of particles lost at the TCPs. To quantify this amount, the LHC is equipped with multiple ionization chambers, with constitute the Beam Loss Monitor (BLM) system~\cite{blmSystem1, blmSystem2}. The charged particles traversing the ionization chambers finally provide a measure of \SI{}{Gy \per s}, which can be converted into a corresponding measure of \SI{}{protons \per s} lost using a calibration factor, evaluated via controlled collimator-induced losses~\cite{arek}, which are also quantified in parallel by the \textit{DC Beam Current Transformer} (BCT) system~\cite{Denard:1213275}. A picture of an LHC BLM is presented in Fig.~\ref{fig:blm}. This calibrated BLM data is the precise loss signal that we finally expect to use for reconstructing the diffusion behaviour in the transverse plane.
 
 \begin{figure}[htp]
     \centering
@@ -86,12 +86,17 @@ To address the lack of alternating jaw movements, we selected a region of intere
 \end{figure}
 
 
-The measured collimator jaw position is converted to measured beam sigma units using the nominal optical parameters and the measured value of the beam emittance, taking into account the position of the beam centre. To convert the \SI{}{Gy \per s} units of the BLM signal to \SI{}{protons \per s}, we used a calibration factor $F$~\cite{arek} dependent on the TCP jaw position. This calibration factor $F$ is calculated from the BLM loss data and the intensity lost recorded by the BCTs during the collimator steps. The coefficient reads 
+The measured collimator jaw position is converted to measured beam sigma units $\sigma$ using the nominal optical parameters and the measured value of the beam emittance, taking into account the position of the beam centre. To convert the \SI{}{Gy \per s} units of the BLM signal to \SI{}{protons \per s}, we used a calibration factor $F$~\cite{arek} dependent on the TCP jaw position. This calibration factor $F$ is calculated from the BLM loss data and the intensity lost recorded by the BCTs during the collimator steps. The coefficient reads 
 \begin{equation}
-    F = \left(-9.0\times10^{-14}\sigma + 6.2\times10^{-13}\right)^{-1} \,.
+    F = \left(-9.0\times10^{-14}\sigma + 6.2\times10^{-13}\right)^{-1} \,,
 \end{equation}
+where $\sigma$ is the position of the collimator jaw in sigma units.
 
-To reconstruct an estimate global current $J_\text{eq}^{\text{est}}(t)$, without the upper bound given by the alternating inward steps, with a single CSI passing through the terminating points of the sequence of outward recovery currents. This fundamental CSI has been multiplied by a constant term to represent different possible levels of partial recovery of $J_\mathrm{R}(t)$. This is needed because the jaw movements were not always performed to allow enough time for the system to relax to its equilibrium state. This procedure is shown in Fig.~\ref{fig:second}.
+The absence of alternating jaw movements implies a lack of information for constructing an upper bound estimate of the global current. Moreover, since the jaw movements were not always performed to allow enough time for the system to relax to its semi-stationary state, we can not make strong assumptions on the global current value by only interpolating the terminating points of the outward recovery currents. 
+
+To tackle this issue, we define an initial estimate of the global current shape $J_\text{eq}^{\text{est}}(t)$, by constructing a Cubic Spline Interpolation (CSI) passing through the terminating points of the sequence of outward recovery currents, following the same methodology as presented in the previous Chapter. This ``fundamental CSI'', has the features we expect to observe from a global current we expect to observe from a Nekhoroshev-like Fokker-Planck process, however, by just interpolating the terminating points, it does not take into account the missing recovery due to collimator steps being performed too quickly.
+
+To include this missing information, the fundamental CSI has been multiplied by different constant terms, to represent different possible levels of partial recovery of $J_\mathrm{R}(t)$. This procedure is shown in Fig.~\ref{fig:second}. One can see how the fundamental CSI represents the initial lowest estimate of global current, while the different multiplicative constants introduce different gap levels after the terminating points of the recovery currents. This multiplicative can then be treated as a free parameter for reconstructing the missing information.
 
 %
 \begin{figure}
@@ -102,13 +107,14 @@ To reconstruct an estimate global current $J_\text{eq}^{\text{est}}(t)$, without
 \end{figure}
 %
 
-To cope with the rapid sequence of jaw movements, we replace the integral terms in Eq.~\eqref{eq:outward_difference_approx} with the approximation
+Finally, the rapid sequence of jaw movements also introduce another issue: the difference distribution $\rho^\ast$ can not be described with certainty by Eq.~\eqref{eq:outward_difference}, or its approximated form Eq.~\eqref{eq:outward_difference_approx}. To tackle this issue, we replace the $D(I)$ dependent integral terms Eq.~\eqref{eq:outward_difference_approx} with the approximation
 \begin{equation}
-    \rho_{\mathrm{app}}^{*}(I)= \begin{cases} -M & \text { if } I\leq I_{\mathrm{a}}\\ -\left(\frac{I_{\mathrm{a}}^{\prime }-I}{I_{\mathrm{a}}^{ \prime}-I_{\mathrm{a}}}\right) M & \text { if } I>I_{\mathrm{a}} \, , \end{cases} 
+    \rho_{\mathrm{app}}^{\ast}(I)= \begin{cases} -M & \text { if } I\leq I_{\mathrm{a}}\\ -\left(\frac{I_{\mathrm{a}}^{\prime }-I}{I_{\mathrm{a}}^{ \prime}-I_{\mathrm{a}}}\right) M & \text { if } I>I_{\mathrm{a}}  \end{cases} \, ,
     \label{eq:approximated_distribution_beam}
 \end{equation}
-where $M$ is a constant fixed for each jaw movement that represents an unknown amount of out-of-equilibrium distribution.
-A scan is performed on different combinations of CSI and $M$ values while keeping track of $\chi^2$ achieved by the fitting routine that determines the values of the model parameters $\kappa, I_\ast$. The result of this procedure is shown in Figs.~\ref{fig:fourth} and~\ref{fig:fifth}, where one can observe the existence of an optimal configuration of parameters and the good reconstruction performance achieved by such a configuration. The optimal fit results for Beam~1 and Beam~2 data are reported in Table~\ref{tab:fit_results}.
+where $M$ is a constant fixed for each jaw movement, that represents an unknown amount of out-of-equilibrium distribution.
+
+A scan is performed on different combinations of CSI and $M$ values, while keeping track of $\chi^2$ achieved by the fitting routine that determines the values of the model parameters $\kappa, I_\ast$. The result of this procedure is shown in Figs.~\ref{fig:fourth} and~\ref{fig:fifth}, where one can observe the existence of an optimal configuration of parameters and the good reconstruction performance achieved by such a configuration. The optimal fit results for Beam1 and Beam2 data are reported in Table~\ref{tab:fit_results}.
 
 \begin{figure}
     \centering
@@ -119,7 +125,7 @@ A scan is performed on different combinations of CSI and $M$ values while keepin
 %
 \begin{table}[htb]
     \centering
-    \caption{Results of the fit procedure, along with corresponding setup obtained for the CSI multiplicative constant and $M$ value for \eqref{eq:approximated_distribution_beam}.}
+    \caption{Results of the fit procedure of $\kappa$ and $I_\ast$ for the selected data in the vertical plane, along with corresponding setup obtained for the CSI multiplicative constant and $M$ value for \eqref{eq:approximated_distribution_beam}.}
     \begin{tabular}{lcccc}
         \toprule
         Beam / Plane & CSI & $M$ & $\kappa$ & $I_\ast\ [\sigma]$ \\
@@ -132,17 +138,19 @@ A scan is performed on different combinations of CSI and $M$ values while keepin
 \end{table}
 %
 
-Note that the values reported in~\cite{bazzani2020diffusion}, namely $\kappa=0.33 $ and $I_\ast \simeq 21$, were obtained for Beam~2 and considering the diffusion in the vertical plane. It should be stressed that these previous measurements were performed with isolated bunches, whereas in the beam measurements analysed here, beam-beam effects were present. 
+Note that the values reported in~\cite{bazzani2020diffusion}, namely $\kappa=0.33 $ and $I_\ast \simeq 21$, were obtained for Beam2 and considering the diffusion in the vertical plane. It should be stressed that these previous measurements were performed with isolated bunches, whereas in the beam measurements analysed here, beam-beam effects were present.
 
 \begin{figure}[htb]
     \centering
     \includegraphics[trim={0 2.5mm 0 3mm}, clip, width=0.95\columnwidth]{5_Diffusion_measurement_LHC/figs/fifth.pdf}
-    \caption{Fit results for Beam~1 data for two $M$ values. The optimal value (orange) outperforms a lower value (blue).}
+    \caption{Fit results for Beam~1 data for two $M$ values, considering the recovery current obtained by using the optimal CSI multiplicative constant $\times 1.5$. The optimal $M$ value (orange) outperforms a lower $M$ value (blue) and manages to reconstruct the shape of the recovery currents.}
     \label{fig:fifth}
 \end{figure}
 %
 \section{Final remarks}
 %
-A non-linear diffusive model based on Nekhoroshev theorem was used to reconstruct available beam loss data obtained at the  LHC from collimator scans. The differences between the approach used to gather the data and the optimal one suggested by our recent numerical studies required adaptation of some of the key elements of our fitting procedure. Eventually, this led to good reconstruction performances and promising insights into the global diffusive behaviour of the LHC beam halo.
+Despite the differences between the approach used to gather the data during LHC Run2 and the optimal one suggested by the numerical studies performed on the Nekhoroshev-like Forkker-Planck diffusive model, we were able to inspect the loss signal gathered by the BLMs during collimator scans, and archive a promising reconstruction of the recovery currents, which are ultimately the indicator of diffusive-like behavior.
 
-Future research will focus on acquiring beam data using the proposed optimised experimental method to characterise more accurately the presence of nonlinear diffusive behaviour. The new datasets might also be used to perform comparisons between the newly proposed collimator scan method for the Nekhoroshev-based diffusive model and the previous approach based on the linearisation of the diffusion coefficient around a given jaw position.
+To archive this reconstruction, we had to adapt some of the key elements of our fitting procedure. Namely, we had to define a new method for reconstructing the global current estimate and we had to consider a different form for the difference distribution $\rho^\ast$. Eventually, this led to good reconstruction performances and promising insights into the global diffusive behaviour of the LHC beam halo.
+
+Future collimator scans on LHC Run3 will focus on acquiring beam data using the proposed optimised experimental method, to characterise more accurately the presence of nonlinear diffusive behaviour. The new datasets might also be used to perform comparisons between the newly proposed collimator scan method for the Nekhoroshev-based diffusive model and the previous approach based on the linearisation of the diffusion coefficient around a given jaw position.
