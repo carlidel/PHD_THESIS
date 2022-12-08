@@ -3,55 +3,55 @@
 
 \section{Particle motion and Frenet-Serret co-ordinate system}
 
-The standard choice of co-ordinates in accelerator physics, which takes advantage on the toroidal symmetry of the circular accelerator system, is the Frenet-Serret co-ordinate system.
+The standard choice of coordinates in accelerator physics, which takes advantage of the toroidal symmetry of the circular accelerator, is the Frenet-Serret co-ordinate system.
 
-Starting from the Cartesian system $(X,\, Y,\, Z)$, centred in the accelerator centre, the Frenet-Serret co-ordinate system considers as one curvilinear co-ordinate the reference orbit $s$, which describes the ideal longitudinal motion of a particle inside the accelerator, and two Cartesian co-ordinates $x$ and $y$ for the transverse one. In Fig.~\ref{fig:frenserr}, we illustrate the co-ordinate system applied to a vector $\vb{r}$.
+Starting from the Cartesian system $(X,\, Y,\, Z)$, centred in the accelerator centre, the Frenet-Serret coordinate system considers as one curvilinear coordinate the path length along the reference orbit $s$, which describes the ideal longitudinal motion of a particle inside the accelerator, and two Cartesian coordinates $x$ and $y$ for the transverse ones. In Fig.~\ref{fig:frenserr}, we illustrate the coordinate system applied to a vector $\vb{r}$.
 
-Mapping the Cartesian system to the Frenet-Serret co-ordinate system reads:
+Mapping the Cartesian system to the Frenet-Serret coordinate system reads:
 %
 \begin{equation} 
     X = (x+\rho)\cos(\frac{s}{\rho})\,, \qquad Y=y\,, \qquad Z=(x+\rho)\sin(\frac{s}{\rho})\,.
 \end{equation}
 
-To keep the particles on a reference orbit of radius $\rho$, a linear electromagnetic field of intensity $B$ is applied. $\rho$ then is given by the equilibrium between the magnetic and the centrifugal force. This equilibrium is expressed within the quantity $B\rho$, defined as \textit{beam rigidity}, which corresponds to
+To keep the particles on a reference orbit of radius $\rho$, a constant magnetic field of intensity $B$ is applied. $\rho$ then is given by the equilibrium between the magnetic and the centrifugal force. This equilibrium is expressed by the quantity $B\rho$, defined as \textit{beam rigidity}, which corresponds to
 \begin{equation}
     B\rho = \frac{p}{e}
     \label{eq:beam_rigidity}
 \end{equation}
-where $p$ is the particle momentum and $e$ its charge.
+where $p$ is the momentum of the particle and $e$ its charge.
 
-Starting from this co-ordinate system, it is possible to achieve a practical Hamiltonian expression for a particle in an accelerator.
+Starting from this coordinate system, it is possible to achieve a practical Hamiltonian expression for a particle in an accelerator.
 
 \begin{figure}
 \centering
 \def\svgwidth{0.75\columnwidth}
 \import{2_accelerator_physics_fundamentals/figs/}{fernet_nuovo.pdf_tex}
-\caption{The Frenet-Serret co-ordinate system applied to a vector $\vb{r}$ in the starting Cartesian system. The reference orbit represents an ideal particle trajectory in the accelerator, whose curvature radius is $\rho$. The $s$ co-ordinate is measured along the trajectory while $x$ and $y$ are orthogonal to it.}
+\caption{The Frenet-Serret coordinate system applied to a vector $\vb{r}$ in the starting Cartesian system. The reference orbit represents an ideal trajectory of particles in the accelerator, whose radius of curvature is $\rho$. The $s$ coordinate is measured along the trajectory, while $x$ and $y$ are orthogonal to it.}
 \label{fig:frenserr}
 \end{figure}
 
-Let us begin from the Hamiltonian of a relativistic charged particle under the effect of an electromagnetic field, which acts via the Lorentz force. The particles are accelerated in modulus by the action of an electric field $\mathbf{E}$ (or by the scalar potential $\Phi$), and their trajectories are bent, in order to keep them on the reference circular orbit, by a magnetic field $\mathbf{B}$, which can be expressed via the vector potential $\mathbf{A}$, i.e.\ $\mathbf{B}=\rot\mathbf{A}$.
+Let us begin from the Hamiltonian of a relativistic charged particle under the effect of an electromagnetic field, which acts on the particle via the Lorentz force. The particles are accelerated, in modulus, by the action of an electric field $\mathbf{E}$ (or by the corresponding scalar potential $\Phi$), and their trajectories are bent, to keep them on the reference circular orbit, by a magnetic field $\mathbf{B}$, which can be expressed via the vector potential $\mathbf{A}$, i.e.\ $\mathbf{B}=\rot\mathbf{A}$.
 
-The Hamiltonian for a relativistic particle under Lorentz force reads
+The Hamiltonian of a relativistic particle under Lorentz force reads
 %
 \begin{equation}
     \ham = e\Phi + \sqrt{ m^2c^4 + (c\mathbf{p}-e\mathbf{A})^2 }\,. 
 \end{equation}
 %
-We then express the square norm of $(c\mathbf{p}-e\mathbf{A})$ in the Frenet-Serret system of co-ordinates $(x,\,y,\,s)$, whose metric tensor reads
+We then express the square norm of $(c\mathbf{p}-e\mathbf{A})$ in the Frenet-Serret system of coordinates $(x,\,y,\,s)$, whose metric tensor reads
 %
 \begin{equation} 
-    g_{ij} = \mathrm{diag}\qty(1,\,1,\,1+\frac{x}{\rho})\,. 
+    g_{ij} = \mathrm{diag}\qty(1,\,1,\,1+\frac{x}{\rho})\,, 
 \end{equation}
 %
-Leading to,
+which leads to
 %
 \begin{equation}
     \ham = e\Phi + \sqrt{ m^2c^4 + \frac{(cp_s-eA_s)^2}{(1+x/\rho)^2 } + (cp_x-eA_x)^2+ (cp_y-eA_y)^2}\,.
     \label{eq:ham_process_1}
 \end{equation}
 %
-It is convenient from this point forward to treat $s$ as the time co-ordinate. Consequently, due to canonical coupling, the conjugated momentum $-p_s$ will work as the Hamiltonian function $\tilde\ham$. Solving Eq.~\eqref{eq:ham_process_1} for $p_s$, we obtain
+It is convenient, from this point forward, to treat $s$ as the time coordinate. Consequently, due to canonical coupling, the conjugated momentum $-p_s$ will have the role of Hamiltonian function $\tilde\ham$. Solving Eq.~\eqref{eq:ham_process_1} for $p_s$, we obtain
 %
 \begin{equation} 
     \tilde{\ham} = -\qty(1-\frac{x}{\rho})\sqrt{\frac{E^2}{c^2}-m^2c^2-(p_x-eA_x)^2-(p_y-eA_y)^2} - eA_s\,,
@@ -62,18 +62,18 @@ where $E=\ham-e\Phi$. We have from special relativity that $E^2/c^2 = p^2 + m^2c
     \tilde{\ham} = -\qty(1-\frac{x}{\rho})\sqrt{p^2-(p_x-eA_x)^2-(p_y-eA_y)^2} - eA_s\,.
 \end{equation}
 
-In high-energy circular accelerators, like the ones considered for this study, the motion in the longitudinal direction is far faster than in the transverse ones, i.e.\ $p\gg p_x$ and $p\gg p_y$. This enables the $\sqrt{1+x}\approx 1+x/2$ expansion for Hamiltonian, leading to
+In high-energy circular accelerators, like the ones considered for this study,  $p\gg p_x$ and $p\gg p_y$, and the so-called paraxial approximation can be applied. This enables the $\sqrt{1+x}\approx 1+x/2$ expansion for Hamiltonian, leading to
 %
 \begin{equation} 
 	\tilde\ham = \qty(1+\frac{x}{\rho})\qty[-p + \frac{1}{2p}\qty(p_x^2+p_y^2)] -eA_s\,. 
 	\label{eq:hamem}
 \end{equation}
 
-If we are considering only transverse effects, we can assume that there is no magnetic field in the longitudinal direction. With this assumption, we only have contributions to the vector potential along $s$, and $A_x=A_y=0$, i.e.\ $\mathbf{B}=(B_x,\,B_y,\,0)$.
+It is customary to assume that there is no magnetic field in the longitudinal direction. With this assumption, we only have contributions to the vector potential along $s$, and $A_x=A_y=0$, i.e.\ $\mathbf{B}=(B_x,\,B_y,\,0)$.
 
-A practical approach for evaluating the magnetic field contribution to $\tilde\ham$, $eA_s$, consists in expanding the magnetic field in its multipolar components.
+The standard approach for evaluating the contribution of the magnetic field to $\tilde\ham$, $eA_s$, consists of expanding the magnetic field in its multipolar components.
 
-From Maxwell's equation $\rot\mathbf{B}=0$, one gets the Laplace equation $\laplacian\mathbf{A}$, which, for $A_s$ has the general solution that can be expressed in power series as
+From Maxwell's equation $\rot\mathbf{B}=0$, one obtains the Laplace equation $\laplacian\mathbf{A}$, which, for $A_s$ has the general solution that can be expressed in power series as
 %
 \begin{equation}
 	A_s = \Re\sum_{n}\qty[ \frac{k_n + ij_n}{(n+1)}(x+iy)^{n+1}]\, ,%%%TODO::controlla def
@@ -91,13 +91,13 @@ The coefficients
 	j_n = \frac{1}{n!} \pdv[n]{B_x}{y}\eval_{x=y=0} 
 \end{equation}
 %
-are called, respectively, the \textit{normal} and \textit{skew} $2(n+1)$-polar coefficients of the magnetic field. In accelerator physics literature, usually considers magnetic elements that generate fields with only one multipolar component. These elements are in fact referred to as normal or skew dipoles, quadrupoles, sextupoles, octupoles and so on.
+are called respectively the \textit{normal} and \textit{skew} $2(n+1)$-polar coefficients of the magnetic field. In accelerator physics, it is customary to consider magnetic elements that generate fields with only one multipolar component. These elements are, in fact, referred to as normal or skew dipoles, quadrupoles, sextupoles, octupoles, and so on. Of course, in the case of magnetic field imperfections, several multipolar components can be associated to a single magnet.
 
 %
-\section{Transverse motion definition}
+\section{Transverse motion}
 %
 
-From the Hamiltonian \eqref{eq:hamem}, we can derive the equations of motion of the particle in the transverse plane. We obtain
+From the Hamiltonian \eqref{eq:hamem}, we can derive the equations of motion of the particle in the transverse plane. We obtain the following
 %
 \begin{equation}
     \begin{aligned}
@@ -107,13 +107,13 @@ From the Hamiltonian \eqref{eq:hamem}, we can derive the equations of motion of 
     \label{eq:ham_motion}
 \end{equation}
 
-In order to get an expression for the partial derivatives of $A_s$ as a function of the $x$ and $y$ components of the magnetic field $\mathbf{B}$, we consider the expression of $\curl \mathbf{A}$ in Frenet-Serret co-ordinates, which reads
+To obtain an expression for the partial derivatives of $A_s$ as a function of the $x$ and $y$ components of the magnetic field $\mathbf{B}$, we consider the expression of $\curl \mathbf{A}$ in Frenet-Serret coordinates, which reads
 %
 \begin{equation}
     \curl \mathbf{A} = \frac{\hat x}{1+x/\rho}\pdv{A_s}{y} - \frac{\hat y}{1+x/\rho}\pdv{A_s}{x} = B_x\hat x + B_y\hat y % TODO::CHECK
 \end{equation}
 %
-as only the $A_s$ component is non-zero. This leads to
+as only the $A_s$ component is nonzero. This leads to
 %
 \begin{equation}
     \pdv{A_s}{x} = -\qty(1+\frac{x}{\rho})B_y\,, \qquad \pdv{A_s}{y} = \qty(1+\frac{x}{\rho})B_x\,,
@@ -128,7 +128,7 @@ which, substituted in Eq.~\eqref{eq:ham_motion}, reads
     \end{aligned}
 \end{equation}
 %
-Recalling the definition of the beam rigidity in Eq.~\eqref{eq:beam_rigidity}, we can rewrite the equations as second order differential equations using the fact that $p=eB\rho$. This leads to
+Recalling the definition of the beam rigidity in Eq.~\eqref{eq:beam_rigidity}, we can rewrite the equations of motion as second-order differential equations using the fact that $p=eB\rho$. This leads to
 %
 \begin{equation}
     \begin{split}
@@ -143,7 +143,7 @@ If we consider only linear terms for the magnetic fields $B_x$ and $B_y$, these 
 	z''+K_z(s)z = 0\, ,
     \label{eq:acc_step_2}
 \end{equation}
-where $z$ stands for either $x$ or $y$, and the function $K(s)$ represents the effect of the linear magnetic fields the particle is subject to in the accelerator.  For a circular accelerator of length $L$ the periodic condition $K_z(s)=K_z(s+L)$ holds. This equation with the periodic condition is referred in literature as \textit{Hill's equation}.
+where $z$ stands for $x$ or $y$, and the function $K(s)$ represents the effect of the linear magnetic fields the particle is subject to in the accelerator.  For a circular accelerator of length $L$ the periodic condition $K_z(s)=K_z(s+L)$ holds. This equation with the periodic condition is referred to in the literature as \textit{Hill's equation}.
 
 
 An Ansatz for the solution of Hill's equation is in the form
@@ -152,7 +152,7 @@ An Ansatz for the solution of Hill's equation is in the form
 	\label{eq:hill_zeta}
 \end{equation}
 %
-\ie a harmonic oscillator where the amplitude $\beta_x(s)$ and phase advance $\psi_z(s)$ is dependent on $s$. Which, substituted into Hill's equation results in a relation between $\psi_z(s)$ and $\beta_z(s)$,
+\ie a harmonic oscillator where the amplitude $\beta_x(s)$ and phase advance $\psi_z(s)$ are dependent on $s$. When substituted into Hill's equation, results in a relation between $\psi_z(s)$ and $\beta_z(s)$, namely
 %
 \begin{equation}
 	\frac{1}{\sqrt{\beta_z(s)}} \dv{s}(\beta_z(s)\psi_z(s)) = 0\,,
@@ -161,7 +161,7 @@ An Ansatz for the solution of Hill's equation is in the form
 which can be solved as
 %
 \begin{equation}
-	\psi_z = \int_0^s \frac{\dd s'}{\beta_z(s')}\,
+	\psi_z(s) = \int_0^s \frac{\dd s'}{\beta_z(s')}\,
 \end{equation}
 %
 and a non-linear equation for $\beta_z(s)$:
@@ -179,44 +179,44 @@ The phase advance over the ring is called \textit{tune}:
 
 \section{Courant-Snyder ellipse}
 
-Solving $\beta_z(s)$ only determines the scaling of the solution $z(s)$ given in \eqref{eq:hill_zeta} at each value $s$. As we are interested in the particle transverse motion, we want to consider its evolution each time it crosses the position $s=s_0$, i.e.\ we want to consider the Poincaré section of the dynamics. At each iteration, we will have a phase advance of $\psi_z$ equal to $2\pi\nu_z$.
+As we are interested in the transverse motion of the particle, we want to consider its evolution each time it crosses the position $s=s_0$, i.e.\ we want to consider the Poincaré section of the dynamics. At each iteration, we will have a phase advance of $\psi_z$ equal to $2\pi\nu_z$.
 
-It is possible to decouple the envelope dynamics described by $\beta_z(s)$ from the particle transverse motion with a co-ordinate transformation, which leads to the definition of the Courant-Snyder ellipse, and other important objects in accelerator physics.
+It is possible to decouple the envelope dynamics described by $\beta_z(s)$ from the particle transverse motion with a coordinate transformation, which leads to the definition of the Courant-Snyder ellipse and other important quantities in accelerator physics.
 
-Starting from Eq.~\eqref{eq:hill_zeta}, we have that the momentum $z'(s)$ reads
+Starting from Eq.~\eqref{eq:hill_zeta}, we find that  $z'(s)$ reads
 %
 \begin{equation}
 	z'(s)=-\frac{z}{\beta_z(s)}\qty(\alpha_z(s)+\tan\psi_z(s))\,
 \end{equation}
 %
-where $\alpha_z=-\beta'_z/2$. We then consider for our co-ordinate transformation the angular variable $\phi_z=\psi_z$ and the generating function
+where $\alpha_z=-\beta'_z/2$. We then consider for our coordinate transformation the angular variable $\phi_z=\psi_z$ and the generating function
 %
 \begin{equation}
 	F=\int \dd z\, z' = -\frac{z^2}{2\beta_z}(\alpha_z+\tan\phi_z) \,,
 \end{equation}
 %
-which then yields the canonical action variable $I_z$, which then reads
+which then yields the canonical action variable $I_z$
 %
 \begin{equation}
 	I_z=\pdv{F}{\phi_z}=\frac{z^2}{2\beta_z}(1+\tan^2\phi_z)=\frac{1}{2\beta_z}\qty[z^2+(\beta_z z'+\alpha_z z)^2]\,.
 	\label{eq:jz}
 \end{equation}
 
-In the new variables, the Hamiltonian of Hill's equation
+In the new variables, the Hamiltonian corresponding to Hill's equation
 \begin{equation} 
     \ham = \frac{z'^2}{2} + \frac{K_z z^2}{2} \,,
 \end{equation}
-taking into account the derivative $\pdv*{F}{s}$, reduces to the simple expression
+reduces to the simple expression
 \begin{equation}
-	\ham(\phi,I,s) = \frac{I}{\beta(s)}\, .
+	\ham(\phi,I,s) = \frac{I}{\beta(s)}\, ,
 \end{equation}
-From this new Hamiltonian, we have that the equation of motion for the variable $\phi_z$ reads $\phi'_z = 1/\beta(s)$. We are now interested in making $\phi_z$ proportional to $s$, and remove any dependence from the $\beta$ function in the equations of motion.
+which takes into account the derivative $\pdv*{F}{s}$, and from this new Hamiltonian, we find that the equation of motion for the variable $\phi_z$ reads $\phi'_z = 1/\beta(s)$. 
 
-To achieve this, we define the frequency
+We are now interested in making $\phi_z$ proportional to $s$, and removing any dependence from the $\beta$ function in the equations of motion. To achieve this, we define 
 \begin{equation}
     \omega_z = \frac{2\pi\nu_z}{L} \,,
 \end{equation}
-where, we recall, $L$ is the circumference of the accelerator and $\nu_z$ the tune defined in Eq.~\eqref{eq:tune_def}. We then have the final change of variables $(\phi_z,I_z)\to(\tilde\phi_z, \tilde I_z)$, which is given by the generating function
+where, we recall, $L$ is the circumference of the accelerator and $\nu_z$ the tune defined in Eq.~\eqref{eq:tune_def}. We then have the final change of variables $(\phi_z,I_z)\to(\tilde\phi_z, \tilde I_z)$, which is defined by the generating function
 %
 \begin{equation}
 	G(\phi_z,\tilde I_z) = \tilde I_z\qty(\omega_z s - \int_0^s\frac{\dd s'}{\beta(s')})+\phi\tilde I\, ,
@@ -229,14 +229,14 @@ which results in the Hamiltonian
 	\label{eq:harm_ham}
  \end{equation}
 %
-which is the well known Hamiltonian of a harmonic oscillator (note how $I_z$ = $\tilde{I}_z$).
+i.e.\ the well-known Hamiltonian of a harmonic oscillator (note how $I_z$ = $\tilde{I}_z$).
 
-From this final Hamiltonian, one can introduce and operate with normalized Cartesian co-ordinates 
+From this final Hamiltonian, one can introduce and operate with normalised Cartesian coordinates 
 \begin{equation}
     \hat z=\sqrt{2I_z}\cos\tilde{\phi}_z\,,\quad \hat p_z=\sqrt{2I_z}\sin\tilde{\phi}_z \,,
     \label{eq:2:cart_eq}
 \end{equation}
-and treat consequently the transverse linear motion on both the $x-p_x$ and $y-p_y$ planes using an intuitive normalized Cartesian Hamiltonian
+and consequently treat the transverse linear motion on both the $x-p_x$ and $y-p_y$ planes using an intuitive normalised Cartesian Hamiltonian
 %
 \begin{equation}
 	\ham(\hat x,\, \hat p_x,\, \hat y,\, \hat p_y) = \frac{\omega_x}{2}(\hat x^2 +\hat p_x^2) + \frac{\omega_y}{2}(\hat y^2+\hat p_y^2)\, .
@@ -253,24 +253,24 @@ and treat consequently the transverse linear motion on both the $x-p_x$ and $y-p
 \end{figure}
 
 
-The Hamiltonian of Eq.~\eqref{eq:linham} describes circular trajectories in the decoupled phase spaces $(\hat x,\,\hat p_x)$ and $(\hat y\,, \hat p_y)$. Moreover, two corresponding action variables, namely,
+The Hamiltonian of Eq.~\eqref{eq:linham} describes circular trajectories in decoupled phase spaces $(\hat x,\,\hat p_x)$ and $(\hat y\,, \hat p_y)$. Moreover, there are two corresponding action variables, namely,
 \begin{equation}
     I_x = \frac{\hat x^2 +\hat p_x^2}{2}\,, \quad I_y=\frac{\hat y^2+\hat p_y^2}{2} \,,
 \end{equation}
-can be defined. $I_x$ and $I_y$ follow the standard definition of the trajectory area divided by $2\pi$ are conserved. For historical reasons, however, the value $2I_z$ is called the \text{Courant-Snyder invariant}.
+can be defined. $I_x$ and $I_y$ follow the standard definition of the trajectory area divided by $2\pi$ and are conserved. For historical reasons, however, the value $2I_z$ is called \text{Courant-Snyder invariant}.
 
-Following its definition in the physical co-ordinates $(z,\, z')$, given in Eq.~\eqref{eq:jz}, it is possible to draw the constant-$I$ surfaces in the $(z,z')$ phase space, as in Fig.~\ref{fig:coursnyd}, which correspond to concentric ellipses, as its expanded form reads:
+Following its definition in the physical coordinates $(z,\, z')$, given in Eq.~\eqref{eq:jz}, it is possible to draw the constant-$I$ surfaces in the $(z,z')$ phase space, as in Fig.~\ref{fig:coursnyd}, which correspond to concentric ellipses, as the expanded form reads:
 %
 \begin{equation}
 I_z = \frac{1}{2\beta_z}\qty[z^2 + (\alpha z + \beta z'))^2] = \frac{1}{2}\qty(\gamma z^2 + 2\alpha z z' + \beta z'^2)\,, \end{equation}
 %
 where we have defined $\gamma=(1+\alpha^2)/\beta$. The area of the ellipse is equal to $2\pi I_z$, and is conserved at any value of $s$. It can be observed, finally, how the $(z,z')\to(\hat z,\hat p_z)$ co-ordinate transformation modifies the physical co-ordinates ellipses into circles with the same area, from which their name \textit{``normalized co-ordinates''}.
 
-A single particle following the linear transversal dynamics will have its own constant Courant-Snyder invariant. When instead we want to consider a beam distribution, a standard property, called \textit{emittance} is defined as the average of the Courant-Snyder invariant:
+A single particle following the linear transverse dynamics will have its own constant Courant-Snyder invariant. When, instead, we want to consider a beam distribution, a standard property, called \textit{emittance} is defined as the average of the Courant-Snyder invariant:
 \begin{equation}
     \eps_z = \av{I_z} \,.
 \end{equation}
-The emittance is related to the second moments of the beam distribution in $(\hat z,\hat p_z)$. In fact, averaging over $I_z$ and $\phi_z$ in the definitions of $\hat z$ and $\hat p_z$ given in Eq.~\eqref{eq:2:cart_eq}, we obtain
+The emittance is related to the second moments of the beam distribution in $(\hat z,\hat p_z)$. In fact, averaging over $I_z$ and $\phi_z$ in the definitions of $\hat z$ and $\hat p_z$ given in Eq.~\eqref{eq:2:cart_eq}, we obtain the following
 %
 \begin{equation}
 	\av{\hat z^2} = \beta_z \eps_z, \qquad \av{\hat p_z^2}=\gamma_z \eps_z, \qquad \av{\hat z\,\hat p_z}=-\alpha_z\eps_z\,,
@@ -281,7 +281,7 @@ from there, using the definition of $I_z$ yields
 	\eps_z = \sqrt{ \av{\hat z^2}\av{\hat p_z^2} - \av{\hat z \, \hat p_z}^2 }\,.
 \end{equation}
 
-The beam emittance can then be considered either as the average Courant-Snyder invariant of a distribution, or as the area (up to a $2\pi$ factor) of the orbit of the RMS particle of the beam. A useful implication of this is that a Gaussian beam distribution in $(\phi_z,\,I_z)$ co-ordinate assumes the practical form:
+The beam emittance can then be considered either as the average Courant-Snyder invariant of a distribution or as the area (up to a $2\pi$ factor) of the orbit of the RMS particle of the beam. A useful implication of this is that a Gaussian beam distribution in $(\phi_z,\,I_z)$ coordinate assumes the practical form:
 %
 \begin{equation}
 \rho_z = \frac{1}{\eps_z}\exp(-\frac{I_z}{\eps_z})\,.
@@ -292,28 +292,28 @@ The beam emittance can then be considered either as the average Courant-Snyder i
 
 \section{Non-linear beam dynamics}\label{sec:non-linear}
 
-The transverse dynamics we treated so far with Hill's equation and formalism takes into consideration only the effects of a linear magnetic field (we recall the passage between Eq.~\eqref{eq:acc_step_1} and Eq.~\eqref{eq:acc_step_2}, where we dropped all the non-linear terms for the magnetic fields $B_x$ and $B_y$). This method, however, takes into account only the elements generated by a set of ideal dipole and quadrupole magnets.
+The transverse dynamics we treated so far takes into consideration only the effects of a linear magnetic field (we recall the step between Eq.~\eqref{eq:acc_step_1} and Eq.~\eqref{eq:acc_step_2}, where we dropped all nonlinear terms for the magnetic fields $B_x$ and $B_y$), so that this approach takes into account only the elements generated by a set of ideal dipole and quadrupole magnets.
 
-To include higher order terms of the magnetic field power series, it is possible to include non-linear terms directly into Hill's Hamiltonian. This can be done in order to both represents the unavoidable higher-order magnet imperfections inside the accelerator machine, or to represent explicit sextupolar and octupolar elements one might want to include to cancel out specific sources of non-linear effects. 
+To include higher-order terms of the magnetic field power series, it is possible to include nonlinear terms directly into Hill's Hamiltonian. This can be done to both represent the unavoidable higher-order magnet imperfections inside the accelerator machine, or to represent explicit sextupolar and octupolar elements, which one might want to include in the accelerator lattice. 
 
-As Hill's Hamiltonian is equivalent to two detached harmonic oscillators, non-linear components can be included in the Hamiltonian as anharmonic perturbation to such harmonic oscillators. We start by considering higher order terms $n \ge 2$ of the power series $A_s$, which we presented in Eq.~\eqref{eq:as}, and we perform the change of variables $(x,\,y) \to (\hat x, \hat y)$. We have then that the non-linear part of the Hamiltonian reads:
+As Hill's Hamiltonian is equivalent to two uncoupled harmonic oscillators, nonlinear components can be included in the Hamiltonian as anharmonic perturbation. We start by considering higher-order terms $n \ge 2$ of the power series $A_s$ in Eq.~\eqref{eq:as}, and we perform the change of variables $(x,\,y) \to (\hat x, \hat y)$. We then have that the nonlinear part of the Hamiltonian reads:
 %
 \begin{equation}
     \ham_\text{nlin}(\hat x, \hat p_x, s) = \Re \sum_{n\ge 2} \qty[\frac{k_n(s) + ij_n(s)}{(n+1)} \left(\sqrt{\beta_x(s)}\ \hat x + i\sqrt{\beta_y(s)}\ \hat y\right)^n]\,.
 \end{equation}  
 
-To simplify this notation, we introduce the quantity $\beta(s)=\beta_y(s)/\beta_x(s)$, and its value $\bar\beta$ averaged over an accelerator turn which reads
+To simplify this expression, we introduce the quantity $\beta(s)=\beta_y(s)/\beta_x(s)$, and its value $\bar\beta$ averaged over the accelerator circumference that reads
 \begin{equation}
     \bar\beta = \oint \dd s\, \frac{\beta_y(s)}{\beta_x(s)} \,.
 \end{equation}
-We can now substitute the strengths $k_n(s)$ and $j_n(s)$ (which, we recall, they represent the effect of a normal or a skew $(2n+2)$-polar magnetic field) with the integrated coefficients $K_n$, $J_n$, which will be scaled by the value of $\beta_x(s)$ and $\beta_y(s)$, i.e.\ we weight the integral average with the envelope value of the beam where the magnetic elements are placed. These coefficients read
+We can now substitute the strengths $k_n(s)$ and $j_n(s)$ (which, we recall, represent the effect of a normal or a skew magnetic field $(2n+2)$) with the integrated coefficients $K_n$, $J_n$, which will be scaled by the value of $\beta_x(s)$ and $\beta_y(s)$, that is, we weight the integral average with the envelope value of the beam where the magnetic elements are placed. These coefficients read
 %
 \begin{equation} 
 	K_n = \oint \dd s\, k_n(s) \beta_x^{\frac{n+1}{2}}(s)\,,\qquad
-	J_n = \oint \dd s\, j_n(s) \beta_x^{\frac{n+1}{2}}(s)\,,
+	J_n = \oint \dd s\, j_n(s) \beta_x^{\frac{n+1}{2}}(s)\,.
 \end{equation} 
 %
-where the integrations are evaluated over the accelerator turn. With this notation, the non-linear Hamiltonian has the simpler form
+With this notation, the nonlinear Hamiltonian has the simpler form
 % 
 \begin{equation} \ham_\text{nlin}(\hat x, \hat p_x) = \Re \sum_{n\ge 2} \qty[\frac{K_n + iJ_n}{(n+1)} (\hat x + i\bar\beta^{1/2} \hat y)^n]\,.\end{equation}
 
@@ -322,27 +322,26 @@ From this Hamiltonian, one can for example write a 1\textsc{d} beam model with n
 	\ham(\hat x,\hat p) = \omega \frac{\hat x^2 + \hat p^2}{2} + \sum_{n>2} K_n \frac{x^{n+1}}{(n+1)}\, ,
 	\label{eq:hamxp_nl}
 \end{equation}
-such simple model can be used to understand many phenomenons caused by non-linear effects.
+such a simple model can be used to understand many phenomena caused by nonlinear effects.
 
-In an accelerator, non-linear effects can be used to represent either unwanted elements, such as linear magnets imperfections, or to represent specifically added non-linear magnetic elements, such as sextupoles and octupoles. Such components can be introduced inside an accelerator optics in order to correct specific unwanted effects, like \textit{chromaticity}, i.e.\ the fact that particles with different momentum are differently focused by quadrupoles. Chromaticity, specifically, can be tackled by the introduction of sextupole magnets. Another important source of non-linearities is space charge effects and \textit{beam-beam interaction} effects, caused by the electromagnetic interaction of charged particles with other charged particles, respectively in the same or in another beam during collisions.
+In an accelerator, non-linear effects can be used to represent either unwanted elements, such as magnet imperfections, or to represent specifically added elements generating nonlinear magneti field, such as sextupoles and octupoles. These components can be introduced in an accelerator lattice to correct specific unwanted effects, like \textit{chromaticity}, i.e.\ the fact that particles with different momentum are differently focused by quadrupoles. Chromaticity, specifically, can be controlled by the introduction of sextupole magnets. Another important source of non-linearities is space charge effects and \textit{beam-beam interaction}, caused by the electromagnetic interaction of charged particles with other charged particles, respectively, in the same or in another beam during collisions.
 
-The introduction of non-linear elements in a circular accelerator is the cause of three main effects~\cite{herr}: amplitude-dependent detuning, excitation of non-linear resonances, and reduction of the dynamic aperture. We will present the first two phenomena very briefly, and focus a little more on the core characteristics of the last one.
+The introduction of nonlinear elements in a circular accelerator is the cause of three main effects~\cite{herr}: amplitude-dependent detuning, excitation of nonlinear resonances, and reduction of the dynamic aperture. We will present the first two phenomena very briefly and focus a little more on the core characteristics of the last one.
 
 \subsubsection{Amplitude-dependent detuning}
 
-Adding non-linear elements in the transverse motion has the inevitable consequence of modifying the tune, i.e.\ the rotation frequency of the harmonic oscillator, into an amplitude dependent function, where the amplitude.
-The second effect of non-linear elements on transverse motion is the fact that the rotation frequency, the tune, becomes a function of the amplitude, that is, the value of the action $I$. In the linear Hamiltonian~\eqref{eq:linham}, the frequency $\Omega$ is given by
+Adding nonlinear elements has the inevitable consequence of making the tune, i.e.\ the rotation frequency of the harmonic oscillator, an amplitude-dependent function. In the linear Hamiltonian~\eqref{eq:linham}, the frequency $\Omega$ is given by
 \begin{equation}
 	\Omega = \pdv{\ham}{I} = \omega\,,
 \end{equation}
-where, we recall, $I=(\hat x^2 + \hat p^2)/2$. The tune $\omega$ is constant at any $I$, therefore particles have the same tune.
+where, we recall, $I=(\hat x^2 + \hat p^2)/2$. The tune $\Omega$ is constant at any $I$, therefore, all the particles have the same tune.
 
-If we now add an octupolar component to the Hamiltonian, that is, an $n=3$ element of the power series in Eq.~\ref{eq:hamxp_nl}, we end up with the new Hamiltonian
+If we now add an octupolar component to the Hamiltonian, that is, an $n=3$ element of the power series in Eq.~\ref{eq:hamxp_nl}, the new Hamiltonian is
 \begin{equation}
 	\ham = \omega \frac{\hat x^2 + \hat p^2}{2} + \frac{K_3}{5} x^4 = \omega I + \frac{K_3}{5} I^2 \cos^4\phi\, .
 \end{equation}
 
-Averaging over the angular variable $\phi$, one gets
+Averaging over the angular variable $\phi$, one obtains
 \begin{equation}
 	\av{\ham} = \omega I + \frac{3}{40}K_3 I^2,
 \end{equation}
@@ -352,19 +351,19 @@ and
 \begin{equation}
 	\Omega(I) = \pdv{\av{\ham}}{I} = \omega + \frac{3K_3}{20} I\,.
 \end{equation}
-Meaning, there is now a linear dependence of the tune on the action $I$. This implies that each particle will have a different rotation frequency depending on its current amplitude.
+There is now a linear dependence of the tune on the action $I$, and each particle will have a different rotation frequency depending on its amplitude.
 
-The averaging approach used here to achieve an expression of the detuning highlights only the first-order effects in the frequency. For more complex Hamiltonians with multiple non-linear components, achieving a complete analytical expression of the detuning is not a trivial problem.
+The averaging approach used here to obtain an expression of the amplitude detuning highlights only the first-order effects in the frequency. For more complex Hamiltonians, describing multiple nonlinear components, deriving a complete analytical expression of the detuning is not always a trivial task.
 
-It is possible to numerically evaluate the amplitude-dependent detuning in single-particle tracking simulations, as the tune can be measured by performing a numerical estimate of the fundamental frequency of the orbit history of the transverse orbit. We will present the topic of tune evaluation later in Chapter~\ref{}, in the context of dynamic indicators, as such methods are the foundation for consolidated tools in accelerator physics like the Frequency Map Analysis.
+It is possible to numerically evaluate the amplitude-dependent detuning in single-particle tracking simulations, as the tune can be measured by performing a numerical estimate of the fundamental frequency of the orbit. We will present the topic of tune evaluation later in Chapter~\ref{}, in the context of dynamic indicators, as the tune determination is the foundation for consolidated tools in accelerator physics like the Frequency Map Analysis.
 
-\subsubsection{Non-linear resonances}
+\subsubsection{Nonlinear resonances}
 
-In an accelerator machine, it is usual to have the non-linear components at $10^{-3} - 10^{-4}$ the intensity of the linear components. However, if the tunes $\omega_x$ and $\omega_y$ are in a resonance condition, the non-linear magnetic field can lead to a geometric aberration of the phase-space and, ultimately, cause severe particle loss. A theoretical approach of this phenomenon is presented in~\cite{wilson}.
+If the tunes $\omega_x$ and $\omega_y$ satsfy a resonance condition, the nonlinear magnetic field can lead ultimately, to severe particle loss. A theoretical approach to this phenomenon is presented in~\cite{wilson}.
 
-When the frequency $\omega_x$ or $\omega_y$ is close to a resonant frequency, in accordance with the Poincaré-Birkhoff theorem, chain of islands with extra fixed points appear. These islands, in regular accelerator operations, reduce the dynamic aperture (for which the definition is given in Subsection~\ref{sec:2:dynamic_aperture}) and, close to separatrices, cause the onset of chaotic motion. When a resonance is crossed due to small, undesired variations of the magnetic field, which cause oscillations in the $\omega_x$ and $\omega_y$ values, a beam amplitude growth is observed~\cite{Guignard:185921}, impacting beam lifetime.
+When the frequency $\omega_x$ or $\omega_y$ is close to a resonant frequency, according to the Poincaré-Birkhoff theorem, a chain of islands with extra fixed points appears. These islands, in regular accelerator operations, may reduce the dynamic aperture (for which the definition is given in Subsection~\ref{sec:2:dynamic_aperture}) and, close to separatrices, cause the onset of chaotic motion. When a resonance is crossed due to small, undesired variations of the magnetic field, which cause oscillations of $\omega_x$ and $\omega_y$ values, a growth in beam emittance may be observed~\cite{Guignard:185921}, affecting beam lifetime.
 
-Other than 1\textsc{d} resonances $n\omega_z \approx \ell$, where $\ell$ is an integer value, in a system with two degrees of freedom one can have a 2\textsc{d} resonant condition between the $\omega_x$ and $\omega_y$ frequencies, i.e.\ $m\omega_x-n\omega_y\approx \ell$. Only difference resonances ($m>0$, $n>0$) are stable, although they couple the motion between the two planes, while sum resonances (when $m$ and $n$ have different signs) result in unstable motion.
+Other than 1\textsc{d} resonances $n\omega_z \approx \ell$, where $\ell$ is an integer value, in a system with two degrees of freedom one can have a 2\textsc{d} resonant condition between the $\omega_x$ and $\omega_y$ frequencies, i.e.\ $m\omega_x+n\omega_y\approx \ell$. Only difference resonances ($m>0$, $n<0$) are stable, although they couple the motion between the two planes, while sum resonances (when $m$ and $n$ have same signs) result in unstable motion.
 
 \begin{figure}
 	\centering
@@ -373,19 +372,19 @@ Other than 1\textsc{d} resonances $n\omega_z \approx \ell$, where $\ell$ is an i
 	\label{fig:res}
 \end{figure}
 
-The possible 1\textsc{d} and 2\textsc{d} resonances (up to order $4$) are represented by lines in the $(\omega_x, \omega_y)$ diagram of Fig.~\ref{fig:res}, where different colours show the resonance order. As higher-order resonances are generally weaker than lower-order ones, one should select the accelerator working point quite far from the main resonances, the LHC does so by operating at the fractional tunes $(\omega_x, \omega_y)=(0.28, 0.31)$ during injection and $(\omega_x, \omega_y)=(0.31, 0.32)$ during collisions~\cite{Benedikt:823808}.
+The possible 1\textsc{d} and 2\textsc{d} resonances (up to order $4$) are represented by lines in the $(\omega_x, \omega_y)$ diagram of Fig.~\ref{fig:res}, where different colours show the resonance order. As higher-order resonances are generally weaker than lower-order ones, one should select the accelerator working point far from the main resonances; the LHC does so by operating at the fractional tunes $(\omega_x, \omega_y)=(0.28, 0.31)$ during injection and $(\omega_x, \omega_y)=(0.31, 0.32)$ during collisions~\cite{Benedikt:823808}.
 
 \section{One-turn maps}
 
-A standard tool in accelerator physics to inspect the transversal dynamic of a particle in an accelerator magnetic lattice are one-turn maps. A one-turn map \(\mathrm{M}\) is the Poincaré map of the circular accelerator at section \(s = s_0\), and it is given by composing single-element maps:
+A standard tool in accelerator physics to inspect the transversal dynamic of a particle in an accelerator magnetic lattice is one-turn maps. A one-turn map \(\mathrm{M}\) is the Poincaré map of the circular accelerator in section (s = s_0), and is given by composing single-element maps:
 \begin{equation}
 	\mathrm{M} = \mathrm{M}^{(L)} \circ \mathrm{M}^{(L - 1)} \circ \cdots \circ \mathrm{M}^{(2)} \circ \mathrm{M}^{(1)} \,,
 \end{equation}
-which each $\mathrm{M}^{(i)}$ represents an element along the circular accelerator lattice, which might be, for example, a drift space with no magnets, a dipole bending magnet, a quadrupole, or a higher order magnetic element. 
+whereeach $\mathrm{M}^{(i)}$ represents an element along the circular accelerator lattice, which might be, for example, a drift space with no magnets, a dipole bending magnet, a quadrupole, or a higher order magnetic element. 
 
-The map \(\mathrm{M}\) transforms the phase space co-ordinates \(\vb{\hat x} = (\hat x, \hat p_x, \hat y, \hat p_y)\) of a particle into new co-ordinates \(\vb{x}'\) which correspond to the particle after one full turn (See Fig.~\ref{fig:poincare}).
+The map \(\mathrm{M}\) transforms the phase space coordinates (\vb{\hat x} = (\hat x, \hat p_x, \hat y, \hat p_y)\) of a particle into new co-ordinates \(\vb{x}'\) which correspond to the particle after one full turn (see Fig.~\ref{fig:poincare}).
 
-In this framework, the effect of each magnetic element on the phase co-ordinates of the beam can be written, in an analogy with geometrical optics, as the action of a $4\times4$ matrix on the co-ordinate vector. This matrix corresponds to the symplectic flow of the Hamiltonian of a given magnetic field.
+In this framework, the effect of each magnetic element on the phase coordinates of the beam can be written, in an analogy with geometrical optics, as the action of a $4\times4$ matrix on the coordinate vector. This matrix corresponds to the symplectic flow of the Hamiltonian for a given magnetic field.
 
 When considering only the linear components in the magnetic lattice, the resulting Poincaré map for $\vb{\hat x}$ reads as a decoupled harmonic oscillator
 %
@@ -405,11 +404,11 @@ When considering only the linear components in the magnetic lattice, the resulti
 	\end{pmatrix}_{n}\,.
 \end{equation}
 
-In general, it is not possible to compute exactly the transfer map of a non-linear element. Therefore, approximation techniques become necessary. The standard approach that is used in standard tracking codes such as SixTrack~\cite{sixtrack}, is the \textit{one-kick approximation}, i.e.\ it is assumed that the higher order polynomial effects on the magnetic potential are all located at a precise $s_l$ position, and act with a $\delta(s - s_l)$ potential.
+In general, it is not possible to compute exactly the transfer map of a nonlinear element. Therefore, approximation techniques become necessary. The standard approach that is used in standard tracking codes such as SixTrack~\cite{sixtrack}, is the \textit{one-kick approximation}, i.e.\ it is assumed that the higher order polynomial effects on the magnetic potential are all located at a precise $s_l$ position, and act with a $\delta(s - s_l)$ potential.
 
-The main advantages of this approximation is the fact that the resulting one-turn map $\mathrm{M}$ maintains its symplectic character, and enables efficient tracking. This approximation holds when the higher order magnetic contributions are small in length.
+The main advantages of this approximation is the fact that the resulting one-turn map $\mathrm{M}$ maintains its symplectic character and enables efficient tracking. This approximation holds when the higher-order magnetic contributions are small in length.
 
-A one-turn map with a single non-linear contribution, added 
+A one-turn map with a single nonlinear contribution, added 
 with the one-kick approximation at $s = s_0$, will then read  
 \begin{equation}
 	\begin{pmatrix}
@@ -423,7 +422,7 @@ with the one-kick approximation at $s = s_0$, will then read
 \end{equation}
 where now the $\beta$ term, which also appears in the definition of $K$ and $J$ is now evaluated at $s=s_0$ due to the one-kick approximation.
 
-This map shape inspired the investigation of 2\textsc{d} and 4\textsc{d} maps in the form of
+This shape of the map inspired the investigation of 2\textsc{d} and 4\textsc{d} maps in the form of
 \begin{equation}
 	\begin{pmatrix}
 		\hat{\mathbf{x}} \\ \hat{\mathbf{p}}  
@@ -449,7 +448,7 @@ which are referred to as \textit{Hénon-like maps}, due to the well-known map in
 	\label{eq:simplehenon}
 \end{equation}
 
-These models, despite their simplicity, already manifest multiple features that are observed in a beam under non-linear magnetic fields, and have been used in multiple studies for investigating such features in the context of accelerator physics, especially in the context of dynamic aperture measurements~\cite{PhysRevE.53.4067, invlog}. These maps were also used as a fundamental building block for the application of Normal Form theory to betatron motion~\cite{bazzani1994normal}.
+These models, despite their simplicity, already manifest multiple features that are observed in a beam under nonlinear magnetic fields, and have been used in multiple studies to investigate such features in the context of accelerator physics, especially in the context of dynamic aperture measurements~\cite{PhysRevE.53.4067, invlog}. These maps were also used as a fundamental building block for the application of Normal Form theory to betatron motion~\cite{bazzani1994normal}.
 
 \section{Dynamic aperture}
 \label{sec:2:dynamic_aperture}
@@ -501,7 +500,7 @@ where \(r(\phi;N)\) is the last stable amplitude, i.e.\ \(x^2 + y^2 < r_{\mathrm
 
 Other than this consolidated ``radial scan'' method, other techniques have been under study to improve the convergence speed of DA numerical measurements, such as the one presented in Ref.~\cite{vanderveken:ipac2022-mopost047}, where a Support Vector Machine algorithm is employed to perform an optimized sampling and border detection of the phase-space stable region.
 
-\subsection{Dynamic aperture scale-laws}
+\subsection{Dynamic aperture scaling laws}
 
 Simulating entire sets of initial conditions on different one-turn maps is a computational intense task that becomes unsustainable when considering extremely high \(N_{\text{max}}\) values or complex symplectic tracking models\footnote{Researches like~\cite{invlog} presents simulations at \(N_{\text{max}}\sim 10^6-10^7\), while instead it would be necessary to reach values \(\sim 10^9\).}. Moreover, the multipolar components of the various superconducting magnets are known only with a limited precision, so that one has to perform parametric studies in order to consider different realizations of the magnetic lattice. Because of these reasons, realistic time scales in tracking simulation are still out of reach for proper accelerator physics research.
 
@@ -543,7 +542,7 @@ where the free parameters are $\rho_\ast$, $\kappa$ and, possibly, $\lambda$, un
 % \end{equation}
 % with \(DA(N) \xrightarrow[N \to 0]{} +\infty \). This last equation represents a starting point for building the direct connection we are looking for, and also allows us to establish some experimental procedures for evaluating DA from beam losses in a circular accelerator.
 
-\section{Longitudinal motion fundamentals}
+\section{Fundamentals od ongitudinal dynamics}
 
 While the focus of this work is on the transversal part of beam dynamics, it is important to include an essential presentation of the core concepts behind the longitudinal part of dynamics, i.e.\ the theory behind synchrotron oscillations. In fact, a particle that exhibits a longitudinal displacement over the reference trajectory, or that has a longitudinal momentum different to the reference one, will manifest a different transversal dynamics as well, with a mechanism that is referred to as \textit{syncrobetatron coupling}. The main effects of syncrobetatron coupling can be represented as a turn-dependent \textit{modulation} of the transversal tunes.
 
