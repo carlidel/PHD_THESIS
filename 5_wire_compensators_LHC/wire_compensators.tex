@@ -12,7 +12,7 @@ The resulting equipment is referred to as \textit{``beam-beam wire compensator''
 
 For the application of our diffusive framework, we consider the experimental data gathered at the CERN LHC during the 2018 LHC Machine Development (MD) program, during the measurements campaign of the BBCW~\cite{}. More specifically, we consider the data gathered during fill 7386, as it has the configuration closest to an operational scenario.
 
-During this MD measurement, BBCW prototypes were installed for Beam2 on both sides of IP1 and IP5 which are, respectively, the location of the ATLAS~\cite{} and CMS~\cite{} experiments. These prototypes were embedded in the jaws of Beam2 tertiary collimators, for a total of 8 wires installed. The technical details of such implementation are reported in~\cite{}.
+During this MD measurement, BBCW prototypes were installed for Beam~2 on both sides of IP1 and IP5 which are, respectively, the location of the ATLAS~\cite{} and CMS~\cite{} experiments. These prototypes were embedded in the jaws of Beam~2 tertiary collimators, for a total of 8 wires installed. The technical details of such implementation are reported in~\cite{}.
 
 A fill with three trains of symmetric bunches was then loaded inside the LHC and tested at flat top energy with beams colliding at different crossing angles. During this operational-like fill, the quadrupolar setup for the wire compensator was set. The loss signals measured by the Beam Loss Monitors (BLMs)~\cite{} for the two beams are displayed in Fig.~\ref{fig:wire-data}. Along with the BLM data, the beam intensity measured by the Beam Current Transform systems (BCTs)~\cite{}, the wire power, the octupoles power, and the crossing angles are also reported. 
 
@@ -23,13 +23,13 @@ A fill with three trains of symmetric bunches was then loaded inside the LHC and
     \label{fig:wire-data}
 \end{figure}
 
-The BLM data for Beam1 and Beam2 is reported in units of \SI{}{p/s}, and represents a high-precision measure of protons lost over time. Such measure is achieved by considering a calibration parameter on the \SI{}{gy/s} data directly measured by the BLM system.
+The BLM data for Beam~1 and Beam~2 is reported in units of \SI{}{p/s}, and represents a high-precision measure of protons lost over time. Such measure is achieved by considering a calibration parameter on the \SI{}{gy/s} data directly measured by the BLM system.
 
 The BCT data, instead, provides a measurement of the intensity of the beam in number of protons over time. Such measurement is not particularly precise and, qualitatively, it can be seen from the plot how the intensity measured is does not distinguish the different regimes of losses highlighted by the BLM data, and maintains a steady linear decrease.
 
 BBCW and octupole magnets state is reported in Ampere units. The BBCW wires can be found either in an \textit{off} state, namely at \SI{0}{\ampere}, or in an \textit{on} state, namely at \SI{350}{\ampere}. The octupoles instead are found at two different amperage values, namely $260$ and \SI{-560}{\ampere}. It is important to highlight how the switch of state for both systems is not instantaneous but requires instead a non negligible amount of time, this will be thoroughly commented in the next section.
 
-It is possible to see how the data provides a various number of crossing angles configurations, along with on-off alternations of both BBCW power and octupoles current. Qualitatively, one can see how the BBCW equipped in Beam2 do lead to a lower loss signal when they are turned on, while instead having them turned off leads to a strong peak in losses.
+It is possible to see how the data provides a various number of crossing angles configurations, along with on-off alternations of both BBCW power and octupoles current. Qualitatively, one can see how the BBCW equipped in Beam~2 do lead to a lower loss signal when they are turned on, while instead having them turned off leads to a strong peak in losses.
 
 We will now discuss how our diffusive framework can be applied to this loss signal, along with some necessary considerations on how one must pre-process and interpret this data, before applying the model. 
 
@@ -52,7 +52,7 @@ When instead a variation in any of the elements happen, e.g.\ a BBCW is switched
     \label{fig:transient-state}
 \end{figure}
 
-In Fig.~\ref{fig:chunks}, we show the BLM data for Beam1 and Beam2 divided into enumerated chunks where the system is in stationary state. We can see how the stationary states are in general longer than the transient states, except for the part where octupoles are changed in state.
+In Fig.~\ref{fig:chunks}, we show the BLM data for Beam~1 and Beam~2 divided into enumerated chunks where the system is in stationary state. We can see how the stationary states are in general longer than the transient states, except for the part where octupoles are changed in state.
 
 \begin{figure}
     \centering

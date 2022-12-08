@@ -64,11 +64,11 @@ The measurement is performed with the local beam loss monitoring (BLM) system, a
 \begin{figure}[htp]
     \centering
     \includegraphics[width=\textwidth]{5_Diffusion_measurement_LHC/figs/raw.pdf}
-    \caption{Beam loss data from the BLM monitor at RS06 (i.e.\ the maximum spike over a time window of \SI{10.24}{ms}) for Beam1 and Beam2, and positions of IR7 TCP jaws measured in the vertical and horizontal plane for the collimator scans carried out in fill 6052. The data acquired represent a complete collimator scan on both planes. The jaw positions are considered from the beam centre position, measured after a beam-based alignment. (Data from Ref.~\cite{PhysRevAccelBeams.23.044802})}
+    \caption{Beam loss data from the BLM monitor at RS06 (i.e.\ the maximum spike over a time window of \SI{10.24}{ms}) for Beam~1 and Beam~2, and positions of IR7 TCP jaws measured in the vertical and horizontal plane for the collimator scans carried out in fill 6052. The data acquired represent a complete collimator scan on both planes. The jaw positions are considered from the beam centre position, measured after a beam-based alignment. (Data from Ref.~\cite{PhysRevAccelBeams.23.044802})}
     \label{fig:raw_data}
 \end{figure}
 
-One can see how the IR7 TCPs vertical and horizontal jaws of both Beam1 and Beam2 were used to perform a so-called collimator scan of the beam halo, performing a train of inward steps, with pauses of a few seconds between the steps, followed up by a train of outward steps, with pauses ranging from $\sim30$ seconds to almost two minutes between steps.
+One can see how the IR7 TCPs vertical and horizontal jaws of both Beam~1 and Beam~2 were used to perform a so-called collimator scan of the beam halo, performing a train of inward steps, with pauses of a few seconds between the steps, followed up by a train of outward steps, with pauses ranging from $\sim30$ seconds to almost two minutes between steps.
 
 It should be stressed that these older collimator scans were not performed using the optimal protocol, proposed in the previous Chapter, as complete inward scans, followed by outward scans, were used instead of a sequence of in/out steps. Moreover, the jaw movements were not always performed to allow enough time for the system to relax to its equilibrium state. This can be observed from the fact that, between most outward steps, the loss signal still has a consistent positive first derivative when the next collimator outward step is performed, suggesting that a consistent recovery current process was still ongoing when the jaw was moved.
 
@@ -102,7 +102,7 @@ To include this missing information, the fundamental CSI has been multiplied by 
 \begin{figure}
     \centering
     \includegraphics[trim={0 2.5mm 0 3mm}, clip, width=\columnwidth]{5_Diffusion_measurement_LHC/figs/second_bis.pdf}
-    \caption{Possible estimates of $J_\mathrm{eq}(t)$ for Beam1 data. An initial estimate is made starting from a Cubic Spline Interpolation (CSI) with positive second derivative passing through the end points of the measured recovery currents (red line). The various curves are obtained by multiplying the fundamental CSI by a constant term, and represent estimates of the partial recovery currents. The multiplicative constant considered is reported in the plot legend.}
+    \caption{Possible estimates of $J_\mathrm{eq}(t)$ for Beam~1 data. An initial estimate is made starting from a Cubic Spline Interpolation (CSI) with positive second derivative passing through the end points of the measured recovery currents (red line). The various curves are obtained by multiplying the fundamental CSI by a constant term, and represent estimates of the partial recovery currents. The multiplicative constant considered is reported in the plot legend.}
     \label{fig:second}
 \end{figure}
 %
@@ -114,12 +114,12 @@ Finally, the rapid sequence of jaw movements also introduce another issue: the d
 \end{equation}
 where $M$ is a constant fixed for each jaw movement, that represents an unknown amount of out-of-equilibrium distribution.
 
-A scan is performed on different combinations of CSI and $M$ values, while keeping track of $\chi^2$ achieved by the fitting routine that determines the values of the model parameters $\kappa, I_\ast$. The result of this procedure is shown in Figs.~\ref{fig:fourth} and~\ref{fig:fifth}, where one can observe the existence of an optimal configuration of parameters and the good reconstruction performance achieved by such a configuration. The optimal fit results for Beam1 and Beam2 data are reported in Table~\ref{tab:fit_results}.
+A scan is performed on different combinations of CSI and $M$ values, while keeping track of $\chi^2$ achieved by the fitting routine that determines the values of the model parameters $\kappa, I_\ast$. The result of this procedure is shown in Figs.~\ref{fig:fourth} and~\ref{fig:fifth}, where one can observe the existence of an optimal configuration of parameters and the good reconstruction performance achieved by such a configuration. The optimal fit results for Beam~1 and Beam~2 data are reported in Table~\ref{tab:fit_results}.
 
 \begin{figure}
     \centering
     \includegraphics[trim={0 2.5mm 0 1.5mm}, clip, width=0.98\columnwidth]{5_Diffusion_measurement_LHC/figs/fourth.pdf}
-    \caption{Fit performance of $\kappa$ and $I_\ast$ for Beam1 data, using different combinations of CSI multiplicative constants and values of $M$ for Eq.~\eqref{eq:approximated_distribution_beam}. The colormap shows the existence of an optimal pair of values at (CSI $\times 1.5$, $750$).}
+    \caption{Fit performance of $\kappa$ and $I_\ast$ for Beam~1 data, using different combinations of CSI multiplicative constants and values of $M$ for Eq.~\eqref{eq:approximated_distribution_beam}. The colormap shows the existence of an optimal pair of values at (CSI $\times 1.5$, $750$).}
     \label{fig:fourth}
 \end{figure}
 %
@@ -138,7 +138,7 @@ A scan is performed on different combinations of CSI and $M$ values, while keepi
 \end{table}
 %
 
-Note that the values reported in~\cite{bazzani2020diffusion}, namely $\kappa=0.33 $ and $I_\ast \simeq 21$, were obtained for Beam2 and considering the diffusion in the vertical plane. It should be stressed that these previous measurements were performed with isolated bunches, whereas in the beam measurements analysed here, beam-beam effects were present.
+Note that the values reported in~\cite{bazzani2020diffusion}, namely $\kappa=0.33 $ and $I_\ast \simeq 21$, were obtained for Beam~2 and considering the diffusion in the vertical plane. It should be stressed that these previous measurements were performed with isolated bunches, whereas in the beam measurements analysed here, beam-beam effects were present.
 
 \begin{figure}[htb]
     \centering
@@ -151,6 +151,6 @@ Note that the values reported in~\cite{bazzani2020diffusion}, namely $\kappa=0.3
 %
 Despite the differences between the approach used to gather the data during LHC Run2 and the optimal one suggested by the numerical studies performed on the Nekhoroshev-like Forkker-Planck diffusive model, we were able to inspect the loss signal gathered by the BLMs during collimator scans, and archive a promising reconstruction of the recovery currents, which are ultimately the indicator of diffusive-like behavior.
 
-To archive this reconstruction, we had to adapt some of the key elements of our fitting procedure. Namely, we had to define a new method for reconstructing the global current estimate and we had to consider a different form for the difference distribution $\rho^\ast$. Eventually, this led to good reconstruction performances and promising insights into the global diffusive behaviour of the LHC beam halo.
+To archive this reconstruction, we had to adapt some of the key elements of our fitting procedure. Namely, we had to define a new method for reconstructing the global current estimate and we had to consider a different form for the difference distribution $\rho^\ast$. This finally led to good reconstruction performances and promising insights into the global diffusive behaviour of the LHC beam halo.
 
 Future collimator scans on LHC Run3 will focus on acquiring beam data using the proposed optimised experimental method, to characterise more accurately the presence of nonlinear diffusive behaviour. The new datasets might also be used to perform comparisons between the newly proposed collimator scan method for the Nekhoroshev-based diffusive model and the previous approach based on the linearisation of the diffusion coefficient around a given jaw position.
