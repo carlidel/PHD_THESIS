@@ -2,11 +2,22 @@
 
 \section{LHC beam-beam wire compensators fundamentals}
 
-One of the most significant limits in the present LHC design and future HL-LHC design is given by the electromagnetic interactions between the two counter-rotating beams in the shared sections of the machine, the \textit{interaction points}. These interactions lead to the so-called \textit{beam-beam effects}, and can be distinguished as head-on beam-beam effects, which happens when the beam bunches are overlapping in the interaction point, and long-range beam-beam effects, caused by having the two beams close together for the whole length of the shared region.
+One of the most significant limits in the present LHC design and future HL-LHC design is given by the electromagnetic interactions between the two counter-rotating beams in the shared sections of the machine, the interaction points. These interactions lead to the so-called \textit{beam-beam effects}, and can be distinguished as head-on beam-beam effects, which happens when the beam bunches are overlapping in the interaction point, and long-range beam-beam effects, caused by having the two beams close together for the whole length of the shared region.
 
-To tackle the long-range beam-beam effects, a corrective approach, based on electro-magnet lenses, was presented in~\cite{}, and further developed in~\cite{}. The idea of this approach is to compensate the perturbation pattern given by long-range effects by using DC wires. The idea of using specifically DC wires comes from the observation on how these long-range effects were similar to the $1/r$ dependence similar to the electric field potential given by a simple wire~\cite{}.
+In the LHC, the beams are set in collision with a small \textit{crossing angle}, which has both the purpose to improve the detectors' efficiency~\cite{} and to reduce the presence of long-range beam-beam effects, as smaller angles imply smaller beam separation. However, an increase in crossing angle also implies a reduction in integrated luminosity (i.e.\ the total number of collisions that have occurred over a given period of time, typically measured in inverse femtobarns (\SI{}{fb}$^-1$~\cite{})), as the bunches overlap decreases. A schematic visualization of two different crossing angles and their consequent effect on beam separation and bunch overlap is presented in Fig.~\ref{}. The nominal full crossing angle for the LHC is set at $\theta_c =$ \SI{285}{\milli\radian}, while for HL-LHC the expected baseline parameter will be set at $\theta_c =$ \SI{500}{\milli\radian}~\cite{}. 
+
+\begin{figure}
+    \centering
+    % \includegraphics[]{}
+    \caption{}
+    \label{fig:corssing-angles}
+\end{figure}
+
+To tackle the long-range beam-beam effects, while maintaining a small crossing angle, a corrective approach, based on electro-magnet lenses, was presented in~\cite{}, and further developed in~\cite{}. The idea of this approach is to compensate the perturbation pattern given by long-range effects by using DC wires. The idea of using specifically DC wires comes from the observation on how these long-range effects were similar to the $1/r$ dependence similar to the electric field potential given by a simple wire~\cite{}.
 
 The resulting equipment is referred to as \textit{``beam-beam wire compensator''} (BBCW), and it has been tested in multiple iterations on various accelerator complex (a complete list of experimental applications, up to early 2022, is available in~\cite{}).
+
+In the LHC, the BBCW are installed for Beam~2 only, as it was the only beam foreseen to operate with a coronograph~\cite{}, which is a device that is expected to allow transverse beam halo measurements in the future. The wires are embedded in the tertiary collimators placed before and after IP1 and IP5~\cite{}. These collimators are still part of the collimator hierarchy, presented in Section~\ref{}, with the primary and secondary components placed in IR3 and IR7, and are placed near the IPs to locally protect the experiments from losses~\cite{}.
 
 \section{Overview of experimental data}
 
@@ -14,7 +25,7 @@ For the application of our diffusive framework, we consider the experimental dat
 
 During this MD measurement, BBCW prototypes were installed for Beam~2 on both sides of IP1 and IP5 which are, respectively, the location of the ATLAS~\cite{} and CMS~\cite{} experiments. These prototypes were embedded in the jaws of Beam~2 tertiary collimators, for a total of 8 wires installed. The technical details of such implementation are reported in~\cite{}.
 
-A fill with three trains of symmetric bunches was then loaded inside the LHC and tested at flat top energy with beams colliding at different crossing angles. During this operational-like fill, the quadrupolar setup for the wire compensator was set. The loss signals measured by the Beam Loss Monitors (BLMs)~\cite{} for the two beams are displayed in Fig.~\ref{fig:wire-data}. Along with the BLM data, the beam intensity measured by the Beam Current Transform systems (BCTs)~\cite{}, the wire power, the octupoles power, and the crossing angles are also reported. 
+A fill with three trains of symmetric bunches was then loaded inside the LHC and tested at flat top energy with beams colliding at different crossing angles. During this operational-like fill, the quadrupolar setup for the wire compensator was set. The loss signals measured by the BLMs for the two beams are displayed in Fig.~\ref{fig:wire-data}. Along with the BLM data, the beam intensity measured by the BCTs, the wire power, the octupoles power, and the crossing angles are also reported. 
 
 \begin{figure}
     \centering
