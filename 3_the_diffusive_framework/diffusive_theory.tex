@@ -9,13 +9,13 @@
 \subsection{Diffusion over a toroidal surface}
 \label{subsec:diffusion-over-a-toroidal-surface}
 
-We start by investigating the process of fast diffusion of a probability distribution over a toroidal surface. We are interested in this process as such situations happens in action-angle Hamiltonian systems for the angle variable.
+We start by investigating the fast diffusion process of a probability distribution over a toroidal surface. We are interested in this process as such situation occurs in action-angle Hamiltonian systems for the angle variable.
 
 Let us start by defining the following notation for the noise of a Wiener process and its integral:
 \begin{equation}
 	w(t) = \int_0^t \xi(s)\,\mathrm{d}s \,, \qquad w_1(t)=\int_0^t w(t)\,\mathrm{d}s \,,
 \end{equation}
-where $\xi(s)$ is a regular stationary stochastic Gaussian process, i.e.\ we assume that the realizations $\xi(t)$ are continuous, with a correlation function that reads
+where $\xi(s)$ is a regular stationary stochastic Gaussian process, i.e.\ we assume that the realisations $\xi(t)$ are continuous, with a correlation function that reads
 \begin{equation}
     \langle\xi(t)\xi(t+\tau)\rangle = \sigma^2 \Omega(\gamma\tau) \,,\qquad \Omega(\gamma\tau) \simeq e^{-\gamma|\tau|}\,.
 \end{equation}
@@ -28,7 +28,7 @@ This form is convenient if we want to present the processes \(w(t)\) and \(w_1(s
 \begin{equation}
 	\int_0^t K(t,s)\xi(s)\,\mathrm{d}s \,
 \end{equation}
-where \(K(t,s)\) is referred to as the \textit{kernel} of the noise. We have that \(K=1\) for \(w(t)\) and \(K=t-s\) for \(w_1(t)\). This implies \(\sigma^2 = t\) for Wiener noise \(w(t)\) while instead, for its integral \(w_1(t)\), we have
+where \(K(t,s)\) is called the \textit{kernel} of the noise. We have that \(K=1\) for \(w(t)\) and \(K=t-s\) for \(w_1(t)\). This implies \(\sigma^2 = t\) for Wiener noise \(w(t)\) while instead, for its integral \(w_1(t)\), we have
 \begin{equation}
 	\sigma^2(t) = \int_0^t (t-u)^2\,\mathrm{d}u = \frac{t^3}{3} \,.
 \end{equation}
@@ -41,9 +41,10 @@ Let us consider a simple example of angular diffusion. Let \(x\) be an angular v
 	\end{aligned}
 	\label{eq:langevin_toro}
 \end{equation}
-A diffusive solution for an \(\hat{x}\) defined on all \(\mathbb{R}\) in the form \(\rho(\hat{x},t)\) can be converted as a solution valid for \(x\) defined on the torus \(\rho_T(x,t)\) by using the following periodization
+A diffusive solution for an \(\hat{x}\) defined on all \(\mathbb{R}\) in the form \(\rho(\hat{x},t)\) can be converted as a solution valid for \(x\) defined on the torus \(\rho_T(x,t)\) by using the following 
 \begin{equation}
 	\rho_T(x,t) = \sum_{k=-\infty}^{+\infty} \rho(x+k,t) \quad x\in[0,1]\,,\quad k = 0,\pm 1, \pm 2, \ldots \,.
+ \label{eq:period}
 \end{equation}
 
 The solution of~\eqref{eq:langevin_toro} on \(\mathbb{R}\) is given by
@@ -54,12 +55,12 @@ by writing the deterministic part of \(x(t)\) in the form \(\langle x(t) \rangle
 \begin{equation}
 	\rho(x,t) = \frac{\exp{\frac{-(x-\langle x(t)\rangle)^2}{2\sigma^2}}}{\sqrt{2\pi\sigma^2}}\,, \qquad \sigma^2 = \epsilon^2 \frac{t^3}{3}\,,
 \end{equation}
-we can then apply the periodization and finally obtain
+we can then apply~\eqref{eq:period} and finally obtain
 \begin{equation}
 	\rho_T(x,t) = \sum_{n=-\infty}^{+\infty} \frac{\exp{\frac{-(x-\langle x(t)\rangle + n)^2}{2\sigma^2}}}{\sqrt{2\pi\sigma^2}} \,\qquad n = 0,\pm 1, \pm 2, \ldots\,.
 \end{equation}
 
-If we represent the solution in the form of Fourier series
+If we represent the solution in the form of a Fourier series,
 \begin{equation}
 	\rho_T(x,t) = \sum_{k=-\infty}^{+\infty} f_k(t)e^{2\pi i k x} \,,
 \end{equation}
@@ -119,18 +120,19 @@ while instead, for \(I\), the variance reads
 \subsection{Averaging a 1\textsc{d} stochastic Hamiltonian}
 \label{ssc:averaging-1D}
 
-Let us consider generic 1\textsc{d} stochastically perturbed Hamiltonian system in action-angle coordinates, with the origin $I=0$ in an elliptic point of \(\ham_0\). The Hamiltonian reads
+Let us consider a generic 1\textsc{d} stochastically perturbed Hamiltonian system in action-angle coordinates, with the origin $I=0$ being an elliptic point of \(\ham_0\). The Hamiltonian reads
 \begin{equation}
 	\ham = \ham_0(I) + \epsilon \xi(t) \ham_1(\phi, I) \,.
 \end{equation}
-We have that the probability density \(\rho(\phi, I; t)\) satisfies the equation
+
+Tthe probability density \(\rho(\phi, I; t)\) satisfies the equation
 \begin{equation}
 	\pdv{\rho}{t}\/ + \Omega \pdv{\rho}{\phi}\/ = \frac{\epsilon^2 \sigma^2}{2}\{\ham_1, \{\ham_1,\rho\}\}
 	\label{eq:stoc_ham_complex_starting}
 \end{equation}
 where \(\{\ ,\}\) are the Poisson brackets and \(\Omega(I) = \partial \ham_0/\partial I\).
 
-From the results presented above, we know that a toroidal angle variable relaxes in much faster times compared to the action relaxation scales. This allows us to simplify this last equation into a Fokker-Planck equation for \(t\gg t_{\phi}\). The resulting equation, describing the distribution evolution for the action variable \(\rho(I,t)\), averaged over the angle variable, will then read
+From the results presented above, we know that a toroidal angle variable relaxes in much faster times compared to the action relaxation scales. This allows us to simplify this last equation into a Fokker-Planck equation for \(t\gg t_{\phi}\). The resulting equation, which describes the evolution of the distribution for the action variable \(\rho(I,t)\), averaged over the angle variable, will then read
 \begin{equation}
 	\pdv{}{t}\/\rho(I,t) = \pdv{}{I}\/D(I)\pdv{}{I}\/\rho(I,t) \,,
 \end{equation}
@@ -145,7 +147,7 @@ Let us start from the following stochastic Liouville equation
 	\pdv{\rho}{t}\/ + \Omega(I) \pdv{\rho}{\phi}\/ + \epsilon\xi(t)\{\rho,\ham_1\} = 0\,,
 	\label{eq:dimo_liouville}
 \end{equation}
-from here, we can write \(\rho\) in the form \(\rho = \rho_0 + \epsilon\rho_1\), where \(\rho_0\) is the average component of the distribution and \(\rho_1\) the fluctuating component with zero mean. Considering that \(\langle\xi\rangle = 0\), we have that the average value of Eq.~\eqref{eq:dimo_liouville} can be written as
+from this, we can write \(\rho\) in the form \(\rho = \rho_0 + \epsilon\rho_1\), where \(\rho_0\) is the average component of the distribution and \(\rho_1\) the fluctuating component with zero mean. Considering that \(\langle\xi\rangle = 0\), we find that the average value of Eq.~\eqref{eq:dimo_liouville} can be written as
 \begin{equation}
 	\pdv{\rho_0}{t}\/ + \Omega(I)\pdv{\rho_0}{\phi}\/ + \epsilon^2\{\langle\xi(t)\rho_1\rangle, \ham_1\} = 0,.
 	\label{eq:dimo_media}
@@ -168,11 +170,11 @@ This change of variables allows us to group the last equation in the form
 \begin{equation}
 	\dv{}{\tau}\/\rho_1(\phi - \Omega \tau, I; t - \tau) = \xi(t- \tau)\{\rho_0, \ham_1\}(\phi - \Omega \tau, I; t - \tau)\,.
 \end{equation}
-If we now integrate this last equation from \(\tau = 0\) to \(\tau = t\), we reach the following expression
+If we now integrate this last equation from \(\tau = 0\) to \(\tau = t\), we obtain the following expression
 \begin{equation}
 	\rho_1(\phi, I, t) = -\int_0^t\{\rho_0, \ham_1\}(\phi - \Omega \tau, I, t - \tau)\xi(t-\tau)\,\mathrm{d}\tau\,,
 \end{equation}
-where we took advantage of the fact that \(\rho_1(\phi, I; 0)=0\). If we now multiply both members by \(\xi(t)\), and compute the average over all the noise realizations, we have, for the case of a Wiener noise:
+where we took advantage of the fact that \(\rho_1(\phi, I; 0)=0\). If we now multiply both members by \(\xi(t)\), and compute the average over all noise realisations, we have, for the case of a Wiener noise:
 \begin{equation}
 	\langle \xi(t)\rho_1(\phi, I; t) \rangle = -\frac{1}{2}\sigma^2 \{\rho_0, \ham_1\}(\phi, I; t)\,.
 \end{equation}
@@ -182,7 +184,7 @@ Finally, if we insert this last result into Eq.~\eqref{eq:dimo_media}, we obtain
  	\pdv{\rho_0}{t}\/ + \Omega (I) \pdv{\rho_0}{\phi}\/ = \frac{\epsilon^2 \sigma^2}{2}\{\{\rho_0, \ham_0\}, \ham_0\}.
 \end{equation}
 
-If we have that the relaxation timescale of the angle is faster than the action diffusion timescale, we can say, with good approximation, that \(\rho=\rho(I,t)\) does not depend on the angle variable \(\phi\). With this motivation, we can expand the double Poisson bracket expression, which reads
+If we see that the relaxation timescale of the angle is faster than the diffusion timescale of the action, we can say, with good approximation, that \(\rho=\rho(I,t)\) does not depend on the angle variable \(\phi\). With this motivation, we can expand the double Poisson bracket expression, which reads
 \begin{equation}
 	\{\{\rho_0, \ham_0\}, \ham_0\} = \pdv{}{I}\/\left[\left(\pdv{\ham_1}{\phi}\/\right)^2 \pdv{\rho_0}{I}\/\right] - \pdv{}{\phi}\/\left[\pdv{\rho_0}{I}\/\pdv{\ham_1}{\phi}\/\pdv{\ham_1}{I}\/\right]\,,
 \end{equation}
@@ -190,17 +192,17 @@ and take the angular average of this last equation. The second term in the r.h.s
 
 \subsection{Averaging principle for generic stochastic Hamiltonians}
 
-We now generalize this last result to stochastically perturbed Hamiltonian systems at higher dimensions. Let us start by considering a generic Hamiltonian system
+We now generalise this last result to stochastically-perturbed Hamiltonian systems with higher dimensions. Let us start by considering a generic Hamiltonian system
 \begin{equation}
 	\ham = \ham_0(I) + \xi(t)\ham_1(\phi, I)\,,
 \end{equation}
-where \((\phi, I)\) are now, respectively, variables in $\mathbb{T}^n$ and $\mathbb{R}^n$ with $n>1$, and the noise realization \(\xi(t)\) depends on the initial condition of the orbit.
+where \((\phi, I)\) are now, respectively, variables in $\mathbb{T}^n$ and $\mathbb{R}^n$ with $n>1$, and the noise realisation \(\xi(t)\) depends on the initial condition of the orbit.
 
 We now introduce the slow variable
 \begin{equation}
 	\phi = \phi - \Omega(I)t\,,
 \end{equation}
-where \(\Omega(I) = \frac{\partial \ham_0}{\partial I}(I)\). This leads us the new Hamiltonian
+where \(\Omega(I) = \frac{\partial \ham_0}{\partial I}(I)\). This leads us to the new Hamiltonian
 \begin{equation}
 	\ham = \xi(t)\ham_1(\phi+\Omega(I)t,I)\,,
 \end{equation}
@@ -209,7 +211,7 @@ via the generating function
 	F(\phi,I) = \phi I - \ham_0(I)t\,.
 \end{equation}
 
-To find an approximate solution of the stochastic dynamic, we can consider the evolution of the angle-action variables for a time \(T\gg \lambda\). From the new Hamiltonian we now have
+To find an approximate solution of the stochastic dynamic, we can consider the evolution of the action-angle variables for a time \(T\gg \lambda\). From the new Hamiltonian we now have
 \begin{equation}
 	\begin{aligned}
 		\Delta\phi_j(T) &= \int_0^T\pdv{\ham_1}{I_j}\/(\phi+\Omega(I)t, I)\xi(t)\,\mathrm{d}t -\\
@@ -226,23 +228,23 @@ We now focus our attention on the second integral in the expression of \(\Delta\
 	\simeq \pdv{\Omega_k}{I_j}\/\bigg[T\int_0^T\pdv{\ham_1}{\phi_k}\/(\phi+\Omega(I)t,I)\xi(t)\,\mathrm{d}t\, - \\
 	- \int_0^T\int_0^t\pdv{\ham_1}{\phi_j}\/(\phi+\Omega(I)s, I)\xi(s)\,\mathrm{d}s\,\mathrm{d}t\bigg]\,,
 \end{multline}
-from here, we can combine the resulting two integrals together and replace their arguments using the expression for $\Delta I_j(T)$ given in Eq.~\eqref{eq:averaging-generic-hams}, and obtain
+from this, we can combine the resulting two integrals together and replace their arguments using the expression for $\Delta I_j(T)$ given in Eq.~\eqref{eq:averaging-generic-hams}, and obtain
 \begin{equation}
 	\int_0^T t\pdv{\ham_1}{\phi_k}\/(\phi+\Omega(I)t,I)\pdv{\Omega_k}{I_j}\xi(t)\,\mathrm{d}t \simeq \pdv{\Omega_k}{I_j}\int_0^T[\Delta I_k(T)-\Delta I_k(t)]\,\mathrm{d}t\,.
 \end{equation}
-This implies that, if the action dynamics can be considered a stationary process, the main contribution to the angular dynamics is given by
+This implies that if the action dynamics can be considered a stationary process, the main contribution to the angular dynamics is given by
 \begin{equation}
 	\Delta \phi_j \simeq -\pdv{\Omega_k}{I_j}\int_0^T\Delta I_k(t)\,\mathrm{d}t\,.
 \end{equation}
 
 If the system is non-degenerate, % i.e.\ the matrix \(\partial\Omega_k/\partial I_j\) is not singular,
-the increment of $\phi$ are the integral of the increments of $I$ and, as illustrated above in this Chapter, we expect consequently a faster relaxation to a uniform distribution. From these considerations we have that, when considering the evolution of $I$, we can approximate the $\phi$ distribution with a uniform one. If we now expand the expression of $\Delta I_j$ up to terms of order \(\mathcal{O}(\norm{\ham_1}^2)\), we obtain the following:
+the increment of $\phi$ is the integral of the increments of $I$ and, as illustrated above in this chapter, we expect consequently a faster relaxation to a uniform distribution. From these considerations we find that, when considering the evolution of $I$, we can approximate the $\phi$ distribution with a uniform one. If we now expand the expression of $\Delta I_j$ up to terms of order \(\mathcal{O}(\norm{\ham_1}^2)\), we obtain the following:
 \begin{multline}
 	\Delta I_j = \int_0^T \pdv{\ham_1}{\phi_j}\xi(s)\,\mathrm{d}s + \int_0^T\int_0^t \pdv{\ham_1}{I_k}{\phi_j}\pdv{\ham_1}{\phi_k}\xi(t)\xi(s)\,\mathrm{d}s\,\mathrm{d}t - \\
 	- \int_0^T\int_0^t\pdv{\ham_1}{\phi_k}{\phi_j}\left[\pdv{\ham_1}{I_k}-\pdv{\Omega}{I_k}\pdv{\ham_1}{\phi_k}t\right]\xi(t)\xi(s)\,\mathrm{d}s\,\mathrm{d}t\,.
 \end{multline}
 
-If then we assume that the distribution of \(\phi\) is uniform, we can average on both the noise realizations and on $\phi$. We then can consider the average of the stochastic dynamics of \(I\), which now reads
+If then we assume that the distribution of \(\phi\) is uniform, we can average on both the noise realizations and on $\phi$. We can then consider the average of the stochastic dynamics of \(I\), which now reads
 \begin{equation}
 	\begin{aligned}
 		\langle\Delta I_j\rangle_\phi &= \pdv{}{I_k}\int_0^T\int_0^t \left\langle\pdv{\ham_1}{\phi_j}\pdv{\ham_1}{\phi_k}\right\rangle e^{-(t-s)/\lambda}\,\mathrm{d}s\,\mathrm{d}t\\
@@ -260,7 +262,7 @@ We can then describe the action dynamics as a stochastic process of the form
 	\Delta I_j = -\sqrt{T\lambda\norm{\ham_1}^2}\sqrt{\left\langle\pdv{\hat\ham_1}{\phi_j}\pdv{\hat\ham_1}{\phi_l}\right\rangle}\,\hat{\xi}_l + \frac{T\lambda\norm{\ham_1}^2}{2}\pdv{}{I_k}\left\langle\pdv{\hat\ham_1}{\phi_j}\pdv{\hat\ham_1}{\phi_k}\right\rangle\,
 	\label{eq:generic-ham-average-almost}
 \end{equation}
-where \(\hat{\ham_1}=\ham_1/\norm{\ham_1}\) and \(\hat{\xi}_l\) are identical independent distributed random variables with zero mean value and unitary variance. We can interpret the quantity \(T\lambda\norm{\ham_1}^2\) as the time step \(\Delta\tau\) of the diffusion time, we highlight however that it has a dimension of an action. Consequently, we then require that \(T\) should be sufficiently long in order to consider the angles relaxing to a uniform distribution and the noise decorrelated, but \(\norm{\ham_1}^2\) has to be so small that the actions do not evolve in a time \(T\). 
+where \(\hat{\ham_1}=\ham_1/\norm{\ham_1}\) and \(\hat{\xi}_l\) are identical independent distributed random variables with zero mean value and unit variance. We can interpret the quantity \(T\lambda\norm{\ham_1}^2\) as the time step \(\Delta\tau\) of the diffusion time, we highlight, however, that it has a dimension of an action. Consequently, we then require that \(T\) should be sufficiently long in order to consider angles relaxing to a uniform distribution and noise decorrelated, but \(\norm{\ham_1}^2\) has to be so small that actions do not evolve in a time \(T\). 
 
 If these conditions are maintained, introducing the notation \(\tau = \lambda\norm{\ham_1}^2 t\), we have that Eq.~\eqref{eq:generic-ham-average-almost} is the approximation of the solution of the stochastic differential equation
 \begin{equation}
@@ -288,7 +290,7 @@ If these conditions are maintained, introducing the notation \(\tau = \lambda\no
 
 % The assumption on the fast relaxation of the angles \(\phi\), necessary to derive the equation~\eqref{eq:final-ham-approximation}, can be satisfied if the estimate \(\norm{\ham_1}^2 \ll \lambda^{-1}\) holds for the decorrelation timescale of the random fluctuations. This condition is necessary to describe the stochastic Hamiltonian dynamics as a diffusion process and it implies that the approach is consistent even if the Ljapounov exponent, characterizing the chaotic region, is small.
 
-From this, we have that the evolution of the distribution function \(\rho(I,\tau)\) at the diffusion timescale is well approximated by the solution of the Fokker-Planck equation
+From this, we find that the evolution of the distribution function \(\rho(I,\tau)\) at the diffusion timescale is well approximated by the solution of the Fokker-Planck equation
 \begin{equation}
 	\pdv{\rho}{\tau}=\frac{1}{2}\pdv{}{I_j}\left\langle\pdv{\hat\ham_1}{\phi_j}\pdv{\hat\ham_1}{\phi_k}\right\rangle\pdv{}{I_k}\rho(I,\tau)
 \end{equation}
@@ -307,7 +309,7 @@ where the diffusion coefficient $D_{j,k}(I)$ reads
     D_{j,k}(I) = \left\langle\pdv{\hat\ham_1}{\phi_j}\pdv{\hat\ham_1}{\phi_k}\right\rangle \,.
 \end{equation}
 
-In the context of accelerator physics, we have seen how the betatron motion can be described in terms of two action variables $(I_x, I_y)$, which define the two non-linear invariants for the two separate transverse planes. However, if we make the assumption that such a diffusive process takes place mainly along a one-dimensional direction, we can justify a 1\textsc{d} approach and reduce Eq.~\eqref{eq:final-fp} to the one degree of freedom case.
+In the context of accelerator physics, we have seen how the betatron motion can be described in terms of two action variables $(I_x, I_y)$, which define the two non-linear invariants for the two separate transverse planes. However, if we make the assumption that such a diffusive process takes place mainly along a one-dimensional direction, we can justify a 1\textsc{d} approach and reduce Eq.~\eqref{eq:final-fp} to the one-degree-of-freedom case.
 
 With the generic Hamiltonian notation, the resulting Fokker-Planck equation reads
 \begin{equation}
@@ -321,16 +323,17 @@ with the diffusion coefficient given by
 If we want to work with regular time units $t$, we can consider this form of Fokker-Plank equation:
 \begin{equation}
     \pdv{\rho}{t}=\frac{\epsilon^2}{2}\pdv{}{I_j} D(I) \pdv{}{I_k}\rho(I,t)\,,
+    \label{eq:fp}
 \end{equation}
 where now $\epsilon^2 = \lambda\norm{\ham_1}^2$ represents the timescale constant of the diffusive process.
 
-We are now interested in having an effective generic functional form for $D(I)$. To archive this, we follow the construction presented in~\cite{Bazzani:2019lse}, and references therein.
+Now we are interested in having an effective generic functional form for $D(I)$. To archive this, we follow the construction presented in~\cite{Bazzani:2019lse}, and references therein.
 
-To estimate the norm of $\ham_1$, we have that perturbation theory suggests a possible estimate based on the asymptotic character of the perturbation series. Assuming that there are no low-order resonances in the phase-space, we can rely on the progressive expansion of the perturbative series, which gives us the following generic estimate~\cite{Bazzani:1990aa}:
+To estimate the norm of $\ham_1$, we have that perturbation theory suggests a possible estimate based on the asymptotic character of the perturbation series. Assuming that there are no low-order resonances in the phase space, we can rely on the progressive expansion of the perturbative series, which gives us the following generic estimate~\cite{Bazzani:1990aa}:
 \begin{equation}
     \norm{R_n(I)} \propto (n!)^\kappa \left(\frac{I}{I_\ast}\right)^{n/2}\,,
 \end{equation}
-where the factorial term takes into account the number of contributions due to the structure of the functional equations defining the perturbation series, the exponent $\kappa$ is related to the number of degrees of freedom, and the parameter $I_\ast$ represents an apparent radius of convergence of the perturbative series, and corresponds to the amplitude above which fast escape to infinity occurs.
+where the factorial term takes into account the number of contributions due to the structure of the functional equations defining the perturbation series, the exponent $\kappa$ is related to the number of degrees of freedom, and the parameter $I_\ast$ represents an apparent radius of convergence of the perturbative series and corresponds to the amplitude above which fast escape to infinity occurs.
 
 For each $I$, we then have an optimal order for the Normal Form remainder defined by the relations
 \begin{equation}
@@ -346,7 +349,7 @@ From this optimal remainder for the perturbation series, which can also be used 
 \begin{equation}
     \left\|\ham_1(\phi, I)\right\| \simeq \exp \left[-\left(\frac{I_\ast}{I}\right)^{1/2\kappa}\right] \,.
 \end{equation}
-This estimate, enables us to define the following functional form for the diffusion coefficient
+This estimate enables us to define the following functional form for the diffusion coefficient
 \begin{equation}
     D(I) = c \exp\left[-2\left(\frac{I_\ast}{I}\right)^{1/2\kappa}\right]\,,
     \label{eq:diffusion}
@@ -355,15 +358,15 @@ where $c$ is a normalisation constant evaluated according to
 \begin{equation}
     c \int_0^{I_\text{a}} D(I)\,\mathrm{d}I = 1 \,,
 \end{equation}
-so that $D(I)$ is normalised over the boundaries considered for the Fokker-Planck system, as $I_\text{a}$ represents the absorbing boundary condition, i.e.\ a barrier over which we can consider a particle as ``lost''. With this notation, the timescale of the process is entireley determined by $\epsilon^2$, however, variation of this notation can be freely considered.
+so that $D(I)$ is normalised over the boundaries considered for the Fokker-Planck system, as $I_\text{a}$ represents the absorbing boundary condition, i.e.\ a barrier over which we can consider a particle as ``lost''. With this notation, the timescale of the process is completely determined by $\epsilon^2$, however, variation of this notation can be freely considered.
 
 Let us now consider this last form of Fokker-Planck equation, along with an absorbing boundary condition at $I_{\mathrm{a}}$, i.e.\ the phase-space limit beyond which an initial condition is considered lost. Note that $D(I)$ and $\rho$ have dimensions $[I^2t^{-1}]$ and $[I^{-1}]$, respectively.
 
-In Fig.~\ref{fig:1} (top and centre), we consider the behaviour of $D(I)$ from Eq.~\eqref{eq:diffusion} for some values of $\kappa$ and for $\epsilon^2 = 1$. We can distinguish three regions for this type of function: $(i)$ a stable-core region for $I \ll I_\ast$, for which $D(I)$ has values decreasing to zero exponentially fast; $(ii)$ a ramp-up region for $I \lesssim I_\ast$, where $D(I)$ starts to have non-negligible values and changes from an exponential growth to an almost linear one; $(iii)$ a region for $I >  I_\ast$, where $D(I)$ features an almost linear growth (in logarithmic scale a saturation appears). These three regions are more or less distinguishable depending on the value of $\kappa$. 
+In Fig.~\ref{fig:1} (top and centre), we consider the behaviour of $D(I)$ from Eq.~\eqref{eq:diffusion} for some values of $\kappa$ and for $\epsilon^2 = 1$. We can distinguish three regions for this type of function: $(i)$ a stable core region for $I \ll I_\ast$, for which $D(I)$ has values decreasing to zero exponentially fast; $(ii)$ a ramp-up region for $I \lesssim I_\ast$, where $D(I)$ starts to have non-negligible values and changes from an exponential growth to an almost linear one; $(iii)$ a region for $I >  I_\ast$, where $D(I)$ features an almost linear growth (in logarithmic scale a saturation appears). These three regions are more or less distinguishable depending on the value of $\kappa$. 
 
-In Fig.~\ref{fig:1} (bottom) we also display the result of the numerical integration of Eq.~\eqref{eq:fp} for some values of $\kappa$, performed on an initial distribution $\rho_0(I)=1$ with a Crank-Nicolson scheme~\cite{crank1947practical} (see Appendix~\ref{app_sec:numerical_integration_with_crank_nicolson} for some detail on the integration scheme used in our studies).
+In Fig.~\ref{fig:1} (bottom), we also display the result of the numerical integration of Eq.~\eqref{eq:fp} for some values of $\kappa$, performed on an initial distribution $\rho_0(I)=1$ with a Crank-Nicolson scheme~\cite{crank1947practical} (see Appendix~\ref{app_sec:numerical_integration_with_crank_nicolson} for some detail on the integration scheme used in our studies).
 %, using $\varepsilon^2 = 1$ in all numerical simulations performed, and setting the absorbing boundary condition at $I/I_\ast=1.5$. 
-It is also possible to observe in the shape of the distribution function a stable-core region, corresponding to $I/I_\ast \ll 1$, where $D(I)$ starts having values very close to zero, a fast decrease region and, finally, a saturation region, for $I/I_\ast = 1$ and beyond, where $\rho(I, t)$ assumes small values.
+It is also possible to observe in the shape of the distribution function a stable core region, corresponding to $I/I_\ast \ll 1$, where $D(I)$ starts having values very close to zero, a fast decrease region and, finally, a saturation region, for $I/I_\ast = 1$ and beyond, where $\rho(I, t)$ assumes small values.
 
 \begin{figure*}[htp]
     \centering
@@ -376,12 +379,12 @@ It is also possible to observe in the shape of the distribution function a stabl
 
 \section{State of the art in diffusion measurements}
 
-The concept of using a diffusive model to describe the behavior of beam halo and characterise the transverse loss rate is not a novel concept, as archiving a valid modeling of such phenomenon can lead to a better characterisation of long term losses and beam-halo formation.
+The concept of using a diffusive model to describe the behaviour of beam halo and characterise the transverse loss rate is not a novel concept, as archiving a valid modelling of such phenomenon can lead to a better characterisation of long-term losses and beam-halo formation.
 
-A rather broad literature exist on the topic of diffusive models applied on accelerator machines, see, e.g.\ Refs.~{\cite{Burnod:205343,Meddahi:223301,PhysRevLett.68.33,gerasimov1992applicability,zimmermann1994transverse,PhysRevLett.77.1051,PhysRevSTAB.5.074001,flilleriii:pac03-rpag004} and references therein. %TODO:expand
+A rather broad literature exists on the topic of diffusive models applied on accelerator machines, see, e.g.\ Refs.~{\cite{Burnod:205343,Meddahi:223301,PhysRevLett.68.33,gerasimov1992applicability,zimmermann1994transverse,PhysRevLett.77.1051,PhysRevSTAB.5.074001,flilleriii:pac03-rpag004} and references therein. %TODO:expand
 
-An interesting line of research, which provided a valid approach for gathering local information about the value of the diffusion coefficient, is given by the usage of collimator scans presented in~\cite{MESS1994279}. Collimator scans can be used to probe the beam-halo dynamics and, in particular, to reconstruct the behaviour of the diffusion coefficient as a function of transverse amplitude~\cite{stancari2011diffusion,PhysRevSTAB.16.021003,PhysRevAccelBeams.23.044802}. The method of collimator scans has been intensively used at the LHC: it is based on small displacements of the jaws combined with the measurement of the beam losses. The displacements can be either inward or outward, and depending on the direction, the local losses feature different behaviour. The inspection of such features at different amplitudes finally provides local information about the diffusion coefficient.
+An interesting line of research, which provided a valid approach for gathering local information about the value of the diffusion coefficient, is given by the usage of collimator scans presented in~\cite{MESS1994279}. Collimator scans can be used to probe beam-halo dynamics and, in particular, to reconstruct the behaviour of the diffusion coefficient as a function of transverse amplitude~\cite{stancari2011diffusion,PhysRevSTAB.16.021003,PhysRevAccelBeams.23.044802}. The collimator scan method has been intensively used at the LHC: it is based on small displacements of the jaws combined with the measurement of the beam losses. The displacements can be either inward or outward, and depending on the direction, the local losses feature a different behaviour. Inspection of such features at different amplitudes finally provides local information on the diffusion coefficient.
 
-The latest diffusion measurements, based on~\cite{stancari2011diffusion} diffusive framework, were taken during LHC Run~2~\cite{Valentino:2280928}, and provided a consistent amound of collimator scan data which provided an overview of the halo diffusive phenomenology~\cite{PhysRevAccelBeams.23.044802}.  
+The latest diffusion measurements, based on~\cite{stancari2011diffusion} diffusive framework, were taken during LHC Run~2~\cite{Valentino:2280928}, and provided a consistent collection of collimator scan data that provided an overview of the halo diffusive phenomenology~\cite{PhysRevAccelBeams.23.044802}.  
 
 Finally, the framework on which this work is based on has been developed and proposed in~\cite{Bazzani:2019lse,bazzani2020diffusion}, where the long-term behaviour of the beam dynamics and particle losses in circular accelerators is described by means of a global diffusive model. In this framework, the evolution of the beam distribution is described by means of a Fokker-Planck equation, in which the diffusion coefficient represents the key quantity to describe the beam dynamics. An excellent agreement between the data collected and the predictions from the FP model, where the approach consists in fitting the values of the model parameters $I_\ast$ and $\kappa$ to the collected data, has been observed.
