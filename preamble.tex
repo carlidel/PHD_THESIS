@@ -334,3 +334,37 @@
 \usepackage{tocloft}
 \renewcommand{\cftdot}{\textcolor{unibo}{.}}
 \renewcommand{\cftchapaftersnum}{~\textcolor{unibo}{|}~}
+
+
+\def\mean#1{\langle \,#1\,\rangle}
+\def \ket#1{|{#1}\rangle}
+\def \bra#1{\langle{#1}|}
+\def \ketseq#1#2{|{#1}^{({#2})}\rangle	}
+\def \braseq#1#2{ \langle{#1}^{({#2})} |}
+\def \scal#1#2{\langle{#1}|{#2}\rangle}
+\def \trace#1{ \hbox{Tr}({#1})	}
+\def  \matel#1#2#3{ \langle {#1}|{#2}|{#3} \rangle  }
+%------------------------------------------------------------------------
+%	 Parentesi varie
+%------------------------------------------------------------------------
+\def \parton#1{\left({{#1}}\right)}
+\def \parqua#1{\left[{{#1}}\right]}
+\def \pargra#1{\left\{{{#1}}\right\}}
+\def \parbar#1{\left|{{#1}}\right|}
+\def \parbbar#1{\left | { \left |{{#1}}\right| } \right | }
+\def \parmean#1{\left\langle{{#1}}\right\rangle}
+%
+%-----------------------------------------------------------------------
+%      Derivate normali e parziali
+%-----------------------------------------------------------------------
+\def \der#1#2{{d{#1}\over d{#2}}}
+\def \dert#1{{d{#1}\over dt}}
+\def \derpt#1{{\partial{#1}\over \partial t}}
+\def \derp#1#2{{\partial{#1} \over \partial{#2} }}
+\def \derpsec#1#2{{\partial^2{#1} \over \partial{ {#2} ^2} }}
+\def \Dert {{d \over dt}}
+\def \Derpt {{\partial \over \partial t}}
+\def \Derp#1{{\partial \over \partial{#1}} }
+\def \Der#1{{d \over d{#1}} }
+\def \dersect#1{{d^2{#1} \over dt^2 }}
+\def \disp{\displaystyle}
