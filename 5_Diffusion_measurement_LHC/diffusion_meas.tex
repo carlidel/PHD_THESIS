@@ -9,7 +9,7 @@ The LHC layout~\cite{Bruning:782076} can be summarised in a geometrical scheme c
     \centering
     \includegraphics[width=0.49\textwidth]{5_Diffusion_measurement_LHC/figs/layout.png}
     \includegraphics[width=0.49\textwidth]{5_Diffusion_measurement_LHC/figs/coll_scheme.png}
-    \caption{Left, layout of the LHC. The ring follows an eightfold symmetry. Each octant hosts a Long Straight Sector (LSS) surrounded by two Dispersion Suppressor regions (DSR and DSL). Each octant is connected by an arc (ARC). (From Ref.~\cite{Bruning:782076}). Right, LHC collimation system layout in blue and red for Beam~1 and Beam~2, respectively. (From Ref.~\cite{})}
+    \caption{Left, layout of the LHC. The ring follows an eightfold symmetry. Each octant hosts a Long Straight Sector (LSS) surrounded by two Dispersion Suppressor regions (DSR and DSL). Each octant is connected by an arc (ARC). (From Ref.~\cite{Bruning:782076}). Right, LHC collimation system layout in blue and red for Beam~1 and Beam~2, respectively. (From Ref.~\cite{azzopardi:crosstalk})}
     \label{fig:lhc_layout}
 \end{figure}
 
@@ -44,16 +44,16 @@ These particles, scattered by the TCPs, form the secondary halo, which is then t
 
 Such hierarchy offers various advantages over a simple single-stage collimation system. It ensures that particles that have been incorrectly outscattered at larger amplitudes and modified energies, constituting the so-called \textit{secondary beam-halo}, will be mostly absorbed by the next stages of collimation and not by other fragile parts of the machine. Moreover, the interaction of beam halo particles with the primary collimator produces hadronic showers whose products can reach the cold magnets downstream of the cleaning region, possibly leading to unwanted quenches.
 
-In IR7, there are 3 sets of collimators that cover the horizontal, vertical, and skew planes, as they have been shown to provide satisfactory cleaning~\cite{}. The collimator hierarchies for these planes are respectively denominated by the letters C, D, and B. That is, the horizontal target primary collimator is referred to as TCP.C. In IR3, the dispersion is only in the horizontal plane and only one set of collimators is installed for performing the longitudinal cleaning.
+In IR7, there are 3 sets of collimators that cover the horizontal, vertical, and skew planes, as they have been shown to provide satisfactory cleaning~\cite{Jeanneret:368725}. The collimator hierarchies for these planes are respectively denominated by the letters C, D, and B. That is, the horizontal target primary collimator is referred to as TCP.C. In IR3, the dispersion is only in the horizontal plane and only one set of collimators is installed for performing the longitudinal cleaning.
 
-A multi-stage collimation system allows to distribute the beam loads over a large controlled area. However, it also leads to a significant increase in the machine impedance~\cite{}, i.e.\ the level of self-interaction of the charged particle beam, mediated by the machine environment~\cite{}, which can be an important cause of beam instability and losses~\cite{}. Collimators are among the main sources of machine impedance, as their resistive wall tends to be the closest element to the beam. Therefore, a multi-stage collimation system has to be configured so that it balances beam loads distribution and impedance contributions efficiently.
+A multi-stage collimation system allows to distribute the beam loads over a large controlled area. However, it also leads to a significant increase in the machine impedance, i.e.\ the level of self-interaction of the charged particle beam, mediated by the machine environment~\cite{Wiedemann2007}, which can be an important cause of beam instability and losses. Collimators are the single highest contributors of the LHC impedance at top energy~\cite{Mounet:1451296}, as their resistive wall tends to be the closest element to the beam. Therefore, a multi-stage collimation system has to be configured so that it balances beam loads distribution and impedance contributions efficiently. Active studies are ongoing to optimize the collimation system in order to minimize the beam losses and the machine impedance, see, e.g.\ Ref.~\cite{Antipov:2648423}.
 
-The secondary particle showers represent the point of observation for measuring the amount of primary particles absorbed by the TCPs. To quantify this amount, the LHC is equipped with multiple ionisation chambers, which make up the beam loss monitor (BLM) system~\cite{blmSystem1, blmSystem2}. The charged particles that pass through the ionisation chambers finally provide a measure of \SI{}{Gy \per s}, which can be converted into a corresponding measure of \SI{}{protons \per s} lost using a measured calibration factor, evaluated by controlled collimator-induced losses~\cite{arek}, which are also quantified in parallel by the \textit{DC Beam Current Transformer} (DCBCT)~\cite{Denard:1213275}, which measures the number of protons in the circulating beam by measuring the magnetic field induced by the moving beam. A picture of an LHC BLM is presented in Fig.~\ref{fig:blm}. The calibrated BLM data are the precise loss signal that we finally expect to use for reconstructing the diffusion behaviour in the transverse plane.
+The secondary particle showers represent the point of observation for measuring the amount of primary particles absorbed by the TCPs. To quantify this amount, the LHC is equipped with multiple ionization chambers, which make up the beam loss monitor (BLM) system~\cite{blmSystem1, blmSystem2}. The charged particles that pass through the ionization chambers finally provide a measure of \SI{}{Gy \per s}, which can be converted into a corresponding measure of \SI{}{protons \per s} lost using a measured calibration factor, evaluated by controlled collimator-induced losses~\cite{arek}, which are also quantified in parallel by the \textit{DC Beam Current Transformer} (DCBCT)~\cite{Denard:1213275}, which measures the number of protons in the circulating beam by measuring the magnetic field induced by the moving beam. A picture of an LHC BLM is presented in Fig.~\ref{fig:blm}. The calibrated BLM data are the precise loss signal that we finally expect to use for reconstructing the diffusion behaviour in the transverse plane.
 
 \begin{figure}[hpt]
     \centering
     \includegraphics[width=0.75\textwidth]{5_Diffusion_measurement_LHC/figs/blm.png}
-    \caption{Top picture, ionisation chambers of the LHC BLM system, mounted on the side of the LHC Magnets. Bottom picture, inner structure of a BLM ionisation chamber. (From Ref.~\cite{blmonline})}
+    \caption{Top picture, ionization chambers of the LHC BLM system, mounted on the side of the LHC Magnets. Bottom picture, inner structure of a BLM ionization chamber. (From Ref.~\cite{blmonline})}
     \label{fig:blm}
 \end{figure}
 %
@@ -63,7 +63,7 @@ Between 2016 and 2018, collimator scans were performed at the CERN LHC with phys
 
 The scan was performed after executing a beam-based alignment~\cite{valentino2012semiautomatic} of the collimator, which is a procedure in which the TCP jaws are progressively positioned closer to the beam until the halo is touched. By performing such a procedure, one is sure that the centre of the collimator gap is precisely positioned around the local closed orbit.
 
-The measurement is performed with the local beam loss monitoring (BLM) system, and is provided in unit of \SI{}{Gy \per s} with \SI{1}{Hz} sampling rate, processed over different \textit{Running Sums} (RS), evaluated by a real-time processing system implemented on FPGA~\cite{}. In this implementation, a time window is moved over the signal sampled by the device, and the maximum peak measured in the time window is considered the final measurement, which is finally reported in \SI{}{Gy \per s}, RSs range from a minimum of \SI{40}{\micro s} to a maximum of \SI{83.89}{s}. A list of the various RS defined in the measurement system is presented in Table~\ref{tab:rs_scheme}.
+The measurement is performed with the local beam loss monitoring (BLM) system, and is provided in unit of \SI{}{Gy \per s} with \SI{1}{Hz} sampling rate, processed over different \textit{Running Sums} (RS), evaluated by a real-time processing system implemented on FPGA~\cite{4179157}. In this implementation, a time window is moved over the signal sampled by the device, and the maximum peak measured in the time window is considered the final measurement, which is finally reported in \SI{}{Gy \per s}, RSs range from a minimum of \SI{40}{\micro s} to a maximum of \SI{83.89}{s}. A list of the various RS defined in the measurement system is presented in Table~\ref{tab:rs_scheme}.
 
 \begin{table}[hpt]
     \centering
@@ -79,7 +79,7 @@ The measurement is performed with the local beam loss monitoring (BLM) system, a
         & FPGA/VME 
         & \makecell{Measurement\\and Logging DB\\(rate: \SI{1}{Hz})\\$[$\SI{}{Gy \per s}$]$}\\
         \midrule
-        RS01 & $1$ & $0.04$ & $1$ & $0.04$ & \multirow{8}{*}{\makecell{Maximum of\\sum values\\observed\\from the\\last\\readout}} & \multirow{8}{*}{\makecell{Maximum of\\sums\\normalised\\to window\\length}} \\
+        RS01 & $1$ & $0.04$ & $1$ & $0.04$ & \multirow{8}{*}{\makecell{Maximum of\\sum values\\observed\\from the\\last\\readout}} & \multirow{8}{*}{\makecell{Maximum of\\sums\\normalized\\to window\\length}} \\
         RS02 & $1$ & $0.08$ & $1$ & $0.04$ & & \\
         RS03 & $2$ & $0.32$ & $1$ & $0.04$ & & \\
         RS04 & $8$ & $0.64$ & $1$ & $0.04$ & & \\
@@ -88,14 +88,14 @@ The measurement is performed with the local beam loss monitoring (BLM) system, a
         RS07 & $256$ & $81.92$ & $64$ & $2.56$ & & \\
         RS08 & $16384$ & $655.36$ & $64$ & $2.56$ & & \\
         \midrule
-        RS09 & $32768$ & $1310.72$ & $2048$ & $81.92$ & \multirow{4}{*}{\makecell{\footnotesize Last calculated\\ \footnotesize sums observed\\\footnotesize in the last\\\footnotesize readout}} & \multirow{4}{*}{\makecell{\footnotesize Last calculated\\\footnotesize sum normalised\\\footnotesize to window length}} \\
+        RS09 & $32768$ & $1310.72$ & $2048$ & $81.92$ & \multirow{4}{*}{\makecell{\footnotesize Last calculated\\ \footnotesize sums observed\\\footnotesize in the last\\\footnotesize readout}} & \multirow{4}{*}{\makecell{\footnotesize Last calculated\\\footnotesize sum normalized\\\footnotesize to window length}} \\
         RS10 & $131072$ & $5242.88$ & $2048$ & $81.92$ & & \\
         RS11 & $524288$ & $20971.52$ & $16384$ & $655.36$ & & \\
         RS12 & $2097152$ & $83886.08$ & $16384$ & $655.36$ & & \\
     \bottomrule
     \end{tabular}
     }
-    \caption{Specifications of the various Running Sums (RSs) that are defined in the FPGA based data gathering system of the BLMs. (Ref.~\cite{})}
+    \caption{Specifications of the various Running Sums (RSs) that are defined in the FPGA based data gathering system of the BLMs. (Ref.~\cite{rsdeftable})}
     \label{tab:rs_scheme}
 \end{table}
 
@@ -108,11 +108,11 @@ The measurement is performed with the local beam loss monitoring (BLM) system, a
 
 The IR7 TCPs dedicated to the vertical plane and to the horizontal plane (namely, TCP.D and TCP.C) were used to perform a so-called collimator scan of the beam halo on both Beam~1 and Beam~2, performing a sequence of inward steps, with pauses of a few seconds between each step, followed by a train of outward steps, with pauses ranging from $\sim30$ seconds to almost two minutes between steps. The scraping was first performed on the vertical plane and then on the horizontal plane. 
 
-During the scraping, the BLM data was recorded by the ionisation chambers placed after the collimator hierarchy. Two dedicated sets of BLMs are placed for the two separate planes and are considered in our analysis depending on the plane that is undergoing the scraping. In Fig.~\ref{fig:raw_data} we present the data collected during fill 6052 of type RS06, i.e.\ sampling the maximum spike measured by the BLM over a time window of \SI{10.24}{ms}. Here, the collimator jaw positions are reported in millimetres from the centre of the beam, measured after the beam-based alignment. The two different BLM planes reading is reported.
+During the scraping, the BLM data was recorded by the ionization chambers placed after the collimator hierarchy. Two dedicated sets of BLMs are placed for the two separate planes and are considered in our analysis depending on the plane that is undergoing the scraping. In Fig.~\ref{fig:raw_data} we present the data collected during fill 6052 of type RS06, i.e.\ sampling the maximum spike measured by the BLM over a time window of \SI{10.24}{ms}. Here, the collimator jaw positions are reported in millimetres from the centre of the beam, measured after the beam-based alignment. The two different BLM planes reading is reported.
 
 It should be stressed that these collimator scans were not performed using an optimal protocol such as that proposed in the previous chapter. In fact, complete inward scans, followed by outward scans, were used instead of a sequence of in/out steps. Furthermore, jaw movements were not always performed leaving enough time for the system to relax to its equilibrium state. This can be observed from the fact that, between most outward steps, the loss signal still has a non-negligible positive first derivative when the next collimator outward step is performed, suggesting that a recovery current process was still ongoing when the jaw was moved, as the expected global current process has negative or close to zero first derivative. This suggests that an ideal resting time between steps was not archived before the next collimator step.
 
-Due to these two characteristics of the measurement protocol used during the collimation scan, some of the working hypothesis made in the previous chapter, which ultimately enable the reconstruction of $D(I)$ by fitting the normalised recovery current, may not hold. More specifically, we lack the upper bound to reconstruct the global current, and we cannot be sure that the beam tail distribution after an outward step follows Eq.~\eqref{eq:outward_difference}.
+Due to these two characteristics of the measurement protocol used during the collimation scan, some of the working hypothesis made in the previous chapter, which ultimately enable the reconstruction of $D(I)$ by fitting the normalized recovery current, may not hold. More specifically, we lack the upper bound to reconstruct the global current, and we cannot be sure that the beam tail distribution after an outward step follows Eq.~\eqref{eq:outward_difference}.
 
 To tackle these characteristics and shortcomings of the data, we had to consider only a subset of the data and modify some of the elements of the fitting procedure. 
 
@@ -127,7 +127,7 @@ In Fig.~\ref{fig:first} we present the portion of the data collected in Fill 605
     \label{fig:first}
 \end{figure}
 
-The measured collimator jaw position is converted to measured beam sigma units $\sigma$ using the nominal optical parameters and the measured value of the beam emittance, taking into account the position of the beam centre. The nominal optical parameters were considered as the measured $\beta$-beating level, i.e.\ the difference between the measured optic functions and the expected nominal values, was at the few percent level as expected from regular LHC operation~\cite{}.  To convert the \SI{}{Gy \per s} units of the BLM signal to \SI{}{protons \per s}, we used a calibration factor $F$~\cite{arek} dependent on the TCP jaw position. This calibration factor $F$ is calculated from the BLM loss data and the intensity lost recorded by the DCBCTs during the collimator steps. The coefficient reads 
+The measured collimator jaw position is converted to measured beam sigma units $\sigma$ using the nominal optical parameters and the measured value of the beam emittance, taking into account the position of the beam centre. The nominal optical parameters were considered as the measured $\beta$-beating level, i.e.\ the difference between the measured optic functions and the expected nominal values, was at the few percent level as expected from regular LHC operation~\cite{PhysRevAccelBeams.20.054801}.  To convert the \SI{}{Gy \per s} units of the BLM signal to \SI{}{protons \per s}, we used a calibration factor $F$~\cite{arek} dependent on the TCP jaw position. This calibration factor $F$ is calculated from the BLM loss data and the intensity lost recorded by the DCBCTs during the collimator steps. The coefficient reads 
 \begin{equation}
     F = \left(-9.0\times10^{-14}\sigma + 6.2\times10^{-13}\right)^{-1} \,,
 \end{equation}
