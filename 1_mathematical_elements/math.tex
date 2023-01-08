@@ -5,28 +5,38 @@
 
 We start by recalling some of the fundamental concepts of Hamiltonian dynamics. This will also define the core elements of nomenclature and notation that will be used throughout this thesis. This theoretical recall mainly follows Ref.~\cite{Arnold:937549}.
 
-Let $(p_i(t),\,q_i(t))$ be a set of coordinates, and let $\ham(p_i,\, q_i,\, t)$ be a function, where $1\le i \le n$, the system is said to be \textit{Hamiltonian} if the following equations hold:
+Let $(\vb{q}(t),\vb{p}(t))$ be a set of coordinates in a 2$n$ dimensional phase space, and let $\ham(\vb{q},\vb{p},\, t)$ be a differentiable real function, a dynamical system is said to be \textit{Hamiltonian} if the following equations hold:
 %
 \begin{equation} 
 	%\begin{split}
-		\dot p_i = -\pdv{\ham}{q_i}\,,\qquad 		\dot q_i = \pdv{\ham}{p_i} \, .
+	\dot q_i = \pdv{\ham}{p_i}
+		\,,\qquad 		\dot p_i = -\pdv{\ham}{q_i} \, i=1,..,n.
 %	\end{split}
 	\label{hameq}
  \end{equation} 
 
-These equations are called \textit{Hamilton equations} with $\ham$ being the \textit{Hamiltonian} of the system under study. They are related to the Least Action Principle via the 1-form
+These equations are called \textit{Hamilton} or \textit{canonical} equations with $\ham$ being the \textit{Hamiltonian} of the system under study. They are related to a geometrical Least Action Principle via the differential 1-form in the extended $2n+1$-dimensional phase space 
 %
-\begin{equation} \omega = p_i \dd q_i -\ham \dd t \, .  \end{equation}
+\begin{equation} \omega = p_i \dd q_i -\ham \dd t \, .  
+\end{equation}
 
-In fact, the integral of the form on the trajectory $\vb{q}_0\to \vb{q}_1$ which is described by the motion of a particle in the time interval $[t_0,\,t_1]$ yields
+In fact, if one considers the differential of the 1-form
+\begin{equation}
+    \dd\omega= \dd p_i\wedge \dd q_i-\pdv{\ham}{q_i}\dd q_i \wedge \dd t-\pdv{\ham}{p_i} \dd p_i \wedge \dd t
+    \label{dome}
+\end{equation}
+one defines the vortex lines as the curves in the extended phase space whose tangent is parallel to the null eigenvector of the 2-form $\dd\omega$. Then it is possible to prove that the vortex lines $1$-form have one-to-one projection on the time axis that correspond to the orbits $\vb{q}(t)\, , \, \vb{p}(t)$ which solve the Hamilton equations, 
+
+\begin{comment}
+is described by the motion of a particle in the time interval $[t_0,\,t_1]$ yields
 \begin{equation}
     \int_{q_0=q(t_0)}^{q_1=q(t_1)} \qty(p_i \dd q_i - \ham \dd t) = \int_{t_0}^{t_1} \qty(p_i \dv{q_i}{t} - \ham)\dd t =  \int_{t_0}^{t_1} \mathcal{L} \dd t\,, 
 \end{equation}
 where $\mathcal{L}=p_i\dot q_i - \ham$ is the Lagrangian, obtained by the Legendre transformation of the Hamiltonian. 
-
+\end{comment}
 \subsection{Canonical transformations}
 
-The main advantage of having a Hamiltonian formulation of a system is the freedom in coordinates choice. Differently from a Lagrangian formulation, positions and momenta are independent and can be exchanged both in role or mixed to archive optimal formulations, all while the Hamiltonian equation maintains its form. Such changes in coordinates have, however, to maintain the fundamental property of the Hamiltonian equation defined in Eq.~\eqref{eq:hamem}, also referred to as \textit{symplectic conditions}.
+The main advantage of having a Hamiltonian formulation of a system is the greater freedom in coordinates choice in the phase space than the corresponding Lagrangian systems. Differently from a Lagrangian formulation, positions and momenta are independent and can be exchanged both in role or mixed to archive optimal formulations, all while the Hamiltonian equation maintains its form. Such changes in coordinates have, however, to maintain the canonical of the Hamiltonian equation defined in Eq.~\eqref{eq:hamem}, also referred to as \textit{symplectic conditions}.
 
 Let us consider a Hamiltonian $\ham(\vb{p},\vb{q},t)$, for which we wish to apply a coordinate transformation $(p_i,q_i)\to(P_i,Q_i)$. To maintain the Hamiltonian properties, we then look for a new Hamiltonian $\mathcal{K}(\vb{P},\vb{Q},t)$ for which
 %
@@ -34,7 +44,7 @@ Let us consider a Hamiltonian $\ham(\vb{p},\vb{q},t)$, for which we wish to appl
     \dot P_i = -\pdv{\mathcal{K}}{Q_i}\,, \qquad \dot Q_i = \pdv{\mathcal{K}}{P_i}\,.
 \end{equation}
 %
-Both Hamiltonian formulations need to fulfil the same Least Action Principle:
+Both Hamiltonian formulations need to leave invariant the structure of the differential form (\ref{dome}) to maintain the canonical form of the equation of motion:
 %
 \begin{equation}
     \dd (p_i \dd q_i- \ham \dd t) = \dd(P_i \dd Q_i - \mathcal{K}\dd t)\,,
@@ -42,7 +52,7 @@ Both Hamiltonian formulations need to fulfil the same Least Action Principle:
 %
 which implies that the differential
 %
-\begin{equation}
+\begin{equation}.
     \dd F = p_i\dd q_i - P_i \dd Q_i + (\mathcal{K}-\ham)\dd t\, ,
 \end{equation}
 %
@@ -52,11 +62,11 @@ must be exact. This provides the Hamiltonian transformation laws
 	p_i = \pdv{F}{q_i}\,, \qquad P_i = -\pdv{F}{Q_i}\,, \qquad \mathcal{K}=\ham+\pdv{F}{t}\,.
 \end{equation}
 %
-Note that the form of the Hamiltonian needs to be changed only if the transformations are time-dependent. The function $F(\vb{q},\vb{Q},t)$ is called the \textit{generating function} of the coordinate transformation.
+Note that the Hamiltonian function changes if the transformations are time-dependent. The function $F(\vb{q},\vb{Q},t)$ is called the \textit{generating function} of the coordinate transformation.
 
 In the Hamiltonian formulation, the full freedom in co-ordinate choice is such that even the role of time can be reassigned to another coordinate. We will see in the next chapter how this freedom enables the Courant-Snyder coordinate system, used in accelerator physics.
 
-When performing such a role of time reassignment, we have that the momentum conjugate to that variable, with a minus sign, becomes the new Hamiltonian function.
+When a coordinate is used to parameterize the orbit, we have that the momentum conjugate to that coordinate, with a minus sign, becomes the new Hamiltonian function.
 
 As an example, let us assign the role of time to the $k$th space coordinate $q_k$. Let us indicate the $k$th pair of coordinates as $p_k = \tilde p$, $q_k=\tilde q$. From this we can choose the formally equivalent form
 %
@@ -73,36 +83,26 @@ which highlights the new coordinate roles, as now it is possible to express the 
 \end{split}
 \end{equation}
 
-Finally, the time evolution of a Hamiltonian system is a canonical transformation itself. This property justifies the construction of \textit{symplectic integrators}, i.e.\ algorithms for the numerical integration of Hamilton equations that preserve the Hamiltonian structure of the system.
+Finally, the phase flow of a Hamiltonian system is itself a group of canonical transformations as a consequence of the geometrical nature of the variational principle associated to the canonical equations. This property justifies the construction of \textit{symplectic integrators}, i.e.\ algorithms for the numerical integration of Hamilton equations that preserve the Hamiltonian structure of the system.
 
 
 \subsection{Action-angle variables}
 
-We consider a $n$ degree-of-freedom integrable Hamiltonian system, which will have a $2n$ dimensional phase-space with a symplectic manifold described by the phase variables $(p_i,\,q_i)$, where $n$ integrals of motion $J_i=k_i$ in involution are known.
+We consider a $n$ degree-of-freedom integrable Hamiltonian system, which will have a $2n$ dimensional phase-space with a symplectic manifold described by the phase variables $(q_.i,\,p_i)$, where $n$ integrals of motion $J_i$ in involution are known (i.e. if one considers $J_i$ as Hamiltonian functions, the corresponding phase flows that solves the canonical equations, commute).
 
-The Liouville theorem states that, if the set $M_{k}$ of the points for which $J_i=k_i$ is compact, then it is diffeomorphic to the $n$ torus $\mathbb{T}^n$, meaning, it is possible to map all orbits to a precise torus. We also see that some functions $\omega_i$ exist so that we have
+The Liouville theorem states that, if the surfaces $M_{k}$ defined by $J_i=k_i$ are compact, then they are diffeomorphic to $n$ tori $\mathbb{T}^n$ and it is possible to perform a canonical change of variables to the action-angle coordinates $(\phi_i,I_i)$ such that the action $I_i(\vb{J})$ are first integrals of motion and the angles $\phi_i$ evolve according to
 \begin{equation}
-    \dot{\phi}_i = \omega_i(k_1\,\dots,\,k_n)\,, 
+    \dot{\phi}_i = \omega_i(I_1\,\dots,\,I_n)\,, 
 \end{equation}
-and we denote these functions as \textit{frequencies}.
+where $\omega_i$ define the\textit{frequencies} of the motion.
 
-This implies that if we set as Hamiltonian one of the integrals of the motion, for example, $\ham=J_1$, we see that the new equation of motion reads
+This implies that if we set as Hamiltonian one of the integrals of the motion, for example, $\ham=J_1(\vb{I}$, we see that the new equations of motion read
 \begin{equation} 
-    \dot I_i = 0\,, \qquad \dot \phi_i = \omega_i(J_1\,\dots,\,J_n) \,,
+    \dot I_i = 0\,, \qquad \dot \phi_i = \omega_i(I_1\,\dots,\,I_n) \,,
 \end{equation} 
-which describes the phase flow relative to the chosen Hamiltonian.
 
-This transformation gives us the new coordinates $(I_i,\,\phi_i)$, which might not necessarily be symplectic, as $(p_i,\,q_i)\to(I_i,\,\phi_i)$ may not be canonical.
 
-To be sure of the canonical character of the transformation, we can introduce different functions $I_i = I_i(J_1,\dots,\,J_n)$ which fulfil the transformation.
-%
-\begin{equation}
-    \dot I_i = 0\,, \qquad \dot \phi_i = \omega_i(I_1\,\dots,\,I_n)\,,
-\end{equation} 
-%
-and keep the change of variables canonical.
-
-These functions $I_i$ can be explicitly written. Let us start with the one-di\-men\-sio\-nal case, where the only integral of motion is the Hamiltonian $\ham$ itself, and its conserved value $h$, and the set $M_k$ reduces to $M_h$.
+The actions $I_i$ can be explicitly computed. Let us start with the one-di\-men\-sio\-nal case, where the only integral of motion is the Hamiltonian $\ham$ itself, and its conserved value $h$ is the energy, and the set $M_k$ reduces to $M_h$.
 
 We can then define a canonical transformation starting from the generating function $S(\vb{I},\vb{q})$, which yields
 %
@@ -111,52 +111,51 @@ We can then define a canonical transformation starting from the generating funct
   \label{eq:transf1}
   \end{equation} 
 %
-The invariant torus reduces to the closed curves that are identified just from the value of the energy $h$, and, being $h=h(\vb{I})$, by that of $\vb{I}$. When $\vb{I}$ is constant, the differential of the generating function $\dd S$ reads
+The invariant torus are the level closed curves identified by the value of the Hamiltonian $\ham=h$ that depends on the action $\ham=\ham(I)$. On the energy level curves, the differential of the generating function $\dd S$ reduces
 %
 \begin{equation} 
-    \dd S = \pdv{S}{\vb{q}}\,\dd \vb{q} = p\,\dd \vb{q}\,,
+    \dd S = \pdv{S}{q}\,\dd q = p\,\dd q\,,
 \end{equation} 
 %
 which implies
 %
 \begin{equation}
-    S = \int \vb{p}\, \dd \vb{q}\,,
+    S(q,I) = \int_{M_h}^q p\, \dd q\,,
     \label{eq:S}
 \end{equation} 
 %
-which is ultimately the generating function.
 
-The $1-$form $\vb{p}\,\dd \vb{q}$ is closed and therefore locally exact on invariant surfaces. Thus, on a level curve of energy $h(\vb{I})$, $M_{h(\vb{I})}$, the whole change of $S$ is
+The $1-$form $p\,\dd q$ is closed and therefore locally exact on invariant surfaces $M_h$. But if one performs a cycle a level curve $M_h$, the $S$ value changes according to
 %
 \begin{equation}
-    \Delta S(\vb{I}) = \oint\displaylimits_{M_{h(\vb{I})}} \vb{p}\, \dd \vb{q} \,.
+    \Delta S(I) = \oint\displaylimits_{M_{h(I)}} \vb{p}\, \dd \vb{q} \,.
 \end{equation} 
 %
-Due to Stokes' theorem, this last integral corresponds to the area inside the curve.  Considering now the second equation of \eqref{eq:transf1}, we see that
+Due to Stokes' theorem, this last integral corresponds to the area inside the curve.  To define an angular variable $\phi$ by the second equation of \eqref{eq:transf1}, we require that
 %
 \begin{equation} 
     \oint\displaylimits_{M_{h(\vb{J})}} \dd\boldsymbol{\phi} = 2\pi\,,  
 \end{equation} 
 %
-the periodicity of $\boldsymbol{\phi}$ on the torus implies
+Then the periodicity of $\phi$ on the torus implies
 %
 \begin{equation} 
-    \oint\displaylimits_{M_{h(\vb{I})}} \dd\qty(\pdv{S}{\vb{I}}) = \pdv{\Delta S(\vb{I})}{\vb{I}} = 2\pi\,, 
+    \oint\displaylimits_{M_{h(I)}} \dd\qty(\pdv{S}{I}) = \pdv{\Delta S(I)}{I} = 2\pi\,, 
 \end{equation}
 %
-from which we finally get the expression for the canonical action variable $\vb{I}$
+from which we finally get the expression for the canonical action variable $I$
 %
 \begin{equation}  
-    \vb{I} = \frac{1}{2\pi}\oint\displaylimits_{M_h} \vb{p}\,\dd \vb{q}\,.  
+    I = \frac{1}{2\pi}\oint\displaylimits_{M_h} p\,\dd q\,.  
 \end{equation} 
 %
-On the other hand, differentiating \eqref{eq:S} in $\vb{I}$ we obtain the following, from the definition of $\boldsymbol{\phi}$
+On the other hand, differentiating \eqref{eq:S} in $\vb{I}$ we obtain the following, from the definition of $\phi$
 %
 \begin{equation} 
-    \boldsymbol{\phi} = \frac{1}{2\pi} \pdv{\vb{I}}\int \vb{p}\,\dd \vb{q}\, . 
+    \phi = \frac{1}{2\pi} \pdv{I}\int p\,\dd q\, . 
 \end{equation}  
 
-Generalisation to systems with an arbitrary amount of degrees of freedom is straightforward if we are working in a $\mathbb{R}^{2n}$ phase space. In fact, we can formulate $\gamma_1,\dots, \gamma_n$ 1\textsc{d} cycles to form a basis on the torus $M_{k_i}$. We will then find that the variation of the angular variable $\phi_i$ in the cycle $\gamma_j$ is equal to $2\pi\delta_{ij}$, where $\delta_{ij}$ is the Kronecker symbol.
+Generalisation to systems with many of degrees of freedom requires to prove that the differential form $\vb{p}\dd \vb{q}$ is closed on the invariant surfaces and the construction $n$ basic cycles $\gamma_1,\dots, \gamma_n$ 1\textsc{d} on the tori $M_{k_i}$. Then one requires that the variation of the angular variable $\phi_i$ integrated along the cycle $\gamma_j$ is equal to $2\pi\delta_{ij}$, where $\delta_{ij}$ is the Kronecker symbol.
 
 In such a scenario, the actions variables $\vb{I}_i$ then read as
 %
@@ -166,21 +165,22 @@ In such a scenario, the actions variables $\vb{I}_i$ then read as
 %
 It can be shown that these integrals are independent of the choice of $\gamma_i$.~\cite{Arnold:937549}
 
-\section{Averaging principle for Hamiltonian systems}\label{sec:1:averaging}
+\section{Perturbation theory for Hamiltonian systems}\label{sec:1:averaging}
 
 Many physical systems can be modelled and described in terms of an ideal integrable Hamiltonian affected by small nonintegrable perturbations. A common example is the problem of the motion of planets around the Sun, which can be treated as a perturbation of an ideal motion of noninteracting planets around a fixed attracting centre. Another relevant example, as we shall see in the next chapter, is how the motion of a charged particle inside a circular accelerator can be described as the perturbation of an otherwise ideal harmonic oscillator-like betatron motion around a reference orbit.
 
-Understanding how these perturbations may or may not affect the properties of a Hamiltonian system is an open problem, which was called by Poincaré \textit{``fundamental problem of dynamics''}. Multiple approaches to this problem have been explored and grouped under the general topic of \textit{perturbation theory}.
+Understanding how these perturbations affect the properties of a Hamiltonian system is one of the main problems in dynamical systems, which was called by Poincaré \textit{``fundamental problem of dynamics''}. Multiple approaches to this problem have been explored and grouped under the general topic of \textit{perturbation theory}.
 
-If the timescale of the perturbation is far smaller than the timescale of the unperturbed system, a standard approach that is often proposed in perturbation theory is to \textit{average} over time these perturbations, under the core idea that motion can be divided into a global drift and rapid oscillations. This method is called \textit{averaging principle}. We highlight this specific choice of words, as, Arnold reminds us, it is ``not a theorem, but a physical proposition, that is, a vaguely stated and, strictly speaking, false assertion''. However, ``Such assertions often happen to be fruitful sources for mathematical theorems''~\cite{Arnold:937549}.
+If the evolution timescale of the perturbation is much smaller than the timescale of the unperturbed system, a standard approach that is often proposed in perturbation theory is to \textit{average} over time the perturbations, under the idea that dynamics can be separated into a slow-fast variables evolution. This method is called \textit{averaging principle}. We highlight this specific choice of words, as, Arnold reminds us, it is ``not a theorem, but a physical proposition, that is, a vaguely stated and, strictly speaking, false assertion''. However, ``Such assertions often happen to be fruitful sources for mathematical theorems''~\cite{Arnold:937549}.
 
-Let us consider an integrable Hamiltonian system $\ham_0$ with $n$ degrees of freedom. This defines a foliation of at least some domain of its phase space into invariant tori, which defines the following action-angle variables $\vb{I}=(I_1, \ldots, I_n)$, $\boldsymbol{\phi}=(\phi_1, \ldots, \phi_n)$. We consider the angle variables with period $2\pi$.
+Let us consider an integrable Hamiltonian system $\ham_0$ with $n$ degrees of freedom. This defines a foliation of a domain of its phase space into invariant tori, which defines the action-angle variables $\vb{I}=(I_1, \ldots, I_n)$, $\boldsymbol{\phi}=(\phi_1, \ldots, \phi_n)$. 
 
 The Hamiltonian $\ham_0$ depends only on the action variables $\ham_0=\ham_0(\vb{I})$. The equations of motion in the unperturbed case have the standard form:
 \begin{equation}
     \dot{\vb{I}}=0\,, \qquad \dot{\boldsymbol{\phi}} = \pdv{\ham_0}{\vb{I}} = \boldsymbol{\omega}(I_1,\dots,I_n) \,.
 \end{equation}
 
+where $\boldsymbol{\omega}$ are the frequencies of motion.
 Let us now add a small Hamiltonian perturbation to $\ham_0$, i.e.\ we consider $\ham_1(\vb{I}, \boldsymbol{\phi}, \epsilon)$ of period $2\pi$, with $\epsilon$ being a small parameter that represents the magnitude of the perturbation. The resulting perturbed Hamiltonian reads:
 \begin{equation}
     \ham = \ham_0 + \epsilon \ham_1\,.
@@ -196,25 +196,25 @@ If $\ham_0$ is integrable, we can write the equations of motion in terms of the 
 
 The same notation can be used if the perturbation is also periodic in time with frequency $\omega_p$, as one can extend the phase space to introduce one new degree of freedom: the angle $\psi=\omega_p t$ and the conjugated momentum $I_\psi$.
 
-If we apply the concept of averaging principle to the perturbed Hamiltonian system, we transform the perturbed system into a simpler one, where the fast periodic oscillations induced by $\ham_1$ are averaged out. These oscillations are eventually treated as an extra drift element in the original unperturbed solution. We then define a new averaged Hamiltonian $\av{\ham}$ which reads
+If we apply the concept of averaging principle to the perturbed Hamiltonian system, considering the angle fast variables and the action slow variables,
+we transform the perturbed system into a simpler one, where the fast periodic oscillations are averaged out. These oscillations are eventually treated as an extra drift element in the original unperturbed solution. We then define a new averaged Hamiltonian $\av{\ham}$ which reads
 %
 \begin{equation} 
-	\av\ham(\vb{I}) = \ham_0(\vb{I})+\epsilon \av{ \ham_1(\vb{I}, \boldsymbol{\phi}, \epsilon=0) }\,,
+	\av\ham(\vb{I}) = \ham_0(\vb{I})+\epsilon \av{ \ham_1(\vb{I}, \boldsymbol{\phi} }\,,
 \end{equation}
 %
 where we are considering the standard definition of integral average
 %
 \begin{equation} 
-	\av{f} = \frac{1}{(2\pi)^n}\oint_{\mathbb{T}^n}\dd^n\boldsymbol{\phi}\, f(\vb{I}, \boldsymbol{\phi}, \epsilon=0) \, .
+	\av{f} = \frac{1}{(2\pi)^n}\oint_{\mathbb{T}^n}\dd^n\boldsymbol{\phi}\, f(\vb{I}, \boldsymbol{\phi}) \, .
 \end{equation}
 %
 %where $\mathbb{T}^n$ is the $n$-dimensional torus.
 
-To be able to correctly apply the averaging principle, it is fundamental that all the frequencies $\omega_j$, and, in the case, the perturbation frequency $\omega_p$, are not under any resonant conditions. That is, there must be no vector of frequencies $\omega_{1,\ldots,r}\,(r\leq n)$ such that there exists a vector $k_j \in \mathbb{Z}^r$ for which $\sum k_j \omega_j \approx 0$.
+To be able to correctly apply the averaging principle, it is fundamental that all the Fourier components of the perturbation have a fast variation. This condition requires that the frequencies $\omega_j$ are not under any resonant conditions. That is, there must be no vector of frequencies $\omega_{1,\ldots,r}\,(r\leq n)$ such that there exists a vector $k_j \in \mathbb{Z}^r$ for which $\sum k_j \omega_j \approx 0$.
 
-If this condition holds, it is immediate to observe that the action variables $I_j$, evolve at an order of magnitude $\mathcal{O}(\epsilon)$, while instead the angles $\phi_j$ evolve at $\mathcal{O}(1)$. As $\epsilon \ll 1$, we can classify the action variables as \textit{slow variables} and the angle variables as \textit{fast}.
-
-If instead there are two or more resonant frequencies, it is not possible to perform this kind of averaging, as it would neglect significant effects of the perturbation on the dynamics. This can be seen in a simple example $r=2$, i.e.\ where, in an $n-$dimensional system, which has an $n-$size vector of frequencies $\boldsymbol{\omega}$, we consider $\omega_1$ and $\omega_2$ to be in resonant condition with resonance numbers $k_1$ and $k_2$. If we consider the following linear symplectic transformation
+When a non-resonant condition holds, it is possible to prove that the action variables $I_j$, can change by a quantity $\mathcal{O}(\epsilon)$ after a time interval $\mathcal{O}(\epsilon)$,  
+When a resonant condition is satisfied, it is not possible to perform this kind of averaging since we have a slow dynamics also in the angular dependence, that may introduce significant effects of the perturbation on the action dynamics. This can be seen in a simple example $r=2$, i.e.\ where, in an $n-$dimensional system, which has an $n-$size vector of frequencies $\boldsymbol{\omega}$, we consider $\omega_1$ and $\omega_2$ to be in resonant condition with integer numbers $k_1$ and $k_2$. If we consider the following linear symplectic transformation
 \begin{equation}
     \theta_1 = k_1 \phi_1 + k_2 \phi_2\,,\qquad \theta_j=\phi_j,\, \text{for}\ 3\leq j \leq n\,,
 \end{equation}
@@ -230,20 +230,20 @@ As $\theta_1$ evolves as a slow variable, it does not meet the conditions to be 
 \section{Kolmogorov-Arnold-Moser (KAM) theory}\label{sec:1:kam}
 % Questa parte dovrebbe essere breve e precisa (ovvero i teoremi vanno citati in modo rigoroso). La focalizzerei sulle mappe per le applicazioni agli acceleratori e sulla nascita delle aree debolmente caotiche. La facciamo a quattro mani (ovvero imposta il file tex e poi intervengo io)
 
-As stated in the previous section, the averaging principle is not a mathematically proven theorem that can be applied to every physical system. However, for the case of Hamiltonian systems, there are rigorous results that offer better insight into the effects of perturbations. One of the most important results is the theorem of Kolmogorov~\cite{KAM1} for \textit{non-degenerate} Hamiltonian systems, then extended by Arnold~\cite{KAM3} for \textit{isoenergetically non-degenerate} ones, which shows what happens to the non-resonant tori of an unperturbed system $\ham_0$ under a small perturbation $\ham_1$.
+As stated in the previous section, the averaging principle is not a mathematically proven theorem that can be applied to every physical system. However, for the case of Hamiltonian systems, there are rigorous results that offer better insight into the effects of perturbations. One of the most important results is the theorem of Kolmogorov~\cite{KAM1} for \textit{non-degenerate} Hamiltonian systems, then extended by Arnold~\cite{KAM3} for \textit{isoenergetically non-degenerate} ones, which proves the existence of invariant tori for a perturbed Hamiltonian system.
 
 Let us consider a perturbed Hamiltonian system in the form of
 \begin{equation}
     \ham(\vb{I}, \boldsymbol{\phi}, \epsilon) = \ham_0(\vb{I}) + \epsilon\ham_1(\vb{I},\boldsymbol{\phi},\epsilon)\,.
     \label{eq:1:hamperturbed}
 \end{equation}
-When considering the unperturbed Hamiltonian $\ham_0$, we have that its phase space is foliated into invariant tori of constant $\vb{I}$. The tori with nonresonant frequencies have trajectories that fill them everywhere densely. On the contrary, the tori with resonant frequencies will be foliated into invariant tori of lower dimension.
+When considering the unperturbed Hamiltonian $\ham_0$, we have that its phase space is foliated into invariant tori $\vb{I}=const.$. The tori with nonresonant frequencies have trajectories that fill them everywhere densely. On the contrary, the tori with resonant frequencies will be foliated into invariant tori of lower dimension.
 
 The unperturbed system $\ham_0$ is classified as \textit{non-degenerate} if its frequencies are functionally independent, namely, if
 \begin{equation}
     \det\left(\pdv{\omega}{\vb{I}}\right) = \det\left(\pdv[2]{\ham_0}{\vb{I}}\right) \neq 0 \,.
 \end{equation}
-In such a nondegenerate system, the nonresonant tori form a set in the phase space of full measure. The resonant tori, instead, form a set of measure zero, which, however, are still densely populated by the orbits. Most importantly, we have the following application.
+In such a nondegenerate system, the nonresonant tori form a set in the phase space of full measure. The resonant tori, instead, form a set of measure zero, which, however, is still dense in the phase space. Most importantly, we have the following application.
 \begin{equation}
     \begin{array}{r}
     F: \mathbb{R}^{n} \longrightarrow \mathbb{R}^n \\
@@ -257,17 +257,17 @@ The unperturbed system $\ham_0$ is classified as \textit{isoenergetically non-de
 \renewcommand*{\arraystretch}{1.5}
 \begin{equation}
     \operatorname{det}\begin{pmatrix}
-    \frac{\partial \boldsymbol{\omega}}{\partial \vb{I}} & \boldsymbol{\omega} \\
-    \boldsymbol{\omega} & 0
+    \frac{\partial \boldsymbol{\omega}}{\partial \vb{I}} & \omega_n \\
+    \omega_n & 0
     \end{pmatrix}=\operatorname{det}\begin{pmatrix}
-    \frac{\partial^2 \ham_0}{\partial \vb{I}^2} & \frac{\partial \ham_0}{\partial \vb{I}} \\
-    \frac{\partial \ham_0}{\partial \vb{I}} & 0
+    \frac{\partial^2 \ham_0}{\partial \vb{I}^2} & \frac{\partial \ham_0}{\partial I_n} \\
+    \frac{\partial \ham_0}{\partial I_n} & 0
     \end{pmatrix} \neq 0 \,,
 \end{equation}
 \endgroup
 i.e., one of the frequencies does not vanish and the ratio of the other frequencies $n-1$ to it is functionally independent of the value of $\ham_0$. Likewise to the non-degenerate condition, also this condition guarantees the existence on every energy level surface of a set of densely populated invariant tori, which will have full measure for non-resonant frequencies and zero measure for resonant frequencies. The non-degenerate and the isoenergetically non-degenerate conditions are independent.
 
-Now that we have recalled these definitions, we can present the KAM theorem, which proves the integrability of $\ham$ in a closed phase-space subset of large measure:
+Now that we have recalled these definitions, we can state the KAM theorem, which proves the existence of a large measure set of invariant tori for the perturbed $\ham$ in the phase space:
 \begin{theorem}[KAM~\cite{KAM1, KAM2, KAM3}]\label{th:kam}
 If the unperturbed Hamiltonian system $\ham_0$ is non-degenerate or isoenergetically non-degenerate, then, in the perturbed Hamiltonian system such as Eq.~\eqref{eq:1:hamperturbed}, most of the non-resonant invariant tori do not disappear but are only slightly deformed. More specifically, there exist positive constants $\epsilon_0,\ a_1,\ a_2,$ and $a_3$, independent of $\epsilon$, such that for any $\epsilon < \epsilon_0$ one can find:
 \begin{enumerate}
@@ -279,23 +279,23 @@ If the unperturbed Hamiltonian system $\ham_0$ is non-degenerate or isoenergetic
         \end{array}
     \end{equation}
     with $V' \subseteq \mathbb{R}^n$ open;
-    \item [(b).] a set $V_\epsilon \subseteq V \bigcap V'$;
+    \item [(b).] a set $V_\epsilon \subseteq V'$;
     \item [(c).] a smooth function $h'_\epsilon(\vb{I}', \boldsymbol{\phi}')$ defined on $V'\times \mathbb{T}^n$;
 \end{enumerate}
 which satisfy
 \begin{enumerate}
-    \item [(i).] $\operatorname{Vol}(V/V_\epsilon) \leq a_1\sqrt{\epsilon}$;
+    \item [(i).] $\operatorname{Vol}(V\textbackslash V_\epsilon) \leq a_1\sqrt{\epsilon}$;
     \item [(ii).] $\norm{\vb{I}-\vb{I}'}\leq a_2 \sqrt{\epsilon}$, $\norm{\boldsymbol{\phi} - \boldsymbol{\phi}'} \leq a_3 \sqrt{\epsilon}$;
-    \item [(iii).] $\ham_\epsilon \circ \mathcal{C}_\epsilon (\vb{I}', \boldsymbol{\phi}') = h'_\epsilon (\vb{I}', \boldsymbol{\phi}')$ whenever $\vb{I}'\in V_\epsilon$.
+    \item [(iii).] whenever $\vb{I}'\in V_\epsilon$ the perturbed Hamiltonian field $\ham_\epsilon \circ \mathcal{C}_\epsilon (\vb{I}', \boldsymbol{\phi}')$ admits an invariant torus.
 \end{enumerate}
 
 \end{theorem}
 
-From this theorem, we can define a set $\mathcal{S}_\epsilon = \mathcal{C}_\epsilon(V_\epsilon \times \mathbb{T}^n) \subseteq V \times \mathbb{T}^n$ of large measure composed of invariant tori. This set is also referred to as the \textit{KAM set}, which is composed by \textit{KAM tori}. Within this set, due to \textit{(ii)}, we have that any orbit $(\vb{I}(t), \boldsymbol{\phi}(t))$ having initial condition $(\vb{I}(0), \boldsymbol{\phi}(0)) \in \mathcal{S}_\epsilon$ satisfies the relation
+From this theorem, we can define a set $\mathcal{S}_\epsilon = \mathcal{C}_\epsilon(V_\epsilon \times \mathbb{T}^n) \subseteq V \times \mathbb{T}^n$ of large measure composed of invariant tori. This set is also referred to as the set of \textit{KAM tori}. Within this set, due to \textit{(ii)}, we have that any orbit $(\vb{I}(t), \boldsymbol{\phi}(t))$ having initial condition $(\vb{I}(0), \boldsymbol{\phi}(0)) \in \mathcal{S}_\epsilon$ satisfies the relation $\forall\; t$
 \begin{equation}
     \norm{\vb{I}(t) - \vb{I}(0)} \leq 2 a_2 \sqrt{\epsilon} \,.
 \end{equation}
-This set of invariant tori $\mathcal{S}_\epsilon$ is constructed as a complement of a neighbourhood of all the resonances. Meaning, if we consider any vector $k\in \mathbb{Z}^n$ defining a resonance order, we have a resulting resonant manifold which reads
+This set of invariant tori $\mathcal{S}_\epsilon$ is constructed as a complement of a neighbourhood of all the nonlinear resonances regions in the phase space. Meaning, if we consider any vector $k\in \mathbb{Z}^n$ defining a resonance order, we have a resulting resonant manifold which reads
 \begin{equation}
     \mathcal{R}_k = \left\{\vb{I}\in V \, \big| \, \sum_i k_i \omega_i(\vb{I}) = 0\right\} \,,
 \end{equation}  
@@ -310,22 +310,22 @@ The proof of the KAM theorem is based on the possibility to define a converging 
 
 At each step, the generating function is constructed on the sum of the Fourier harmonics of $\ham_1$ whose order do not exceed an integer $N$. The integer $N$ is then chosen so that the absolute value of the remainder $R_{1N} = \ham_1 - \ham_{1N}$ of the Fourier series does not exceed $\epsilon$. These progressive steps gradually lead to a superconvergence to the non-resonant KAM set.
 
-The KAM theorem has important consequences for the analysis of stability of perturbed Hamiltonian systems. The most immediate one being the existence of large regions with absence of evolution for systems with two degrees of freedom:
+The KAM theorem has important consequences for the analysis of stability of perturbed Hamiltonian systems. The most immediate one being the existence of large invariant compact regions for Hamiltonian systems, that implies the global stability of the orbits for systems with two degrees of freedom:
 \begin{theorem}(\cite{KAM1})
     In an isoenergetically non-degenerate system with two degrees of freedom, all initial conditions will have their action variables remaining near their initial value.
 \end{theorem} 
 This theorem has immediate proof, as such a system has a four-dimensional phase space with three-dimensional energy levels which are highly populated by two-dimensional KAM tori. Since a two-dimensional torus has the topological property to divide a three-dimensional energy level, an orbit starting in a gap between two KAM tori will be forever trapped between those tori. Resulting action variable oscillations will not exceed the order of magnitude of $\sqrt{\epsilon}$, following the estimates given by KAM theorem. 
 
-When instead we are considering a system with more than two degrees of freedom, we have that the $n-$dimensional invariant tori do not divide a $(2n-1)$-dimensional energy-level manifold. The tori instead are located in it like points on a plane or lines in a space. Consequently, the gaps between tori, related by different resonance spaces, are all connected with each other. This does not prevent a phase curve originated near a resonance region to eventually evolve far away from its initial action value. 
+When instead we are considering a system with more than two degrees of freedom, we have that the $n-$dimensional invariant tori do not separate a $(2n-1)$-dimensional energy-level manifold like points on a plane or lines in a space. Consequently, the gaps between tori, related by different resonance spaces, are all connected with each other. Therefore the KAM Theorem does not prevent a orbit with initial condition near a resonance region to eventually evolve far away from its initial action value. 
 
 \section{Nekhoroshev theorem}\label{sec:1:nekhoroshev}
 %  Qui come sopra: il th di Nekhoroshev ha molte formulazioni (soprattutto per la questione dell'esponente nella stima ottimale). Io non entrerei nei dettagli ma nella generalità del risultato correlato all'analiticità delle serie perturbative
 
-As stated in the previous section, even though the stability set $\mathcal{S}_\epsilon$ has large relative measure, its complement can be open, dense, and if the number of degrees of freedom is larger than two, also connected, enabling evolution at different energy levels.
+As stated in the previous section, even though the stability set $\mathcal{S}_\epsilon$ has large relative measure, its complement can be open, dense, and if the number of degrees of freedom is larger than two, also connected, enabling the orbits diffusion in the phase space..
 
 Therefore, the possibility for solutions to wandering the complement of $\mathcal{S}_\epsilon$, such as the so called Arnol’d diffusion, can prevent any result of stability over an infinite time.
 
-Because of this, it becomes difficult (if not impossible) to treat the problem of the evolution of a perturbed Hamiltonian system with the ``classical'' definition of stability, as in, confinement in a region to infinite times. But it is possible to operate with asymptotic estimates, which are limited to very long times\footnote{For example, orders of magnitudes higher than the usual operation time of an accelerator machine.}, such estimates can be formulated as:
+For this reason, it becomes difficult (if not impossible) to treat the problem of the orbit stability for infinite time in the case of a perturbed Hamiltonian system. But it is possible to operate with asymptotic estimates, which are limited to very long times\footnote{For example, in the case of hadron colliders orders of magnitudes higher than the usual operation time.}. We look for estimates in the following form:
 \begin{equation}
     \norm{\vb{I}(t)-\vb{I}(0)} \leq r(\epsilon)
 \end{equation}
@@ -346,7 +346,7 @@ Such result is stated by Nekhoroshev in his celebrated theorem, named after him:
     where the value of the constants $a, b$ depend on the steepness properties of $\ham_0$.
 \end{theorem}
 
-A complete overview of the theorem's proof is presented in~\cite{Guzzo2007}, the outline of it is that the long-term behaviour of the orbits can be studied removing from $\ham$ only a finite number of harmonics $\epsilon \ham_{1k}(\vb{I}) e^{i k \cdot \boldsymbol{\phi}}$, precisely those with order $|k|=\sum_{i=1}^n\left|k_i\right|$ up to a given threshold $K$. The harmonics with $|k| \geq K$ can then be estimated to be exponentially small. As a consequence, if one chooses $K$ suitably large, these terms turn out to be very small, and they can determine large deviations of the actions only after long exponential times.
+A complete overview of the theorem's proof is presented in~\cite{Guzzo2007}, the outline of it is that the long-term behaviour of the orbits can be studied removing from $\ham$ only a finite number of harmonics in a open subset of the phase space $\epsilon \ham_{1k}(\vb{I}) e^{i k \cdot \boldsymbol{\phi}}$, precisely those with order $|k|=\sum_{i=1}^n\left|k_i\right|$ up to a given threshold $K$. The harmonics with $|k| \geq K$ can then be estimated to be exponentially small. As a consequence, if $K$ is suitably large, these terms turn out to be very small, and they can determine large deviations of the actions only after long exponential times.
 
 \section{Symplectic maps}
 
@@ -371,10 +371,9 @@ is a symplectic matrix for every $\vb{x}$, meaning
 \begin{equation}
     \mathrm{DM}(\vb{x}) \mathrm{J} \mathrm{DM}^t(\vb{x})=\mathrm{J} .
 \end{equation}
-The symplectic condition for a map can be considered as the natural generalization of
-the area-preserving condition to higher dimensionality.
+The symplectic condition for a map characterizes the canonical trasformations of the phase space and the phase flows of Hamiltonian systems. In the case of a 2-dimensional map it reduces to the area-preserving condition.
 
-An example of symplectic map that is relevant in the field of accelerator physics,  as we will see in the next Chapter, is a Poincaré section of the symplectic evolution of a Hamiltonian system whose equations have a periodic condition. That is, for a time-dependent Hamiltonian $\ham(\vb{x}, t)$, with periodic condition $\ham(\vb{x}, t=t') = \ham(\vb{x}, t=0)$, one can define a symplectic map $\mathrm{M}$ as the Poincaré section of $\ham$ at $t=0$, which will represent the propagation of an initial condition $\vb{x}(0)$ to $\vb{x}(t')$, a simple conceptual scheme of a Poincaré section is shown in Fig.~\ref{fig:poincare}. 
+An example of symplectic map is defined by the Poincaré map of a Hamiltonian phase flow on a section of the phase space or by the one period evolution map in case of periodic Hamiltonian systems.  A simple conceptual scheme of a Poincaré section is shown in Fig.~\ref{fig:poincare}. For a time-dependent Hamiltonian $\ham(\vb{x}, t)$, with period $T$ ($\ham(\vb{x}, t=T) = \ham(\vb{x}, t=0)$), one can define a symplectic map $\mathrm{M}$ as the one period map which will represent the evolution of an initial condition $\vb{x}(0)$ to $\vb{x}(T)$. 
 
 \begin{figure}
 	\centering
@@ -384,11 +383,11 @@ An example of symplectic map that is relevant in the field of accelerator physic
     \label{fig:poincare}
 \end{figure}
 
-\subsection{Poincaré-Birkhoff theorem}
+\subsection{Poincaré-Birkhoff theorem}\label{subsec:poincare-birkhoff}
 
-After we have seen the most important theorems on how small perturbations can affect the dynamics of a Hamiltonian system, we are interested in seeing how such additions can affect the dynamics described by an area-preserving map.
+After we have seen the most important theorems on how small perturbations can affect the dynamics of a Hamiltonian system, we are interested to discuss some specific results for the dynamics described by an area-preserving map.
 
-The first important theorem we will present is the Poincaré-Birkhoff theorem~\cite{poincare, birkhoff}. This theorem shows how the interplay between the perturbation and the natural resonances present in the map leads to the creation of a chain of stable regions, also referred to as \textit{islands}, which appear in the phase space at given amplitudes, with their own set of fixed points.
+The first important theorem we will present is the Poincaré-Birkhoff theorem~\cite{poincare, birkhoff}. This theorem shows how the interplay between the perturbation and the natural resonances present in the map leads to the creation of new structures in the phase space, also referred to as \textit{resonant islands}.
 
 Let us consider an area-preserving map $\mathrm{T}_k$ ($k\in\mathbb{Z}$). If the system described by $\mathrm{T}_k$ is integrable, we can define action-angle co-ordinates $(\boldsymbol{\phi},\,\vb{I})$ where, for every $I_j$, an invariant curve $\Gamma_{I_j}$ is defined, along which, at each turn, $\phi_j$ increases by an angle $\omega_j(I_j)$. The map $\mathrm{T}_j$ therefore will read as a \textit{twist map}:
 %
