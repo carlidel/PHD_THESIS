@@ -36,6 +36,7 @@
 \usepackage{booktabs}
 \usepackage{makecell}
 \usepackage{comment}
+\usepackage{adjustbox}
 
 \newcommand{\opm}[1]{{\color{red}#1}}
 \newcommand{\av}[1]{\left<{#1}\right>}
@@ -67,6 +68,7 @@
 \newcommand{\epshi}{\eps_\text{h,i}}
 \newcommand{\epshf}{\eps_\text{h,f}}
 \newcommand{\ScaleFig}{1.5}
+
 
 %\usepackage[rmargin=]{geometry}
 \newcommand{\dt}{\dot}
@@ -337,6 +339,344 @@
 \renewcommand{\cftchapaftersnum}{~\textcolor{unibo}{|}~}
 
 
+\font\grassettogreco=cmmib10
+\font\scriptgrassettogreco=cmmib7
+\font\scriptscriptgrassettogreco=cmmib10 at 5 truept
+\font\sansserif=cmss10
+\font\scriptsansserif=cmss10 at 7 truept
+\font\scriptscriptsansserif=cmss10 at 5 truept
+\textfont13=\grassettogreco
+\scriptfont13=\scriptgrassettogreco
+\scriptscriptfont13=\scriptscriptgrassettogreco
+\def\bgr{\fam=13}
+\textfont14=\sansserif
+\scriptfont14=\scriptsansserif
+\scriptscriptfont14=\scriptscriptsansserif
+\def\ssm{\fam=14}
+
+\input amssym.def
+\input amssym.tex
+%------------------------------------------------------------------
+%   definizione lettere latine: GRASSETTO
+%------------------------------------------------------------------
+\def \abf{{\bf a}}
+\def \bbf{{\bf b}}
+\def \cbf{{\bf c}}
+\def \dbf{{\bf d}}
+\def \ebf{{\bf e}}
+\def \fbf{{\bf f}}
+\def \gbf{{\bf g}}
+\def \hbf{{\bf h}}
+\def \jbf{{\bf j}}
+\def \kbf{{\bf k}}
+\def \ibf{{\bf i}}
+\def \lbf{{\bf l}}
+\def \mbf{{\bf m}}
+\def \nbf{{\bf n}}
+\def \obf{{\bf o}}
+\def \pbf{{\bf p}}
+\def \qbf{{\bf q}}
+\def \rbf{{\bf r}}
+\def \sbf{{\bf s}}
+\def \tbf{{\bf t}}
+\def \ubf{{\bf u}}
+\def \vbf{{\bf v}}
+\def \xbf{{\bf x}}
+\def \ybf{{\bf y}}
+\def \wbf{{\bf w}}
+\def \zbf{{\bf z}}
+%----------------
+\def \Abf{{\bf A}}
+\def \Bbf{{\bf B}}
+\def \Cbf{{\bf C}}
+\def \Dbf{{\bf D}}
+\def \Ebf{{\bf E}}
+\def \Fbf{{\bf F}}
+\def \Gbf{{\bf G}}
+\def \Hbf{{\bf H}}
+\def \Jbf{{\bf J}}
+\def \Kbf{{\bf K}}
+\def \Ibf{{\bf I}}
+\def \Lbf{{\bf L}}
+\def \Mbf{{\bf M}}
+\def \Nbf{{\bf N}}
+\def \Obf{{\bf O}}
+\def \Pbf{{\bf P}}
+\def \Qbf{{\bf Q}}
+\def \Rbf{{\bf R}}
+\def \Sbf{{\bf S}}
+\def \Tbf{{\bf T}}
+\def \Ubf{{\bf U}}
+\def \Vbf{{\bf V}}
+\def \Xbf{{\bf X}}
+\def \Ybf{{\bf Y}}
+\def \Wbf{{\bf W}}
+\def \Zbf{{\bf Z}}
+%------------------------------------------------------------------
+% Laine a bastoncello per gli operatori (DEFINIZIONI DI GS 28-11-1996)
+%                                        NON  MODIFICARE !!!
+%------------------------------------------------------------------
+\font\sans=cmss10
+%----------------
+\def \Aop{{\mathchardef\alpha="710B \ssm \char'101}}
+\def \Bop{{\mathchardef\alpha="710B \ssm \char'102}}
+\def \Cop{{\mathchardef\alpha="710B \ssm \char'103}}
+\def \Dop{{\mathchardef\alpha="710B \ssm \char'104}}
+\def \Eop{{\mathchardef\alpha="710B \ssm \char'105}}
+\def \Fop{{\mathchardef\alpha="710B \ssm \char'106}}
+\def \Gop{{\mathchardef\alpha="710B \ssm \char'107}}
+\def \Hop{{\mathchardef\alpha="710B \ssm \char'110}}
+\def \Iop{{\mathchardef\alpha="710B \ssm \char'111}}
+\def \Jop{{\mathchardef\alpha="710B \ssm \char'112}}
+\def \Kop{{\mathchardef\alpha="710B \ssm \char'113}}
+\def \Lop{{\mathchardef\alpha="710B \ssm \char'114}}
+\def \Mop{{\mathchardef\alpha="710B \ssm \char'115}}
+\def \Nop{{\mathchardef\alpha="710B \ssm \char'116}}
+\def \Oop{{\mathchardef\alpha="710B \ssm \char'117}}
+\def \Pop{{\mathchardef\alpha="710B \ssm \char'120}}
+\def \Qop{{\mathchardef\alpha="710B \ssm \char'121}}
+\def \Rop{{\mathchardef\alpha="710B \ssm \char'122}}
+\def \Sop{{\mathchardef\alpha="710B \ssm \char'123}}
+\def \Top{{\mathchardef\alpha="710B \ssm \char'124}}
+\def \Uop{{\mathchardef\alpha="710B \ssm \char'125}}
+\def \Vop{{\mathchardef\alpha="710B \ssm \char'126}}
+\def \Wop{{\mathchardef\alpha="710B \ssm \char'127}}
+\def \Xop{{\mathchardef\alpha="710B \ssm \char'130}}
+\def \Yop{{\mathchardef\alpha="710B \ssm \char'131}}
+\def \Zop{{\mathchardef\alpha="710B \ssm \char'132}}
+%-----------------------------
+\def \aop{{\mathchardef\alpha="710B \ssm \char'141}}
+\def \bop{{\mathchardef\alpha="710B \ssm \char'142}}
+\def \cop{{\mathchardef\alpha="710B \ssm \char'143}}
+\def \dop{{\mathchardef\alpha="710B \ssm \char'144}}
+\def \eop{{\mathchardef\alpha="710B \ssm \char'145}}
+\def \fop{{\mathchardef\alpha="710B \ssm \char'146}}
+\def \gop{{\mathchardef\alpha="710B \ssm \char'147}}
+\def \hop{{\mathchardef\alpha="710B \ssm \char'150}}
+\def \iop{{\mathchardef\alpha="710B \ssm \char'151}}
+\def \jop{{\mathchardef\alpha="710B \ssm \char'152}}
+\def \kop{{\mathchardef\alpha="710B \ssm \char'153}}
+\def \lop{{\mathchardef\alpha="710B \ssm \char'154}}
+\def \mop{{\mathchardef\alpha="710B \ssm \char'155}}
+\def \nop{{\mathchardef\alpha="710B \ssm \char'156}}
+\def \oop{{\mathchardef\alpha="710B \ssm \char'157}}
+\def \pop{{\mathchardef\alpha="710B \ssm \char'160}}
+\def \qop{{\mathchardef\alpha="710B \ssm \char'161}}
+\def \rop{{\mathchardef\alpha="710B \ssm \char'162}}
+\def \sop{{\mathchardef\alpha="710B \ssm \char'163}}
+\def \top{{\mathchardef\alpha="710B \ssm \char'164}}
+\def \uop{{\mathchardef\alpha="710B \ssm \char'165}}
+\def \vop{{\mathchardef\alpha="710B \ssm \char'166}}
+\def \wop{{\mathchardef\alpha="710B \ssm \char'167}}
+\def \xop{{\mathchardef\alpha="710B \ssm \char'170}}
+\def \yop{{\mathchardef\alpha="710B \ssm \char'171}}
+\def \zop{{\mathchardef\alpha="710B \ssm \char'172}}
+%------------------------------------------------------------------
+%   definizione lettere greche: GRASSETTO (NUOVA DEFINIZIONE DI GS
+%                                          28-11-1996; NON TOCCARE !!)
+%------------------------------------------------------------------
+\font\gr=cmmib10
+\def\Gammabf{{\mathchardef\Gamma="7100 \bgr \Gamma}}
+\def\Deltabf{{\mathchardef\Delta="7101 \bgr \Delta}}
+\def\Thetabf{{\mathchardef\Theta="7102 \bgr \Theta}}
+\def\Lambdabf{{\mathchardef\Lambda="7103 \bgr \Lambda}}
+\def\Xibf{{\mathchardef\Xi="7104 \bgr \Xi}}
+\def\Pibf{{\mathchardef\Pi="7105 \bgr \Pi}}
+\def\Sigmabf{{\mathchardef\Sigma="7106 \bgr \Sigma}}
+\def\Upsilonbf{{\mathchardef\Upsilon="7107 \bgr \Upsilon}}
+\def\Phibf{{\mathchardef\Phi="7108 \bgr \Phi}}
+\def\Psibf{{\mathchardef\Psi="7109 \bgr \Psi}}
+\def\Omegabf{{\mathchardef\Omega="710A \bgr \Omega}}
+\def\alphabf{{\mathchardef\alpha="710B \bgr \alpha}}
+\def\betabf{{\mathchardef\beta="710C \bgr \beta}}
+\def\gammabf{{\mathchardef\gamma="710D \bgr \gamma}}
+\def\deltabf{{\mathchardef\delta="710E \bgr \delta}}
+\def\epsilonbf{{\mathchardef\epsilon="710F \bgr \epsilon}}
+\def\zetabf{{\mathchardef\zeta="7110 \bgr \zeta}}
+\def\etabf{{\mathchardef\eta="7111 \bgr \eta}}
+\def\thetabf{{\mathchardef\theta="7112 \bgr \theta}}
+\def\iotabf{{\mathchardef\iota="7113 \bgr \iota}}
+\def\kappabf{{\mathchardef\kappa="7114 \bgr \kappa}}
+\def\lambdabf{{\mathchardef\lambda="7115 \bgr \lambda}}
+\def\mubf{{\mathchardef\mu="7116 \bgr \mu}}
+\def\nubf{{\mathchardef\nu="7117 \bgr \nu}}
+\def\xibf{{\mathchardef\xi="7118 \bgr \xi}}
+\def\pibf{{\mathchardef\pi="7119 \bgr \pi}}
+\def\rhobf{{\mathchardef\rho="711A \bgr \rho}}
+\def\sigmabf{{\mathchardef\sigma="711B \bgr \sigma}}
+\def\taubf{{\mathchardef\tau="711C \bgr \tau}}
+\def\upsilonbf{{\mathchardef\upsilon="711D \bgr \upsilon}}
+\def\phibf{{\mathchardef\phi="711E \bgr \phi}}
+\def\chibf{{\mathchardef\chi="711F \bgr \chi}}
+\def\psibf{{\mathchardef\psi="7120 \bgr \psi}}
+\def\omegabf{{\mathchardef\omega="7121 \bgr \omega}}
+\def\varepsilonbf{{\mathchardef\varepsilon="7122 \bgr \varepsilon}}
+\def\varthetabf{{\mathchardef\vartheta="7123 \bgr \vartheta}}
+\def\varpibf{{\mathchardef\varpi="7124 \bgr \varpi}}
+\def\varrhobf{{\mathchardef\varrho="7125 \bgr \varrho}}
+\def\varsigmabf{{\mathchardef\varsigma="7126 \bgr \varsigma}}
+\def\varphibf{{\mathchardef\varphi="7127 \bgr \varphi}}
+ \def\varomegabf{\varpibf}
+%----------------------------------------------------------------------
+%    lettere greche grassetto minuscole
+%----------------------------------------------------------------------
+\def\taubfsm{\tau}
+\def\Phibfsm{\Phi}
+\def\phibfsm{\Phi}
+\def\omegabfsm{\omega }
+%-----------------------------------------------------------------------
+%	definizione lettere maiuscole  CORSIVE
+%-----------------------------------------------------------------------
+\def \Acal{{\cal A}}
+\def \Bcal{{\cal B}}
+\def \Ccal{{\cal C}}
+\def \Dcal{{\cal D}}
+\def \Ecal{{\cal E}}
+\def \Fcal{{\cal F}}
+\def \Gcal{{\cal G}}
+\def \Hcal{{\cal H}}
+\def \Ical{{\cal I}}
+\def \Jcal{{\cal J}}
+\def \Kcal{{\cal K}}
+\def \Lcal{{\cal L}}
+\def \Mcal{{\cal M}}
+\def \Ncal{{\cal N}}
+\def \Ocal{{\cal O}}
+\def \Pcal{{\cal P}}
+\def \Qcal{{\cal Q}}
+\def \Rcal{{\cal R}}
+\def \Scal{{\cal S}}
+\def \Tcal{{\cal T}}
+\def \Ucal{{\cal U}}
+\def \Vcal{{\cal V}}
+\def \Wcal{{\cal W}}
+\def \Xcal{{\cal X}}
+\def \Ycal{{\cal Y}}
+\def \Zcal{{\cal Z}}
+%------------------------------------------------------------------
+%   definizoni lettere greche abbreviate
+%------------------------------------------------------------------
+\def \alf{\alpha}
+\def \bet{\beta}
+\def \gam{\gamma}
+\def \del{\delta}
+\def \eps{\epsilon}
+\def \kap{\kappa}
+\def \thet{\theta}
+\def \sig{\sigma}
+\def \ome{\omega}
+\def \Alf{\Alpha}
+\def \Bet{\Beta}
+\def \Gam{\Gamma}
+\def \Del{\Delta}
+\def \Eps{\Epsilon}
+\def \The{\Theta}
+\def \Kap{\Kappa}
+\def \Sig{\Sigma}
+\def \Ome{\Omega}
+%
+%--------------------------------------------------------------
+%  Fonti vari
+%--------------------------------------------------------------
+%-------------- fonti grassetti per titoli -------------------
+\font\titoletto=cmbx10 scaled \magstep  2
+\font\titolino=cmbx10 scaled \magstep  3
+\font\titolo=cmbx10 scaled \magstep 4
+\font\titolone=cmbx10 scaled \magstep 5
+%\font\titolissimo=cmbx10 at 30 pt
+%--------------------------------------------------------------
+%-----------------------fonti grandi grassetti 12 punti---------
+\font \bfla=cmbx10
+%-----------------------fonti piccoli grassetti 8 punti---------
+\font \bfsm=cmbx8
+%-----------------------fonti romani piccoli 8 punti -----------
+\font \rmsm=cmr8
+%-----------------------fonti romani piccolissimi 5 punti ------
+\font \rmvsm=cmr5
+%-----------------------fonti italici piccoli 7 punti -----------
+\font \itsm=cmmi8
+%-----------------------stile formule con simboli a 7 punti-----
+\font \slsm=cmsl8
+\font  \slsmed=cmsl9
+%-----------------------fonti slanted piccoli 7 punti -----------
+\font \slvsm=cmsl10 at 5 pt
+%-----------------------fonti italici piccoli 7 punti -----------
+
+\def \sysm{\scriptstyle}
+%---------------------------------------------------------------
+%
+%------------------------------------------------------------------
+%
+%	  Spaziature per Capitoli, sezioni, paragrafi (Sakurai)
+%
+%      \sksec va prima e \sksecc va dopo il titolo di una sezione
+%
+%------------------------------------------------------------------
+% \def \skcap{\vskip .2 truecm \noindent \hrule \vskip 1.5 truecm \noindent }
+\def \skcap{\line{} \vskip  2.0  truecm \noindent }
+\def \skcapp{\vskip 6.5  truecm \noindent }
+\def \sksec {\vskip 1.5 truecm   \line{} \vskip .5 truecm \noindent}
+\def \sksecm{\vfill\eject  \line{} \vskip -1.5 truecm \noindent}
+\def \sksecc {\nobreak \vskip 1. cm \nobreak \noindent }
+\def \skpar {\vskip 1. truecm \line{} \vskip .5 truecm \noindent }
+\def \skparr{\nobreak \vskip .8 truecm \nobreak \noindent }
+\def \miniskpar {  \vskip  .75 truecm  \noindent }
+\def \miniskparr{\nobreak \vskip .5 truecm \nobreak \noindent }
+\def \skteor {\vskip .7 truecm}
+\def \skteorr {\nobreak \vskip .7 truecm \nobreak }
+\def \skipfig{\vskip .2 truecm \noindent}
+\def \spazio{\vskip .5	  truecm \noindent }
+\def \spaziom{\vskip -.5  truecm \noindent }
+\def \spa{\vskip    .3	  truecm \noindent }
+\def \spam{\vskip   -.3	  truecm \noindent }
+\def\spi{\vskip .15	 truecm  \noindent}
+%
+\def \pan {\par \noindent}
+\def \nod {\noindent}
+\def\segue{\qquad \Longrightarrow \qquad}
+\def\im#1{\item{#1}}
+\def\imm#1{\itemitem{#1}}
+\def \parit{\par\item{\null}}
+\def \panit{\par\noindent \item{\null}}
+%----------------------------------------------------------------------
+%  MACRO PER GESTIONE TESTO A COLORI IN FUNZIONE DELL'HOST
+%
+%  Si usa, ad esempio,
+%      \Colori{\Silicon}   equivalente a \Colori{1}
+%
+%      oppure
+%      \Colori{\PC}        equivalente a \Colori{2}
+%
+%
+   \newcount\Silicon \global\Silicon=1
+   \newcount\PC \global\PC=2
+   \newcount\parziale
+   \def\Colori#1{\global\parziale=#1
+                \ifnum\parziale=\Silicon
+                    \input colors
+                    \gdef\Color##1{\Black{##1}}                    
+                \else\ifnum\parziale=\PC
+                    \input colordvi
+                    \gdef\textRGB##1{\textColor{##1 0.}}
+                    \gdef\GrayA##1{\textGray{##1}}
+                    \gdef\GrayB##1{\textGray{##1}}
+                    \gdef\GrayC##1{\textGray{##1}}
+                    \gdef\GrayD##1{\textGray{##1}}
+                    \gdef\GrayE##1{\textGray{##1}}
+                    \gdef\GrayF##1{\textGray{##1}}
+                    \gdef\GrayG##1{\textGray{##1}}
+                    \gdef\GrayH##1{\textGray{##1}}\fi                   
+                \fi}        
+%----------------------------------------------------------------------
+%
+%----------------------------------------------------------------------
+%
+%		  Definizioni varie
+%
+%----------------------------------------------------------------------
+%	 Bra, ket, prodotti scalari, elementi di matrice
+% ---------------------------------------------------------------------
+%
 \def\mean#1{\langle \,#1\,\rangle}
 \def \ket#1{|{#1}\rangle}
 \def \bra#1{\langle{#1}|}
@@ -369,3 +709,258 @@
 \def \Der#1{{d \over d{#1}} }
 \def \dersect#1{{d^2{#1} \over dt^2 }}
 \def \disp{\displaystyle}
+%----------------------------------------------------------------------
+%	Per indici piccoli
+%---------------------------------------------------------------------
+%--7 punti ---
+\font \rmsmm=cmr7
+\def \hbix#1{\rmsmm \hbox{ {#1} } }
+%--5 punti ---
+\def \hbixsm#1{\rmvsm \hbox{ {#1} } }
+%----------------------------------------------------------------------
+%   Macro per mettere una scritta sotto una formula
+%	si usa come \underbrace
+%---------------------------------------------------------------------
+\def \underwrite#1{\mathop{\vtop{\ialign {##\crcr
+$\hfil\displaystyle {#1}\hfil$\crcr\noalign{\kern3pt\nointerlineskip}
+\crcr\noalign{\kern3pt}}}} \limits}
+%--------------------------------------------------------------------
+%		   caratteri speciali
+%--------------------------------------------------------------------
+%--  Caratteri barrati --
+%--------------------------------------------------------------------
+\def\lambdabar{{\mathchar'26\mskip-9mu\lambda}}
+\def\Lpbar{\hbox{{\it $\Lambda p$}\hskip-7.7pt/}}
+\def\bar#1{{\mathchar'26\mskip-9mu#1}}
+\def\pbar{\hbox{{\it p}\hskip-5pt/}}
+\def\kbar{\hbox{{\it k}\hskip-3.5pt/}}
+\def\dbar{\hbox{{\it $\delta$}\hskip-5pt/}}
+\def\lbar{{\mathchar'26\mskip-9mu\lambda}}
+\def\Abar{\hbox{{\it A}\hskip-4.5pt/}}
+%-- R,Z,T doppia barra
+\def\Poinc{\hbox{I\hskip-1.7pt P}}
+\def\Roinc{\hbox{I\hskip-1.7pt R}}
+\def\Toinc{\hbox{I\hskip-1.1pt T}}
+\def\Zoinc{\hbox{/\hskip-1.1pt Z}}
+%---------------------------------------
+%
+%  Caratteri matematici
+%----------------------------------------
+\def\Realism{\Roinc}
+\def\Torosm{\bf T}
+\def\Sferasm{\bf S}
+\def\Reali{\Bbb R}
+\def\Interi{\Bbb Z}
+\def\Toro{\Bbb T}
+\def\Razionali{\Bbb Q}
+\def\Naturali{\Bbb N}
+\def\Complessi{\Bbb C}
+\def\Sfera{\Bbb S}
+\def\Ppro{\Bbb P}
+%-------------------------------------------------------------------
+%    Miscellanea
+%------------------------------------------------------------------
+\def\sqr#1#2{{\vcenter{\hrule height.#2pt
+     \hbox{\vrule width.#2pt height#1pt \hskip#1pt
+       \vrule width.#2pt}
+     \hrule height.#2pt}}}
+\def\square{\mathchoice\sqr34\sqr34\sqr{2.1}3\sqr{1.5}3}
+\def\DAL{\hbox{\raise.250ex \hbox{$\sqr7{10}\,$}}} % DALambertiano
+\def\und{\underline}
+\def\pr{\prime}
+\def\ov{\overline}
+\def\cen{\centerline}
+\def\ndt{\noindent}
+\def\segue{\qquad \Longrightarrow \qquad}
+%------------------------------------------------------------------
+%    Bibliografia
+%------------------------------------------------------------------
+\def\bib#1.#2/#3/#4/#5/#6/#7.{\frenchspacing\item{[#1]}#2:\ {\it ``#3''}
+~--~#4\ $\underline{\bf #5}$,\ #6 (#7)}
+%------------------------------------------------------------------
+%    Diagramma
+%------------------------------------------------------------------
+\def\diagramma#1#2#3#4#5#6#7#8{
+ \vbox to 2.5cm{
+       \hbox to 3cm{\hfil ${#1}$ \hfil}
+       \hbox to 3cm{ ${#2}$\rightarrowfill ${#3}$ }
+\hbox to 3cm{${#4} \Biggl\uparrow\hfill\Biggr\uparrow {#5}$}
+       \hbox to 3cm{ ${#6}$\rightarrowfill ${#7}$ }
+       \hbox to 3cm{\hfil ${#8}$ \hfil}   }    }
+%-------------------------------------------------------------------------
+%    quella  che  segue  e` la macro che serve a mettere una cosa sopra
+%    l'altra:   #2 va sopra #1
+%-------------------------------------------------------------------------
+\def\sopra#1#2{{\raise 0.8 ex
+\hbox{$
+{{\scriptstyle \,{#2}}	\atop \displaystyle{#1}}
+$}}
+}
+%------------------------------------------------------------------
+%    Macro per figure
+%------------------------------------------------------------------
+\def \figura#1#2#3{\midinsert \centerline {\bf{Fig.#1}}\vskip #2 truecm
+\vskip .3 truecm \noindent {\rmsm {#3}}\endinsert \noindent }
+\def \figurac#1#2#3{\midinsert \centerline {\bf{Fig.#1}}\vskip #2 truecm
+\vskip .3 truecm \centerline{\rmsm {#3}}\endinsert \noindent }
+\def \figurat#1#2#3{\topinsert \centerline {\bf{Fig.#1}}\vskip #2 truecm
+\vskip .3 truecm \centerline{\rmsm {#3}}\endinsert \noindent }
+\def \figuraclong#1#2#3{\midinsert \centerline {\bf{Fig.#1}}\vskip #2 truecm
+\vskip .3 truecm \noindent {\rmsm {#3}}\endinsert \noindent }
+\def \figuratlong#1#2#3{\topinsert \centerline {\bf{Fig.#1}}\vskip #2 truecm
+\vskip .3 truecm \noindent {\rmsm {#3}}\endinsert \noindent }
+%-------
+%------------------------------------------------------------------
+%    Macro per figure, con inserimento di codice post_script.
+%------------------------------------------------------------------
+%	   macro per elaborazione su PC o su MVX
+\def\figuraps#1#2#3#4#5{
+\par
+\midinsert
+\centerline{\bf #4}
+\vbox to #3 truecm{
+\vskip #3 truecm
+\ifnum #1 = 0	% ---  siamo su PC
+\special {ps: plotfile #2}
+\else		% ---  siamo su MVX
+\special {#2 0 0 moveto 16} \fi
+}
+\centerline{#5}
+\endinsert}
+%------------------------------------------------------------------
+% macros per libro di Meccanica
+%------------------------------------------------------------------
+\def\v#1{{\bf #1}}
+\def\dim{{d}}	     %	 gradi di liberta'             (n)
+\def\Lag{L}	     %	 lagrangiana		       (\Lcal)
+\def\Azione{A}       %    Azione=\int L dt
+\def\ala{a}	     %	 coeffiecienti metrica in T_2  (g)
+\def\alaop{\aop}     %	 operatore associato	       (\gop)
+\def\rbfG{ \rbf_G{\rbf_{_{\hbox{\rmvsm G}}}}  } % posizione centro massa
+\def\grad{\hbox{grad}\,}
+\def\saltopagina{\vfill\eject \line{} \vskip 1.    truecm  \noindent }
+\def\secpagina{ \line{} \vskip 0.5  truecm \noindent}
+%-------------------------------------------------------------------
+%    formule piccole
+%-------------------------------------------------------------------
+\def\mini#1{$\sysm{{#1}}$}
+\def\minidis#1{$$\sysm{{#1}}$$}
+%-------------------------------------------------------------------
+% Testatina del libro di DINAMICA
+%  ripristinare il \nopagenumbers
+%-------------------------------------------------------------------
+% \vsize= 10. truecm
+% \hsize= 10. truecm
+\font\cofon = cmr6
+\font\cobfon = cmbx6
+\font\copi = cmr9
+\def\codlib{{\copi\copyright}{\cofon 88-08- }{\cobfon 9820}}
+\def\riga{\vskip .1  truecm   \hrule \vskip .2	    truecm \noindent }
+% \nopagenumbers    % ******* commentato il 8/7/98 ******
+% \headline=
+\def\HeadLinea#1#2{	\headline={\vbox to 0pt{\vss\noindent
+{\ifnum \pageno=1  \hfill {\bf \folio}		 %  prima pagina
+\else {\ifodd \pageno			   % pagina sinistra
+{\noindent     \hfill  {\it     #2} \quad {\bf \folio}
+ }\riga
+\else				 %pagina destra
+{\noindent {\bf\folio} \quad  {\it  #1} \hfill 	}
+\riga
+\fi } \fi }			}}
+}
+\def\testatina#1#2{	\headline={\vbox to 0pt{\vss\noindent
+{\ifnum \pageno=1  \hfill {\bf \folio}		 %  prima pagina
+\else {\ifodd \pageno			   % pagina sinistra
+{\noindent  \codlib   \hfill  {\it     #2} \quad {\bf \folio}
+ }\riga
+\else				 %pagina destra
+{\noindent {\bf\folio} \quad  {\it  #1} \hfill \codlib	}
+\riga
+\fi } \fi }			}}
+}
+%
+%   Primo argomento di \testata   titolo capitolo
+%   Secondo argomento numero e titolo paragrafo
+%
+\def\testatinacap#1#2#3{	\headline={\vbox to 0pt{\vss\noindent
+{\ifnum \pageno=#3  \hfill {\bf \folio}		 %  prima pagina
+\else {\ifodd \pageno			   % pagina sinistra
+{\noindent  \codlib   \hfill  {\it     #2} \quad {\bf \folio}
+ }\riga
+\else				 %pagina destra
+{\noindent {\bf\folio} \quad  {\it  #1} \hfill \codlib	}
+\riga
+\fi } \fi }			}}
+}
+%
+% terzo argomento pagina inizio capitolo
+%
+%------------------
+%  date 
+%------------------
+\def\oggi{\number\day\space\ifcase\month
+   \or gennaio\or febbraio\or marzo\or aprile\or maggio\or giugno\or
+   luglio\or agosto\or settembre\or ottobre\or novembre\or dicembre
+   \fi\space\number\year}
+\def\today{\number\day\space\ifcase\month
+   \or January\or February\or March\or April\or May\or June\or
+   July\or August\or September\or October\or November \or December
+   \fi\space\number\year}   
+%--------------------------------------------------
+%  Colori per TEX
+%--------------------------------------------------
+% \def\Colore#1#2#3{\special{ps: #1 #2 #3 setrgbcolor}}
+% \def\Rosso{\Colore{1}{0}{0} }
+% \def\Verde{\Colore{0}{1}{0} }
+% \def\Blu{\Colore{0}{0.65}{1} }
+% \def\Celeste{\Colore{0}{1}{1} }
+% \def\Nero{\Colore{0}{0}{0} }
+% \def\Bianco{\Colore{1}{1}{1} }
+% \def\Rossoscuro{\Colore{0.80}{0.00}{0.20} }
+% \def\Verdescuro{\Colore{0.00}{0.80}{0.20} }
+% \def\Bluscuro{\Colore{0.20}{0.00}{0.80} }
+% \def\Viola{\Colore{0.5}{0.0}{0.5} }
+%------------------------------
+%   Nuovi
+%-------------------------------
+% \def\Lilla{\Colore{1}{0}{1} }
+% \def\Bluchiaro{\Colore{0}{0.75}{1} }
+% \def\Blumedio{\Colore{0}{0.5}{1} }
+% \def\Arancio{\Colore{1}{0.5}{0} }
+% \def\Verdechiaro{\Colore{.5}{1}{0} }
+% \def\Marrone{\Colore{.6}{.4}{0.2} }
+% \def\Giallo{\Colore{1}{1}{0} }
+% \def\Gialloscuro{\Colore{.8}{.7}{0} }
+% \def\Rossochiaro{\Colore{1}{0}{0.5} }
+% \def\Rosa{\Colore{1}{0.5}{.5} }
+% \def\Grigio{\Colore{0.5}{0.5}{0.5} }
+%-----------------------------
+%
+%   Per cambiare colore  basta fare  \Rosso  ....... \Blu .......
+%
+%   e cosi di seguito senza parentesi
+%
+%-----------------------------
+%%%%% FRAME.TEX file : it contains the following MACROS
+%% \frame, \tframe  to put formulas in BOX!
+
+%%%%%%%%%%%%%%%%%%  MACRO for \frame, \tframe (Ortolani, January 94)
+% \frame{Thing}   : Puts a rule frame around Thing
+% \tframe{Thing}  : Puts a tight rule frame around Thing
+%
+\def\frame#1{\ifmmode\dframe{#1}\else\leavevmode\lower 2.4 pt
+    \hbox{\vrule\unskip\vbox{\hrule\kern 1.5 pt\hbox{\kern
+    1.5 pt{#1}\kern 0.5 pt}\kern 2 pt\hrule}\unskip\vrule}\fi}
+\def\tframe#1{\hbox{\vrule\unskip\vbox{\hrule\hbox{#1}\hrule}\unskip\vrule}}
+\def\dframe#1{\hbox{\vrule\unskip$\vcenter{\hrule\kern 3 pt\hbox
+    {\kern 3 pt$\displaystyle{#1}$\kern3pt}\kern 3 pt\hrule}$\vrule}}
+
+%%%%%%%%%%%%%% END of FRAME.TEX Formulas in Box!
+\def\redframe#1{\Rosso \frame{\Nero #1 \Rosso}\Nero}
+\def\Redframe#1{\Rosso \frame{\Nero #1 \Rosso}\Nero}
+
+\def\math#1{\Nero$#1$\Blut}
+\def\mathmini#1{\Nero$\scriptstyle{#1}$\Blut}
+\def\minimath#1{\Nero$\scriptstyle{#1}$\Blut}
+%  FINE
+%-------
