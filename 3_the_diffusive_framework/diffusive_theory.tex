@@ -100,39 +100,44 @@ from which follows immediately
 \begin{equation}
 	I = I_0 + \epsilon w(t)\,.
 \end{equation}
-If we now execute a Taylor expansion for \({\phi'}\), we obtain
+Therefore the action is a Gaussian process with average value $I_0$ and variance
 \begin{equation}
-	{\phi'} = \omega(I_0) + \omega'(I_0)\epsilon w(t) + \mathcal{O}\epsilon^2)\,,
+	\sigma_{I}^2=\epsilon^2t\,.
 \end{equation}
-which, if integrated, leads to
+In a perturbation approach $\epsilon\ll 1$ we study the evolution of the system for a time $t\ll \epsilon^{-2}$. Then in the  Taylor expansion for \({\phi'}\), we obtain
+\begin{equation}
+	{\phi'} = \omega(I_0) + \omega'(I_0)\epsilon w(t) + \mathcal{O}(\epsilon^2)\,,
+\end{equation}
+the contribution of the term $\mathcal{O}(\epsilon^2)$ can be neglected at this time scale. A direct integration leads to
 \begin{equation}
 	\phi = \phi_0 + \omega(I_0)t + \epsilon \omega'(I_0) w_1(t)\,.
 \end{equation}
-This kind of solution, as seen above, implies the following variance for $\phi$
+so that the relaxation time scale of the angle variable is estimated by
 \begin{equation}
-	\sigma_{\phi}^2 \propto t^3\,,
+	\sigma_{\phi}^2 \propto \epsilon^2 t_\phi^3\simeq 1
 \end{equation}
-while instead, for \(I\), the variance reads
-\begin{equation}
-	\sigma_{I}^2 \propto t\,.
-\end{equation}
+i.e. $t\_\phi\simeq \epislon^{-2/3}$. The perturbation approach is justified if one chooses $t\simeq t_\phi$ since $t\epsilon^2\simeq \epsilon^{4/3}\ll 1$. It follows that the angle variable can be considered a fast variable in the diffusion process whereas the action is a slow variable.
 
 \subsection{Averaging a 1\textsc{d} stochastic Hamiltonian}
 \label{ssc:averaging-1D}
 
-Let us consider a generic 1\textsc{d} stochastically perturbed Hamiltonian system in action-angle coordinates, with the origin $I=0$ being an elliptic point of \(\ham_0\). The Hamiltonian reads
+Let us consider a generic 1\textsc{d} stochastically perturbed Hamiltonian system in action-angle coordinates,
 \begin{equation}
 	\ham = \ham_0(I) + \epsilon \xi(t) \ham_1(\phi, I) \,.
 \end{equation}
+We remark that the symplecticity character of the phase solving the canonical equation requires that the stochastic process $\xi(t)$ has continuous realizations. In such a case the white noise limit can be performed by considering the average solution of the stochastic Liouville equation
+\begin{equation}
+	\pdv{\rho}{t}\/ + \Omega \pdv{\rho}{\phi}\/ +\epsilon \xi(t)\{\ham_1,\rho\}=0
+\end{equation}
 
-Tthe probability density \(\rho(\phi, I; t)\) satisfies the equation
+where \(\{\ ,\}\) are the Poisson brackets and \(\Omega(I) = \partial \ham_0/\partial I\).
+In the white noise limit one can proves that The probability density \(\rho(\phi, I; t)\)  satisfies the Fokker-Planck equation
 \begin{equation}
 	\pdv{\rho}{t}\/ + \Omega \pdv{\rho}{\phi}\/ = \frac{\epsilon^2 \sigma^2}{2}\{\ham_1, \{\ham_1,\rho\}\}
 	\label{eq:stoc_ham_complex_starting}
 \end{equation}
-where \(\{\ ,\}\) are the Poisson brackets and \(\Omega(I) = \partial \ham_0/\partial I\).
-
-From the results presented above, we know that a toroidal angle variable relaxes in much faster times compared to the action relaxation scales. This allows us to simplify this last equation into a Fokker-Planck equation for \(t\gg t_{\phi}\). The resulting equation, which describes the evolution of the distribution for the action variable \(\rho(I,t)\), averaged over the angle variable, will then read
+that corresponds to the Stratonovich interpretation of the stochastic canonical equations. In the diffusion limit $\epsilon\to 0$ and $t\gg 1$ with
+$t\epsilon^2=O(1)\gg t_{\phi}$ according to the results of the previous section, it is possible to apply an averaging theorem to the angle variable dynamics. This allows us to simplify this last equation into a Fokker-Planck equation, which describes the evolution of the distribution for the action variable \(\rho(I,t)\)
 \begin{equation}
 	\pdv{}{t}\/\rho(I,t) = \pdv{}{I}\/D(I)\pdv{}{I}\/\rho(I,t) \,,
 \end{equation}
@@ -142,7 +147,7 @@ where
 \end{equation}
 
 \subsubsection*{Proof}
-Let us start from the following stochastic Liouville equation
+Let us start from the stochastic Liouville equation
 \begin{equation}
 	\pdv{\rho}{t}\/ + \Omega(I) \pdv{\rho}{\phi}\/ + \epsilon\xi(t)\{\rho,\ham_1\} = 0\,,
 	\label{eq:dimo_liouville}
