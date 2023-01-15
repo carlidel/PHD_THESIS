@@ -46,13 +46,13 @@ The distribution function \(\rho_T(\hat{x},t)\) for the angular variables\(\hat{
  \label{eq:period}
 \end{equation}
 
-The solution of~\eqref{eq:langevin_toro} on \(\mathbb{R}\) is given by
+In the white noise limit the solution of~\eqref{eq:langevin_toro} on \(\mathbb{R}\) is given by
 \begin{equation}
 	y = y_0 + \epsilon w(t)\,, \qquad x = x_0 + (\omega + \epsilon y_0) t + \epsilon w_1(t) \,,
 \end{equation}
-by writing the deterministic part of \(x(t)\) in the form \(\langle x(t) \rangle = x_0 + (\omega + \epsilon y_0) t\), we can write the probability density in \(\mathbb{R}\) in the form
+by writing the evolution of the average value of \(x(t)\) in the form \(\langle x(t) \rangle = x_0 + (\omega + \epsilon y_0) t\), $x(t)$ is a Gaussian process and the probability density in \(\mathbb{R}\) reads
 \begin{equation}
-	\rho(x,t) = \frac{\exp{\frac{-(x-\langle x(t)\rangle)^2}{2\sigma^2}}}{\sqrt{2\pi\sigma^2}}\,, \qquad \sigma^2 = \epsilon^2 \frac{t^3}{3}\,,
+	\rho(x,t) = \frac{\exp{\frac{-(x-\langle x(t)\rangle)^2}{2\sigma^2(t)}}}{\sqrt{2\pi\sigma^2}}\,, \qquad \sigma^2(t) = \epsilon^2 \frac{t^3}{3}\,,
 \end{equation}
 we can then apply~\eqref{eq:period} and finally obtain
 \begin{equation}
@@ -73,7 +73,7 @@ By assuming real \(f_k\) coefficients, we obtain
 	\rho_T(x,t) = 1+2\sum_{k=1}^\infty e^{-2\pi^2\sigma^2k^2} f_k \cos(2\pi k (x-\langle x(t) \rangle)) \,.
 \end{equation}
 
-The most important aspect of this example, is how \(\rho_T\) relaxes to the uniform distribution as \(e^{-\sigma^2}\), where, in this scenario, we have
+The most important aspect of this example, is how \(\rho_T\) relaxes to the uniform distribution \(\propto e^{-\sigma^2(t)}\), and the relaxation time scale can be estimated by
 \begin{equation}
 	\sigma^2 \propto t^{3} \,,
 \end{equation}
