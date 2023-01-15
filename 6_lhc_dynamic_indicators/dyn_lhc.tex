@@ -2,6 +2,26 @@
 
 \section{Evaluation of dynamic indicators via shadow particles}
 
+If an analytical expression for $DM(\vb{x}, n)$ is available, a direct application of Eq.~\ref{eq:linear_response} is possible for evaluating $\boldsymbol{\Xi}_{n}(\mathbf{x})$. If this is not the case, it is possible to estimate the linear response with the consolidated ``shadow particle'' method~\cite{}, which consists in approximating the limit $\epsilon\to 0$ with an $\epsilon$ of small finite value, performing the orbit tracking of both $\vb{x}_n$ and $\vb{y}_n$, and then evaluating the estimate $\boldsymbol{\Xi}_{n}(\mathbf{x})=\frac{\mathbf{y}_{n}-\mathbf{x}_{n}}{\epsilon}$.
+
+When tracking $\vb{x}_n$ and $\vb{y}_n$, it is also necessary, every $\tau$ iteration, to evaluate the displacement vector $\vb{y}_n - \vb{x}_n$, and modify $\vb{y}_n$ so that the new displacement vector has module $\epsilon$ and the same direction. This is done to avoid spurious effects in the FLI evaluation that might be caused by excessive orbit drifting~\cite{}. For notation clarity, we denote this periodically modified $\vb{y}$ as $\vb{y}'$, which then reads
+\begin{equation}
+\begin{aligned}
+    \vb{y}'_0 &= \vb{y}_0 \,; \\
+    \vb{y}'_i &= DM(\vb{x}_{i\tau - 1}, i\tau - 1)\cdots DM(\vb{x}_{(i-1)\tau}, (i-1)\tau)\left[\vb{x}_{(i-1)\tau}+\epsilon\,\frac{\vb{y}'_{i-1}-\vb{x}_{(i-1)\tau}}{\norm{\vb{y}'_{i-1}-\vb{x}_{(i-1)\tau}}}\right]\,, \qquad 0 \leq i \leq n/\tau \,.
+\end{aligned}
+\end{equation}
+
+To integrate $\vb{y}_n'$ into the FLI expression, it is possible to take advantage of the properties of the logarithm in Eq.~\eqref{eq:base_fli}, and express FLI$_n/n$ as an average along the trajectory $\vb{x}_n$, leading to
+\begin{equation}
+    \frac{\text{FLI}_n(\vb{x})}{n} = \sum_{i=1}^{n/\tau} \frac{\log{\norm{\frac{\vb{y}_{i}' - \vb{x}_{i\tau}}{\epsilon}}}}{n}\,.
+    \label{eq:fli_mean}
+\end{equation}
+
+
+This estimation method has been widely used in literature due to its simplicity in implementation, however, in multiple studies ~\cite{} it has been highlighted in multiple studies~\cite{} how the choice of both the value of $\epsilon$ and the time interval $\tau$ between displacement resets to $\epsilon$ can significantly alter the final evaluation of $\boldsymbol{\Xi}_{n}(\mathbf{x})$ and, consequently, FLI$_x(\vb{x})$.
+
+
 \section{Implementation of dynamic indicators in accelerator tracking codes} \label{sec:implement}
 %
 
@@ -75,14 +95,14 @@ We can now inspect these same six HL-LHC configurations with dynamic indicators,
 \begin{figure}
     \centering
     \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/stability.png}
-    \caption{Survival plot up to $n=10^5$ turns for all nine configuration of the realistic HL-LHC lattice model considered.}
+    \caption{Survival plot up to $n=10^5$ turns for all six configuration of the realistic HL-LHC lattice model considered.}
     \label{fig:true_survivors}
 \end{figure}
 
 \begin{figure}
     \centering
     \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/fli_all.png}
-    \caption{$\log_{10}(\mathrm{FLI}(\hat{x})/n)$ evaluated at $n=10^5$ for all nine configuration of the realistic HL-LHC lattice model considered.}
+    \caption{$\log_{10}(\mathrm{FLI}(\hat{x})/n)$ evaluated at $n=10^5$ for all six configuration of the realistic HL-LHC lattice model considered.}
     \label{fig:fli_all}
 \end{figure}
 
@@ -118,7 +138,7 @@ To assess the magnitude of such differences, in Fig.~\ref{fig:fli_compare}, we c
 
 It is possible to see how the different choice of initial displacement highlights different structures in the regular region, while chaotic regions tend to assume the same final value. This difference is highlighted also by the standard deviation evaluation, as the chaotic regions at the border show in general a low standard deviation, while the stable regions at lower amplitude have higher values.
 
-This result is to be expected, as chaotic initial conditions are characterised by a strong maximal Lyapunov exponent, which leads different initial displacements to eventually align along it after a high enough number of turns. While, conversely, regular initial conditions might do not exhibit this preferential direction and lead to higher differences in $FLI$ values for different initial conditions. It's important to highlight, however, the fact that the general character of the dynamic indicator stays consistent along the various directions, and at most causes slight evaluation differences for the initial conditions close to the border between a regular and a chaotic region in the phase space.
+This result is to be expected, as chaotic initial conditions are characterized by a strong maximal Lyapunov exponent, which leads different initial displacements to eventually align along it after a high enough number of turns. While, conversely, regular initial conditions might do not exhibit this preferential direction and lead to higher differences in $FLI$ values for different initial conditions. It's important to highlight, however, the fact that the general character of the dynamic indicator stays consistent along the various directions, and at most causes slight evaluation differences for the initial conditions close to the border between a regular and a chaotic region in the phase space.
 
 \begin{figure*}[htp]
     \centering
@@ -200,19 +220,82 @@ To better appreciate the value distribution observed for $T_L$ and $T_s$ at diff
 
 We now want to fit a Nekhoroshev-like function
 \begin{equation}
-    T = T_0 \exp\left[-\left(\frac{I_0}{I_0^*}\right)^A\right]
+    T = T_0 \exp\left[-\left(\frac{I_\ast}{I_0}\right)^A\right]
 \end{equation} 
 to both $T_L$ and $T_s$, and inspect both the goodness of the fit and the evolution of the values of $T_0$, $I_\ast$, and $\kappa$ for the different combinations of seeds and values of $\zeta_0$. As this scale law ranges over multiple orders of magnitude, we consider the logarithm of $T$, and fit the following function:
 \begin{equation}
-    \log(T) = \log(T_0) - \left(\frac{I_0}{I_0^*}\right)^A \,.
+    \log(T) = \log(T_0) - \left(\frac{I_\ast}{I_0}\right)^A \,.
 \end{equation}
 To fit the function, we first perform an initial brute force search over a grid of values of $T_0$, $I_0^*$, and $A$, and then we perform a more refined search around the best values found in the first step using the least squares method. This initial search is motivated by the non-linear nature of the fit, which makes it difficult to find the best values of the parameters with a simple gradient descent method.
 
-As we have seen in Fig.~\ref{} and discussed previously, both evaluations of $T_L$ and $T_s$ are inevitably affected by the fact that they are evaluated on a finite number of turns $n=10^5$. Because of this, when performing the fit, we have to consider the part of the data that does not show saturation, which is the part of the data 
+As we have seen in Fig.~\ref{fig:ts_vs_tl} and Fig.~\ref{fig:extra_distribution}, and as we discussed previously, both evaluations of $T_L$ and $T_s$ are inevitably affected by the fact that they are evaluated on a finite number of turns $n=10^5$. Because of this, when performing the fit, we have to consider the part of the data that does not show saturation, which is ultimately the part of the data that has shown either a clear chaotic dynamics or strong instabilities during the tracking up to $10^5$ turns, enabling us to probe the Nekhoroshev character of the dynamics.
+
+To make an accurate choice in the data to be used for the fit, that is, to choose the part of the data that does not show saturation, we perform the fit on multiple different data cuts, picked near the region of transition between the regular and chaotic regimes. We then choose the data cut that provides the best fit, using as measure of merit the reduced $\chi^2$ of the fit.
+
+In Fig.~\ref{fig:the_lyap_fit_worst} and Fig.~\ref{fig:the_lyap_fit_best}, we show the result of the fitting procedure of $T_L$ and $T_s$, applied to the two different HL-LHC seeds, both with $\zeta_0=$ \SI{0.3}{\meter}. We can see how different choices of data cut do not lead to strong differences in the values of the parameters of the fit, as long as they do not include the saturated part of the data. We can also observe how the fitting parameters for $T_L$ and $T_s$ are more comparable for the worst seed, which is in fact the one characterized by a stronger non-linear dynamics.
+
+In Table~\ref{tab:lyap_fit_results}, we report the fit parameters archived for the 6 HL-LHC configurations we have considered. We
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{6_lhc_dynamic_indicators/figs/fit_l_time_bad.png}
+    \caption{Fitting of $T_L$ for the worst seed, with $\zeta_0=$ \SI{0.3}{\meter}.}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{6_lhc_dynamic_indicators/figs/fit_l_time_best.png}
+    \caption{Fitting of $T_L$ for the best seed, with $\zeta_0=$ \SI{0.3}{\meter}.}
+\end{figure}
+
+\begin{table}
+    \centering
+    \begin{tabular}{l|c|ccc}
+        \toprule
+        \multicolumn{2}{c|}{$T_s$ fit} & $\zeta_0=$ \SI{0.0}{\meter} & $\zeta_0=$ \SI{0.15}{\meter} & $\zeta_0=$ \SI{0.3}{\meter} \\
+        \midrule
+        \multirow{3}{*}{\makecell{Worst\\seed}} & $\log_{10}(T_0)$ & & & \\
+        & $I_\ast$ & & & \\
+        & $A$ & & & \\
+        \midrule
+        \multirow{3}{*}{\makecell{Best\\seed}} & $\log_{10}(T_0)$ & & & \\
+        & $I_\ast$ & & & \\
+        & $A$ & & & \\
+        \bottomrule
+    \end{tabular}
+
+    \begin{tabular}{l|c|ccc}
+        \toprule
+        \multicolumn{2}{c|}{$T_L$ fit} & $\zeta_0=$ \SI{0.0}{\meter} & $\zeta_0=$ \SI{0.15}{\meter} & $\zeta_0=$ \SI{0.3}{\meter} \\
+        \midrule
+        \multirow{3}{*}{\makecell{Worst\\seed}} & $\log_{10}(T_0)$ & & & \\
+        & $I_\ast$ & & & \\
+        & $A$ & & & \\
+        \midrule
+        \multirow{3}{*}{\makecell{Best\\seed}} & $\log_{10}(T_0)$ & & & \\
+        & $I_\ast$ & & & \\
+        & $A$ & & & \\
+        \bottomrule
+    \end{tabular}
+
+    \caption{Fitting results of Eq.~\eqref{} on the $T_s$ and $T_L$ data obtained from the 6 HL-LHC configurations considered.}
+    \label{tab:lyap_fit_results}
+\end{table}
+
+In the work of Morbidelli et al.~\cite{Morbidelli1995}, an overview on the relationship between the Lyapunov time $T_L$ and macroscopic instability times, which can be related to our measure of stability time $T_s$, is presented. In particular, the authors distinguish between two different regimes, depending on the characteristics of the Hamiltonian dynamical system under study and the eventual presence of low-order resonances overlapping together.
+
+The first regime is called the \textit{``resonance overlapping regime''}, and it is characterized by the presence of low-order resonances overlapping together. In this case, $T_s$ is expected to be in a polynomial relation with $T_L$, i.e.\ $T_s \sim T_L^\beta$, with some positive $\beta$. The second regime is called the \textit{``Nekhoroshev regime''}, and it is shown by the authors how such a regime can not follow a universal polynomial relation between $T_s$ and $T_L$. In this case, the relation between $T_s$ and $T_L$ is expected to be an exponential one, i.e.\ $T_s \sim \exp(T_L)$.
+
+If we bring forward our thesis that both $T_s$ and $T_L$ follow a Nekhoroshev-like scale law with respect to $I_0$, we can construct the following relation between the two values:
+\begin{equation}
+    \frac{T_s}{T_{0s}} = \exp\left[\left(\frac{I_{\ast s}}{I_{\ast L}}\right)^{A_s}\left(\log\frac{T_L}{T_{0L}}\right)^{A_s / A_L}\right] \, ,
+\end{equation}
+where, if $A_L/A_s = 1$, we are able to recover a polynomial relation between $T_s$ and $T_L$ in the form $T_s = \alpha T_L^\beta$. If that's not the case, the relation assumes a more complicated form $T_s = \alpha \exp(\beta' \log{T_L}^{A_L/A_s})$.
+
 
 \subsection{Dependence of FMA from the longitudinal dynamics}
 
-As it was pointed out in subsection~\ref{}, the chaotic structures highlighted by FMA are very different from the ones highlighted by the other dynamic indicators. This is due to the fact that the FMA indicator is sensitive in general to tune changes, which are not necessarily related to a chaotic dynamics, but might be related, for example, to the presence of tune resonances.
+As it was pointed out in Subsection~\ref{}, the chaotic structures highlighted by FMA are very different from the ones highlighted by the other dynamic indicators. This is due to the fact that the FMA indicator is sensitive in general to tune changes, which are not necessarily related to a chaotic dynamics, but might be related, for example, to the presence of tune resonances.
 
 To further highlight this characteristic of FMA, we can observe how the indicator is particularly sensitive to the presence of longitudinal dynamics. In Fig.~\ref{fig:fma_vs_fli}, we present FMA evaluated on the same seed at the three different values of $\zeta_0$, and we compare the resulting structures and value evolution of $FLI^{WB}$. We can observe how higher values of $\zeta_0$, which lead to stronger longitudinal dynamics and modulation, cause larger differences in the structures highlighted by FMA and $FLI^{WB}$. This is due to the fact that stronger longitudinal dynamics leads to stronger modulation effects in the transverse tunes, which ultimately may lead to cases of regular orbits with varying fundamental frequencies.   
 
@@ -225,7 +308,27 @@ Moreover, if we compare the evolution of the value distribution of FMA, we can o
     \label{fig:fma_vs_fli}
 \end{figure}
 
-\subsection{General performances of REM}
+\subsection{General performances of $REM$}
+
+In the previous Chapter, the performances of different dynamic indicators were evaluated on a modulated Hénon map by means of a clustering approach. This analysis showed that the $REM$ indicator is able to highlight the chaotic structures faster than Lyapunov-based dynamic indicators such as $FLI^{WB}$. Mainly due its ability to distinguish regular orbits from chaotic ones in a well-defined bimodal distribution, as the numerical error gets quickly amplified by the chaotic character of the orbits.
+
+When applying $REM$ to the HL-LHC lattices, we observe a similar good performance in clearly highlighting the chaotic regions in the phase space. In Fig.~\ref{fig:rem_lhc}, we can compare the results obtained by $REM$ on an example seed at three different values of $n$ with the results obtained by $FLI^{WB}$ at the same values of $n$. We can observe how $REM$ tends to highlight the chaotic regions qualitatively faster than $FLI^{WB}$, reproducing the same behaviour observed in the modulated Hénon map, although, for this analysis, we lack the possibility to define a ground truth to compare the results with. 
+
+The same behaviour can be appreciated by comparing in Fig.~\ref{fig:overview2} the evolution of the value distribution of $\log_{10}(REM)$ and $\log_{10}(FLI^{WB})$ over time, as $\log_{10}(REM)$ tends to a bimodal distribution faster than $\log_{10}(FLI^{WB})$.
+
+\begin{figure}
+    \centering
+    % \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/REM.png}
+    \caption{Comparison of the results obtained by $REM$ and $FLI^{WB}$ on the same seed at three different values of $n$. $REM$ tends to highlight the chaotic regions qualitatively faster than $FLI^{WB}$.}
+    \label{fig:rem_lhc}
+\end{figure}
+
+The promising performances of $REM$ in highlighting the chaotic structures in the phase space, along with its straightforward implementation, make it a very interesting tool for inspecting phase space structures in realistic accelerator lattices.
+
+\subsection{Different subspace choices for $GALI^{(k)}$}
+
+The $GALI^{(k)}$ indicator can be chosen for different values of $k$, namely, $2 \leq k \leq 2N$, where $N$ is the number of degree of freedom in the system which, in our case, is $N=3$. For $k=6$ we have the natural choice for the linearly independent initial displacements corresponding to the six 
 
 
-\subsection{Different subspace choices for GALI$^{(k)}$}
+
+\section{Conclusions and future work}
