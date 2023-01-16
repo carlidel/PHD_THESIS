@@ -2,24 +2,33 @@
 
 \section{Evaluation of dynamic indicators via shadow particles}
 
-If an analytical expression for $DM(\vb{x}, n)$ is available, a direct application of Eq.~\ref{eq:linear_response} is possible for evaluating $\boldsymbol{\Xi}_{n}(\mathbf{x})$. If this is not the case, it is possible to estimate the linear response with the consolidated ``shadow particle'' method~\cite{}, which consists in approximating the limit $\epsilon\to 0$ with an $\epsilon$ of small finite value, performing the orbit tracking of both $\vb{x}_n$ and $\vb{y}_n$, and then evaluating the estimate $\boldsymbol{\Xi}_{n}(\mathbf{x})=\frac{\mathbf{y}_{n}-\mathbf{x}_{n}}{\epsilon}$.
+In the previous Chapter, we have observed how some dynamic indicators, such as $FLI$ and $GALI^{(k)}$, require the evaluation of the effects of an initial displacement via the tangent map $DM(\vb{x}, n)$. For a simple model like the Hénon map, an analytic expression of $DM(\vb{x}, n)$ is available, which enables us to evaluate expressions like Eq.~\ref{} directly.
 
-When tracking $\vb{x}_n$ and $\vb{y}_n$, it is also necessary, every $\tau$ iteration, to evaluate the displacement vector $\vb{y}_n - \vb{x}_n$, and modify $\vb{y}_n$ so that the new displacement vector has module $\epsilon$ and the same direction. This is done to avoid spurious effects in the FLI evaluation that might be caused by excessive orbit drifting~\cite{}. For notation clarity, we denote this periodically modified $\vb{y}$ as $\vb{y}'$, which then reads
+Conversely, when considering realistic accelerator models, which are the result of the concatenation of thousands of different nonlinear elements, it is currently not feasible to obtain a complete and practical to use analytic expression of the tangent map. This requires the use of numerical methods to evaluate the tangent map, which is a computationally expensive task. Another more practical method to evaluate the linear response of the system to a small initial displacement is the use of a so-called ``shadow particle''~\cite{}.
+
+The shadow particle method consists in approximating the limit $\epsilon\to 0$ with an $\epsilon$ of small finite value, performing the orbit tracking of both the initial condition $\vb{x}_0$ and of the displaced initial condition $\vb{y}_0 = \vb{x}_0 + \epsilon \boldsymbol{\xi}$. And then evaluating the estimate $\boldsymbol{\Xi}_{n}(\mathbf{x})=\frac{\mathbf{y}_{n}-\mathbf{x}_{n}}{\epsilon}$.
+
+When performing the tracking $\vb{x}_n$ and $\vb{y}_n$, it is also necessary, every $\tau$ iterations, to reset the distance between $\vb{x}_n$ and $\vb{y}_n$ to the initial module $\epsilon$, while maintaining the same direction. This is done to avoid spurious effects in the evaluation of the linear response that might be caused by excessive orbit drifting~\cite{}, which is to be expected especially for chaotic orbits.
+
+This periodically modified $\vb{y}'_n$, for a given value of $\tau$, reads
+\begin{equation}
+    \begin{aligned}
+        \vb{y}'_0 =&\, \vb{y}_0 \,;  \\
+        \vb{y}'_i =&\, DM(\vb{x}_{i\tau - 1}, i\tau - 1)DM(\vb{x}_{i\tau - 2}, i\tau - 2)\cdots \\
+        &\cdots DM(\vb{x}_{(i-1)\tau}, (i-1)\tau)\left[\vb{x}_{(i-1)\tau}+\epsilon\,\frac{\vb{y}'_{i-1}-\vb{x}_{(i-1)\tau}}{\norm{\vb{y}'_{i-1}-\vb{x}_{(i-1)\tau}}}\right]\,, \quad 0 \leq i \leq n/\tau \,,        
+    \end{aligned}
+\end{equation}
+which, for $\tau=1$, reduces to
 \begin{equation}
 \begin{aligned}
     \vb{y}'_0 &= \vb{y}_0 \,; \\
-    \vb{y}'_i &= DM(\vb{x}_{i\tau - 1}, i\tau - 1)\cdots DM(\vb{x}_{(i-1)\tau}, (i-1)\tau)\left[\vb{x}_{(i-1)\tau}+\epsilon\,\frac{\vb{y}'_{i-1}-\vb{x}_{(i-1)\tau}}{\norm{\vb{y}'_{i-1}-\vb{x}_{(i-1)\tau}}}\right]\,, \qquad 0 \leq i \leq n/\tau \,.
+    \vb{y}'_i &= DM(\vb{x}_{i-1}, i-1)\left[\vb{x}_{i-1}+\epsilon\,\frac{\vb{y}'_{i-1}-\vb{x}_{i-1}}{\norm{\vb{y}'_{i-1}-\vb{x}_{i-1}}}\right]\,.
 \end{aligned}
 \end{equation}
 
-To integrate $\vb{y}_n'$ into the FLI expression, it is possible to take advantage of the properties of the logarithm in Eq.~\eqref{eq:base_fli}, and express FLI$_n/n$ as an average along the trajectory $\vb{x}_n$, leading to
-\begin{equation}
-    \frac{\text{FLI}_n(\vb{x})}{n} = \sum_{i=1}^{n/\tau} \frac{\log{\norm{\frac{\vb{y}_{i}' - \vb{x}_{i\tau}}{\epsilon}}}}{n}\,.
-    \label{eq:fli_mean}
-\end{equation}
+Implementing this method in the definition of $FLI/n$, $FLI^{WB}$, and $GALI^{(k)}$ is a straightforward task, and ends up replacing the evaluation of the tangent map $DM(\vb{x}, n)$ with the evaluation of a shadow particle for each displacement direction $\boldsymbol{\xi}$ we want to consider.
 
-
-This estimation method has been widely used in literature due to its simplicity in implementation, however, in multiple studies ~\cite{} it has been highlighted in multiple studies~\cite{} how the choice of both the value of $\epsilon$ and the time interval $\tau$ between displacement resets to $\epsilon$ can significantly alter the final evaluation of $\boldsymbol{\Xi}_{n}(\mathbf{x})$ and, consequently, FLI$_x(\vb{x})$.
+This estimation method has been widely used in literature due to its simplicity in implementation, however, it has been highlighted in multiple studies~\cite{} how the choice of both the value of $\epsilon$ and the time interval $\tau$ between displacement resets to $\epsilon$ can significantly alter the final evaluation of $\boldsymbol{\Xi}_{n}(\mathbf{x})$ and, consequently, the dynamic indicators which rely on it.
 
 
 \section{Implementation of dynamic indicators in accelerator tracking codes} \label{sec:implement}
@@ -35,19 +44,13 @@ The code structure of Xsuite allowed us to easily implement, within the GPU work
 %
 \subsection{Computational effort for evaluating chaos indicators}
 
-The dynamic indicators showcased in the previous section require different computational efforts in either memory requirements or additional operations needed, on top of a reference single-particle tracking. Considering these different requirements can favour the choice of a specific dynamic indicator, depending on the typology of analysis someone might want to perform and depending on the computational resources available.
+The dynamic indicators showcased in the previous section require different computational efforts in either memory requirements or additional operations needed, on top of a reference single-particle tracking. As discussed in Appendix~\ref{}, considering these different requirements can favour the choice of a specific dynamic indicator, depending on the typology of analysis someone might want to perform and depending on the computational resources available. We recall here the main considerations for each indicator considered, in light of the usage of the shadow particle method.
 
 As stated in the previous section, current particle tracking frameworks do not offer practical tools for obtaining an analytic expression of the tangent map. Although techniques for estimating it numerically exists~\cite{}, in this context, they are not as practical as the shadow particle method, which gives us a straightforward way to evaluate the chaotic behaviour of a complex magnetic lattice constituted of multiple nonlinear elements.
 
-For $FLI$, the main computational effort consists of tracking the value of two particles, namely, the reference one and the shadow one. This value increases if there's the interest in inspecting different initial displacements at the same time.
+For $FLI$, the main computational effort consists of tracking the value of two particles, namely, the reference one and the shadow one. This value increases if there's the interest in inspecting different initial displacements at the same time. Similarly, $GALI^{(k)}$ requires the evaluation of $k+1$ particles per initial condition, namely, the reference orbit and $k$ shadow particles with orthogonal displacement.
 
-$GALI^{(k)}$ requires the evaluation of $k+1$ particles per initial condition, namely, the reference orbit and $k$ shadow particles with orthogonal displacement. A practical and fast method for computing the norm of external products in Eq.~\eqref{} is given in~\cite{Skokos2008}, where it is proven how $GALI^{(k)}$ can be evaluated by means of the Singular Value Decomposition (SVD) method~\cite{10.5555/1403886}.
-
-$REM$ and $FMA$ do not require the tracking of shadow particles. $REM$ however requires a forward and backward tracking, doubling the computational effort in a way comparable to $FLI$. $FMA$, instead, only requires a forward tracking, but depending on the method used for evaluating the tune, it might require the tracking of the entire orbit history, which can be a significant memory requirement.
-
-This requirement also needs to be contextualized with the computing architecture in use, as the usage of GPU architectures might lead to significant memory limitations when implementing dynamic indicators which require keeping track of the entire history of the particle orbit. This is the case of $FMA$ if one wants to evaluate the tune via FFT, as the FFT needs to be performed on the entire history of the particle orbit. Such requirement, conjoined with the memory limitations of the GPU and the computational advantage achievable only when tracking many initial conditions in parallel, makes such indicator not practical for GPU implementation, as it can't be evaluated at a high number of turns without hitting memory limits.
-
-Conversely, evaluating the tune via APA, combined with Birkhoff weights, enables the tune evaluation to be performed progressively as the particle is tracked. Meaning, instead of keeping track of the entire orbit history and finally evaluating the weighted average, one can progressively evaluate the weighted average by adding the various contributions that are computed turn after turn.
+$REM$ and $FMA$ do not require the tracking of shadow particles. $REM$ however requires a forward and backward tracking, doubling the computational effort in a way comparable to $FLI$. $FMA$, instead, only requires a forward tracking, but depending on the method used for evaluating the tune, it might require the tracking of the entire orbit history, which can be a significant memory requirement, and might lead to the impossibility to use a SIMD architecture. Details regarding this issue are discussed as well in Appendix~\ref{}.
 
 \subsection{Models} \label{sec:model}
 %
@@ -73,7 +76,7 @@ The longitudinal variable $\zeta$ was set at three different values to inspect d
 \begin{figure}
     \centering
     \includegraphics[width=0.65\textwidth]{6_lhc_dynamic_indicators/figs/longitudinal.png}
-    \caption{Tracking of initial conditions with different $\zeta$ values up to $n=10^3$ on the HL-LHC lattice with median seed. The tracking highlights the classic bunch structure and shows that the separatrix is placed at $\zeta \gtrsim$ \SI{0.35}{\meter}. The three red crosses represents the three choices of $\zeta_0$ we decided to inspect in our dynamic indicator study.}
+    \caption{Tracking of initial conditions with different $\zeta$ values up to $n=10^3$ on the HL-LHC lattice with median seed. The tracking highlights the classic bunch structure with the separatrix placed at $\zeta \sim$ \SI{0.36}{\meter}. The three red crosses represents the three choices of $\zeta_0$ we decided to inspect in our dynamic indicator study.}
     \label{fig:the_bunch}
 \end{figure}
 
@@ -327,8 +330,59 @@ The promising performances of $REM$ in highlighting the chaotic structures in th
 
 \subsection{Different subspace choices for $GALI^{(k)}$}
 
-The $GALI^{(k)}$ indicator can be chosen for different values of $k$, namely, $2 \leq k \leq 2N$, where $N$ is the number of degree of freedom in the system which, in our case, is $N=3$. For $k=6$ we have the natural choice for the linearly independent initial displacements corresponding to the six 
+The $GALI^{(k)}$ indicator can be chosen for different values of $k$, namely, $2 \leq k \leq 2N$, where $N$ is the number of degree of freedom in the system which, in our case, is $N=3$. For $k=6$ we have the natural choice for the linearly independent initial displacements corresponding to the six base vectors $\hat{x}$, $\hat{y}$, $\hat{p_x}$, $\hat{p_y}$, $\hat{\zeta}$, and $\hat{\delta}$, while, for lower values of $k$, we can choose the subspace of the initial displacements and explore the chaotic behaviour of the system in that specific subspace.
 
+The choice of $k$ has different consequences on the convergence rate of the indicator for regular and chaotic orbits. A complete overview of the expected different behaviours of $GALI^{(k)}$ for different values of $k$ is given in~\cite{SKOKOS200730}.
+
+If the orbit is chaotic, $GALI^{(k)}$ converges to zero exponentially fast by the law
+\begin{equation}
+    GALI^{(k)} \propto \exp\left[-t\left((\lambda_1 - \lambda_2)+(\lambda_1 - \lambda_3)+\cdots+(\lambda_1 - \lambda_k)\right)\right] \,,
+\end{equation}
+where $\lambda_1$ is the largest Lyapunov exponent and $\lambda_2$, $\lambda_3$, $\cdots$, $\lambda_k$ are the next $k-1$ largest Lyapunov exponents. If we assume that the maximal Lyapunov exponent is significantly larger than the next largest Lyapunov exponent, we can approximate the exponential decay of $GALI^{(k)}$ as $\exp(-tk\lambda_1)$.
+
+Conversely, if the orbit is regular, $GALI^{(k)}$ follows different laws depending on the number $k$ and on the geometry of the displacement choice. Namely, we have that
+\begin{equation}
+    GALI^{(k)} \propto \begin{cases}\text { constant } & \text { if } 2 \leq k \leq N \\ \frac{1}{t^{2(k-N)-m}} & \text { if } N<k \leq 2 N \text { and } 0 \leq m<k-N \\ \frac{1}{t^{k-N}} & \text { if } N<k \leq 2 N \text { and } m \geq k-N\end{cases} \,,
+\end{equation}
+meaning that, for $k\leq3$, the indicator should show a constant value over time, while for $k>3$ the indicator can show different power laws, depending on the number $m$ of deviation vectors which initially lie in the tangent space of the regular orbit torus.
+
+These properties of the $GALI^{(k)}$ indicator make it a very interesting tool for inspecting the geometrical properties of regular orbits in the phase space. More specifically, inspecting the behaviour of $GALI^{(4)}$ for different displacement choices can give us an idea on the structure of the regular toroidal orbits, as the $m$ will assume different values, as the number of initial displacements which lie in the tangent space of the tori changes.
+
+As a first attempt to test this behaviour with our HL-LHC lattices, we have inspected the mean value evolution of $GALI^{(2)}$ and $GALI^{(4)}$ for a set of regular initial conditions, selected by means of the $FLI^{WB}$ indicator at $n=10^5$. As displacement choices, we test respectively every possible combination of 2 and 4 vectors out of the six base vectors. The set of regular initial conditions is defined by considering the initial conditions that scored a value of $FLI^{WB}$ below $10^{-5}$, as we have observed to be a value close to the saturation of the indicator at $n=10^5$ during the analysis presented in Subsection~\ref{}.
+
+The results of the analysis for $GALI^{(2)}$ are shown in Fig.~\ref{fig:gali2}, where we can observe that the mean value of $GALI^{(2)}$ is somewhat constant over time only for the displacement choices that do not include a longitudinal displacement, i.e. $\hat{\zeta}$ and $\hat{\delta}$. This is not completely in agreement with the expected behaviour of $GALI^{(2)}$ for regular orbits, and might suggest that the introduction of a longitudinal displacement introduces a small amount of chaos in the system, which is not enough to be detected by the $FLI^{WB}$ indicator, but is enough to make the $GALI^{(2)}$ indicator show a non-constant behaviour. This discrepancy will require further investigation.
+
+\begin{figure}
+    \centering
+    % \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/GALI2.png}
+    \caption{Mean value evolution of $GALI^{(2)}$ for different displacement choices. (Left) the mean value of $GALI^{(2)}$ is constant only for the displacement choices that do not include a longitudinal displacement. (Right) displacements that include a longitudinal displacement show a non-constant behaviour.}
+    \label{fig:gali2}
+\end{figure}
+
+As for the $GALI^{(4)}$ indicator, the results are shown in Fig.~\ref{fig:gali4}, where we can observe how the mean value of $GALI^{(4)}$ indeed does follow a different power law evolution depending on the displacement choice. Moreover, we can observe that all evolutions also manifest a saturation behaviour for $n>10^4$. To compare the different behaviours, we fit the power law over the interval $10^2\leq n \leq 10^4$, and we report the values of the exponent in Table~\ref{tab:gali4}, along with the corresponding $m$ value.
+
+We can observe how, for certain combinations, the exponent of the power law ends up exceeding the value of $2$, which is the maximum expected value of the power law for $k=4$ and $N=3$. For these cases, we reported a negative value of $m$, which does not have a geometrical interpretation. This behaviour as well might be due to the presence of a small amount of chaos in the system, introduced by specific displacement choices, and it will require further investigation as well.
+
+Apart from this discrepancy, we can observe how the various displacement choices do yield different values of $m$, which can be interpreted as the number of initial displacements that lie in the tangent space of the regular tori. This is in agreement with the expected behaviour of $GALI^{(4)}$ for regular orbits, and it can be used to inspect the geometry of the regular tori in the phase space.
+
+\begin{figure}
+    \centering
+    % \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/GALI4.png}
+    \caption{Mean value evolution of $GALI^{(4)}$ for different displacement choices. The mean value of $GALI^{(4)}$ follows a different power law evolution depending on the displacement choice.}
+    \label{fig:gali4}
+\end{figure}
+
+\begin{table}
+    \centering
+    \begin{tabular}{l|cc}
+        \toprule
+        Displacement choice & $2(k-N)-m$ & $m$ \\
+        \midrule
+        $\hat{\zeta}$ & 2 & 0 \\
+        \bottomrule        
+    \end{tabular}
+    \caption{Exponent of the power law and values of $m$ for the different displacement choices for $GALI^{(4)}$.}
+\end{table}
 
 
 \section{Conclusions and future work}
