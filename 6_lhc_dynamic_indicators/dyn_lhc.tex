@@ -257,12 +257,12 @@ In Table~\ref{tab:lyap_fit_results}, we report the fit parameters archived for t
         \toprule
         \multicolumn{2}{c|}{$T_s$ fit} & $\zeta_0=$ \SI{0.0}{\meter} & $\zeta_0=$ \SI{0.15}{\meter} & $\zeta_0=$ \SI{0.3}{\meter} \\
         \midrule
-        \multirow{3}{*}{\makecell{Worst\\seed}}  & $1/(2k)$ & $2.94 \pm 0.02$ & $2.94 \pm 0.15$ & $3.03 \pm 0.08$ \\
+        \multirow{3}{*}{\makecell{Worst\\seed}}  & $1/(2\kappa)$ & $2.94 \pm 0.02$ & $3.0 \pm 0.2$ & $3.03 \pm 0.08$ \\
         & $I_\ast$ & $131 \pm 2$ & $119 \pm 7$ & $109 \pm 5$ \\
         & $\log_{10}(T_0)$ & $-1.23 \pm 0.04$ & $-0.95 \pm 0.08$ & $-0.81 \pm 0.06$ \\
         \midrule
 
-        \multirow{3}{*}{\makecell{Best\\seed}}  & $1/(2k)$ & $2.9997 \pm 0.0004$ & $3.03 \pm 0.07$ & $3.00 \pm 0.08$ \\
+        \multirow{3}{*}{\makecell{Best\\seed}}  & $1/(2\kappa)$ & $2.9997 \pm 0.0004$ & $3.03 \pm 0.07$ & $3.00 \pm 0.08$ \\
         & $I_\ast$ & $220 \pm 40$ & $208 \pm 28$ & $206 \pm 23$ \\
         & $\log_{10}(T_0)$ & $-2.2 \pm 0.3$ & $-1.9 \pm 0.3$ & $-1.819 \pm 0.004$ \\
         \bottomrule
@@ -270,12 +270,12 @@ In Table~\ref{tab:lyap_fit_results}, we report the fit parameters archived for t
         \toprule
         \multicolumn{2}{c|}{$T_L$ fit} & $\zeta_0=$ \SI{0.0}{\meter} & $\zeta_0=$ \SI{0.15}{\meter} & $\zeta_0=$ \SI{0.3}{\meter} \\
         \midrule
-        \multirow{3}{*}{\makecell{Worst\\seed}}  & $1/(2k)$ & $1.2 \pm 2.9$ & $1.878 \pm 0.013$ & $1.94 \pm 0.10$ \\
+        \multirow{3}{*}{\makecell{Worst\\seed}}  & $1/(2\kappa)$ & $1 \pm 3$ & $1.88 \pm 0.01$ & $1.9 \pm 0.1$ \\
         & $I_\ast$ & $2500 \pm 1600$ & $100 \pm 40$ & $104 \pm 31$ \\
         & $\log_{10}(T_0)$ & $-3 \pm 17$ & $1.9 \pm 0.3$ & $1.5 \pm 0.3$ \\
 
         \midrule
-        \multirow{3}{*}{\makecell{Best\\seed}}  & $1/(2k)$ & $1.5 \pm 1.0$ & $2.94 \pm 0.04$ & $2.67 \pm 0.13$ \\
+        \multirow{3}{*}{\makecell{Best\\seed}}  & $1/(2\kappa)$ & $1.5 \pm 1.0$ & $2.94 \pm 0.04$ & $2.7 \pm 0.1$ \\
         & $I_\ast$ & $1700 \pm 400$ & $108 \pm 25$ & $98 \pm 27$ \\
         & $\log_{10}(T_0)$ & $-4 \pm 5$ & $1.1 \pm 0.3$ & $1.5 \pm 0.3$ \\
         \bottomrule
@@ -330,7 +330,7 @@ The promising performances of $REM$ in highlighting the chaotic structures in th
 
 \subsection{Different subspace choices for $GALI^{(k)}$}
 
-The $GALI^{(k)}$ indicator can be chosen for different values of $k$, namely, $2 \leq k \leq 2N$, where $N$ is the number of degree of freedom in the system which, in our case, is $N=3$. For $k=6$ we have the natural choice for the linearly independent initial displacements corresponding to the six base vectors $\hat{x}$, $\hat{y}$, $\hat{p_x}$, $\hat{p_y}$, $\hat{\zeta}$, and $\hat{\delta}$, while, for lower values of $k$, we can choose the subspace of the initial displacements and explore the chaotic behaviour of the system in that specific subspace.
+The $GALI^{(k)}$ indicator can be chosen for different values of $k$, namely, $2 \leq k \leq 2N$, where $N$ is the number of degree of freedom in the system which, in our case, is $N=3$. For $k=6$ we have the natural choice for the linearly independent initial displacements corresponding to the six base vectors $\hat{x}$, $\hat{y}$, $\hat{p}_x$, $\hat{p}_y$, $\hat{\zeta}$, and $\hat{\delta}$, while, for lower values of $k$, we can choose the subspace of the initial displacements and explore the chaotic behaviour of the system in that specific subspace.
 
 The choice of $k$ has different consequences on the convergence rate of the indicator for regular and chaotic orbits. A complete overview of the expected different behaviours of $GALI^{(k)}$ for different values of $k$ is given in~\cite{SKOKOS200730}.
 
@@ -374,12 +374,29 @@ Apart from this discrepancy, we can observe how the various displacement choices
 
 \begin{table}
     \centering
+    \setlength{\extrarowheight}{2pt}
     \begin{tabular}{l|cc}
         \toprule
-        Displacement choice & $2(k-N)-m$ & $m$ \\
+        \makecell{Displacement\\choice} & $2(k-3)-m$ & $m$ \\
         \midrule
-        $\hat{\zeta}$ & 2 & 0 \\
-        \bottomrule        
+        $\hat{x}$, $\hat{p}_x$, $\hat{p}_y$, $\hat{\zeta}$, & $1.25 \pm 0.09$ & $0.75$ \\
+        $\hat{x}$, $\hat{p}_x$, $\hat{y}$, $\hat{\zeta}$, & $1.26 \pm 0.09$ & $0.74$ \\
+        $\hat{x}$, $\hat{y}$, $\hat{p}_y$, $\hat{\zeta}$, & $1.44 \pm 0.08$ & $0.56$ \\
+        $\hat{x}$, $\hat{p}_y$, $\hat{\zeta}$, $\hat{\delta}$, & $1.5 \pm 0.2$ & $0.5$ \\
+        $\hat{x}$, $\hat{p}_x$, $\hat{p}_y$, $\hat{\delta}$, & $1.5 \pm 0.2$ & $0.5$ \\
+        $\hat{x}$, $\hat{y}$, $\hat{\zeta}$, $\hat{\delta}$, & $1.5 \pm 0.2$ & $0.5$ \\
+        $\hat{x}$, $\hat{p}_x$, $\hat{y}$, $\hat{\delta}$, & $1.5 \pm 0.2$ & $0.5$ \\
+        $\hat{p}_x$, $\hat{y}$, $\hat{p}_y$, $\hat{\zeta}$, & $1.49 \pm 0.05$ & $0.51$ \\
+        $\hat{p}_x$, $\hat{p}_y$, $\hat{\zeta}$, $\hat{\delta}$, & $1.5 \pm 0.2$ & $0.5$ \\
+        $\hat{p}_x$, $\hat{y}$, $\hat{\zeta}$, $\hat{\delta}$, & $1.5 \pm 0.2$ & $0.5$ \\
+        $\hat{x}$, $\hat{y}$, $\hat{p}_y$, $\hat{\delta}$, & $1.7 \pm 0.1$ & $0.3$ \\
+        $\hat{p}_x$, $\hat{y}$, $\hat{p}_y$, $\hat{\delta}$, & $1.7 \pm 0.1$ & $0.3$ \\
+        $\hat{y}$, $\hat{p}_y$, $\hat{\zeta}$, $\hat{\delta}$, & $2.5 \pm 0.2$ & $-0.5$ \\
+        $\hat{x}$, $\hat{p}_x$, $\hat{\zeta}$, $\hat{\delta}$, & $2.6 \pm 0.2$ & $-0.6$ \\
+        $\hat{x}$, $\hat{p}_x$, $\hat{y}$, $\hat{p}_y$, & $2.6 \pm 0.1$ & $-0.6$ \\
+        \midrule
+        $GALI^{(6)}$ & $4.0 \pm 0.2$ &  2.0 \\   
+        \bottomrule     
     \end{tabular}
     \caption{Exponent of the power law and values of $m$ for the different displacement choices for $GALI^{(4)}$.}
 \end{table}
