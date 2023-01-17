@@ -4,11 +4,11 @@
 
 In the previous Chapter, we have observed how some dynamic indicators, such as $FLI$ and $GALI^{(k)}$, require the evaluation of the effects of an initial displacement via the tangent map $DM(\vb{x}, n)$. For a simple model like the Hénon map, an analytic expression of $DM(\vb{x}, n)$ is available, which enables us to evaluate expressions like Eq.~\ref{} directly.
 
-Conversely, when considering realistic accelerator models, which are the result of the concatenation of thousands of different nonlinear elements, it is currently not feasible to obtain a complete and practical to use analytic expression of the tangent map. This requires the use of numerical methods to evaluate the tangent map, which is a computationally expensive task. Another more practical method to evaluate the linear response of the system to a small initial displacement is the use of a so-called ``shadow particle''~\cite{}.
+Conversely, when considering realistic accelerator models, which are the result of the concatenation of thousands of different nonlinear elements, it is currently not feasible to obtain a complete and practical to use analytic expression of the tangent map. This requires the use of numerical methods to evaluate the tangent map, which is a computationally expensive task. Another more practical method to evaluate the linear response of the system to a small initial displacement is the use of a so-called ``shadow particle''~\cite{Skokos2010b}.
 
 The shadow particle method consists in approximating the limit $\epsilon\to 0$ with an $\epsilon$ of small finite value, performing the orbit tracking of both the initial condition $\vb{x}_0$ and of the displaced initial condition $\vb{y}_0 = \vb{x}_0 + \epsilon \boldsymbol{\xi}$. And then evaluating the estimate $\boldsymbol{\Xi}_{n}(\mathbf{x})=\frac{\mathbf{y}_{n}-\mathbf{x}_{n}}{\epsilon}$.
 
-When performing the tracking $\vb{x}_n$ and $\vb{y}_n$, it is also necessary, every $\tau$ iterations, to reset the distance between $\vb{x}_n$ and $\vb{y}_n$ to the initial module $\epsilon$, while maintaining the same direction. This is done to avoid spurious effects in the evaluation of the linear response that might be caused by excessive orbit drifting~\cite{}, which is to be expected especially for chaotic orbits.
+When performing the tracking $\vb{x}_n$ and $\vb{y}_n$, it is also necessary, every $\tau$ iterations, to reset the distance between $\vb{x}_n$ and $\vb{y}_n$ to the initial module $\epsilon$, while maintaining the same direction. This is done to avoid spurious effects in the evaluation of the linear response that might be caused by excessive orbit drifting~\cite{eq2-2}, which is to be expected especially for chaotic orbits.
 
 This periodically modified $\vb{y}'_n$, for a given value of $\tau$, reads
 \begin{equation}
@@ -28,7 +28,7 @@ which, for $\tau=1$, reduces to
 
 Implementing this method in the definition of $FLI/n$, $FLI^{WB}$, and $GALI^{(k)}$ is a straightforward task, and ends up replacing the evaluation of the tangent map $DM(\vb{x}, n)$ with the evaluation of a shadow particle for each displacement direction $\boldsymbol{\xi}$ we want to consider.
 
-This estimation method has been widely used in literature due to its simplicity in implementation, however, it has been highlighted in multiple studies~\cite{} how the choice of both the value of $\epsilon$ and the time interval $\tau$ between displacement resets to $\epsilon$ can significantly alter the final evaluation of $\boldsymbol{\Xi}_{n}(\mathbf{x})$ and, consequently, the dynamic indicators which rely on it.
+This estimation method has been widely used in literature due to its simplicity in implementation, however, it has been highlighted in multiple studies~\cite{Tancredi_2001, Skokos2010b} how the choice of both the value of $\epsilon$ and the time interval $\tau$ between displacement resets to $\epsilon$ can significantly alter the final evaluation of $\boldsymbol{\Xi}_{n}(\mathbf{x})$ and, consequently, the dynamic indicators which rely on it.
 
 
 \section{Implementation of dynamic indicators in accelerator tracking codes} \label{sec:implement}
@@ -36,35 +36,35 @@ This estimation method has been widely used in literature due to its simplicity 
 
 \subsection{GPU parallel tracking of particles}
 
-As pointed out in the previous Chapter, single particle tracking falls into the category of ``embarrassingly parallel'' computational problems~\cite{}, that is, a problem that can be easily parallelized on many processing units. This is because the tracking of a single particle is independent of the tracking of other particles, and the only information that needs to be shared between different particles is the lattice information. This makes the tracking of many particles a very suitable problem to be parallelized on a GPU architecture, which are designed following the SIMD (Single Instruction Multiple Data) paradigm~\cite{}.
+As similarly pointed out in Appendix~\ref{app:computing}, in the context of map tracking, single particle tracking falls into the category of ``embarrassingly parallel'' computational problems~\cite{Giovannozzi:317866}, that is, a problem that can be easily parallelized on many processing units. This is because the tracking of a single particle is independent of the tracking of other particles, and the only information that needs to be shared between different particles is the lattice information. This makes the tracking of many particles a very suitable problem to be parallelized on a GPU architecture, which are designed following the SIMD (Single Instruction Multiple Data) paradigm~\cite{DBLP:journals/corr/abs-1202-4347}.
 
-Since 2021, a new symplectic tracking framework named Xsuite~\cite{xsuite} has been under development. Xsuite is a collection of Python packages that extends the features offered by the SixTrack code~\cite{De_Maria_2019}, following modern programming paradigms and allowing efficient parallelization on both CPU and GPU architectures by generating optimized C code on the fly. More specifically, the Xtrack tracking package in Xsuite offers the possibility to track particles in realistic accelerator lattices on GPU architectures, and enabling the tracking of large numbers of initial conditions at significantly shorter times. This tracking framework has already been used in multiple studied, ranging from Hollow Electron Lenses studies~\cite{}, to space-charge effects studies~\cite{}.
+Since 2021, a new symplectic tracking framework named Xsuite~\cite{xsuite} has been under development. Xsuite is a collection of Python packages that extends the features offered by the SixTrack code~\cite{De_Maria_2019}, following modern programming paradigms and allowing efficient parallelization on both CPU and GPU architectures by generating optimized C code on the fly. More specifically, the Xtrack tracking package in Xsuite offers the possibility to track particles in realistic accelerator lattices on GPU architectures, and enabling the tracking of large numbers of initial conditions at significantly shorter times. This tracking framework has already been used in multiple studied, ranging from Hollow Electron Lenses studies to charged particle tracking in accelerator physics~\cite{pang2014gpu,oeftiger:hb16-mopr025,adelmann2019opal,schwinzerl:ipac21-thpab190,hermes:ipac2022-mopost045,iliakis2022enabling}.
 
 The code structure of Xsuite allowed us to easily implement, within the GPU workflow, the fundamental elements for the dynamic indicators' evaluation, such as the normalization of shadow particles, and it made it possible to track a large amount of initial conditions. The possibility of tracking a large amount of initial conditions is one of the main motivation of this study, as a combination of large scans and dynamic indicators might lead to better insights on the phase-space characteristics of realistic accelerator lattices.
 %
 \subsection{Computational effort for evaluating chaos indicators}
 
-The dynamic indicators showcased in the previous section require different computational efforts in either memory requirements or additional operations needed, on top of a reference single-particle tracking. As discussed in Appendix~\ref{}, considering these different requirements can favour the choice of a specific dynamic indicator, depending on the typology of analysis someone might want to perform and depending on the computational resources available. We recall here the main considerations for each indicator considered, in light of the usage of the shadow particle method.
+The dynamic indicators showcased in the previous section require different computational efforts in either memory requirements or additional operations needed, on top of a reference single-particle tracking. As discussed in Appendix~\ref{app:computing}, considering these different requirements can favour the choice of a specific dynamic indicator, depending on the typology of analysis someone might want to perform and depending on the computational resources available. We recall here the main considerations for each indicator considered, in light of the usage of the shadow particle method.
 
-As stated in the previous section, current particle tracking frameworks do not offer practical tools for obtaining an analytic expression of the tangent map. Although techniques for estimating it numerically exists~\cite{}, in this context, they are not as practical as the shadow particle method, which gives us a straightforward way to evaluate the chaotic behaviour of a complex magnetic lattice constituted of multiple nonlinear elements.
+As stated in the previous section, current particle tracking frameworks do not offer practical tools for obtaining an analytic expression of the tangent map. To overcome this issue, the shadow particle method gives us a straightforward method to numerically evaluate the chaotic behaviour of a complex magnetic lattice constituted of multiple nonlinear elements.
 
 For $FLI$, the main computational effort consists of tracking the value of two particles, namely, the reference one and the shadow one. This value increases if there's the interest in inspecting different initial displacements at the same time. Similarly, $GALI^{(k)}$ requires the evaluation of $k+1$ particles per initial condition, namely, the reference orbit and $k$ shadow particles with orthogonal displacement.
 
-$REM$ and $FMA$ do not require the tracking of shadow particles. $REM$ however requires a forward and backward tracking, doubling the computational effort in a way comparable to $FLI$. $FMA$, instead, only requires a forward tracking, but depending on the method used for evaluating the tune, it might require the tracking of the entire orbit history, which can be a significant memory requirement, and might lead to the impossibility to use a SIMD architecture. Details regarding this issue are discussed as well in Appendix~\ref{}.
+$REM$ and $FMA$ do not require the tracking of shadow particles. $REM$ however requires a forward and backward tracking, doubling the computational effort in a way comparable to $FLI$. $FMA$, instead, only requires a forward tracking, but depending on the method used for evaluating the tune, it might require the tracking of the entire orbit history, which can be a significant memory requirement, and might lead to the impossibility to use a SIMD architecture. Details regarding this issue are discussed as well in Appendix~\ref{app:computing}. In the context of this study, we evaluated the tune using the average phase advance method with Birkhoff weights proposed in~\cite{russo:ipac2021-thpab189}, which provides superconvergence and can be evaluated in a single forward tracking pass, without the need to store the entire orbit history.
 
 \subsection{Models} \label{sec:model}
 %
-For our studies, we used a realistic accelerator lattice implementation based on the version 1.4 of HL-LHC optics~\cite{} of Beam 1. We perform a single-particle tracking without beam-beam interaction at top energy \SI{7.0}{TeV}. As we consider a configuration with colliding proton beams at top energy, we have the machine tunes set at $\omega_x=62.31, \omega_y=60.32$ and $\beta^\ast$ set at \SI{0.15}{\meter} at IP1 and IP5. The nominal emittance of the beam is set at \SI{2.5}{\micro \meter}. The tracking simulation has its starting point set at IP3. In this location the $\beta$ functions for the two planes read $\beta_x=$\SI{117.83}{\meter} and $\beta_y=$\SI{219.64}{\meter}. The lattice implementation is based on the MAD-X code~\cite{}, and it is available in the pymask repository~\cite{}.
+For our studies, we used a realistic accelerator lattice implementation based on the version 1.4 of HL-LHC optics~\cite{Maria_2019} of Beam 1. We perform a single-particle tracking without beam-beam interaction at top energy \SI{7.0}{TeV}. As we consider a configuration with colliding proton beams at top energy, we have the machine tunes set at $\omega_x=62.31, \omega_y=60.32$ and $\beta^\ast$ set at \SI{0.15}{\meter} at IP1 and IP5. The nominal emittance of the beam is set at \SI{2.5}{\micro \meter}. The tracking simulation has its starting point set at IP3. In this location the $\beta$ functions for the two planes read $\beta_x=$\SI{117.83}{\meter} and $\beta_y=$\SI{219.64}{\meter}. The lattice implementation is based on the MAD-X code~\cite{madx}, and it is available in the pymask repository~\cite{pymask}.
 
-The MAD-X lattice implementation includes a standard error table of 60 seeds to represent machine imperfections, which can be explored to obtain a broad statistical overview in a simulation experiment~\cite{}. These seeds offer a good representation of different levels of nonlinear effects, and they can be used to study the impact of machine imperfections on the formation of chaotic regions in the phase space.
+The MAD-X lattice implementation includes a standard error table of 60 seeds to represent machine imperfections, which can be explored to obtain a broad statistical overview in a simulation experiment. These seeds offer a good representation of different levels of nonlinear effects, and they can be used to study the impact of machine imperfections on the formation of chaotic regions in the phase space.
 
-From this set of 60 noise realizations, we picked two representative samples, namely, the one scoring respectively the best and worst dynamic aperture value on a tracking up to $n=10^3$ turns, that is, the area of the connected phase space region where particles exhibit stable motion for at least $n$ turns~\cite{}. We evaluated the dynamic aperture using a $100\times100$ uniform grid sampling of initial conditions in the $x-y$ transversal plane, with all other variables set to zero. The biggest connected component of particles which survived the tracking up to $n=10^3$ turns were considered to be in the dynamic aperture region.
+From this set of 60 noise realizations, we picked two representative samples, namely, the one scoring respectively the best and worst dynamic aperture value on a tracking up to $n=10^3$ turns, that is, the area of the connected phase space region where particles exhibit stable motion for at least $n$ turns~\cite{DAdef, invlog}. We evaluated the dynamic aperture using a $100\times100$ uniform grid sampling of initial conditions in the $x-y$ transversal plane, with all other variables set to zero. The biggest connected component of particles which survived the tracking up to $n=10^3$ turns were considered to be in the dynamic aperture region.
 
 See Fig.~\ref{fig:seed_presentation} for a visualization of these two seeds. The resulting survival plot for the tracking done up to $n=10^3$ turns is reported, where one can see how the different noise realizations lead to a different portrait in the phase space.
 
 \begin{figure}[htp]
     \centering
-    \includegraphics[width=\textwidth]{6_lhc_dynamic_indicators/figs/quick_scan.png}
+    \includegraphics[width=\textwidth]{6_lhc_dynamic_indicators/figs/quick_scan.pdf}
     \caption{Survival plot up to $n=10^3$ turns of two different seeds of a realistic HL--LHC lattice of Beam 1, without beam-beam interaction, at \SI{7.0}{TeV}. The two seeds achieved, the worst and best dynamic aperture value out of the selection of 60 seeds available. The scan of initial conditions consists of $100\times100$ samples over a uniform Cartesian grid over the $x-y$ transversal plane. A region of interest (ROI) is highlighted in red on the two survival plots, and represents the choice of boundaries for the finer sampling we performed for our dynamic indicator analysis.}
     \label{fig:seed_presentation}
 \end{figure}
@@ -75,7 +75,7 @@ The longitudinal variable $\zeta$ was set at three different values to inspect d
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.65\textwidth]{6_lhc_dynamic_indicators/figs/longitudinal.png}
+    \includegraphics[width=0.65\textwidth]{6_lhc_dynamic_indicators/figs/longitudinal.pdf}
     \caption{Tracking of initial conditions with different $\zeta$ values up to $n=10^3$ on the HL-LHC lattice with median seed. The tracking highlights the classic bunch structure with the separatrix placed at $\zeta \sim$ \SI{0.36}{\meter}. The three red crosses represents the three choices of $\zeta_0$ we decided to inspect in our dynamic indicator study.}
     \label{fig:the_bunch}
 \end{figure}
@@ -91,44 +91,44 @@ Note also how we present all the value distributions in logarithmic scale, as th
 
 The inspected $300\times300$ Cartesian grid of initial conditions considered in the selected ROIs gives us an overview of the phase space ranging from zero amplitude to around 3.5 $\sigma$ units of amplitude.
 
-An initial overview on how the phase space is structured can be seen in Fig.~\ref{fig:true_survivors}, where we report a survival plot for all six configurations of HL-LHC and $\zeta_0$ considered, tracked up to $n=10^5$ turns. As $n$ increases, a progressive erosion-like process of the region where particles are still not lost happens. This phenomenon is well known in literature, and it was studied for the development of dynamic aperture scale-laws, based on the Nekhoroshev theorem~\cite{}, which describe an exponentially slow decrease of dynamic aperture.
+An initial overview on how the phase space is structured can be seen in Fig.~\ref{fig:true_survivors}, where we report a survival plot for all six configurations of HL-LHC and $\zeta_0$ considered, tracked up to $n=10^5$ turns. As $n$ increases, a progressive erosion-like process of the region where particles are still not lost happens. This phenomenon is well known in literature, and it was studied for the development of dynamic aperture scale-laws, based on the Nekhoroshev theorem~\cite{Bazzani:2019csk}, which describe an exponentially slow decrease of dynamic aperture.
 
-We can now inspect these same six HL-LHC configurations with dynamic indicators, and see what structures they highlight within the region where particles survive up to $n=10^5$ turns. In Fig.~\ref{fig:fli_all}, we report a colormap of the values of $\log_{10}(\mathrm{FLI}(\hat{x})/n)$ evaluated on the six configurations. We can see, as expected, how chaotic regions, corresponding to the higher values of the indicator, occur at the borders of the stable region, showing for the case of certain configurations isolated structures that resemble islands of stability, with regular initial conditions within, these structures can be related to nonlinear resonance effects~\cite{}. Conversely, the internal core region is fully constituted by initial conditions with regular behaviour.
+We can now inspect these same six HL-LHC configurations with dynamic indicators, and see what structures they highlight within the region where particles survive up to $n=10^5$ turns. In Fig.~\ref{fig:fli_all}, we report a colour map of the values of $\log_{10}(\mathrm{FLI}(\hat{x})/n)$ evaluated on the six configurations. We can see, as expected, how chaotic regions, corresponding to the higher values of the indicator, occur at the borders of the stable region, showing for the case of certain configurations isolated structures that resemble islands of stability, with regular initial conditions within, these structures can be related to nonlinear resonance effects~\cite{}. Conversely, the internal core region is fully constituted by initial conditions with regular behaviour.
 
 \begin{figure}
     \centering
-    \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/stability.png}
+    \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/stability.pdf}
     \caption{Survival plot up to $n=10^5$ turns for all six configuration of the realistic HL-LHC lattice model considered.}
     \label{fig:true_survivors}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/fli_all.png}
+    \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/fli_all.pdf}
     \caption{$\log_{10}(\mathrm{FLI}(\hat{x})/n)$ evaluated at $n=10^5$ for all six configuration of the realistic HL-LHC lattice model considered.}
     \label{fig:fli_all}
 \end{figure}
 
 The size and shape of the chaotic regions appears to be dependent both from the noise seed and the initial value of $\zeta_0$. The worst performant seed also features larger regions of chaos in the phase space, while the best performant has the smallest one among the three inspected. We can see also how the increase of $\zeta_0$ contributes to slightly enlarge the size of chaotic regions, as the introduction of stronger longitudinal dynamics causes more modulation effects in the transverse plane, leading to more chaotic initial conditions. 
 
-While it is expected to see in the various lattices a correlation between the presence of large chaotic regions and a faster dynamic aperture decrease over time, we must stress out that it is not an always correct approach, nor the target of this paper, to seek out a direct connection between the Lyapunov exponent of an initial condition and its stability time, as it is well known that exceptions to such connections, such as stable chaotic initial conditions, or regular unstable initial conditions, do exist~\cite{}.
+While it is expected to see in the various lattices a correlation between the presence of large chaotic regions and a faster dynamic aperture decrease over time, we must stress out that it is not a correct approach, nor the target of this paper, to seek out a direct connection between the Lyapunov exponent of an initial condition and its stability time, as it is well known that there is no universal scale law connecting the two quantities, as such relation is extremely model dependent~\cite{Morbidelli1995}.
 
-However, it is of interest to inspect the average value of the Lyapunov time (that is, the inverse of the maximum Lyapunov exponent~\cite{}) at different amplitudes. In Fig.~\ref{fig:evo_fli_nek}, we plot the inverse value of FLI$/n$, evaluated at $n=10^5$, over increasing amplitude. We can see how the values follow an exponential-like scale law. This functional shape resembles a Nekhoroshev-like scale law~\cite{}, which found multiple applications in the definition of dynamic aperture scale laws.
+However, it is of interest to inspect the average value of the Lyapunov time (that is, the inverse of the maximum Lyapunov exponent~\cite{Tancredi_2001}) at different amplitudes. In Fig.~\ref{fig:evo_fli_nek}, we plot the inverse value of FLI$/n$, evaluated at $n=10^5$, over increasing amplitude. We can see how the values follow an exponential-like scale law. This functional shape resembles a Nekhoroshev-like scale law~\cite{}, which found multiple applications in the definition of dynamic aperture scale laws.
 
-In Fig.~\ref{fig:overview}, we present an overview of the various dynamic indicators in analysis evaluated for one of the HL-LHC lattices, in the form of colormaps evaluated at $n=10^5$. We can see how the various dynamic indicators, with the exception of $FMA$, tend to highlight the same regions of chaos, giving overall a coherent evaluation of the phase space. The exception given by $FMA$ will be commented in a later Subsection. 
+In Fig.~\ref{fig:overview}, we present an overview of the various dynamic indicators in analysis evaluated for one of the HL-LHC lattices, in the form of colour maps evaluated at $n=10^5$. We can see how the various dynamic indicators, with the exception of $FMA$, tend to highlight the same regions of chaos, giving overall a coherent evaluation of the phase space. The exception given by $FMA$ will be commented in a later Subsection. 
 
-In Fig.~\ref{fig:overview2}, instead, we present an overview of the evolution of the value distribution of the various dynamic indicators for different $n$ values. We can see how, in general, the dynamic indicators tend to converge into a bimodal distribution, with the sole exception of $FMA$, which instead converges into a tri-modal distribution. This tendency has been documented for Lyapunov exponent distributions in~\cite{}, and it has been used in~\cite{} as the main feature for benchmarking the classification performance of dynamic indicators.
+In Fig.~\ref{fig:overview2}, instead, we present an overview of the evolution of the value distribution of the various dynamic indicators for different $n$ values. We can see how, in general, the dynamic indicators tend to converge into a bimodal distribution, with the sole exception of $FMA$, which instead converges into a tri-modal distribution. This tendency confirms what we observed in the previous Chapter on the modulated Hénon map.
 
 \begin{figure}
     \centering
-    \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/overview.png}
-    \caption{Color maps of the various dynamic indicators for a realistic HL-LHC lattice, evaluated at $n=10^5$. It can be seen how the indicators globally highlight the same structures in phase space, with the exception of $FMA$, which also shows additional structures. (HL-LHC lattice used: median seed, $\zeta_0=$\SI{0.15}{\meter}.)}
+    \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/overview.pdf}
+    \caption{Colour maps of the various dynamic indicators for a realistic HL-LHC lattice, evaluated at $n=10^5$. It can be seen how the indicators globally highlight the same structures in phase space, with the exception of $FMA$, which also shows additional structures. (HL-LHC lattice used: median seed, $\zeta_0=$\SI{0.15}{\meter}.)}
     \label{fig:overview}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/evolution.png}
+    \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/evolution.pdf}
     \caption{Distribution of values of the various dynamic indicators as a function of time for a realistic HL-LHC. For low values of the number of turns $n$, the distribution is in general represented by a uni-modal function. For higher values of $n$, we can see the formation of either two separate clusters, making the distribution bi-modal, or an individual cluster with a significant tail. $\log_{10}(FMA)$ constitutes an exception, as it evolves forming a tri-modal distribution. (HL-LHC lattice used: median seed, $\zeta_0=$\SI{0.15}{\meter}.)}
     \label{fig:overview2}
 \end{figure}
@@ -145,7 +145,7 @@ This result is to be expected, as chaotic initial conditions are characterized b
 
 \begin{figure*}[htp]
     \centering
-    \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/fli_mean_std.png}
+    \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/LE_FLI_high_main_idx_2.pdf}
     \caption{}
     \label{fig:fli_compare}
 \end{figure*}
@@ -162,14 +162,14 @@ In Fig.~\ref{fig:fli_compare_mean_birk} (left), the comparison between the two i
 
 \begin{figure}[htp]
     \centering
-    \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/fli_vs_flibk_idx_4.png}
-    \caption{Time evolution of $FLI$ computed using either a standard mean ($FLI/n$) or the Birkhoff averaging ($FLI^{WB}$). Left plot: indicators computed for a set of 100 regular initial conditions, the fit highlights an almost identical convergence rate for the two averaging methods, although a gap between the evaluations is present. Right plot: indicators computed for a set of 100 chaotic initial conditions. A slight difference in convergence rate is observed for low $n$ values, before reaching a saturation value of the indicator of the order of $10^{-4}$. (HL-LHC lattice used: median seed, $\zeta_0=$\SI{0.15}{\meter}.)}
+    \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/fli_vs_flibk_idx_2.pdf}
+    \caption{Time evolution of $FLI$ computed using either a standard mean ($FLI/n$) or the Birkhoff averaging ($FLI^{WB}$). Left plot: indicators computed for a set of 100 regular initial conditions, the fit highlights an almost identical convergence rate for the two averaging methods, although a gap between the evaluations is present. Right plot: indicators computed for a set of 100 chaotic initial conditions. A slight difference in convergence rate is observed for low $n$ values, before reaching a saturation value of the indicator of the order of $10^{-4}$. (HL-LHC lattice used: worst seed, $\zeta_0=$\SI{0.30}{\meter}.)}
     \label{fig:fli_compare_mean_birk}
 \end{figure}
 
 For chaotic initial conditions, a saturation region is observed for the indicator value of the order of $10^{-4}$ for both indicators. When this value is reached, both indicators oscillate around it. However, the slope with which this non-zero value is reached is different for the two indicators and is higher in absolute value for $FLI^{WB}$ than for $FLI/n$. We must also point out how some chaotic initial conditions exhibited strong value fluctuations in $FLI^{WB}$ before the saturation point, reaching values comparable to the regular initial conditions. These isolated cases might be artefacts caused by the Birkhoff weights which amplify certain modes in the time series when the chaotic behaviour still has not fully manifested.
 
-Despite these isolated oscillations in value, the improvement brought about by the Birkhoff averages can be appreciated in Fig.~\ref{fig:fli_colormap_mean_birk}, where the time evolution of the distribution of the values of $FLI/n$ (left) and $FLI^{WB}$ (right) is shown for the entirety of initial conditions evaluated for Fig.~\ref{}. The part of the distribution corresponding to the regular initial conditions reaches its peak (yellow band) and moves toward zero with increasing $n$. However, the displacement toward zero is sharper for $FLI^{WB}$, enabling better classification. In both graphs, a faint trace of a peak is visible corresponding to the indicator value of about $10^{-4}$. This feature is remarkably similar for the two indicators, as already seen in Fig.~\ref{fig:fli_colormap_mean_birk}.
+Despite these isolated oscillations in value, the improvement brought about by the Birkhoff averages can be appreciated in Fig.~\ref{fig:fli_colormap_mean_birk}, where the time evolution of the distribution of the values of $FLI/n$ (left) and $FLI^{WB}$ (right) is shown for the entirety of initial conditions evaluated for Fig.~\ref{fig:overview2}. The part of the distribution corresponding to the regular initial conditions reaches its peak (yellow band) and moves toward zero with increasing $n$. However, the displacement toward zero is sharper for $FLI^{WB}$, potentially enabling a better classification method as seen in the previous Chapter. In both graphs, a faint trace of a peak is visible corresponding to the indicator value of about $10^{-4}$. This feature is remarkably similar for the two indicators, as already seen in Fig.~\ref{fig:fli_colormap_mean_birk}.
 
 When applied to a modulated Hénon map, as seen in Subsection~\ref{}, the Birkhoff weights applied to $FLI$ provided a slight improvement in the convergence of regular initial conditions to zero, as well as an overall benefit in highlighting the two separate clusters of initial conditions. In this context, such difference in convergence was not appreciated to a comparable extent, however, a slight improvement in cluster sharpness and separation was noted, suggesting that Birkhoff weights do still offer a slight improvement to $FLI$ classification. This can be appreciated by comparing the value distribution evolution of $\log_{10}(FLI/n)$ and $\log_{10}(FLI^{WB})$ reported in Fig.~\ref{}. There is also a possibility that an improvement in convergence can be observed only at higher values of $n$.
 
@@ -189,7 +189,7 @@ For evaluating an optimal choice for $\Delta r$, which defines a moving window r
 
 \begin{figure}
     \centering
-    \includegraphics[width=1\textwidth]{6_lhc_dynamic_indicators/figs/lyapunov_time_vs_thickness.png}
+    \includegraphics[width=1\textwidth]{6_lhc_dynamic_indicators/figs/lyapunov_time_vs_thickness.pdf}
     \caption{Mean values of $T_s$ and $T_L$ as a function of $r_0$ for a moving window of initial conditions with different values of $\Delta r$. The best compromise between statistical fluctuations and loss of information is achieved for $\Delta r = 0.2\sigma$.}
     \label{fig:ts_vs_r0}
 \end{figure}
@@ -198,25 +198,25 @@ To estimate the Lyapunov time $T_L$, we can make use of both $FLI/n$ and $FLI^{{
 
 \begin{figure}
     \centering
-    \includegraphics[width=1\textwidth]{6_lhc_dynamic_indicators/figs/lyapunov_time_vs_lyapunov_wb_time.png}
+    \includegraphics[width=1\textwidth]{6_lhc_dynamic_indicators/figs/lyapunov_time_vs_lyapunov_wb_time.pdf}
     \caption{Mean values of $T_L$ as a function of $r_0$ for a moving window of initial conditions with $\Delta r = 0.2\sigma$. The results are presented for $FLI/n$ and $FLI^{{WB}}$ evaluated at $n=10^5$. For high values of $r_0$, the two indicators provide similar results, while for low values of $r_0$, $FLI^{{WB}}$ provides a higher value of $T_L$, suggesting a faster convergence to the true value of $T_L$.}
     \label{fig:lyapunov_time_fli_vs_wb}
 \end{figure}
 
 When comparing directly $T_L$ and $T_s$, as shown in Fig.~\ref{fig:ts_vs_tl}, we can observe that the two times exhibit a similar structure with respect to $r_0$: they both exhibit a saturated plateau for low $r_0$, corresponding to the regular-dominated region, and an exponential decay over a certain radius, which varies in sharpness and position depending on the value of $\zeta_0$. In the same Figure, we also show different evaluations of $T_L$ based on $FLI^{WB}$, evaluated at different values of $n$, which explicitly show how the evaluation of $T_L$ for regular orbits increases over time, while the evaluation of $T_L$ for chaotic orbits eventually converges to its true value.
 
-To better appreciate the value distribution observed for $T_L$ and $T_s$ at different values of $r_0$, in Fig.~\ref{fig:extra_distribution} we show as a colormap the evolution of the distribution of values from which we then evaluate the mean value. We can observe how the value distribution evolves towards a spreader distribution as $r_0$ increases. $T_s$ for low values of $r_0$ is all concentrated in a single value, which is the maximum value of tracking time.   
+To better appreciate the value distribution observed for $T_L$ and $T_s$ at different values of $r_0$, in Fig.~\ref{fig:extra_distribution} we show as a colour map the evolution of the distribution of values from which we then evaluate the mean value. We can observe how the value distribution evolves towards a spreader distribution as $r_0$ increases. $T_s$ for low values of $r_0$ is all concentrated in a single value, which is the maximum value of tracking time.   
 
 \begin{figure}
     \centering
-    \includegraphics[width=1\textwidth]{6_lhc_dynamic_indicators/figs/lyapunov_time_vs_radius.png}
+    \includegraphics[width=1\textwidth]{6_lhc_dynamic_indicators/figs/lyapunov_time_vs_radius.pdf}
     \caption{Mean values of $T_L$ and $T_s$ as a function of $r_0$ for a moving window of initial conditions with $\Delta r = 0.2\sigma$. The values of $T_L$ are evaluated for $FLI^{{WB}}$ evaluated at three different values of $n$.}
     \label{fig:ts_vs_tl}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=1\textwidth]{6_lhc_dynamic_indicators/figs/dist_and_mean.png}
+    \includegraphics[width=1\textwidth]{6_lhc_dynamic_indicators/figs/dist_and_mean.pdf}
     \caption{Distribution of values of $T_L$ and $T_s$ as a function of $r_0$ for a moving window of initial conditions with $\Delta r = 0.2\sigma$. The red line represents the mean value of the distribution.}
     \label{fig:extra_distribution}
 \end{figure}
@@ -241,13 +241,13 @@ In Table~\ref{tab:lyap_fit_results}, we report the fit parameters archived for t
 
 \begin{figure}
     \centering
-    \includegraphics[width=1\textwidth]{6_lhc_dynamic_indicators/figs/fit_l_time_bad.png}
+    \includegraphics[width=1\textwidth]{6_lhc_dynamic_indicators/figs/fit_l_time_bad.pdf}
     \caption{Fitting of $T_L$ for the worst seed, with $\zeta_0=$ \SI{0.3}{\meter}.}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=1\textwidth]{6_lhc_dynamic_indicators/figs/fit_l_time_best.png}
+    \includegraphics[width=1\textwidth]{6_lhc_dynamic_indicators/figs/fit_l_time_best.pdf}
     \caption{Fitting of $T_L$ for the best seed, with $\zeta_0=$ \SI{0.3}{\meter}.}
 \end{figure}
 
@@ -306,7 +306,7 @@ Moreover, if we compare the evolution of the value distribution of FMA, we can o
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/FMA.png}
+    \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/FMA.pdf}
     \caption{(Top) $\log_{10}(\mathrm{FMA})$ and $\log_{10}(\mathrm{FLI}^{WB})$ evaluated on the same seed at three different values of $\zeta_0$. Higher values of $\zeta_0$ yields larger differences between the regions highlighted by the two indicators. (Bottom) Evolution of the value distribution over time of $\log_{10}(\mathrm{FMA})$ and $\log_{10}(\mathrm{FLI}^{WB})$. While $\mathrm{FLI}^{WB}$ shows a clear tendency to create a bimodal distribution, $\mathrm{FMA}$ instead evolves into a tri-modal distribution.}
     \label{fig:fma_vs_fli}
 \end{figure}
@@ -318,13 +318,6 @@ In the previous Chapter, the performances of different dynamic indicators were e
 When applying $REM$ to the HL-LHC lattices, we observe a similar good performance in clearly highlighting the chaotic regions in the phase space. In Fig.~\ref{fig:rem_lhc}, we can compare the results obtained by $REM$ on an example seed at three different values of $n$ with the results obtained by $FLI^{WB}$ at the same values of $n$. We can observe how $REM$ tends to highlight the chaotic regions qualitatively faster than $FLI^{WB}$, reproducing the same behaviour observed in the modulated Hénon map, although, for this analysis, we lack the possibility to define a ground truth to compare the results with. 
 
 The same behaviour can be appreciated by comparing in Fig.~\ref{fig:overview2} the evolution of the value distribution of $\log_{10}(REM)$ and $\log_{10}(FLI^{WB})$ over time, as $\log_{10}(REM)$ tends to a bimodal distribution faster than $\log_{10}(FLI^{WB})$.
-
-\begin{figure}
-    \centering
-    % \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/REM.png}
-    \caption{Comparison of the results obtained by $REM$ and $FLI^{WB}$ on the same seed at three different values of $n$. $REM$ tends to highlight the chaotic regions qualitatively faster than $FLI^{WB}$.}
-    \label{fig:rem_lhc}
-\end{figure}
 
 The promising performances of $REM$ in highlighting the chaotic structures in the phase space, along with its straightforward implementation, make it a very interesting tool for inspecting phase space structures in realistic accelerator lattices.
 
@@ -354,7 +347,7 @@ The results of the analysis for $GALI^{(2)}$ are shown in Fig.~\ref{fig:gali2}, 
 
 \begin{figure}
     \centering
-    % \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/GALI2.png}
+    \includegraphics[width=0.8\textwidth]{6_lhc_dynamic_indicators/figs/evolution_gali_4_stable.pdf}
     \caption{Mean value evolution of $GALI^{(2)}$ for different displacement choices. (Left) the mean value of $GALI^{(2)}$ is constant only for the displacement choices that do not include a longitudinal displacement. (Right) displacements that include a longitudinal displacement show a non-constant behaviour.}
     \label{fig:gali2}
 \end{figure}
@@ -367,7 +360,7 @@ Apart from this discrepancy, we can observe how the various displacement choices
 
 \begin{figure}
     \centering
-    % \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/GALI4.png}
+    \includegraphics[width=0.8\textwidth]{6_lhc_dynamic_indicators/figs/evolution_gali_4_stable.pdf}
     \caption{Mean value evolution of $GALI^{(4)}$ for different displacement choices. The mean value of $GALI^{(4)}$ follows a different power law evolution depending on the displacement choice.}
     \label{fig:gali4}
 \end{figure}
@@ -400,6 +393,13 @@ Apart from this discrepancy, we can observe how the various displacement choices
     \end{tabular}
     \caption{Exponent of the power law and values of $m$ for the different displacement choices for $GALI^{(4)}$.}
 \end{table}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/gali_2_4_chaos.pdf}
+    \caption{}
+    \label{fig:gali2_4_chaos}
+\end{figure}
 
 
 \section{Conclusions and future work}
