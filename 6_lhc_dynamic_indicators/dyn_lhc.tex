@@ -2,13 +2,13 @@
 
 \section{Evaluation of dynamic indicators via shadow particles}
 
-In the previous Chapter, we have observed how some dynamic indicators, such as $FLI$ and $GALI^{(k)}$, require the evaluation of the effects of an initial displacement via the tangent map $DM(\vb{x}, n)$. For a simple model like the Hénon map, an analytic expression of $DM(\vb{x}, n)$ is available, which enables us to evaluate expressions like Eq.~\ref{} directly.
+In the previous Chapter, we have observed how some dynamic indicators, such as $FLI$ and $GALI^{(k)}$, require the evaluation of the effects of an initial displacement via the tangent map $DM(\vb{x}, n)$. For a simple model like the Hénon map, an analytic expression of $DM(\vb{x}, n)$ is available, which enables us to evaluate expressions like Eq.~\ref{eq:fli_mean} directly.
 
 Conversely, when considering realistic accelerator models, which are the result of the concatenation of thousands of different nonlinear elements, it is currently not feasible to obtain a complete and practical to use analytic expression of the tangent map. This requires the use of numerical methods to evaluate the tangent map, which is a computationally expensive task. Another more practical method to evaluate the linear response of the system to a small initial displacement is the use of a so-called ``shadow particle''~\cite{Skokos2010b}.
 
 The shadow particle method consists in approximating the limit $\epsilon\to 0$ with an $\epsilon$ of small finite value, performing the orbit tracking of both the initial condition $\vb{x}_0$ and of the displaced initial condition $\vb{y}_0 = \vb{x}_0 + \epsilon \boldsymbol{\xi}$. And then evaluating the estimate $\boldsymbol{\Xi}_{n}(\mathbf{x})=\frac{\mathbf{y}_{n}-\mathbf{x}_{n}}{\epsilon}$.
 
-When performing the tracking $\vb{x}_n$ and $\vb{y}_n$, it is also necessary, every $\tau$ iterations, to reset the distance between $\vb{x}_n$ and $\vb{y}_n$ to the initial module $\epsilon$, while maintaining the same direction. This is done to avoid spurious effects in the evaluation of the linear response that might be caused by excessive orbit drifting~\cite{eq2-2}, which is to be expected especially for chaotic orbits.
+When performing the tracking $\vb{x}_n$ and $\vb{y}_n$, it is also necessary, every $\tau$ iterations, to reset the distance between $\vb{x}_n$ and $\vb{y}_n$ to the initial module $\epsilon$, while maintaining the same direction. This is done to avoid spurious effects in the evaluation of the linear response that might be caused by excessive orbit drifting~\cite{Skokos2010b}, which is to be expected especially for chaotic orbits.
 
 This periodically modified $\vb{y}'_n$, for a given value of $\tau$, reads
 \begin{equation}
@@ -64,28 +64,27 @@ See Fig.~\ref{fig:seed_presentation} for a visualization of these two seeds. The
 
 \begin{figure}[htp]
     \centering
-    \includegraphics[width=\textwidth]{6_lhc_dynamic_indicators/figs/quick_scan.pdf}
+    \includegraphics[width=0.8\textwidth]{6_lhc_dynamic_indicators/figs/quick_scan.pdf}
     \caption{Survival plot up to $n=10^3$ turns of two different seeds of a realistic HL--LHC lattice of Beam 1, without beam-beam interaction, at \SI{7.0}{TeV}. The two seeds achieved, the worst and best dynamic aperture value out of the selection of 60 seeds available. The scan of initial conditions consists of $100\times100$ samples over a uniform Cartesian grid over the $x-y$ transversal plane. A region of interest (ROI) is highlighted in red on the two survival plots, and represents the choice of boundaries for the finer sampling we performed for our dynamic indicator analysis.}
     \label{fig:seed_presentation}
 \end{figure}
 
 To inspect the performance of the dynamic indicators, we sampled initial conditions on a uniform Cartesian grid of $300\times300$ particles in the $x-y$ transverse plane, with transverse moments $p_x$ and $p_y$ set to zero. The boundaries of the Cartesian grid were hand-picked based on the scan results presented in Fig.~\ref{fig:seed_presentation}, in order to have a square region of interest (ROI) focused on the dynamic aperture region highlighted at $n=10^3$. The ROI selected is highlighted in red.
 
-The longitudinal variable $\zeta$ was set at three different values to inspect different levels of modulations, respectively, at \SI{0.0}{\meter}, at \SI{0.15}{\meter}, which is halfway close to the bunch separatrix, and at \SI{0.30}{\meter}, which is close to the bunch separatrix. See Fig.~\ref{fig:the_bunch} for an illustration of the $\zeta$ values chosen, which are based on the tracking results of multiple initial conditions with different initial $\zeta$ value and $x, p_x, y, p_y$ set to zero. This tracking yielded similar results for all seeds; therefore, this set of choices for $\zeta$ was identical for all selected lattices.
+The longitudinal variable $\zeta$ was set at three different values to inspect different levels of modulations, respectively, at \SI{0.0}{\meter}, at \SI{0.15}{\meter}, which is halfway close to the bunch separatrix, and at \SI{0.3}{\meter}, which is close to the bunch separatrix. See Fig.~\ref{fig:the_bunch} for an illustration of the $\zeta$ values chosen, which are based on the tracking results of multiple initial conditions with different initial $\zeta$ value and $x, p_x, y, p_y$ set to zero. This tracking yielded similar results for all seeds; therefore, this set of choices for $\zeta$ was identical for all selected lattices.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.65\textwidth]{6_lhc_dynamic_indicators/figs/longitudinal.pdf}
-    \caption{Tracking of initial conditions with different $\zeta$ values up to $n=10^3$ on the HL-LHC lattice with median seed. The tracking highlights the classic bunch structure with the separatrix placed at $\zeta \sim$ \SI{0.36}{\meter}. The three red crosses represents the three choices of $\zeta_0$ we decided to inspect in our dynamic indicator study.}
+    \caption{Tracking of initial conditions with different $\zeta$ values up to $n=10^3$ on the HL-LHC lattice with best seed. The tracking highlights the classic bunch structure with the separatrix placed at $\zeta \sim$ \SI{0.36}{\meter}. The three red crosses represents the three choices of $\zeta_0$ we decided to inspect in our dynamic indicator study.}
     \label{fig:the_bunch}
 \end{figure}
 
 \section{Results of numerical studies} \label{sec:results}
 
-The dynamic indicators presented in the previous section, namely, $FLI/n$, $FLI^{WB}$, $GALI^{(k)}$, $REM$, and $FMA$, were evaluated on the HL-LHC lattices up to $n=10^5$ turns. The results of the evaluation of these indicators are presented in the following sections. Note how in general we will inspect the indicators at the median seed, as it is the seed that is most representative of the HL-LHC lattice features.
+The dynamic indicators presented in the previous section, namely, $FLI/n$, $FLI^{WB}$, $GALI^{(k)}$, $REM$, and $FMA$, were evaluated on the HL-LHC lattices up to $n=10^5$ turns. The results of the evaluation of these indicators are presented in the following sections.
 
-Note also how we present all the value distributions in logarithmic scale, as the indicators are expected to follow either a power law distribution or an exponential one, and the logarithmic scale allows us to better inspect the tails of the distribution and the general tendencies of these indicators to create bimodal distributions, with the sole exception of $FMA$, which, as we have seen from the results in the previous Chapter when considering a modulated Hénon map, tends to generate a tri-modal distribution.
-
+Note how we present most of the value distributions in logarithmic scale, as the indicators are expected to follow either a power law distribution or an exponential one, and the logarithmic scale allows us to better inspect the tails of the distribution and the general tendencies of these indicators to create bimodal distributions, with the sole exception of $FMA$, which, as we have seen from the results in the previous Chapter when considering a modulated Hénon map, tends to generate a tri-modal distribution.
 
 \subsection{Overview of the chaotic regions of the HL-LHC lattice}
 
@@ -93,19 +92,19 @@ The inspected $300\times300$ Cartesian grid of initial conditions considered in 
 
 An initial overview on how the phase space is structured can be seen in Fig.~\ref{fig:true_survivors}, where we report a survival plot for all six configurations of HL-LHC and $\zeta_0$ considered, tracked up to $n=10^5$ turns. As $n$ increases, a progressive erosion-like process of the region where particles are still not lost happens. This phenomenon is well known in literature, and it was studied for the development of dynamic aperture scale-laws, based on the Nekhoroshev theorem~\cite{Bazzani:2019csk}, which describe an exponentially slow decrease of dynamic aperture.
 
-We can now inspect these same six HL-LHC configurations with dynamic indicators, and see what structures they highlight within the region where particles survive up to $n=10^5$ turns. In Fig.~\ref{fig:fli_all}, we report a colour map of the values of $\log_{10}(\mathrm{FLI}(\hat{x})/n)$ evaluated on the six configurations. We can see, as expected, how chaotic regions, corresponding to the higher values of the indicator, occur at the borders of the stable region, showing for the case of certain configurations isolated structures that resemble islands of stability, with regular initial conditions within, these structures can be related to nonlinear resonance effects~\cite{}. Conversely, the internal core region is fully constituted by initial conditions with regular behaviour.
+We can now inspect these same six HL-LHC configurations with dynamic indicators, and see what structures they highlight within the region where particles survive up to $n=10^5$ turns. In Fig.~\ref{fig:fli_all}, we report a colour map of the values of $\log_{10}(\mathrm{FLI}(\hat{x})/n)$ evaluated on the six configurations. We can see, as expected, how chaotic regions, corresponding to the higher values of the indicator, occur at the borders of the stable region, showing for the case of certain configurations isolated structures that resemble islands of stability, with regular initial conditions within, these structures can be related to nonlinear resonance effects. Conversely, the internal core region is fully constituted by initial conditions with regular behaviour.
 
 \begin{figure}
     \centering
-    \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/stability.pdf}
-    \caption{Survival plot up to $n=10^5$ turns for all six configuration of the realistic HL-LHC lattice model considered.}
+    \includegraphics[width=0.9\textwidth]{6_lhc_dynamic_indicators/figs/stability.pdf}
+    \caption{Survival plot up to $n=10^5$ turns for all six configuration of the realistic HL-LHC lattice model considered. The noise realization given by the seed causes strong changes in the phase space structure, while the initial value of $\zeta_0$ is related to different levels of erosion of the stable boundary.}
     \label{fig:true_survivors}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/fli_all.pdf}
-    \caption{$\log_{10}(\mathrm{FLI}(\hat{x})/n)$ evaluated at $n=10^5$ for all six configuration of the realistic HL-LHC lattice model considered.}
+    \includegraphics[width=0.9\textwidth]{6_lhc_dynamic_indicators/figs/fli_all.pdf}
+    \caption{$\log_{10}(\mathrm{FLI}(\hat{x})/n)$ evaluated at $n=10^5$ for all six configuration of the realistic HL-LHC lattice model considered. The size of the chaotic structures highlighted by the indicator appears to be strongly correlated to $\zeta_0$.}
     \label{fig:fli_all}
 \end{figure}
 
@@ -113,7 +112,7 @@ The size and shape of the chaotic regions appears to be dependent both from the 
 
 While it is expected to see in the various lattices a correlation between the presence of large chaotic regions and a faster dynamic aperture decrease over time, we must stress out that it is not a correct approach, nor the target of this paper, to seek out a direct connection between the Lyapunov exponent of an initial condition and its stability time, as it is well known that there is no universal scale law connecting the two quantities, as such relation is extremely model dependent~\cite{Morbidelli1995}.
 
-However, it is of interest to inspect the average value of the Lyapunov time (that is, the inverse of the maximum Lyapunov exponent~\cite{Tancredi_2001}) at different amplitudes. In Fig.~\ref{fig:evo_fli_nek}, we plot the inverse value of FLI$/n$, evaluated at $n=10^5$, over increasing amplitude. We can see how the values follow an exponential-like scale law. This functional shape resembles a Nekhoroshev-like scale law~\cite{}, which found multiple applications in the definition of dynamic aperture scale laws.
+However, it is of interest to inspect the average value of the Lyapunov time (that is, the inverse of the maximum Lyapunov exponent~\cite{Tancredi_2001}) at different amplitudes. In Fig.~\ref{fig:ts_vs_r0}, we plot the inverse value of $FLI/n$, evaluated at $n=10^5$, over increasing amplitude. We can see how the values follow an exponential-like scale law. This functional shape resembles a Nekhoroshev-like scale law (i.e.\ Eq.~\eqref{nekest}), which found multiple applications in the definition of dynamic aperture scale laws.
 
 In Fig.~\ref{fig:overview}, we present an overview of the various dynamic indicators in analysis evaluated for one of the HL-LHC lattices, in the form of colour maps evaluated at $n=10^5$. We can see how the various dynamic indicators, with the exception of $FMA$, tend to highlight the same regions of chaos, giving overall a coherent evaluation of the phase space. The exception given by $FMA$ will be commented in a later Subsection. 
 
@@ -122,14 +121,14 @@ In Fig.~\ref{fig:overview2}, instead, we present an overview of the evolution of
 \begin{figure}
     \centering
     \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/overview.pdf}
-    \caption{Colour maps of the various dynamic indicators for a realistic HL-LHC lattice, evaluated at $n=10^5$. It can be seen how the indicators globally highlight the same structures in phase space, with the exception of $FMA$, which also shows additional structures. (HL-LHC lattice used: median seed, $\zeta_0=$\SI{0.15}{\meter}.)}
+    \caption{Colour maps of the various dynamic indicators for a realistic HL-LHC lattice, evaluated at $n=10^5$. It can be seen how the indicators globally highlight the same structures in phase space, with the exception of $FMA$, which also shows additional structures. (HL-LHC lattice used: best seed, $\zeta_0=$\SI{0.3}{\meter}.)}
     \label{fig:overview}
 \end{figure}
 
 \begin{figure}
     \centering
     \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/evolution.pdf}
-    \caption{Distribution of values of the various dynamic indicators as a function of time for a realistic HL-LHC. For low values of the number of turns $n$, the distribution is in general represented by a uni-modal function. For higher values of $n$, we can see the formation of either two separate clusters, making the distribution bi-modal, or an individual cluster with a significant tail. $\log_{10}(FMA)$ constitutes an exception, as it evolves forming a tri-modal distribution. (HL-LHC lattice used: median seed, $\zeta_0=$\SI{0.15}{\meter}.)}
+    \caption{Distribution of values of the various dynamic indicators as a function of time for a realistic HL-LHC. For low values of the number of turns $n$, the distribution is in general represented by a uni-modal function. For higher values of $n$, we can see the formation of either two separate clusters, making the distribution bi-modal, or an individual cluster with a significant tail. $\log_{10}(FMA)$ constitutes an exception, as it evolves forming a tri-modal distribution. (HL-LHC lattice used: best seed, $\zeta_0=$\SI{0.3}{\meter}.)}
     \label{fig:overview2}
 \end{figure}
 
@@ -146,7 +145,7 @@ This result is to be expected, as chaotic initial conditions are characterized b
 \begin{figure*}[htp]
     \centering
     \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/LE_FLI_high_main_idx_8.pdf}
-    \caption{}
+    \caption{Overview of $FLI$ evaluated at $n=10^5$ using as initial displacement the six base vectors $\hat{x},\,\hat{p}_x,\,\hat{y},\,\hat{p}_y,\,\hat{\zeta},\,\text{and }\hat{\delta}$. The two colour maps on the left show the mean and the standard deviation of all six evaluations of $FLI$, the others show the values of $FLI$ for each of the six initial displacements as relative difference from the mean value. (HL-LHC lattice used: best seed, $\zeta_0=$\SI{0.3}{\meter}.)}
     \label{fig:fli_compare}
 \end{figure*}
 
@@ -163,23 +162,23 @@ In Fig.~\ref{fig:fli_compare_mean_birk} (left), the comparison between the two i
 \begin{figure}[htp]
     \centering
     \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/fli_vs_flibk_idx_2.pdf}
-    \caption{Time evolution of $FLI$ computed using either a standard mean ($FLI/n$) or the Birkhoff averaging ($FLI^{WB}$). Left plot: indicators computed for a set of 100 regular initial conditions, the fit highlights an almost identical convergence rate for the two averaging methods, although a gap between the evaluations is present. Right plot: indicators computed for a set of 100 chaotic initial conditions. A slight difference in convergence rate is observed for low $n$ values, before reaching a saturation value of the indicator of the order of $10^{-4}$. (HL-LHC lattice used: worst seed, $\zeta_0=$\SI{0.30}{\meter}.)}
+    \caption{Time evolution of $FLI$ computed using either a standard mean ($FLI/n$) or the Birkhoff averaging ($FLI^{WB}$). Left plot: indicators computed for a set of 100 regular initial conditions, the fit highlights an almost identical convergence rate for the two averaging methods, although a gap between the evaluations is present. Right plot: indicators computed for a set of 100 chaotic initial conditions. A slight difference in convergence rate is observed for low $n$ values, before reaching a saturation value of the indicator of the order of $10^{-4}$. (HL-LHC lattice used: worst seed, $\zeta_0=$\SI{0.3}{\meter}.)}
     \label{fig:fli_compare_mean_birk}
 \end{figure}
 
 For chaotic initial conditions, a saturation region is observed for the indicator value of the order of $10^{-4}$ for both indicators. When this value is reached, both indicators oscillate around it. However, the slope with which this non-zero value is reached is different for the two indicators and is higher in absolute value for $FLI^{WB}$ than for $FLI/n$. We must also point out how some chaotic initial conditions exhibited strong value fluctuations in $FLI^{WB}$ before the saturation point, reaching values comparable to the regular initial conditions. These isolated cases might be artefacts caused by the Birkhoff weights which amplify certain modes in the time series when the chaotic behaviour still has not fully manifested.
 
-Despite these isolated oscillations in value, the improvement brought about by the Birkhoff averages can be appreciated in Fig.~\ref{fig:fli_colormap_mean_birk}, where the time evolution of the distribution of the values of $FLI/n$ (left) and $FLI^{WB}$ (right) is shown for the entirety of initial conditions evaluated for Fig.~\ref{fig:overview2}. The part of the distribution corresponding to the regular initial conditions reaches its peak (yellow band) and moves toward zero with increasing $n$. However, the displacement toward zero is sharper for $FLI^{WB}$, potentially enabling a better classification method as seen in the previous Chapter. In both graphs, a faint trace of a peak is visible corresponding to the indicator value of about $10^{-4}$. This feature is remarkably similar for the two indicators, as already seen in Fig.~\ref{fig:fli_colormap_mean_birk}.
+Despite these isolated oscillations in value, the improvement brought about by the Birkhoff averages can be appreciated by comparing the value distribution evolution of $\log_{10}(FLI/n)$ and $\log_{10}(FLI^{WB})$ reported in Fig.~\ref{fig:overview2}, as there the time evolution of the value distribution is shown for the entirety of initial conditions evaluated for Fig.~\ref{fig:overview}. The part of the distribution corresponding to the regular initial conditions reaches its peak (yellow band) and moves toward zero with increasing $n$. However, the displacement toward zero is sharper for $FLI^{WB}$, potentially enabling a better classification method as seen in the previous Chapter. In both graphs, a faint trace of a peak is visible corresponding to the indicator value of about $10^{-4}$. This feature is remarkably similar for the two indicators, as already seen in Fig.~\ref{fig:fli_colormap_mean_birk}.
 
-When applied to a modulated Hénon map, as seen in Subsection~\ref{}, the Birkhoff weights applied to $FLI$ provided a slight improvement in the convergence of regular initial conditions to zero, as well as an overall benefit in highlighting the two separate clusters of initial conditions. In this context, such difference in convergence was not appreciated to a comparable extent, however, a slight improvement in cluster sharpness and separation was noted, suggesting that Birkhoff weights do still offer a slight improvement to $FLI$ classification. This can be appreciated by comparing the value distribution evolution of $\log_{10}(FLI/n)$ and $\log_{10}(FLI^{WB})$ reported in Fig.~\ref{}. There is also a possibility that an improvement in convergence can be observed only at higher values of $n$.
+When applied to a modulated Hénon map, as discussed in Subsection~\ref{subsec:dyn:FLI:WB}, the Birkhoff weights applied to $FLI$ provided a slight improvement in the convergence of regular initial conditions to zero, as well as an overall benefit in highlighting the two separate clusters of initial conditions. In this context, such difference in convergence was not appreciated to a comparable extent, however, a slight improvement in cluster sharpness and separation was noted, suggesting that Birkhoff weights do still offer a slight improvement to $FLI$ classification. There is also a possibility that an improvement in convergence can be observed only at higher values of $n$.
 
 \subsection{Lyapunov time and stability time}
 
 The Lyapunov time is the characteristic timescale on which an initial condition shifts to regular dynamics to chaotic dynamics. It is defined as the inverse of the system's maximal Lyapunov exponent, which is directly estimated by the dynamic indicators $FLI/n$ and $FLI^{{WB}}$.
 
-We are interested in assessing whether this estimate of the maximal Lyapunov exponent can be used to assess the presence of a Nekhoroshev-like evolution in the system. In other words, we want to inspect if the estimated Lyapunov time follows a Nekhoroshev-like scale-law with the initial amplitude $I_0$ of an initial condition, such as the one in Eq.~\eqref{}.
+We are interested in assessing whether this estimate of the maximal Lyapunov exponent can be used to assess the presence of a Nekhoroshev-like evolution in the system. In other words, we want to inspect if the estimated Lyapunov time follows a Nekhoroshev-like scale-law with the initial amplitude $I_0$ of an initial condition, such as the one in Eq.~\eqref{nekest}.
 
-This analysis is motivated by the well-known fact that dynamic aperture follows a Nekhoroshev-like evolution~\cite{}. The details of this functional relation have been presented in Subsection~\ref{}. As the Nekhoroshev scale-law describes an exponential decay of the estimate stability time of initial conditions as their initial amplitude $I_0$ grows, we expect to observe a similar behaviour for the Lyapunov time, and therefore to be able to use the Lyapunov time as an additional tool for assessing the presence of a Nekhoroshev-like evolution in the system in the context of single particle tracking.
+This analysis is motivated by the well-known fact that dynamic aperture follows a Nekhoroshev-like evolution~\cite{Bazzani:2019csk}. The details of this functional relation have been presented in Subsection~\ref{sec:2:dynamic_aperture}. As the Nekhoroshev scale-law describes an exponential decay of the estimate stability time of initial conditions as their initial amplitude $I_0$ grows, we expect to observe a similar behaviour for the Lyapunov time, and therefore to be able to use the Lyapunov time as an additional tool for assessing the presence of a Nekhoroshev-like evolution in the system in the context of single particle tracking.
 
 In order to make use of our simulation data and inspect the stability time $T_s$ and the Lyapunov time $T_s$ with respect to the initial radius $r_0 = \sqrt{x_0^2 + y_0^2}$ of an initial condition, we evaluate the mean values of $T_s$ and $T_L$ for a moving window of initial conditions with a given initial radius. The window is defined as the set of initial conditions with initial radius $r_0$ within a given range $\Delta r$ around a given value $r_0$. The mean values of $T_s$ and $T_L$ are then computed for each window, and the resulting values are plotted as a function of $r_0$. Note that for our Nekhoroshev-like scale laws, $I_0$ and $r_0$ are related by $I_0 = r_0^2$.
 
@@ -223,32 +222,32 @@ To better appreciate the value distribution observed for $T_L$ and $T_s$ at diff
 
 We now want to fit a Nekhoroshev-like function
 \begin{equation}
-    T = T_0 \exp\left[-\left(\frac{I_\ast}{I_0}\right)^A\right]
+    T = T_0 \exp\left[-\left(\frac{I_\ast}{I_0}\right)^{\frac{1}{2\kappa}}\right]
 \end{equation} 
 to both $T_L$ and $T_s$, and inspect both the goodness of the fit and the evolution of the values of $T_0$, $I_\ast$, and $\kappa$ for the different combinations of seeds and values of $\zeta_0$. As this scale law ranges over multiple orders of magnitude, we consider the logarithm of $T$, and fit the following function:
 \begin{equation}
-    \log(T) = \log(T_0) - \left(\frac{I_\ast}{I_0}\right)^A \,.
+    \log(T) = \log(T_0) - \left(\frac{I_\ast}{I_0}\right)^{\frac{1}{2\kappa}} \,.
 \end{equation}
-To fit the function, we first perform an initial brute force search over a grid of values of $T_0$, $I_0^*$, and $A$, and then we perform a more refined search around the best values found in the first step using the least squares method. This initial search is motivated by the non-linear nature of the fit, which makes it difficult to find the best values of the parameters with a simple gradient descent method.
+To fit the function, we first perform an initial brute force search over a grid of values of $T_0$, $I_0^*$, and $1/(2\kappa)$, and then we perform a more refined search around the best values found in the first step using the least squares method. This initial search is motivated by the non-linear nature of the fit, which makes it difficult to find the best values of the parameters with a simple gradient descent method.
 
 As we have seen in Fig.~\ref{fig:ts_vs_tl} and Fig.~\ref{fig:extra_distribution}, and as we discussed previously, both evaluations of $T_L$ and $T_s$ are inevitably affected by the fact that they are evaluated on a finite number of turns $n=10^5$. Because of this, when performing the fit, we have to consider the part of the data that does not show saturation, which is ultimately the part of the data that has shown either a clear chaotic dynamics or strong instabilities during the tracking up to $10^5$ turns, enabling us to probe the Nekhoroshev character of the dynamics.
 
 To make an accurate choice in the data to be used for the fit, that is, to choose the part of the data that does not show saturation, we perform the fit on multiple different data cuts, picked near the region of transition between the regular and chaotic regimes. We then choose the data cut that provides the best fit, using as measure of merit the reduced $\chi^2$ of the fit.
 
-In Fig.~\ref{fig:the_lyap_fit_worst} and Fig.~\ref{fig:the_lyap_fit_best}, we show the result of the fitting procedure of $T_L$ and $T_s$, applied to the two different HL-LHC seeds, both with $\zeta_0=$ \SI{0.3}{\meter}. We can see how different choices of data cut do not lead to strong differences in the values of the parameters of the fit, as long as they do not include the saturated part of the data. We can also observe how the fitting parameters for $T_L$ and $T_s$ are more comparable for the worst seed, which is in fact the one characterized by a stronger non-linear dynamics.
+In Fig.~\ref{fig:the_lyap_fit}, we show the result of the fitting procedure of $T_L$ and $T_s$, applied to the two different HL-LHC seeds, both with $\zeta_0=$ \SI{0.3}{\meter}. We can see how different choices of data cut do not lead to strong differences in the values of the parameters of the fit, as long as they do not include the saturated part of the data. We can also observe how the fitting parameters for $T_L$ and $T_s$ are more comparable for the worst seed, which is in fact the one characterized by a stronger non-linear dynamics.
 
-In Table~\ref{tab:lyap_fit_results}, we report the fit parameters archived for the 6 HL-LHC configurations we have considered. We
+In Table~\ref{tab:lyap_fit_results}, we report the fit parameters archived for the 6 HL-LHC configurations we have considered. We can observe how in general the fit routine archives reasonable error estimates for all the datasets, with the exception of the fitting of $T_L$ for the initial conditions with $\delta_0 =$ \SI{0.0}{\metre}, where the small size of chaotic regions, due to the absence of strong chaotic contribution from the longitudinal-induced modulation, makes the fit routine unable to identify a valid Nekhoroshev-like scale law.
+
+We can also observe how, in the $T_s$ fit, all the exponents $1/(2\kappa)$ have comparable value. This is promising as $\kappa$ is a parameter that is related to the geometry of the phase space, and thus it is expected to be a constant for all the different seeds. Similarly, $I_\ast$ shows a coherent behaviour, as it appears strongly correlated to the seed choice and the value of $\zeta_0$, decreasing as the combination of the two creates a situation with less stability.
+
+As for the $T_L$ fit, other than the case of the initial conditions with $\delta_0 =$ \SI{0.0}{\metre}, we can observe how the values of $1/(2\kappa)$ are comparable only within the same seed, with the best seed being the one closest to the value achieved for the $T_s$ fit. This suggests that the evolution of $T_L$ follows a different geometry than the one of $T_s$, and, as we will see shortly, this can be related to similar results in literature. 
 
 \begin{figure}
     \centering
     \includegraphics[width=1\textwidth]{6_lhc_dynamic_indicators/figs/fit_l_time_bad.pdf}
-    \caption{Fitting of $T_L$ for the worst seed, with $\zeta_0=$ \SI{0.3}{\meter}.}
-\end{figure}
-
-\begin{figure}
-    \centering
     \includegraphics[width=1\textwidth]{6_lhc_dynamic_indicators/figs/fit_l_time_best.pdf}
-    \caption{Fitting of $T_L$ for the best seed, with $\zeta_0=$ \SI{0.3}{\meter}.}
+    \caption{Fitting of $T_L$ and $T_s$ for two different HL-LHC seeds (top row, worst seed with $\zeta_0=$ \SI{0.3}{\meter}; bottom row, best seed with $\zeta_0=$ \SI{0.3}{\meter}). Multiple slices of data are considered around the transition point at which the data begins to manifest clear saturation due to the finite tracking time $n=10^5$. The best fit is chosen by considering the minimum reduced $\chi^2$ archived by the data cuts considered.}
+    \label{fig:the_lyap_fit}
 \end{figure}
 
 \begin{table}
@@ -275,30 +274,30 @@ In Table~\ref{tab:lyap_fit_results}, we report the fit parameters archived for t
         & $\log_{10}(T_0)$ & $-3 \pm 17$ & $1.9 \pm 0.3$ & $1.5 \pm 0.3$ \\
 
         \midrule
-        \multirow{3}{*}{\makecell{Best\\seed}}  & $1/(2\kappa)$ & $1.5 \pm 1.0$ & $2.94 \pm 0.04$ & $2.7 \pm 0.1$ \\
+        \multirow{3}{*}{\makecell{Best\\seed}}  & $1/(2\kappa)$ & $1.5 \pm 1.0$ & $2.94 \pm 0.08$ & $2.7 \pm 0.1$ \\
         & $I_\ast$ & $1700 \pm 400$ & $108 \pm 25$ & $98 \pm 27$ \\
         & $\log_{10}(T_0)$ & $-4 \pm 5$ & $1.1 \pm 0.3$ & $1.5 \pm 0.3$ \\
         \bottomrule
     \end{tabular}
 
-    \caption{Fitting results of Eq.~\eqref{} on the $T_s$ and $T_L$ data obtained from the 6 HL-LHC configurations considered.}
+    \caption{Fitting results of a Nekhoroshev-like scale law on the $T_s$ and $T_L$ data obtained from the six HL-LHC and $\zeta_0$ configurations considered. The error reported is the standard deviation of the fit parameters evaluated by the least-squares method.}
     \label{tab:lyap_fit_results}
 \end{table}
 
 In the work of Morbidelli et al.~\cite{Morbidelli1995}, an overview on the relationship between the Lyapunov time $T_L$ and macroscopic instability times, which can be related to our measure of stability time $T_s$, is presented. In particular, the authors distinguish between two different regimes, depending on the characteristics of the Hamiltonian dynamical system under study and the eventual presence of low-order resonances overlapping together.
 
-The first regime is called the \textit{``resonance overlapping regime''}, and it is characterized by the presence of low-order resonances overlapping together. In this case, $T_s$ is expected to be in a polynomial relation with $T_L$, i.e.\ $T_s \sim T_L^\beta$, with some positive $\beta$. The second regime is called the \textit{``Nekhoroshev regime''}, and it is shown by the authors how such a regime can not follow a universal polynomial relation between $T_s$ and $T_L$. In this case, the relation between $T_s$ and $T_L$ is expected to be an exponential one, i.e.\ $T_s \sim \exp(T_L)$.
+The first regime is called the \textit{``resonance overlapping regime''}, and it is characterized by the presence of low-order resonances overlapping together. In this case, $T_s$ is expected to be in a polynomial relation with $T_L$, i.e.\ $T_s \sim T_L^\beta$, with some positive $\beta$. The second regime is called the \textit{``Nekhoroshev regime''}, and it is shown by the authors how such a regime can not follow a universal polynomial relation between $T_s$ and $T_L$, but might follow, instead, an exponential one, i.e.\ $T_s \sim \exp(T_L)$. This highlights the fact that there is not a universal regime between $T_s$ and $T_L$, but rather a regime that depends on the specific characteristics of the Hamiltonian dynamical system under study.
 
 If we bring forward our thesis that both $T_s$ and $T_L$ follow a Nekhoroshev-like scale law with respect to $I_0$, we can construct the following relation between the two values:
 \begin{equation}
-    \frac{T_s}{T_{0s}} = \exp\left[\left(\frac{I_{\ast s}}{I_{\ast L}}\right)^{A_s}\left(\log\frac{T_L}{T_{0L}}\right)^{A_s / A_L}\right] \, ,
+    \frac{T_s}{T_{0s}} = \exp\left[\left(\frac{I_{\ast s}}{I_{\ast L}}\right)^{1/2\kappa_s}\left(\log\frac{T_L}{T_{0L}}\right)^{\kappa_L / \kappa_s}\right] \, ,
 \end{equation}
-where, if $A_L/A_s = 1$, we are able to recover a polynomial relation between $T_s$ and $T_L$ in the form $T_s = \alpha T_L^\beta$. If that's not the case, the relation assumes a more complicated form $T_s = \alpha \exp(\beta' \log{T_L}^{A_L/A_s})$.
+where, if $\kappa_L/\kappa_s = 1$, we are able to recover a polynomial relation between $T_s$ and $T_L$ in the form $T_s = \alpha T_L^\beta$. If that's not the case, the relation assumes the form $T_s = \alpha \exp(\beta' \log{T_L}^{\kappa_L / \kappa_s})$.
 
 
 \subsection{Dependence of FMA from the longitudinal dynamics}
 
-As it was pointed out in Subsection~\ref{}, the chaotic structures highlighted by FMA are very different from the ones highlighted by the other dynamic indicators. This is due to the fact that the FMA indicator is sensitive in general to tune changes, which are not necessarily related to a chaotic dynamics, but might be related, for example, to the presence of tune resonances.
+As it was observed in Appendix~\ref{app:timedep}, the chaotic structures highlighted by FMA are very different from the ones highlighted by the other dynamic indicators. This is due to the fact that the FMA indicator is sensitive in general to tune changes, which are not necessarily related to a chaotic dynamics, but might be related, for example, to the presence of tune resonances.
 
 To further highlight this characteristic of FMA, we can observe how the indicator is particularly sensitive to the presence of longitudinal dynamics. In Fig.~\ref{fig:fma_vs_fli}, we present FMA evaluated on the same seed at the three different values of $\zeta_0$, and we compare the resulting structures and value evolution of $FLI^{WB}$. We can observe how higher values of $\zeta_0$, which lead to stronger longitudinal dynamics and modulation, cause larger differences in the structures highlighted by FMA and $FLI^{WB}$. This is due to the fact that stronger longitudinal dynamics leads to stronger modulation effects in the transverse tunes, which ultimately may lead to cases of regular orbits with varying fundamental frequencies.   
 
@@ -307,7 +306,8 @@ Moreover, if we compare the evolution of the value distribution of FMA, we can o
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/FMA.pdf}
-    \caption{(Top) $\log_{10}(\mathrm{FMA})$ and $\log_{10}(\mathrm{FLI}^{WB})$ evaluated on the same seed at three different values of $\zeta_0$. Higher values of $\zeta_0$ yields larger differences between the regions highlighted by the two indicators. (Bottom) Evolution of the value distribution over time of $\log_{10}(\mathrm{FMA})$ and $\log_{10}(\mathrm{FLI}^{WB})$. While $\mathrm{FLI}^{WB}$ shows a clear tendency to create a bimodal distribution, $\mathrm{FMA}$ instead evolves into a tri-modal distribution.}
+    \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/FMA_addendum.pdf}
+    \caption{$\log_{10}(\mathrm{FMA})$ (top row) and $\log_{10}(\mathrm{FLI}^{WB}(\hat{x}))$ (bottom row) evaluated on the same seed at three different values of $\zeta_0$ at $n=10^5$. Higher values of $\zeta_0$ yields larger differences between the regions highlighted by the two indicators.}
     \label{fig:fma_vs_fli}
 \end{figure}
 
@@ -315,7 +315,7 @@ Moreover, if we compare the evolution of the value distribution of FMA, we can o
 
 In the previous Chapter, the performances of different dynamic indicators were evaluated on a modulated Hénon map by means of a clustering approach. This analysis showed that the $REM$ indicator is able to highlight the chaotic structures faster than Lyapunov-based dynamic indicators such as $FLI^{WB}$. Mainly due its ability to distinguish regular orbits from chaotic ones in a well-defined bimodal distribution, as the numerical error gets quickly amplified by the chaotic character of the orbits.
 
-When applying $REM$ to the HL-LHC lattices, we observe a similar good performance in clearly highlighting the chaotic regions in the phase space. In Fig.~\ref{fig:rem_lhc}, we can compare the results obtained by $REM$ on an example seed at three different values of $n$ with the results obtained by $FLI^{WB}$ at the same values of $n$. We can observe how $REM$ tends to highlight the chaotic regions qualitatively faster than $FLI^{WB}$, reproducing the same behaviour observed in the modulated Hénon map, although, for this analysis, we lack the possibility to define a ground truth to compare the results with. 
+When applying $REM$ to the HL-LHC lattices, we observe a similar behaviour in clearly highlighting the chaotic regions in the phase space. In Fig.~\ref{fig:overview}, we can qualitatively compare the results obtained by $REM$ on an example seed with the results obtained by $FLI^{WB}$ at the same values of $n$. We can observe how $REM$ tends to highlight the chaotic regions qualitatively sharper than $FLI^{WB}$, reproducing the same behaviour observed in the modulated Hénon map, although, for this analysis, we lack the possibility to define a ground truth to compare the results with.
 
 The same behaviour can be appreciated by comparing in Fig.~\ref{fig:overview2} the evolution of the value distribution of $\log_{10}(REM)$ and $\log_{10}(FLI^{WB})$ over time, as $\log_{10}(REM)$ tends to a bimodal distribution faster than $\log_{10}(FLI^{WB})$.
 
@@ -341,33 +341,39 @@ meaning that, for $k\leq3$, the indicator should show a constant value over time
 
 These properties of the $GALI^{(k)}$ indicator make it a very interesting tool for inspecting the geometrical properties of regular orbits in the phase space. More specifically, inspecting the behaviour of $GALI^{(4)}$ for different displacement choices can give us an idea on the structure of the regular toroidal orbits, as the $m$ will assume different values, as the number of initial displacements which lie in the tangent space of the tori changes.
 
-As a first attempt to test this behaviour with our HL-LHC lattices, we have inspected the mean value evolution of $GALI^{(2)}$ and $GALI^{(4)}$ for a set of regular initial conditions, selected by means of the $FLI^{WB}$ indicator at $n=10^5$. As displacement choices, we test respectively every possible combination of 2 and 4 vectors out of the six base vectors. The set of regular initial conditions is defined by considering the initial conditions that scored a value of $FLI^{WB}$ below $10^{-5}$, as we have observed to be a value close to the saturation of the indicator at $n=10^5$ during the analysis presented in Subsection~\ref{}.
+As a first attempt to test this behaviour with our HL-LHC lattices, we have inspected the mean value evolution of $GALI^{(2)}$ and $GALI^{(4)}$ for a set of regular initial conditions, selected by means of the $FLI^{WB}$ indicator at $n=10^5$. As displacement choices, we test respectively every possible combination of 2 and 4 vectors out of the six base vectors. For all analysis in this section, we will consider the HL-LHC worst seed with $\zeta_0=$ \SI{0.3}{\metre}.
 
-The results of the analysis for $GALI^{(2)}$ are shown in Fig.~\ref{fig:gali2}, where we can observe that the mean value of $GALI^{(2)}$ is somewhat constant over time only for the displacement choices that do not include a longitudinal displacement, i.e. $\hat{\zeta}$ and $\hat{\delta}$. This is not completely in agreement with the expected behaviour of $GALI^{(2)}$ for regular orbits, and might suggest that the introduction of a longitudinal displacement introduces a small amount of chaos in the system, which is not enough to be detected by the $FLI^{WB}$ indicator, but is enough to make the $GALI^{(2)}$ indicator show a non-constant behaviour. This discrepancy will require further investigation.
+The set of regular initial conditions is defined by considering the initial conditions below an initial radius of 2 $\sigma$. This is a mostly arbitrary choice motivated by the expectation of extremely regular motion from particles within the inner core of the beam and corroborated by the low values scored by those particles with the $FLI^{(WB)}$ indicator (i.e., close to or lower than $10^{-5}$ at $n=10^5$).
+
+The results of the analysis for $GALI^{(2)}$ are shown in Fig.~\ref{fig:gali2}, where we can observe that the mean value of $GALI^{(2)}$ is somewhat constant over time only for the displacement choices that do not include two displacements in the same plane, i.e. i.e., $(\hat{x},\ \hat{y})$, $(\hat{p}_x,\ \hat{p}_y)$, and $(\hat{\zeta},\ \hat{\delta})$. Conversely, they instead show a power law evolution, which is to be expected, for regular orbits, by the behaviour of $GALI^{(4)}$.
+This might suggest that considering more than one displacement in the same plane introduces a degeneracy in the system, which breaks the expected behaviour of the dynamic indicator. This discrepancy will require further investigation.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\textwidth]{6_lhc_dynamic_indicators/figs/evolution_gali_4_stable.pdf}
-    \caption{Mean value evolution of $GALI^{(2)}$ for different displacement choices. (Left) the mean value of $GALI^{(2)}$ is constant only for the displacement choices that do not include a longitudinal displacement. (Right) displacements that include a longitudinal displacement show a non-constant behaviour.}
+    \includegraphics[width=0.8\textwidth]{6_lhc_dynamic_indicators/figs/evolution_gali_2_stable.pdf}
+    \caption{Mean value evolution of $GALI^{(2)}$ for different displacement choices. An ensemble of regular initial conditions was considered. The mean value of $GALI^{(2)}$ is constant only for the displacement choices that do not belong to the same plane. The other displacements, i.e., $(\hat{x},\ \hat{y})$, $(\hat{p}_x,\ \hat{p}_y)$, and $(\hat{\zeta},\ \hat{\delta})$, show a power law evolution. (HL-LHC lattice used: worst seed, $\zeta_0=$\SI{0.3}{\meter}.)}
     \label{fig:gali2}
 \end{figure}
 
-As for the $GALI^{(4)}$ indicator, the results are shown in Fig.~\ref{fig:gali4}, where we can observe how the mean value of $GALI^{(4)}$ indeed does follow a different power law evolution depending on the displacement choice. Moreover, we can observe that all evolutions also manifest a saturation behaviour for $n>10^4$. To compare the different behaviours, we fit the power law over the interval $10^2\leq n \leq 10^4$, and we report the values of the exponent in Table~\ref{tab:gali4}, along with the corresponding $m$ value.
+As for the $GALI^{(4)}$ indicator, the results are shown in Fig.~\ref{fig:gali4}, where we can observe how the mean value of $GALI^{(4)}$ indeed does follow a different power law evolution depending on the displacement choice. Moreover, we can observe that all evolutions also manifest a saturation behaviour for $n>10^4$. To compare the different behaviours, we fit the power law over the interval $10^2\leq n \leq 10^4$, and we report the values of the exponent in Table~\ref{tab:gali4}, along with the corresponding $m$ value. The evolution of $GALI^{(6)}$ is also reported for comparison in both the figure and the table.
 
-We can observe how, for certain combinations, the exponent of the power law ends up exceeding the value of $2$, which is the maximum expected value of the power law for $k=4$ and $N=3$. For these cases, we reported a negative value of $m$, which does not have a geometrical interpretation. This behaviour as well might be due to the presence of a small amount of chaos in the system, introduced by specific displacement choices, and it will require further investigation as well.
+We can observe, for the combinations in which the four displacements belong only to two planes, that the exponent of the power law ends up exceeding the value of $2$, which is the maximum expected value of the power law for $k=4$ and $N=3$. For these cases, we reported a negative value of $m$, which does not have a geometrical interpretation. This behaviour as well might be related to the same degeneracy that we have observed for $GALI^{(2)}$, and it will also require further investigation.
 
-Apart from this discrepancy, we can observe how the various displacement choices do yield different values of $m$, which can be interpreted as the number of initial displacements that lie in the tangent space of the regular tori. This is in agreement with the expected behaviour of $GALI^{(4)}$ for regular orbits, and it can be used to inspect the geometry of the regular tori in the phase space.
+Apart from this discrepancy, we can observe how the various displacement choices do yield different values of $m$, which can be interpreted as the number of initial displacements that lie in the tangent space of the regular tori. This is in agreement with the expected behaviour of $GALI^{(4)}$ for regular orbits, and it can be used to inspect the geometry of the regular tori in the phase space, and inspect which vectors lay on the regular tori tangent space.
+
+Finally, $GALI^{(6)}$ shows a power law with exponent $4$, which is higher than all $GALI^{(4)}$ exponents, and implies an $m$ value of $2$. This is in agreement with the expected behaviour of the dynamic indicator.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{6_lhc_dynamic_indicators/figs/evolution_gali_4_stable.pdf}
-    \caption{Mean value evolution of $GALI^{(4)}$ for different displacement choices. The mean value of $GALI^{(4)}$ follows a different power law evolution depending on the displacement choice.}
+    \caption{Mean value evolution of $GALI^{(4)}$ for different displacement choices. An ensemble of regular initial conditions was considered. The mean value of $GALI^{(4)}$ follows a different power law evolution depending on the displacement choice. (HL-LHC lattice used: worst seed, $\zeta_0=$\SI{0.3}{\meter}.)}
     \label{fig:gali4}
 \end{figure}
 
 \begin{table}
     \centering
-    \setlength{\extrarowheight}{2pt}
+    % should I space it? nah... let's decide later
+    % \setlength{\extrarowheight}{2pt}
     \begin{tabular}{l|cc}
         \toprule
         \makecell{Displacement\\choice} & $2(k-3)-m$ & $m$ \\
@@ -391,17 +397,30 @@ Apart from this discrepancy, we can observe how the various displacement choices
         $GALI^{(6)}$ & $4.0 \pm 0.2$ &  2.0 \\   
         \bottomrule     
     \end{tabular}
-    \caption{Exponent of the power law and values of $m$ for the different displacement choices for $GALI^{(4)}$.}
+    \caption{Exponent of the power law and consequent values of $m$ for the different displacement choices for $GALI^{(4)}$. The errors reported correspond to the standard deviation evaluated by the least-squares fit. The exponent of $GALI^{(6)}$ is also reported. (HL-LHC lattice used: worst seed, $\zeta_0=$\SI{0.3}{\meter}.)}
+    \label{tab:gali4}
 \end{table}
+
+Let us now consider the behaviour of $GALI^{(k)}$ for an ensemble of chaotic initial conditions. We expect both $GALI^{(2)}$ and $GALI^{(4)}$ to all exhibit a similar exponential decay, regardless of the displacement choice, with $GALI^{(4)}$ showing a roughly double decay rate than $GALI^{(2)}$. To check this, we consider the initial conditions which scored a value greater than $10^{-3}$ with $FLI^{WB}(\hat{x})$, evaluated at $n=10^{5}$, and we compute the mean value of $GALI^{(2)}$ and $GALI^{(4)}$ scored for each displacement choice.
+
+The results are shown in Fig.~\ref{fig:gali2_4_chaos}. The mean value of $GALI^{(2)}$ and $GALI^{(4)}$ both follow an exponential decay in agreement with the expectations. All various displacement choices only exhibit an offset, but all have roughly the same decay rate. A sole exception is given by the pair $(\hat{\zeta}, \hat{\delta})$, which exhibits a faster decay rate compared to the other $GALI^{(2)}$ displacement choices.  
 
 \begin{figure}
     \centering
     \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/gali_2_4_chaos.pdf}
-    \caption{}
+    \caption{Mean value evolution of $GALI^{(2)}$ and $GALI^{(4)}$ for different displacement choices. An ensemble of chaotic initial conditions was considered. The mean value of the two $GALI$ indicators both follow an exponential decay, which is in agreement with the expected behaviour for chaotic orbits. $GALI^{(4)}$ shows roughly double the decay rate of $GALI^{(2)}$. The displacement choice $(\hat{\zeta}, \hat{\delta})$ in $GALI^{(2)}$ shows a faster decay rate than the other choices. (HL-LHC lattice used: worst seed, $\zeta_0=$\SI{0.3}{\meter}.)}
     \label{fig:gali2_4_chaos}
 \end{figure}
 
 
 \section{Conclusions and future work}
 
-In this work, we have presented a set of indicators that can be used to inspect the dynamical properties of the HL-LHC lattice.
+In this Chapter, we have presented a set of dynamic indicators that can be used to inspect the dynamical properties of a realistic accelerator lattice. Dynamic indicators provide information on the chaotic structures in the phase-space and potentially can be used to probe the particle long-term dynamics and gain insights on the scale laws governing the lattice stability and diffusive behaviour.
+
+We have considered five different indicators, namely, $FLI/n$, $FLI^{WB}$, $GALI^{(k)}$, $REM$, and $FMA$. These indicators were selected either for their importance in the field or due to their proven classification performance in our previous study based on the modulated Hénon map. These indicators were then tested on an HL-LHC realistic accelerator lattice, and the information provided by each indicator was discussed.
+
+We have observed how the Lyapunov time, provided with improved convergence rates by $FLI^{WB}$ can be used to inspect the presence of a Nekhoroshev-like scale law in the lattice, and how such value is related to both the lattice noise realization and the intensity of longitudinal dynamics. This suggests that such tool can indeed be used to inspect the presence of significant chaotic structures in the lattice, which might be related to Nekhoroshev-like long-term diffusive behaviour.
+
+As for the $GALI^{(k)}$, we tested the ability of the dynamic indicator in inspecting the geometric structure of regular orbits by using $k < 6$. The results are mostly coherent with the behaviour expected from the literature, except for when displacements are all chosen in pairs from the same plane. In this case, we observe degeneracies that will require further investigation.
+
+Finally, we have inspected how the various indicators perform on a realistic accelerator lattice, compared to the behaviours assessed during the analysis performed on the modulated Hénon map. We have observed that the $REM$ indicator mostly performs as expected, while the $FMA$ indicator shows a behaviour that is strongly affected by longitudinal modulation, in a way that is comparable to the behaviour observed on the modulated Hénon map at different grades of modulation. This suggests that the $FMA$ indicator might not be suitable for the inspection of the chaotic structures of a realistic accelerator lattice, when there is no interest in detecting also the resonant structures.
