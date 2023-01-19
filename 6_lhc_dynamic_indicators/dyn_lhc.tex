@@ -1,4 +1,4 @@
-\chapter{Analysis of LHC lattices with dynamic indicators}
+\chapter{Analysis of LHC lattices with dynamic indicators}\label{ch:dyn-lhc}
 
 \section{Evaluation of dynamic indicators for complex systems}
 
@@ -136,9 +136,9 @@ In Fig.~\ref{fig:overview2}, we present an overview of the evolution of the valu
 
 \subsection{$FLI$ dependence from the initial displacement}
 
-$FLI$, by definition, depends on the initial choice of the direction of the unitary displacement vector $\vb{\xi}$, which implies that  different structures in the phase space can be highlighted.
+$FLI$, by definition, depends on the initial choice of the direction of the unitary displacement vector $\vb{\xi}$, which implies that different structures in the phase space can be highlighted.
 
-To assess the magnitude of these differences, in Fig.~\ref{fig:fli_compare}, we compare the calculated values of $\log_{10}({FLI})$, calculated at $n=10^5$ with an initial displacement along one of the six orthonormal vectors, namely $\hat{x},\,\hat{p}_x,\,\hat{y},\,\hat{p}_y,\,\hat{\zeta},\,\text{and }\hat{\delta}$. The comparison is made against the mean value computed for the six possible initial displacements, and the standard deviation is also presented.
+To assess the magnitude of these differences, in Fig.~\ref{fig:fli_compare}, we compare the calculated values of $\log_{10}({FLI})$, calculated at $n=10^5$ with an initial displacement along one of the six orthonormal vectors, namely $\hat{x},\,\hat{p}_x,\,\hat{y},\,\hat{p}_y,\,\hat{\zeta},\,\text{and }\hat{\delta}$. The comparison is made against the mean value computed for the six possible initial displacements and the standard deviation is also presented.
 
 It is possible to see how the different choice of initial displacement highlights different structures in the regular region, while chaotic regions tend to assume the same final value. This difference is also highlighted by the standard deviation, as the chaotic regions at the border generally show a low standard deviation, whereas the stable regions at lower amplitude have higher values.
 
@@ -176,11 +176,10 @@ When applied to a modulated Hénon map, as discussed in Section~\ref{subsec:dyn:
 
 \subsection{Dependence of $FMA$ from the longitudinal dynamics}
 
-As observed in Appendix~\ref{app:timedep}, the chaotic structures highlighted by $FMA$ are very different from those highlighted by the other dynamic indicators. This is due to the fact that $FMA$ is sensitive in general to tune changes, which are not necessarily related to chaotic dynamics, but rather, are related to the presence of resonances or tune modulation.
+As observed in Appendix~\ref{app:timedep}, the chaotic structures highlighted by $FMA$ are very different from those highlighted by the other dynamic indicators. This is due to the fact that $FMA$ is generally sensitive to tune changes, which are not necessarily related to chaotic dynamics, but rather related to the presence of resonances or tune modulation.
 
-To further highlight this characteristic of $FMA$, we can observe how the indicator is particularly sensitive to the presence of longitudinal dynamics. Indeed, the longitudinal dynamics couples with the transverse one also introducing tunes modulation via a finite value of the chromaticity. In Fig.~\ref{fig:fma_vs_fli}, we present $FMA$ evaluated on the best seed for three values of $\zeta_0$, and we compare the resulting structures with those highlighted by $FLI^{WB}$. Two essential features can be observed. The first one is that the chaotic regions at the border of the stable region resemble very much for the two indicators, which show that their behaviour is similar. The second one is a strong difference between the two indicators in the region close to the vertical axis. Such a difference grows significantly as a funcrtiWe observe how larger values of $\zeta_0$, leading to stronger tunes modulation, cause larger differences in the structures highlighted by $FMA$ and $FLI^{WB}$. This is due to the fact that stronger longitudinal dynamics leads to stronger modulation effects in the transverse tunes, which ultimately may lead to cases of regular orbits with varying fundamental frequencies.   
-
-
+To further highlight this characteristic of $FMA$, we can observe how the indicator is particularly sensitive to the presence of longitudinal dynamics. Indeed, the longitudinal dynamics couples with the transverse one, also introducing tune modulation via a finite value of the chromaticity. In Fig.~\ref{fig:fma_vs_fli}, we present $FMA$ evaluated for the best seed for three values of $\zeta_0$, and we compare the resulting structures with those highlighted by $FLI^{WB}$. Two essential features can be observed. The first is that the chaotic regions at the border of the stable region resemble very much for the two indicators, which show that their behaviour is similar. The second is a strong difference between the two indicators in the region close to the vertical axis. This difference grows significantly as a function of $\zeta_0$. 
+%
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/FMA.pdf}
@@ -188,21 +187,20 @@ To further highlight this characteristic of $FMA$, we can observe how the indica
     \caption{$\log_{10}(\mathrm{FMA})$ (top row) and $\log_{10}(\mathrm{FLI}^{WB}(\hat{x}))$ (bottom row) evaluated on the same seed for three values of $\zeta_0$ at $n=10^5$. The differences between the two indicators are enhanced with larger values of $\zeta_0$.}
     \label{fig:fma_vs_fli}
 \end{figure}
+%
+With increasing values of $\zeta_0$ the chaotic region detected by $FMA$ extends toward the origin along the vertical axis. Furthermore, the width of such a chaotic region increases with $\zeta_0$. It is quite clear that the chaotic behaviour detected by $FMA$ is an artefact, related to the presence of a strong modulation of the tunes. In this sense, this observation suggests that the use of $FMA$ to identify chaotic regions in phase space is made with a grain of salt whenever modulation of the linear tunes is present.   
 
-Moreover, if we compare the evolution of the value distribution of $FMA$, we can observe how $FMA$ evolves into a tri-modal distribution. Differently from the other dynamic indicators, which show a tendency to create a 
-bimodal distribution.
+Another feature emerges when considering the evolution of the distribution of indicator values as a function of time. Indeed, if we compare the evolution of the value distribution of $FMA$, we can observe how $FMA$ evolves into a tri-modal distribution. Unlike the other dynamic indicators, which show a tendency to create a bimodal distribution.
 
 \subsection{General performance of $REM$}
 
-In the previous chapter, the performances of different dynamic indicators were evaluated on a modulated Hénon map by means of a clustering approach. This analysis showed that the $REM$ indicator is able to highlight the chaotic structures faster than Lyapunov-based dynamic indicators such as $FLI^{WB}$. Mainly due its ability to distinguish regular orbits from chaotic ones in a well-defined bimodal distribution, as the numerical error gets quickly amplified by the chaotic character of the orbits.
+In the previous chapter, the performance of different dynamic indicators was evaluated using a modulated Hénon map and applying a clustering approach to detect chaotic orbits. This analysis showed that the $REM$ indicator is capable of highlighting chaotic structures faster than Lyapunov-based dynamic indicators such as $FLI^{WB}$. Mainly because of its ability to distinguish regular orbits from chaotic ones in a well-defined bimodal distribution, as the numerical error is quickly amplified by the chaotic character of the orbits.
 
-When applying $REM$ to the HL-LHC lattices, we observe a similar behaviour in clearly highlighting the chaotic regions in the phase space. In Fig.~\ref{fig:overview}, we can qualitatively compare the results obtained by $REM$ on an example seed with the results obtained by $FLI^{WB}$ at the same values of $n$. We can observe how $REM$ tends to highlight the chaotic regions qualitatively sharper than $FLI^{WB}$, reproducing the same behaviour observed in the modulated Hénon map, although, for this analysis, we lack the possibility to define a ground truth to compare the results with.
+When applying $REM$ to the HL-LHC lattices, we observe a similar behaviour, i.e.\ the ability to clearly highlight chaotic regions in the phase space. In Fig.~\ref{fig:overview}, we can qualitatively compare the results obtained by $REM$, calculated for an example seed, with those obtained with $FLI^{WB}$. We can observe how $REM$ tends to highlight chaotic regions qualitatively sharper than $FLI^{WB}$, reproducing the same behaviour observed in the modulated Hénon map, although, for this analysis, we lack the possibility to define a ground truth to be used to compare the results of the various indicators.
 
-The same behaviour can be appreciated by comparing in Fig.~\ref{fig:overview2} the evolution of the value distribution of $\log_{10}(REM)$ and $\log_{10}(FLI^{WB})$ over time, as $\log_{10}(REM)$ tends to a bimodal distribution faster than $\log_{10}(FLI^{WB})$.
+The behaviour of the distribution of the indicator values can be appreciated by comparing the evolution of the value distribution of $\log_{10}(REM)$ and $\log_{10}(FLI^{WB})$ as a function of time, as shown in Fig.~\ref{fig:overview2}. In fact, $\log_{10}(REM)$ tends to a bimodal distribution much faster than $\log_{10}(FLI^{WB})$ and in such a way that a threshold to detect chaotic initial conditions would be almost independent of $n$. Therefore, we can conclude that the promising performance of $REM$ in highlighting the chaotic structures in the phase space, along with its straightforward numerical implementation, makes it a very interesting tool for studying phase-space structures in realistic accelerator lattices.
 
-The promising performances of $REM$ in highlighting the chaotic structures in the phase space, along with its straightforward implementation, make it a very interesting tool for inspecting phase space structures in realistic accelerator lattices.
-
-\section{Various phase-space studies}
+\section{Detailed analysis of the beam dynamics using indicators}
 
 \subsection{Lyapunov time and stability time}
 
