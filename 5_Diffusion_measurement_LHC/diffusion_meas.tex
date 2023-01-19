@@ -1,7 +1,13 @@
-\chapter{Diffusion measurements at the CERN LHC}
+\chapter{Diffusion measurements at the CERN LHC}\label{ch:diffusion_meas}
 \noindent\textsf{The content of this chapter, with the due adaptations, has resulted in the proceedings by C.\ E.\ Montanari, A.\ Bazzani, M.\ Giovannozzi, A.\ A.\ Gorzawski, and S.\ Redaelli \textit{\citetitle{montanari:ipac22-mopost043}}, which were presented as a poster at IPAC'22 in June 2022~(Ref.~\cite{montanari:ipac22-mopost043}).}
 
-\section{The LHC collimation system}\label{sec:collimation}
+In Chapter~\ref{}, we presented an optimal method to measure the diffusion coefficient of a beam halo, based on the characteristics of the outgoing current given by a Fokker-Planck equation with Nekhoroshev-like diffusion coefficient. In this chapter, we apply this method to available LHC collimator scan data, which was gathered during Run~2 following a different measurement protocol.
+
+As this measurement campaign was tailored to a different model of diffusion, the data was gathered with a different protocol, that inevitably does not meet all the optimal requirements highlighted in the previous chapter. This inevitably required an adjustment of the reconstruction procedure to account for the differences between the optimal and the actual measurement protocol.
+
+The chapter is structured as follows. In Section~\ref{sec:4:collimation}, we present the LHC collimation system. In Section~\ref{sec:4:analysis}, we present the collimator scan data and the diffusion coefficient reconstruction, along with the necessary adjustments applied to the reconstruction procedure to account for the differences between the optimal and the actual measurement protocol. Finally, some conclusive remarks are given in Section~\ref{sec:4:remarks}.
+
+\section{The LHC collimation system}\label{sec:4:collimation}
 
 The LHC layout~\cite{Bruning:782076} can be summarised in a geometrical scheme composed of 8 straight insert regions (IRs) and 8 circular arc segments. A simple scheme of this layout is reported in Fig.~\ref{fig:lhc_layout}, left. Within this circular scheme, the main particle physics experiments are located in IR1, IR2, IR5, and IR8, namely, ATLAS~\cite{TheATLASCollaboration_2008}, ALICE~\cite{Alessandro:879894}, CMS~\cite{Chatrchyan:1129810}, and LHCb~\cite{Alves:1129809}. In these four IRs, the two beams intersect and interact in what is referred to as an Interaction Point (IP). The RF cavities for accelerating the beams are in IR4 and IR6 hosts the beam extraction system. Finally, IR3 and IR7 are dedicated, respectively, to the longitudinal and transverse collimation system.
 
@@ -57,7 +63,7 @@ The secondary particle showers represent the point of observation for measuring 
     \label{fig:blm}
 \end{figure}
 %
-\section{Analysis of experimental data}
+\section{Analysis of experimental data}\label{sec:4:analysis}
 %
 Between 2016 and 2018, collimator scans were performed at the CERN LHC with physics beams at \SI{6.5}{TeV}~\cite{PhysRevAccelBeams.23.044802}. During these scans, one of the jaws of the primary collimators in IR7 was moved inward and outward in small steps, starting at $~5\sigma_\text{nom}$, where the nominal sigma value $\sigma_\text{nom}$ is evaluated for a nominal emittance $\varepsilon_\text{nom} =$ \SI{3.5}{\micro\meter}.
 
@@ -188,7 +194,7 @@ Note that the values reported in~\cite{bazzani2020diffusion}, namely $\kappa=0.3
     \label{fig:fifth}
 \end{figure}
 %
-\section{Final remarks}
+\section{Final remarks}\label{sec:4:remarks}
 %
 Despite the differences between the approach used to collect the data during LHC Run~2 and the optimal one suggested by the numerical studies performed on the Nekhoroshev-like Forkker-Planck diffusive model, we were able to analyse the loss signal measured by the BLMs during collimator scans, and obtain a promising reconstruction of the recovery currents, which are ultimately the indicator of diffusive-like behaviour.
 

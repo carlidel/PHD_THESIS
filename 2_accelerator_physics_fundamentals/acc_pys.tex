@@ -1,9 +1,27 @@
 
 \chapter{Fundamentals of Accelerator Physics}\label{ch:accelerator_physics_fundamentals}
 
-\section{Particle motion and Frenet-Serret co-ordinate system}
+After the brief introduction on Hamiltonian mechanics in Chapter~\ref{ch:mathematical_elements}, and the overview on stochastic Hamiltonian systems presented in Chapter~\ref{ch:the_diffusive_framework}, we now turn to the presentation of the fundamental concepts of accelerator physics. In particular, we will introduce the fundamentals of nomenclature, coordinates, and common approximations and assumptions used in the sector. These concepts will be required to understand the open challenges in the topic of nonlinear beam dynamics, and how they can be related to known results in the field of stochastic Hamiltonian systems as, we will see, the field of accelerator physics makes large use of the formalism and results given by Hamiltonian mechanics and symplectic maps.
 
-The standard choice of coordinates in accelerator physics, which takes advantage of the toroidal symmetry of the circular accelerator, is the Frenet-Serret co-ordinate system.
+It should be noted that the following information is not intended to serve as a comprehensive overview of accelerator physics. For a more detailed introduction to the subject, readers are directed to references such as Refs.~\cite{Lee:2651939} and \cite{wiedemann2015particle}, which were consulted in the creation of this chapter. Our focus here is to provide an overview of the specific topics that are propaedeutical for the original contribution of this thesis. 
+
+A particle accelerator is a device that utilizes electromagnetic fields to accelerate a beam of charged particles, increasing their energy and allowing for collisions with a target or another particle beam. These machines can be classified as linear or circular based on their design. This study will focus specifically on circular accelerators.
+
+An important consideration when working with particle accelerators is the type of particles being accelerated. The energy loss of charged particles moving along a curved trajectory, known as synchrotron radiation, is dependent on the mass of the particle following the relation $m^{-4}$. This effect is negligible for hadron beams, but must be taken into account when working with electron beams. In this research, we will only be examining hadron machines and energy scales at which synchrotron radiation can be safely ignored.
+
+Additionally, this study will focus on "single-particle dynamics," meaning that the motion of each individual particle in the beam will be considered independent and the repulsive Coulomb force between charges within the beam will be neglected. These collective effects can be further explored in separate studies via perturbative approximations of the single-particle dynamics.
+
+The motion of the particles can be broken down into two components: longitudinal, along the circumference of the accelerator, and transverse, in the plane normal to the longitudinal motion. These two components are also referred to, respectively, as ``synchrotron motion'' and ``betatron motion''.
+The focus of this study will be on the transverse motion of the particles, which, as we will see in this chapter, can be described by means of an ideal integrable Hamiltonian system, composed only by linear terms, on which we then add nonlinear terms and perturbations to describe the real dynamics of the beam.
+
+This nonlinear Hamiltonian system describing the betatron motion, finally, is the point of departure and motivation for the study of the nonlinear dynamics of the betatron motion and the application of the framework presented in the previous chapter, which will be the topic of the following parts and the original contribution of this thesis.
+
+The chapter is organized as follows. In Section~\ref{sec:acc:fernet}, we introduce the Fernet-Serret coordinate system, which is the standard coordinate system used in accelerator physics, and we inspect the Hamiltonian of a charged particle in an electromagnetic field. In Section~\ref{sec:acc:transverse}, we solve the equations of motion in the transverse plane, considering an ideal scenario with only linear components of the magnetic field. Next, in Section~\ref{sec:acc:cs_ellipse}, we define the invariant of the motion, the emittance, which comes from the definition of the Courant-Snyder ellipse. Then, in Section~\ref{sec:non-linear}, we give a brief overview of the effects that arise in betatron motion when considering nonlinear terms in the dynamics. In Section~\ref{sec:acc:oneturn}, we introduce the concept of one-turn map, in which the importance of symplectic maps in the topic of accelerator physics is shown. In Section~\ref{sec:2:dynamic_aperture}, we present the concept of dynamic aperture and how a Nekhoroshev scale law emerges from the study of the nonlinear dynamics effects on it. Finally, in Section~\ref{sec:acc:longitudinal_dynamics}, we give a brief overview on the fundamental concepts of longitudinal motion, as the modulation effects given by it on the transverse motion will be of specific interest in the Part~III of this thesis, where we will also inspect how modulation effects contribute to the nonlinear dynamics of the betatron motion. 
+
+
+\section{Particle motion and Frenet-Serret coordinate system~\label{sec:acc:fernet}}
+
+The standard choice of coordinates in accelerator physics, which takes advantage of the toroidal symmetry of the circular accelerator, is the Frenet-Serret coordinate system.
 
 Starting from the Cartesian system $(X,\, Y,\, Z)$, centred in the accelerator centre, the Frenet-Serret coordinate system considers as one curvilinear coordinate the path length along the reference orbit $s$, which describes the ideal longitudinal motion of a particle inside the accelerator, and two Cartesian coordinates $x$ and $y$ for the transverse ones. In Fig.~\ref{fig:frenserr}, we illustrate the coordinate system applied to a vector $\vb{r}$.
 
@@ -94,7 +112,7 @@ The coefficients
 are called respectively the \textit{normal} and \textit{skew} $2(n+1)$-polar coefficients of the magnetic field. In accelerator physics, it is customary to consider magnetic elements that generate fields with only one multipolar component. These elements are, in fact, referred to as normal or skew dipoles, quadrupoles, sextupoles, octupoles, and so on. Of course, in the case of magnetic field imperfections, several multipolar components can be associated to a single magnet.
 
 %
-\section{Transverse motion}
+\section{Transverse motion} \label{sec:acc:transverse}
 %
 
 From the Hamiltonian \eqref{eq:hamem}, we can derive the equations of motion of the particle in the transverse plane. We obtain the following
@@ -177,7 +195,7 @@ The phase advance over the ring is called \textit{tune}:
 \end{equation} 
 
 
-\section{Courant-Snyder ellipse}
+\section{Courant-Snyder ellipse} \label{sec:acc:cs_ellipse}
 
 As we are interested in the transverse motion of the particle, we want to consider its evolution each time it crosses the position $s=s_0$, i.e.\ we want to consider the Poincaré section of the dynamics. At each iteration, we will have a phase advance of $\psi_z$ equal to $2\pi\nu_z$.
 
@@ -264,7 +282,7 @@ Following its definition in the physical coordinates $(z,\, z')$, given in Eq.~\
 \begin{equation}
 I_z = \frac{1}{2\beta_z}\qty[z^2 + (\alpha z + \beta z'))^2] = \frac{1}{2}\qty(\gamma z^2 + 2\alpha z z' + \beta z'^2)\,, \end{equation}
 %
-where we have defined $\gamma=(1+\alpha^2)/\beta$. The area of the ellipse is equal to $2\pi I_z$, and is conserved at any value of $s$. It can be observed, finally, how the $(z,z')\to(\hat z,\hat p_z)$ co-ordinate transformation modifies the physical co-ordinates ellipses into circles with the same area, from which their name \textit{``normalized co-ordinates''}.
+where we have defined $\gamma=(1+\alpha^2)/\beta$. The area of the ellipse is equal to $2\pi I_z$, and is conserved at any value of $s$. It can be observed, finally, how the $(z,z')\to(\hat z,\hat p_z)$ coordinate transformation modifies the physical coordinates ellipses into circles with the same area, from which their name \textit{``normalized coordinates''}.
 
 A single particle following the linear transverse dynamics will have its own constant Courant-Snyder invariant. When, instead, we want to consider a beam distribution, a standard property, called \textit{emittance} is defined as the average of the Courant-Snyder invariant:
 \begin{equation}
@@ -355,7 +373,7 @@ There is now a linear dependence of the tune on the action $I$, and each particl
 
 The averaging approach used here to obtain an expression of the amplitude detuning highlights only the first-order effects in the frequency. For more complex Hamiltonians, describing multiple nonlinear components, deriving a complete analytical expression of the detuning is not always a trivial task.
 
-It is possible to numerically evaluate the amplitude-dependent detuning in single-particle tracking simulations, as the tune can be measured by performing a numerical estimate of the fundamental frequency of the orbit. We will present the topic of tune evaluation later in Chapter~\ref{}, in the context of dynamic indicators, as the tune determination is the foundation for consolidated tools in accelerator physics like the Frequency Map Analysis.
+It is possible to numerically evaluate the amplitude-dependent detuning in single-particle tracking simulations, as the tune can be measured by performing a numerical estimate of the fundamental frequency of the orbit. We will present the topic of tune evaluation later in Chapter~\ref{ch:overview_of_dynamic_indicators}, in the context of dynamic indicators, as the tune determination is the foundation for consolidated tools in accelerator physics like the Frequency Map Analysis.
 
 \subsubsection{Nonlinear resonances}
 
@@ -374,7 +392,7 @@ Other than 1\textsc{d} resonances, in a system with two degrees of freedom one c
 
 The possible 1\textsc{d} and 2\textsc{d} resonances (up to order $4$) are represented by lines in the $(\omega_x, \omega_y)$ diagram of Fig.~\ref{fig:res}, where different colours show the resonance order. As higher-order resonances are generally weaker than lower-order ones, one should select the accelerator working point far from the main resonances; the LHC does so by operating at the fractional tunes $(\omega_x, \omega_y)=(0.28, 0.31)$ during injection and $(\omega_x, \omega_y)=(0.31, 0.32)$ during collisions~\cite{Benedikt:823808}.
 
-\section{One-turn maps}
+\section{One-turn maps} \label{sec:acc:oneturn}
 
 A standard tool in accelerator physics to inspect the transverse dynamic of a particle in an accelerator magnetic lattice is one-turn maps. A one-turn map \(\mathrm{M}\) is the Poincaré map of the circular accelerator in section $(s = s_0)$, and is given by composing single-element maps:
 \begin{equation}
@@ -382,7 +400,7 @@ A standard tool in accelerator physics to inspect the transverse dynamic of a pa
 \end{equation}
 whereeach $\mathrm{M}^{(i)}$ represents an element along the circular accelerator lattice, which might be, for example, a drift space with no magnets, a dipole bending magnet, a quadrupole, or a higher order magnetic element. 
 
-The map \(\mathrm{M}\) transforms the phase space coordinates \(\vb{\hat x} = (\hat x, \hat p_x, \hat y, \hat p_y)\) of a particle into new co-ordinates \(\vb{x}'\) which correspond to the particle after one full turn (see Fig.~\ref{fig:poincare}).
+The map \(\mathrm{M}\) transforms the phase space coordinates \(\vb{\hat x} = (\hat x, \hat p_x, \hat y, \hat p_y)\) of a particle into new coordinates \(\vb{x}'\) which correspond to the particle after one full turn (see Fig.~\ref{fig:poincare}).
 
 In this framework, the effect of each magnetic element on the phase coordinates of the beam can be written, in an analogy with geometrical optics, as the action of a $4\times4$ matrix on the coordinate vector. This matrix corresponds to the symplectic flow of the Hamiltonian for a given magnetic field.
 
@@ -535,14 +553,14 @@ where $\mathcal{W}$ is the Lambert-$\mathcal{W}$ function~\cite{Corless1996}. Th
 % 	\rho_G(x,y) = \frac{1}{2\pi\sigma_x\sigma_y}e^{-\left(\frac{x^2}{2\sigma_x^2}+\frac{y^2}{2\sigma_y^2}\right)}
 % 	\label{eq:initial_gaussian_beam}
 % \end{equation}
-% then, transforming~\eqref{eq:initial_gaussian_beam} to polar co-ordinates and applying the DA definition~\eqref{eq:dynamic_aperture_numerical}, i.e.\ assuming that all particles with starting amplitude beyond \(DA(N)\) are lost after \(N\) turns, we can directly compute the evolution of beam intensity \(N_b\) with the following equation
+% then, transforming~\eqref{eq:initial_gaussian_beam} to polar coordinates and applying the DA definition~\eqref{eq:dynamic_aperture_numerical}, i.e.\ assuming that all particles with starting amplitude beyond \(DA(N)\) are lost after \(N\) turns, we can directly compute the evolution of beam intensity \(N_b\) with the following equation
 % \begin{equation}
 % 	\frac{N_b(N)}{N_b(1)} = 1 - \int_{DA(N)}^{+\infty} e^{-\frac{r^2}{2}} r \, dr = 1 - e^{-\frac{D^2(N)}{2}}
 % 	\label{eq:measuring_da}
 % \end{equation}
 % with \(DA(N) \xrightarrow[N \to 0]{} +\infty \). This last equation represents a starting point for building the direct connection we are looking for, and also allows us to establish some experimental procedures for evaluating DA from beam losses in a circular accelerator.
 
-\section{Fundamentals of longitudinal dynamics}
+\section{Fundamentals of longitudinal dynamics} \label{sec:acc:longitudinal_dynamics}
 
 Although the focus of this work is on the transverse beam dynamics, it is important to include an essential presentation of the core concepts behind the longitudinal dynamics, i.e.\ the theory describing synchrotron oscillations. A particle that exhibits a longitudinal displacement with respect to the reference trajectory, or that has a longitudinal momentum different from the reference, will also manifest a different transverse dynamics, with a mechanism called \textit{syncro-betatron coupling}. The main effects of syncro-betatron coupling can be represented as a turn-dependent \textit{modulation} of transverse tunes.
 

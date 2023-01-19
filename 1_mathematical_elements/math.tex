@@ -1,6 +1,12 @@
 
 \chapter{Hamiltonian dynamics}\label{ch:mathematical_elements}
 
+In this chapter, we present a brief review of the fundamental concepts of Hamiltonian dynamics, which will be used throughout this thesis. We start by recalling the basic concepts of Hamiltonian dynamics and coordinate transformations. We then focus on the fundamental concepts of perturbation theory, such as the averaging principle.
+
+Next, we present the KAM and Nekhoroshev theorems, two fundamental results of perturbation theory, which constitute the foundation of this thesis. These two theorems give important insights on the behaviour of an otherwise integrable Hamiltonian system under small perturbations, which is exactly the case of the study of the dynamics of a particle in the magnetic field of a circular accelerator.
+
+Finally, we introduce the concept of symplectic map, which is a mathematical object which found multiple applications in the field of accelerator physics as a ``one-turn map'', and see how these two theorems can be applied to the study of symplectic maps.
+
 \section{Generalities}\label{sec:1:hamiltonian}
 
 We start by recalling some of the fundamental concepts of Hamiltonian dynamics. This will also define the core elements of nomenclature and notation that will be used throughout this thesis. This theoretical recall mainly follows Ref.~\cite{Arnold:937549}.
@@ -64,7 +70,7 @@ must be exact. This provides the Hamiltonian transformation laws
 %
 Note that the Hamiltonian function changes if the transformations are time-dependent. The function $F(\vb{q},\vb{Q},t)$ is called the \textit{generating function} of the coordinate transformation.
 
-In the Hamiltonian formulation, the full freedom in co-ordinate choice is such that even the role of time can be reassigned to another coordinate. We will see in the next chapter how this freedom enables the Courant-Snyder coordinate system, used in accelerator physics.
+In the Hamiltonian formulation, the full freedom in coordinate choice is such that even the role of time can be reassigned to another coordinate. We will see in the next chapter how this freedom enables the Courant-Snyder coordinate system, used in accelerator physics.
 
 When a coordinate is used to parameterize the orbit, we have that the momentum conjugate to that coordinate, with a minus sign, becomes the new Hamiltonian function.
 
@@ -389,7 +395,7 @@ After we have seen the most important theorems on how small perturbations can af
 
 The first important theorem we will present is the Poincaré-Birkhoff theorem~\cite{poincare, birkhoff}. This theorem shows how the interplay between the perturbation and the natural resonances present in the map leads to the creation of new structures in the phase space, also referred to as \textit{resonant islands}.
 
-Let us consider an area-preserving map $\mathrm{T}_k$ ($k\in\mathbb{Z}$). If the system described by $\mathrm{T}_k$ is integrable, we can define action-angle co-ordinates $(\boldsymbol{\phi},\,\vb{I})$ where, for every $I$, an invariant curve $\Gamma_{I}$ is defined, along which, at each turn, $\phi$ increases by an angle $\omega(I)$. The map $\mathrm{T}_j$ therefore will read as a \textit{twist map}:
+Let us consider an area-preserving map $\mathrm{T}_k$ ($k\in\mathbb{Z}$). If the system described by $\mathrm{T}_k$ is integrable, we can define action-angle coordinates $(\boldsymbol{\phi},\,\vb{I})$ where, for every $I$, an invariant curve $\Gamma_{I}$ is defined, along which, at each turn, $\phi$ increases by an angle $\omega(I)$. The map $\mathrm{T}_j$ therefore will read as a \textit{twist map}:
 %
 \begingroup
 \renewcommand*{\arraystretch}{1.5}
@@ -422,7 +428,7 @@ If we inspect the arrows represented in Fig.~\ref{fig:tnepsilon}, we can disting
 	\centering
 	\def\svgwidth{0.75\columnwidth}
     \import{1_mathematical_elements/figs}{poincare.pdf_tex}
-    \caption{Schematic picture of the concept behind the Poincaré-Birkhoff theorem proof. The invariant curves $\Gamma_-$ and $\Gamma_+$ are characterized by rotation frequencies different in sign under the perturbed map $\mathrm{T}^n_(\epsilon)$. The curve $R_\epsilon$ is made of points with no rotation, and it's mapped into $R_\epsilon'$ by the map. As the map is area-preserving, we observe an even number of intersections between $R_\epsilon$ and $R_\epsilon'$, which correspond to the fixed points given by the theorem. These fixed points can be distinguished between elliptic and hyperbolic by inspecting the direction of the arrows in the pictures, which ultimately represents the dynamic flow near them. Elliptic points (blue stars) have arrows rotating around them, hyperbolic points (red stars) have arrows pointing away from them.}
+    \caption{Schematic picture of the concept behind the Poincaré-Birkhoff theorem proof. The invariant curves $\Gamma_-$ and $\Gamma_+$ are characterized by rotation frequencies different in sign under the perturbed map $\mathrm{T}^n_(\epsilon)$. The curve $R_\epsilon$ is made of points with no rotation, and it is mapped into $R_\epsilon'$ by the map. As the map is area-preserving, we observe an even number of intersections between $R_\epsilon$ and $R_\epsilon'$, which correspond to the fixed points given by the theorem. These fixed points can be distinguished between elliptic and hyperbolic by inspecting the direction of the arrows in the pictures, which ultimately represents the dynamic flow near them. Elliptic points (blue stars) have arrows rotating around them, hyperbolic points (red stars) have arrows pointing away from them.}
     \label{fig:tnepsilon}
 \end{figure}
 

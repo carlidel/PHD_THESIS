@@ -1,16 +1,22 @@
-\chapter{Diffusive model application on wire compensators losses}
+\chapter{Diffusive model application on wire compensators losses}\label{ch:wire-compensators}
 
-\section{Generalities on LHC beam-beam wire compensators}
+In this chapter, we focus on the examination of beam-beam wire compensators, which play an important role in counteracting the detrimental effects of beam-beam interactions in the LHC. Our original contribution to this field is the application of our diffusive model to assess the long-term effects of the wire compensators on beam losses and emittance.
 
-One of the most significant limits in the present LHC design and the future HL-LHC is given by the electromagnetic interactions between the two counter-rotating beams in the shared sections of the machine that occur around the interaction points~\cite{Arduini_2016}. These beam-beam interactions lead can be distinguished as head-on beam-beam effects, which occurs when the beam bunches are overlapping at the interaction point, and long-range beam-beam effects, occuring when the two beams are transversely separated in the remaining part of the shared region.
+Through the study of the LHC Beam~2 data, collected during a Run~2 measurement campaign, we aim to understand the effectiveness of the wire compensators in mitigating beam-beam effects without causing unwanted effects such as an increase in emittance. The results of this analysis provide insight into the potential benefits of utilizing wire compensators in present and future accelerator design and shows how this diffusive model can be applied to assess long term effects of new components in the accelerator via inspection of the beam loss data.
 
-In the LHC, the beams are set in collision with a \textit{crossing angle}, which has both the purpose of separating bunches immediately upstream and downstream of the collision point~\cite{Arduini_2016} to reduce the strength of long-range beam-beam effects. However, an increase in crossing angle also implies a reduction in integrated luminosity, that is, the total number of collisions that have occurred over a given period of time, typically measured in inverse femtobarns \SI{}{fb}$^{-1}$~\cite{Herr:941318}, as the overlap of the bunches decreases. A schematic visualisation of two different crossing angles and their consequent effect on beam separation and bunch overlap is presented in Fig.~\ref{fig:crossing-angles}. The nominal full crossing angle for LHC is set at $\theta_c =$ \SI{285}{\micro\radian}, while for HL-LHC the expected baseline parameter will be set at $\theta_c =$ \SI{500}{\micro\radian}~\cite{BejarAlonso:2749422}. 
+The chapter is structured as follows. In Section~\ref{sec:5:wire-compensators}, we present the generalities of the wire compensators and their implementation in the LHC. In Section~\ref{sec:5:wire-data}, we give an overview on the data gathered during the dedicated wire compensators' measurement campaign in Run~2. In Section~\ref{sec:5:wire-model}, we discuss how our diffusive model can be applied to the data and, in Section~\ref{sec:5:results}, we present the results of the analysis. Finally, in Section~\ref{sec:5:conclusions}, we draw our conclusions and discuss the potential future applications of the diffusive model in light of the results and difficulties encountered in this analysis.
+
+\section{Generalities on LHC beam-beam wire compensators}\label{sec:5:wire-compensators}
+
+One of the most significant limits in the present LHC design and the future HL-LHC is given by the electromagnetic interactions between the two counter-rotating beams in the shared sections of the machine that occur around the interaction points~\cite{Arduini_2016}. These beam-beam interactions lead can be distinguished as head-on beam-beam effects, which occurs when the beam bunches are overlapping at the interaction point, and long-range beam-beam effects, occurring when the two beams are transversely separated in the remaining part of the shared region.
+
+In the LHC, the beams are set in collision with a \textit{crossing angle}, which has both the purpose of separating bunches immediately upstream and downstream of the collision point~\cite{Arduini_2016} to reduce the strength of long-range beam-beam effects. However, an increase in crossing angle also implies a reduction in integrated luminosity, that is, the total number of collisions that have occurred over a given period of time, typically measured in inverse femtobarns \SI{}{fb}$^{-1}$~\cite{Herr:941318}, as the overlap of the bunches decreases. A schematic visualization of two different crossing angles and their consequent effect on beam separation and bunch overlap is presented in Fig.~\ref{fig:crossing-angles}. The nominal full crossing angle for LHC is set at $\theta_c =$ \SI{285}{\micro\radian}, while for HL-LHC the expected baseline parameter will be set at $\theta_c =$ \SI{500}{\micro\radian}~\cite{BejarAlonso:2749422}. 
 
 \begin{figure}[hpt]
     \centering
     \def\svgwidth{1.0\textwidth}
     \import{5_wire_compensators_LHC/figs/}{crossing_angle_basics.pdf_tex}
-    \caption{Schematic visualisation of two different crossing angles and their consequent effect on beam separation and bunch overlap. As $\theta_{c1} > \theta_{c2}$, the bunches are more separated in the first case (left), while the bunch overlap is larger in the second case (right). The long-range beam-beam effects are also more significant in the second case.}
+    \caption{Schematic visualization of two different crossing angles and their consequent effect on beam separation and bunch overlap. As $\theta_{c1} > \theta_{c2}$, the bunches are more separated in the first case (left), while the bunch overlap is larger in the second case (right). The long-range beam-beam effects are also more significant in the second case.}
     \label{fig:crossing-angles}
 \end{figure}
 
@@ -38,7 +44,7 @@ A collimator hosts two separate wires (one per jaw), and each wire can carry up 
     \label{fig:wire-configs}
 \end{figure}
 
-\section{Overview of experimental data}
+\section{Overview of experimental data}\label{sec:5:wire-data}
 
 For the application of our diffusive framework, we consider the experimental data gathered at the CERN LHC during the 2018 LHC Machine Development (MD) programme, during the BBCW measurements campaign~\cite{Poyet:2703503}. More specifically, we consider the data gathered during fill 7386, as it has the configuration closest to an operational scenario.
 
@@ -59,7 +65,7 @@ It is possible to see how the data provide a variety of crossing angle configura
 
 We will now discuss how our diffusive framework can be applied to this loss signal, along with some necessary considerations on how one must preprocess and interpret these data before applying the model. 
 
-\section{Application of the diffusive model}
+\section{Application of the diffusive model}\label{sec:5:wire-model}
 
 Let us consider the Fokker-Planck equation presented in Eq.~\eqref{eq:fp}, with the Nekhoroshev-like form of the diffusion coefficient. We recall that the system is fully characterised by the three free parameters $\epsilon$, $I_\ast$, and $\kappa$.
 
@@ -83,7 +89,7 @@ When, instead, a variation in any of the accelerator elements occurs, e.g.\ a BB
 \begin{figure}[hpt]
     \centering
     \includegraphics[width=1.0\textwidth]{5_wire_compensators_LHC/figs/stationary_transient.pdf}
-    \caption{Visualisation of the difference between stationary state and transient state for a data slice. We define as stationary state the time interval in which all the parameters of the system are in a steady state, while the transient state is the time interval in which the system is undergoing a variation. Here, the BBCW DC current is switched on to the target value, causing a transient state along the process.}
+    \caption{Visualization of the difference between stationary state and transient state for a data slice. We define as stationary state the time interval in which all the parameters of the system are in a steady state, while the transient state is the time interval in which the system is undergoing a variation. Here, the BBCW DC current is switched on to the target value, causing a transient state along the process.}
     \label{fig:transient-state}
 \end{figure}
 
@@ -111,7 +117,7 @@ Now that we have defined the data we will use for the fitting procedure, we can 
 
 As we assume that the beam distribution at the end of a stationary state can be used as the initial condition of the next stationary state, we can use the evolved beam distribution as the initial condition for the next chunk. This procedure, iterated for all parts, finally gives us the reconstructed $D(I)$ for the various states of the system.
 
-\section{Numerical results}
+\section{Numerical results}\label{sec:5:results}
 
 We perform the fitting procedure using the data for both Beam~1 and Beam~2. As the wires are installed on Beam~2 only, we do not expect to observe a significant difference between $D(I)$ reconstructed on the Beam~1 chunks with wire on and wire off. However, the data of Beam~1 are useful for understanding the effects of different crossing angles on the system and establishing the characteristics of the results provided by the fitting procedure.
 
@@ -199,7 +205,7 @@ The values of the two parameters, $I_\ast$ and $\kappa$, are shown in Fig.~\ref{
 %    \label{fig:evolution}
 %\end{figure}
 
-\section{Final remarks}
+\section{Final remarks}\label{sec:5:conclusions}
 
 We have performed an initial study of the effects of the BBCWs on the long-term beam dynamics of the LHC using our diffusive framework. We have used the data of the LHC Beam~1 and Beam~2, collected during an MD measurement campaign of Run~2, and we have reconstructed the diffusion coefficient of various system configurations. Ultimately, we have found that the wires are able to reduce the long-range beam-beam effects and thus the diffusion. Moreover, we have observed that our model suggests that the wires are consistently able to reduce the intensity loss. As expected, the model did not highlight significant BBCWs effects on Beam~1.
 
