@@ -1,7 +1,7 @@
 
 \chapter{Fundamentals of Accelerator Physics}\label{ch:accelerator_physics_fundamentals}
 
-After the brief introduction on Hamiltonian mechanics in Chapter~\ref{ch:mathematical_elements}, and the overview on stochastic Hamiltonian systems presented in Chapter~\ref{ch:the_diffusive_framework}, we now turn to the presentation of the fundamental concepts of accelerator physics. In particular, we will introduce the fundamentals of nomenclature, coordinates, and common approximations and assumptions used in the sector. These concepts will be required to understand the open challenges in the topic of nonlinear beam dynamics, and how they can be related to known results in the field of stochastic Hamiltonian systems as, we will see, the field of accelerator physics makes large use of the formalism and results given by Hamiltonian mechanics and symplectic maps.
+After the brief introduction on Hamiltonian mechanics in Chapter~\ref{ch:mathematical_elements}, and the overview on stochastic Hamiltonian systems presented in Chapter~\ref{ch:the_diffusive_framework}, we now turn to the presentation of the fundamental concepts of accelerator physics. In particular, we will introduce the fundamentals of nomenclature, coordinates, and common approximations and assumptions used in the sector. These concepts will be required to understand the open challenges in the topic of non-linear beam dynamics, and how they can be related to known results in the field of stochastic Hamiltonian systems as, we will see, the field of accelerator physics makes large use of the formalism and results given by Hamiltonian mechanics and symplectic maps.
 
 It should be noted that the following information is not intended to serve as a comprehensive overview of accelerator physics. For a more detailed introduction to the subject, readers are directed to references such as Refs.~\cite{Lee:2651939} and \cite{wiedemann2015particle}, which were consulted in the creation of this chapter. Our focus here is to provide an overview of the specific topics that are propaedeutical for the original contribution of this thesis. 
 
@@ -12,11 +12,11 @@ An important consideration when working with particle accelerators is the type o
 Additionally, this study will focus on "single-particle dynamics," meaning that the motion of each individual particle in the beam will be considered independent and the repulsive Coulomb force between charges within the beam will be neglected. These collective effects can be further explored in separate studies via perturbative approximations of the single-particle dynamics.
 
 The motion of the particles can be broken down into two components: longitudinal, along the circumference of the accelerator, and transverse, in the plane normal to the longitudinal motion. These two components are also referred to, respectively, as ``synchrotron motion'' and ``betatron motion''.
-The focus of this study will be on the transverse motion of the particles, which, as we will see in this chapter, can be described by means of an ideal integrable Hamiltonian system, composed only by linear terms, on which we then add nonlinear terms and perturbations to describe the real dynamics of the beam.
+The focus of this study will be on the transverse motion of the particles, which, as we will see in this chapter, can be described by means of an ideal integrable Hamiltonian system, composed only by linear terms, on which we then add non-linear terms and perturbations to describe the real dynamics of the beam.
 
-This nonlinear Hamiltonian system describing the betatron motion, finally, is the point of departure and motivation for the study of the nonlinear dynamics of the betatron motion and the application of the framework presented in the previous chapter, which will be the topic of the following parts and the original contribution of this thesis.
+This non-linear Hamiltonian system describing the betatron motion, finally, is the point of departure and motivation for the study of the non-linear dynamics of the betatron motion and the application of the framework presented in the previous chapter, which will be the topic of the following parts and the original contribution of this thesis.
 
-The chapter is organized as follows. In Section~\ref{sec:acc:fernet}, we introduce the Fernet-Serret coordinate system, which is the standard coordinate system used in accelerator physics, and we inspect the Hamiltonian of a charged particle in an electromagnetic field. In Section~\ref{sec:acc:transverse}, we solve the equations of motion in the transverse plane, considering an ideal scenario with only linear components of the magnetic field. Next, in Section~\ref{sec:acc:cs_ellipse}, we define the invariant of the motion, the emittance, which comes from the definition of the Courant-Snyder ellipse. Then, in Section~\ref{sec:nonlinear}, we give a brief overview of the effects that arise in betatron motion when considering nonlinear terms in the dynamics. In Section~\ref{sec:acc:oneturn}, we introduce the concept of one-turn map, in which the importance of symplectic maps in the topic of accelerator physics is shown. In Section~\ref{sec:2:dynamic_aperture}, we present the concept of dynamic aperture and how a Nekhoroshev scale law emerges from the study of the nonlinear dynamics effects on it. Finally, in Section~\ref{sec:acc:longitudinal_dynamics}, we give a brief overview on the fundamental concepts of longitudinal motion, as the modulation effects given by it on the transverse motion will be of specific interest in the Part~III of this thesis, where we will also inspect how modulation effects contribute to the nonlinear dynamics of the betatron motion. 
+The chapter is organized as follows. In Section~\ref{sec:acc:fernet}, we introduce the Fernet-Serret coordinate system, which is the standard coordinate system used in accelerator physics, and we inspect the Hamiltonian of a charged particle in an electromagnetic field. In Section~\ref{sec:acc:transverse}, we solve the equations of motion in the transverse plane, considering an ideal scenario with only linear components of the magnetic field. Next, in Section~\ref{sec:acc:cs_ellipse}, we define the invariant of the motion, the emittance, which comes from the definition of the Courant-Snyder ellipse. Then, in Section~\ref{sec:non-linear}, we give a brief overview of the effects that arise in betatron motion when considering non-linear terms in the dynamics. In Section~\ref{sec:acc:oneturn}, we introduce the concept of one-turn map, in which the importance of symplectic maps in the topic of accelerator physics is shown. In Section~\ref{sec:2:dynamic_aperture}, we present the concept of dynamic aperture and how a Nekhoroshev scale law emerges from the study of the non-linear dynamics effects on it. Finally, in Section~\ref{sec:acc:longitudinal_dynamics}, we give a brief overview on the fundamental concepts of longitudinal motion, as the modulation effects given by it on the transverse motion will be of specific interest in the Part~III of this thesis, where we will also inspect how modulation effects contribute to the non-linear dynamics of the betatron motion. 
 
 
 \section{Particle motion and Frenet-Serret coordinate system~\label{sec:acc:fernet}}
@@ -131,7 +131,7 @@ To obtain an expression for the partial derivatives of $A_s$ as a function of th
     \curl \mathbf{A} = \frac{\hat x}{1+x/\rho}\pdv{A_s}{y} - \frac{\hat y}{1+x/\rho}\pdv{A_s}{x} = B_x\hat x + B_y\hat y % TODO::CHECK
 \end{equation}
 %
-as only the $A_s$ component is nonzero. This leads to
+as only the $A_s$ component is non-zero. This leads to
 %
 \begin{equation}
     \pdv{A_s}{x} = -\qty(1+\frac{x}{\rho})B_y\,, \qquad \pdv{A_s}{y} = \qty(1+\frac{x}{\rho})B_x\,,
@@ -182,7 +182,7 @@ which can be solved as
 	\psi_z(s) = \int_0^s \frac{\dd s'}{\beta_z(s')}\,
 \end{equation}
 %
-and a nonlinear equation for $\beta_z(s)$:
+and a non-linear equation for $\beta_z(s)$:
 %
 \begin{equation}
 	\frac{1}{2}\beta_z\beta_z''-\frac{1}{4}\beta_z'^2+K_z(s)\beta_z^2=1\,.
@@ -249,12 +249,12 @@ which results in the Hamiltonian
 %
 i.e.\ the well-known Hamiltonian of a harmonic oscillator (note how $I_z$ = $\tilde{I}_z$).
 
-From this final Hamiltonian, one can introduce and operate with normalised Cartesian coordinates 
+From this final Hamiltonian, one can introduce and operate with normalized Cartesian coordinates 
 \begin{equation}
     \hat z=\sqrt{2I_z}\cos\tilde{\phi}_z\,,\quad \hat p_z=\sqrt{2I_z}\sin\tilde{\phi}_z \,,
     \label{eq:2:cart_eq}
 \end{equation}
-and consequently treat the transverse linear motion on both the $\hat x-\hat p_x$ and $\hat y-\hat p_y$ planes using an intuitive normalised Cartesian Hamiltonian
+and consequently treat the transverse linear motion on both the $\hat x-\hat p_x$ and $\hat y-\hat p_y$ planes using an intuitive normalized Cartesian Hamiltonian
 %
 \begin{equation}
 	\ham(\hat x,\, \hat p_x,\, \hat y,\, \hat p_y) = \frac{\omega_x}{2}(\hat x^2 +\hat p_x^2) + \frac{\omega_y}{2}(\hat y^2+\hat p_y^2)\, .
@@ -308,13 +308,13 @@ The beam emittance can then be considered either as the average Courant-Snyder i
 
 
 
-\section{Nonlinear beam dynamics}\label{sec:nonlinear}
+\section{Non-linear beam dynamics}\label{sec:non-linear}
 
-The transverse dynamics we treated so far takes into consideration only the effects of a linear magnetic field (we recall the step between Eq.~\eqref{eq:acc_step_1} and Eq.~\eqref{eq:acc_step_2}, where we dropped all nonlinear terms for the magnetic fields $B_x$ and $B_y$), so that this approach takes into account only the elements generated by a set of ideal dipole and quadrupole magnets.
+The transverse dynamics we treated so far takes into consideration only the effects of a linear magnetic field (we recall the step between Eq.~\eqref{eq:acc_step_1} and Eq.~\eqref{eq:acc_step_2}, where we dropped all non-linear terms for the magnetic fields $B_x$ and $B_y$), so that this approach takes into account only the elements generated by a set of ideal dipole and quadrupole magnets.
 
-To include higher-order terms of the magnetic field power series, it is possible to include nonlinear terms directly into Hill's Hamiltonian. This can be done to both represent the unavoidable higher-order magnet imperfections inside the accelerator machine, or to represent explicit sextupolar and octupolar elements, which one might want to include in the accelerator lattice. 
+To include higher-order terms of the magnetic field power series, it is possible to include non-linear terms directly into Hill's Hamiltonian. This can be done to both represent the unavoidable higher-order magnet imperfections inside the accelerator machine, or to represent explicit sextupolar and octupolar elements, which one might want to include in the accelerator lattice. 
 
-As Hill's Hamiltonian is equivalent to two uncoupled harmonic oscillators, nonlinear components can be included in the Hamiltonian as anharmonic perturbation. We start by considering higher-order terms $n \ge 2$ of the power series $A_s$ in Eq.~\eqref{eq:as}, and we perform the change of variables $(x,\,y) \to (\hat x, \hat y)$. We then have that the nonlinear part of the Hamiltonian reads:
+As Hill's Hamiltonian is equivalent to two uncoupled harmonic oscillators, non-linear components can be included in the Hamiltonian as anharmonic perturbation. We start by considering higher-order terms $n \ge 2$ of the power series $A_s$ in Eq.~\eqref{eq:as}, and we perform the change of variables $(x,\,y) \to (\hat x, \hat y)$. We then have that the non-linear part of the Hamiltonian reads:
 %
 \begin{equation}
     \ham_\text{nlin}(\hat x, \hat p_x, s) = \Re \sum_{n\ge 2} \qty[\frac{k_n(s) + ij_n(s)}{(n+1)} \left(\sqrt{\beta_x(s)}\ \hat x + i\sqrt{\beta_y(s)}\ \hat y\right)^n]\,.
@@ -331,7 +331,7 @@ We can now substitute the strengths $k_n(s)$ and $j_n(s)$ (which, we recall, rep
 	J_n = \oint \dd s\, j_n(s) \beta_x^{\frac{n}{2}}(s)\,.
 \end{equation} 
 %
-With this notation, the nonlinear Hamiltonian has the simpler form
+With this notation, the non-linear Hamiltonian has the simpler form
 % 
 \begin{equation} \ham_\text{nlin}(\hat x, \hat p_x) = \Re \sum_{n\ge 2} \qty[\frac{K_n + iJ_n}{(n+1)} (\hat x + i\bar\beta^{1/2} \hat y)^n]\,.\end{equation}
 
@@ -340,15 +340,15 @@ From this Hamiltonian, one can for example write a simple beam model with one de
 	\ham(\hat x,\hat p) = \omega \frac{\hat x^2 + \hat p^2}{2} + \sum_{n>2} K_n \frac{x^{n+1}}{(n+1)}\, ,
 	\label{eq:hamxp_nl}
 \end{equation}
-such a simple model can be used to understand many phenomena caused by nonlinear effects.
+such a simple model can be used to understand many phenomena caused by non-linear effects.
 
-In an accelerator, nonlinear effects can be used to represent either unwanted elements, such as magnet imperfections, or to represent specifically added elements generating nonlinear magneti field, such as sextupoles and octupoles. These components can be introduced in an accelerator lattice to correct specific unwanted effects, like \textit{chromaticity}, i.e.\ the fact that particles with different momentum are differently focused by quadrupoles. Chromaticity, specifically, can be controlled by the introduction of sextupole magnets. Another important source of nonlinearities is space charge effects and \textit{beam-beam interaction}, caused by the electromagnetic interaction of charged particles with other charged particles, respectively, in the same or in another beam during collisions.
+In an accelerator, non-linear effects can be used to represent either unwanted elements, such as magnet imperfections, or to represent specifically added elements generating non-linear magnetic field, such as sextupoles and octupoles. These components can be introduced in an accelerator lattice to correct specific unwanted effects, like \textit{chromaticity}, i.e.\ the fact that particles with different momentum are differently focused by quadrupoles. Chromaticity, specifically, can be controlled by the introduction of sextupole magnets. Another important source of non-linearities is space charge effects and \textit{beam-beam interaction}, caused by the electromagnetic interaction of charged particles with other charged particles, respectively, in the same or in another beam during collisions.
 
-The introduction of nonlinear elements in a circular accelerator is the cause of three main effects~\cite{herr}: amplitude-dependent detuning, excitation of nonlinear resonances, and reduction of the dynamic aperture. We will present the first two phenomena very briefly and focus a little more on the core characteristics of the last one.
+The introduction of non-linear elements in a circular accelerator is the cause of three main effects~\cite{herr}: amplitude-dependent detuning, excitation of non-linear resonances, and reduction of the dynamic aperture. We will present the first two phenomena very briefly and focus a little more on the core characteristics of the last one.
 
 \subsubsection{Amplitude-dependent detuning}
 
-Adding nonlinear elements has the inevitable consequence of making the tune, i.e.\ the rotation frequency of the harmonic oscillator, an amplitude-dependent function. In the linear Hamiltonian~\eqref{eq:linham}, the frequency $\Omega$ is given by
+Adding non-linear elements has the inevitable consequence of making the tune, i.e.\ the rotation frequency of the harmonic oscillator, an amplitude-dependent function. In the linear Hamiltonian~\eqref{eq:linham}, the frequency $\Omega$ is given by
 \begin{equation}
 	\Omega = \pdv{\ham}{I} = \omega\,,
 \end{equation}
@@ -371,13 +371,13 @@ and
 \end{equation}
 There is now a linear dependence of the tune on the action $I$, and each particle will have a different rotation frequency depending on its amplitude.
 
-The averaging approach used here to obtain an expression of the amplitude detuning highlights only the first-order effects in the frequency. For more complex Hamiltonians, describing multiple nonlinear components, deriving a complete analytical expression of the detuning is not always a trivial task.
+The averaging approach used here to obtain an expression of the amplitude detuning highlights only the first-order effects in the frequency. For more complex Hamiltonians, describing multiple non-linear components, deriving a complete analytical expression of the detuning is not always a trivial task.
 
 It is possible to numerically evaluate the amplitude-dependent detuning in single-particle tracking simulations, as the tune can be measured by performing a numerical estimate of the fundamental frequency of the orbit. We will present the topic of tune evaluation later in Chapter~\ref{ch:overview_of_dynamic_indicators}, in the context of dynamic indicators, as the tune determination is the foundation for consolidated tools in accelerator physics like the Frequency Map Analysis.
 
-\subsubsection{Nonlinear resonances}
+\subsubsection{Non-linear resonances}
 
-If the tunes $\omega_x$ and $\omega_y$ satisfy a 1\textsc{d} or 2\textsc{d} resonance condition, the nonlinear magnetic field can eventually lead to severe particle loss. A theoretical approach to this phenomenon is presented in~\cite{Bazzani:262179, wilson}.
+If the tunes $\omega_x$ and $\omega_y$ satisfy a 1\textsc{d} or 2\textsc{d} resonance condition, the non-linear magnetic field can eventually lead to severe particle loss. A theoretical approach to this phenomenon is presented in~\cite{Bazzani:262179, wilson}.
 
 When the frequency $\omega_x$ or $\omega_y$ is close to a 1\textsc{d} resonant condition $n\omega_z / 2\pi \in \mathbb{Q}$, according to the Poincaré-Birkhoff theorem, presented in Section~\ref{subsec:poincare-birkhoff}, a chain of islands with extra fixed points appears. These islands, in regular accelerator operations, may reduce the dynamic aperture (for which the definition is given in Subsection~\ref{sec:2:dynamic_aperture}) and, close to separatrices, cause the onset of chaotic motion. When a resonance is crossed due to small, undesired variations of the magnetic field, which cause oscillations of $\omega_x$ and $\omega_y$ values, a growth in beam emittance may be observed~\cite{Guignard:185921}, affecting beam lifetime.
 
@@ -398,7 +398,7 @@ A standard tool in accelerator physics to inspect the transverse dynamic of a pa
 \begin{equation}
 	\mathrm{M} = \mathrm{M}^{(L)} \circ \mathrm{M}^{(L - 1)} \circ \cdots \circ \mathrm{M}^{(2)} \circ \mathrm{M}^{(1)} \,,
 \end{equation}
-whereeach $\mathrm{M}^{(i)}$ represents an element along the circular accelerator lattice, which might be, for example, a drift space with no magnets, a dipole bending magnet, a quadrupole, or a higher order magnetic element. 
+where each $\mathrm{M}^{(i)}$ represents an element along the circular accelerator lattice, which might be, for example, a drift space with no magnets, a dipole bending magnet, a quadrupole, or a higher order magnetic element. 
 
 The map \(\mathrm{M}\) transforms the phase space coordinates \(\vb{\hat x} = (\hat x, \hat p_x, \hat y, \hat p_y)\) of a particle into new coordinates \(\vb{x}'\) which correspond to the particle after one full turn (see Fig.~\ref{fig:poincare}).
 
@@ -422,11 +422,11 @@ When considering only the linear components in the magnetic lattice, the resulti
 	\end{pmatrix}_{n}\,.
 \end{equation}
 
-In general, it is not possible to compute exactly the transfer map of a nonlinear element. Therefore, approximation techniques become necessary. The standard approach that is used in standard tracking codes such as SixTrack~\cite{sixtrack}, is the \textit{one-kick approximation}, i.e.\ it is assumed that the higher order polynomial effects on the magnetic potential are all located at a precise $s_l$ position, and act with a $\delta(s - s_l)$ potential.
+In general, it is not possible to compute exactly the transfer map of a non-linear element. Therefore, approximation techniques become necessary. The standard approach that is used in standard tracking codes such as SixTrack~\cite{sixtrack}, is the \textit{one-kick approximation}, i.e.\ it is assumed that the higher order polynomial effects on the magnetic potential are all located at a precise $s_l$ position, and act with a $\delta(s - s_l)$ potential.
 
 The main advantages of this approximation is the fact that the resulting one-turn map $\mathrm{M}$ maintains its symplectic character and enables efficient tracking. This approximation holds when the higher-order magnetic contributions are small in length.
 
-A one-turn map with a single nonlinear contribution, added 
+A one-turn map with a single non-linear contribution, added 
 with the one-kick approximation at $s = s_0$, will then read  
 \begin{equation}
 	\begin{pmatrix}
@@ -466,14 +466,14 @@ which are referred to as \textit{Hénon-like maps}, due to the well-known map in
 	\label{eq:simplehenon}
 \end{equation}
 
-These models, despite their simplicity, already manifest multiple features that are observed in a beam under nonlinear magnetic fields, and have been used in multiple studies to investigate such features in the context of accelerator physics, especially in the context of dynamic aperture measurements~\cite{PhysRevE.53.4067, invlog}. These maps were also used as a fundamental building block for the application of Normal Form theory to betatron motion~\cite{Bazzani:262179}.
+These models, despite their simplicity, already manifest multiple features that are observed in a beam under non-linear magnetic fields, and have been used in multiple studies to investigate such features in the context of accelerator physics, especially in the context of dynamic aperture measurements~\cite{PhysRevE.53.4067, invlog}. These maps were also used as a fundamental building block for the application of Normal Form theory to betatron motion~\cite{Bazzani:262179}.
 
 \section{Dynamic aperture}
 \label{sec:2:dynamic_aperture}
 
-As shown before, the linear transverse motion can be described as an always stable harmonic oscillator with two degrees of freedom. When instead nonlinearities are introduced, the stability of the system is affected and the occurrence of hyperbolic points and resonances makes the motion of various initial conditions chaotic, eventually leading to their loss as they hit the mechanical aperture of the accelerator.
+As shown before, the linear transverse motion can be described as an always stable harmonic oscillator with two degrees of freedom. When instead non-linearities are introduced, the stability of the system is affected and the occurrence of hyperbolic points and resonances makes the motion of various initial conditions chaotic, eventually leading to their loss as they hit the mechanical aperture of the accelerator.
 
-In this scenario, where the region of stable motion in the phase space is affected by the nonlinear elements in the Hamiltonian, we can introduce the concept of \textit{Dynamic Aperture} (DA), as the extent of the phase-space region where stable motion occurs up to a given number of turns $N$.
+In this scenario, where the region of stable motion in the phase space is affected by the non-linear elements in the Hamiltonian, we can introduce the concept of \textit{Dynamic Aperture} (DA), as the extent of the phase-space region where stable motion occurs up to a given number of turns $N$.
 
 A complete discussion on the definition of DA, its computation, and its accuracy can be found in Refs.~\cite{PhysRevE.53.4067, invlog}, which provide a fundamental starting point on the topic. In the context of single-particle tracking, the DA is defined over the number of turns $N$ as the radius of a hypersphere whose volume is equal to the volume of the phase space where stable motion occurs up to $N$ turns. Note how this definition neglects the island of stability which might be given by the Poincaré-Birkhoff theorem.
 
@@ -518,15 +518,15 @@ Let us operate on a 4\textsc{d} phase space on which we have a one-turn map \(\m
 \end{equation}
 where \(r(\phi;N)\) is the last stable amplitude, i.e.\ \(x^2 + y^2 < r_{\mathrm{max}}\) for every iteration of \(\mathrm{M}\), not disconnected from the origin for up to \(N\) turns in the direction \(\phi\). %We can say that \(r\) is the computable version of the `ideal' \(R(\phi;N)\) given in Eq.~\eqref{eq:ideal-R}.
 
-In addition to this consolidated ``radial scan'' method, other techniques have been studied to improve the convergence speed of numerical DA measurements, such as the one presented in Ref.~\cite{vanderveken:ipac2022-mopost047}, where a Support Vector Machine algorithm is employed to perform an optimised sampling and border detection of the stable region of the phase space.
+In addition to this consolidated ``radial scan'' method, other techniques have been studied to improve the convergence speed of numerical DA measurements, such as the one presented in Ref.~\cite{vanderveken:ipac2022-mopost047}, where a Support Vector Machine algorithm is employed to perform an optimized sampling and border detection of the stable region of the phase space.
 
 \subsection{Dynamic aperture scaling laws}
 
-Simulating entire sets of initial conditions on different one-turn maps is a computationally intense task that becomes unsustainable when considering extremely high \(N_{\text{max}}\) values or complex symplectic tracking models\footnote{Researches like~\cite{invlog} present simulations in $N_\text{max}\sim 10^6-10^7$, while instead it would be necessary to reach values \(\sim 10^9\).}. Moreover, the multipolar components of the various superconducting magnets are known only with limited precision, so that one has to perform parametric studies to consider different realisations of the magnetic lattice. Because of these reasons, realistic time scales in tracking simulation are still out of reach for proper accelerator physics research.
+Simulating entire sets of initial conditions on different one-turn maps is a computationally intense task that becomes unsustainable when considering extremely high \(N_{\text{max}}\) values or complex symplectic tracking models\footnote{Researches like~\cite{invlog} present simulations in $N_\text{max}\sim 10^6-10^7$, while instead it would be necessary to reach values \(\sim 10^9\).}. Moreover, the multipolar components of the various superconducting magnets are known only with limited precision, so that one has to perform parametric studies to consider different realizations of the magnetic lattice. Because of these reasons, realistic time scales in tracking simulation are still out of reach for proper accelerator physics research.
 
 This limitation motivated the search for a robust model for the time dependence of DA, as such a model could offer insights on the long-term evolution of DA by extrapolating short-term tracking simulation data. The most recent developments on the topic of DA scaling laws can be found in~\cite{Bazzani:2019csk} and references therein.
 
-The models presented in~\cite{Bazzani:2019csk} are based on the Nekhoroshev theorem. Previous models formulated scaling laws using both the KAM theorem and Nekhoroshev estimate, theorising the presence of a stable core with KAM tori, and an increasingly chaotic region where Nekhoroshev-like estimates for stability times applies. However, such models presented some internal discrepancies, such as the possibility to fit non-physical parameters or the strong correlation between free parameters~\cite{Giovannozzi:2018wmm,Giovannozzi:2018igq}, motivated the usage of a scaling law exclusively based on the Nekhoroshev theorem. This is justified by the fact that the condition for the applicability of the stability-time estimate provided by Nekhoroshev theorem is more general than the existence conditions of KAM tori.
+The models presented in~\cite{Bazzani:2019csk} are based on the Nekhoroshev theorem. Previous models formulated scaling laws using both the KAM theorem and Nekhoroshev estimate, theorizing the presence of a stable core with KAM tori, and an increasingly chaotic region where Nekhoroshev-like estimates for stability times applies. However, such models presented some internal discrepancies, such as the possibility to fit non-physical parameters or the strong correlation between free parameters~\cite{Giovannozzi:2018wmm,Giovannozzi:2018igq}, motivated the usage of a scaling law exclusively based on the Nekhoroshev theorem. This is justified by the fact that the condition for the applicability of the stability-time estimate provided by Nekhoroshev theorem is more general than the existence conditions of KAM tori.
 
 The Nekhoroshev theorem, in this context, can be used to provide an estimate for the number of turns $N(r)$ for which the orbit of an initial condition with amplitude $r$ remains bounded. The estimate has a functional form that reads:
 \begin{equation}
@@ -617,7 +617,7 @@ where $\eta$ is the \textit{slip factor} and reads
     \eta=\frac{\Delta \omega / \omega_0}{\Delta p / p_0} \,.
 \end{equation}
 
-When considering small oscillation amplitudes, we can treat the synchrotron motion as that of a harmonic oscillator, where we consider the linearised equation of motion in the variable $\Delta \phi=\phi-\phi_s$. This approach leads to the differential equation
+When considering small oscillation amplitudes, we can treat the synchrotron motion as that of a harmonic oscillator, where we consider the linearized equation of motion in the variable $\Delta \phi=\phi-\phi_s$. This approach leads to the differential equation
 \begin{equation}
     \frac{\mathrm{d}^2}{\mathrm{d} t^2} \Delta \phi-\frac{h \omega_0^2 e V \eta \cos \left(\phi_s\right)}{2 \pi \beta^2 E} \Delta \phi=0 \,.
 \end{equation}
