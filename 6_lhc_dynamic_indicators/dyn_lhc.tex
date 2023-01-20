@@ -1,6 +1,14 @@
 \chapter{Analysis of LHC lattices with dynamic indicators}\label{ch:dyn-lhc}
 
-\section{Evaluation of dynamic indicators for complex systems}
+In this final chapter, we make use of the insights on the behaviour of dynamic indicators presented in the previous chapter to analyse the phase-space properties of a realistic HL-LHC lattice. As modern tracking codes are able to perform the tracking of many particles in parallel, thanks to the use of modern GPU architectures, we can inspect numerous initial conditions, and thus enable new statistical analyses of the phase-space properties of the lattice.
+
+From the analysis performed on the Hénon map, along with the performance classification study, we know that the dynamic indicators $GALI^{(k)}$ and $REM$ are the most performant for quickly probing the chaotic behaviour of initial conditions. Along with these indicators, we also include the $FLI$ and $FLI^{WB}$ indicators, which are also very useful for archiving a numerical estimate of the maximal Lyapunov exponent, and the $FMA$ indicator, to compare its results to other indicators in the presence at different levels of modulation.
+
+As the final goal of this line of research is to assess the relation between the existence of large chaotic regions in the phase-space to the occurrence of Nekhoroshev-like diffusive behaviour, we therefore look forward to the information provided by dynamic indicators which might offer a more direct insight about the presence of a Nekhoroshev-like long-term evolution.
+
+The chapter is structured as follows. In Section~\ref{sec:8:evaluation}, we provide specific details on the implementation of the shadow particle method for evaluating the dynamic indicators, as current tools do not offer an analytic expression of the tangent map. In Section~\ref{sec:8:implement}, we go into the technical details of the numerical implementation of the dynamic indicators, as well as the details of the model used for the analysis. In Section~\ref{sec:8:results}, we present the results of the analysis of the phase-space properties of the HL-LHC lattice, and in Section~\ref{sec:8:features}, we discuss some features characterizing the indicators. Finally, in Section~\ref{sec:8:detailed}, go into the details of the beam dynamics highlighted by the dynamic indicators, which are of interest in the context of highlighting Nekhoroshev scale-laws and determining the geometry of regular tori. In Section~\ref{sec:8:conclusions}, we conclude the chapter with a summary of the results and a discussion of the future work. 
+
+\section{Evaluation of dynamic indicators for complex systems}\label{sec:8:evaluation}
 
 In the previous chapter, we have observed how some dynamic indicators, such as $FLI$ and $GALI^{(k)}$, require the evaluation of the evolution of an initial displacement via the tangent map $DM(\vb{x}, n)$. For a simple model such as the Hénon map, an analytic expression of $DM(\vb{x}, n)$ is available, which enables us to evaluate expressions like Eq.~\ref{eq:fli_mean} directly.
 
@@ -31,22 +39,22 @@ Implementing this method in the definition of $FLI/n$, $FLI^{WB}$, and $GALI^{(k
 This estimation method has been widely used in literature due to its simplicity of implementation, however, it has been highlighted in multiple studies~\cite{Tancredi_2001, Skokos2010b} how the choice of both the value of $\epsilon$ and the time interval $\tau$ between displacement resets to $\epsilon$ can significantly alter the final evaluation of $\boldsymbol{\Xi}_{n}(\mathbf{x})$ and, consequently, the dynamic indicators that rely on it.
 
 
-\section{Implementation of dynamic indicators in accelerator tracking codes} \label{sec:implement}
+\section{Implementation of dynamic indicators in accelerator tracking codes} \label{sec:8:implement}
 %
 
 \subsection{GPU parallel tracking of particles}
 
-As noted in the Appendix~\ref{app:computing}, in the context of map tracking, single-particle tracking falls into the category of ``embarrassingly parallel'' computational problems~\cite{Giovannozzi:317866}, that is, a problem that can be easily parallelised on many processing units. This is because the tracking of a single particle is independent of the tracking of other particles, since intensity-dependent effects are neglected, and the only information that needs to be shared between different particles is the lattice information. This makes the tracking of many particles a very suitable problem for being parallelised in a GPU architecture, which is designed following the SIMD (Single Instruction Multiple Data) paradigm~\cite{DBLP:journals/corr/abs-1202-4347}.
+As noted in the Appendix~\ref{app:computing}, in the context of map tracking, single-particle tracking falls into the category of ``embarrassingly parallel'' computational problems~\cite{Giovannozzi:317866}, that is, a problem that can be easily parallelized on many processing units. This is because the tracking of a single particle is independent of the tracking of other particles, since intensity-dependent effects are neglected, and the only information that needs to be shared between different particles is the lattice information. This makes the tracking of many particles a very suitable problem for being parallelized in a GPU architecture, which is designed following the SIMD (Single Instruction Multiple Data) paradigm~\cite{DBLP:journals/corr/abs-1202-4347}.
 
-Since 2021, a new symplectic tracking framework named Xsuite~\cite{xsuite} has been under development at CERN. Xsuite is a collection of Python packages that extends the features offered by the SixTrack code~\cite{De_Maria_2019}, following modern programming paradigms and allowing efficient parallelisation on both CPU and GPU architectures by generating optimised C code on the fly. More specifically, the Xtrack tracking package in Xsuite offers the possibility to track particles in realistic accelerator lattices on GPU architectures, thus enabling the tracking of large numbers of initial conditions at significantly shorter times. This tracking framework has already been used in multiple studies, ranging from Hollow Electron Lenses studies to charged particle tracking in accelerator physics~\cite{pang2014gpu,oeftiger:hb16-mopr025,adelmann2019opal,schwinzerl:ipac21-thpab190,hermes:ipac2022-mopost045,iliakis2022enabling}.
+Since 2021, a new symplectic tracking framework named Xsuite~\cite{xsuite} has been under development at CERN. Xsuite is a collection of Python packages that extends the features offered by the SixTrack code~\cite{De_Maria_2019}, following modern programming paradigms and allowing efficient parallelization on both CPU and GPU architectures by generating optimized C code on the fly. More specifically, the Xtrack tracking package in Xsuite offers the possibility to track particles in realistic accelerator lattices on GPU architectures, thus enabling the tracking of large numbers of initial conditions at significantly shorter times. This tracking framework has already been used in multiple studies, ranging from Hollow Electron Lenses studies to charged particle tracking in accelerator physics~\cite{pang2014gpu,oeftiger:hb16-mopr025,adelmann2019opal,schwinzerl:ipac21-thpab190,hermes:ipac2022-mopost045,iliakis2022enabling}.
 
-The code structure of Xsuite allowed us to easily implement, within the GPU workflow, the fundamental elements for the dynamic indicators' evaluation, such as the normalisation of shadow particles, and it made it possible to track a large amount of initial conditions. The possibility of tracking a large number of initial conditions is one of the main motivations of this study, as a combination of large scans and dynamic indicators might lead to better insights into the phase-space characteristics of realistic accelerator lattices.
+The code structure of Xsuite allowed us to easily implement, within the GPU workflow, the fundamental elements for the dynamic indicators' evaluation, such as the normalization of shadow particles, and it made it possible to track a large amount of initial conditions. The possibility of tracking a large number of initial conditions is one of the main motivations of this study, as a combination of large scans and dynamic indicators might lead to better insights into the phase-space characteristics of realistic accelerator lattices.
 %
 \subsection{Computational effort for evaluating chaos indicators}
 
 The dynamic indicators showcased in the previous chapter require different computational efforts in terms of memory requirements or additional operations needed, on top of a reference single-particle tracking mechanism. As discussed in Appendix~\ref{app:computing}, considering these different requirements can favour the choice of a specific dynamic indicator, depending on the analysis to be performed and on the computational resources available. We recall here the main considerations for each indicator considered, in light of the usage of the shadow particle method.
 
-Current particle tracking frameworks do not offer practical tools for obtaining an analytic expression of the tangent map. To overcome this issue, the shadow particle method gives us a straightforward method to numerically evaluate the chaotic behaviour of a complex magnetic lattice made up of multiple non-linear elements.
+Current particle tracking frameworks do not offer practical tools for obtaining an analytic expression of the tangent map. To overcome this issue, the shadow particle method gives us a straightforward method to numerically evaluate the chaotic behaviour of a complex magnetic lattice made up of multiple nonlinear elements.
 
 For $FLI$, the main computational effort consists of tracking the value of two particles, namely the reference and the shadow one. This value increases if there is interest in inspecting different initial displacements at the same time. Similarly, $GALI^{(k)}$ requires the evaluation of $k+1$ particles per initial condition, namely, the reference orbit and $k$ shadow particles with orthogonal displacement.
 
@@ -56,11 +64,11 @@ $REM$ and $FMA$ do not require the tracking of shadow particles. $REM$ however r
 %
 For our studies, we used a realistic accelerator lattice implementation based on version 1.4 of the HL-LHC layout and optics~\cite{Maria_2019} of Beam~1. We perform a single-particle tracking without beam-beam interaction at top energy \SI{7.0}{TeV}. As we consider a configuration with colliding proton beams at top energy, we have the machine tunes set at $\omega_x=62.31, \omega_y=60.32$ and $\beta^\ast$ set at \SI{0.15}{\meter} at IP1 and IP5. The nominal emittance of the beam is set at \SI{2.5}{\micro \meter}. The tracking simulation has its starting point set at IP3. At this location the $\beta$ functions for the two planes are $\beta_x=$\SI{117.83}{\meter} and $\beta_y=$\SI{219.64}{\meter}. The lattice implementation is based on the MAD-X code~\cite{madx}, and it is available in the pymask repository~\cite{pymask}.
 
-The MAD-X magnetic lattice comprises 60 realisations (also called seeds) of the magnetic field imperfection that have been measured in the various magents installed in the ring. These realisations are normally used to gather a broad statistic of results in a simulation experiment. These seeds offer a good representation of different levels of non-linear effects, and they can be used to study the impact of machine imperfections on the formation of chaotic regions in the phase space.
+The MAD-X magnetic lattice comprises 60 realizations (also called seeds) of the magnetic field imperfection that have been measured in the various magnets installed in the ring. These realizations are normally used to gather a broad statistic of results in a simulation experiment. These seeds offer a good representation of different levels of nonlinear effects, and they can be used to study the impact of machine imperfections on the formation of chaotic regions in the phase space.
 
-From this set of 60 realisations, we picked two representative samples, namely, the one scoring, respectively, the best and worst dynamic aperture value on a tracking up to $n=10^3$ turns. The dynamic aperture is defined as the volume of the connected phase-space region where the particles exhibit a bounded motion for at least $n$ turns~\cite{DAdef, invlog}. We evaluated the dynamic aperture using a $100\times100$ uniform grid, sampling initial conditions in the $x-y$ transverse plane, with all other variables set to zero. The largest connected component of particles that survived tracking up to $n=10^3$ turns was considered to be in the dynamic aperture region.
+From this set of 60 realizations, we picked two representative samples, namely, the one scoring, respectively, the best and worst dynamic aperture value on a tracking up to $n=10^3$ turns. The dynamic aperture is defined as the volume of the connected phase-space region where the particles exhibit a bounded motion for at least $n$ turns~\cite{DAdef, invlog}. We evaluated the dynamic aperture using a $100\times100$ uniform grid, sampling initial conditions in the $x-y$ transverse plane, with all other variables set to zero. The largest connected component of particles that survived tracking up to $n=10^3$ turns was considered to be in the dynamic aperture region.
 
-See Fig.~\ref{fig:seed_presentation} for a visualisation of these two seeds. The resulting survival plot for the tracking done up to $n=10^3$ turns is reported, where one can see how the different realisations lead to a different portrait in the phase space.
+See Fig.~\ref{fig:seed_presentation} for a visualization of these two seeds. The resulting survival plot for the tracking done up to $n=10^3$ turns is reported, where one can see how the different realizations lead to a different portrait in the phase space.
 
 \begin{figure}[htp]
     \centering
@@ -80,7 +88,7 @@ The longitudinal variable $\zeta$ was set to three values to inspect different l
     \label{fig:the_bunch}
 \end{figure}
 
-\section{Chaos detection studies} \label{sec:results}
+\section{Chaos detection studies} \label{sec:8:results}
 
 The dynamic indicators presented in the previous section, namely $FLI/n$, $FLI^{WB}$, $GALI^{(k)}$, $REM$, and $FMA$, were evaluated for the HL-LHC lattices up to $n=10^5$ turns. The results of the evaluation of these indicators are presented in the following sections.
 
@@ -97,7 +105,7 @@ We can now inspect these six HL-LHC configurations with dynamic indicators, and 
 \begin{figure}
     \centering
     \includegraphics[width=0.9\textwidth]{6_lhc_dynamic_indicators/figs/stability.pdf}
-    \caption{Survival plot up to $n=10^5$ turns for all six configurations of the realistic HL-LHC lattice model considered. The realisation given by the seed causes strong changes in the phase space structure, while the initial value of $\zeta_0$ is related to different levels of erosion of the stable boundary.}
+    \caption{Survival plot up to $n=10^5$ turns for all six configurations of the realistic HL-LHC lattice model considered. The realization given by the seed causes strong changes in the phase space structure, while the initial value of $\zeta_0$ is related to different levels of erosion of the stable boundary.}
     \label{fig:true_survivors}
 \end{figure}
 
@@ -132,7 +140,7 @@ In Fig.~\ref{fig:overview2}, we present an overview of the evolution of the valu
     \label{fig:overview2}
 \end{figure}
 
-\section{Some features of chaos indicators}
+\section{Some features of chaos indicators}\label{sec:8:features}
 
 \subsection{$FLI$ dependence from the initial displacement}
 
@@ -142,7 +150,7 @@ To assess the magnitude of these differences, in Fig.~\ref{fig:fli_compare}, we 
 
 It is possible to see how the different choice of initial displacement highlights different structures in the regular region, while chaotic regions tend to assume the same final value. This difference is also highlighted by the standard deviation, as the chaotic regions at the border generally show a low standard deviation, whereas the stable regions at lower amplitude have higher values.
 
-This result is to be expected, as chaotic initial conditions are characterised by a large maximal Lyapunov exponent, which leads different initial displacements to eventually align along it after a high enough number of turns. However, in contrast, regular initial conditions may not exhibit this preferential direction and lead to greater differences in $FLI$ values for different initial conditions. It is important to highlight, however, the fact that the general character of the dynamic indicator stays consistent along the various directions and at most causes slight evaluation differences for the initial conditions close to the border between a regular and a chaotic region in the phase space.
+This result is to be expected, as chaotic initial conditions are characterized by a large maximal Lyapunov exponent, which leads different initial displacements to eventually align along it after a high enough number of turns. However, in contrast, regular initial conditions may not exhibit this preferential direction and lead to greater differences in $FLI$ values for different initial conditions. It is important to highlight, however, the fact that the general character of the dynamic indicator stays consistent along the various directions and at most causes slight evaluation differences for the initial conditions close to the border between a regular and a chaotic region in the phase space.
 
 \begin{figure*}[htp]
     \centering
@@ -200,7 +208,7 @@ When applying $REM$ to the HL-LHC lattices, we observe a similar behaviour, i.e.
 
 The behaviour of the distribution of the indicator values can be appreciated by comparing the evolution of the value distribution of $\log_{10}(REM)$ and $\log_{10}(FLI^{WB})$ as a function of time, as shown in Fig.~\ref{fig:overview2}. In fact, $\log_{10}(REM)$ tends to a bimodal distribution much faster than $\log_{10}(FLI^{WB})$ and in such a way that a threshold to detect chaotic initial conditions would be almost independent of $n$. Therefore, we can conclude that the promising performance of $REM$ in highlighting the chaotic structures in the phase space, along with its straightforward numerical implementation, makes it a very interesting tool for studying phase-space structures in realistic accelerator lattices.
 
-\section{Detailed analysis of the beam dynamics using indicators}
+\section{Detailed analysis of the beam dynamics using indicators}\label{sec:8:detailed}
 
 \subsection{Lyapunov time and stability time}
 
@@ -258,13 +266,13 @@ to both $T_L$ and $T_s$, and inspect both the goodness of the fit and the evolut
 \begin{equation}
     \log(T) = \log(T_0) - \left(\frac{I_\ast}{I_0}\right)^{\frac{1}{2\kappa}} \,.
 \end{equation}
-To fit the function, we first perform an initial brute force search over a grid of values of $T_0$, $I_0^*$, and $1/(2\kappa)$, and then we perform a more refined search around the best values found in the first step using the least squares method. This initial search is motivated by the non-linear nature of the fit, which makes it difficult to find the best values of the parameters with a simple gradient descent method.
+To fit the function, we first perform an initial brute force search over a grid of values of $T_0$, $I_0^*$, and $1/(2\kappa)$, and then we perform a more refined search around the best values found in the first step using the least squares method. This initial search is motivated by the nonlinear nature of the fit, which makes it difficult to find the best values of the parameters with a simple gradient descent method.
 
 As we have seen in Fig.~\ref{fig:ts_vs_tl} and Fig.~\ref{fig:extra_distribution}, and as we discussed previously, both evaluations of $T_L$ and $T_s$ are inevitably affected by the fact that they are evaluated on a finite number of turns $n=10^5$. Because of this, when performing the fit, we have to consider the part of the data that does not show saturation, which is ultimately the part of the data that has shown either a clear chaotic dynamics or strong instabilities during the tracking up to $10^5$ turns, enabling us to probe the Nekhoroshev character of the dynamics.
 
 To make an accurate choice in the data to be used for the fit, that is, to choose the part of the data that does not show saturation, we perform the fit on multiple different data cuts, picked near the region of transition between the regular and chaotic regimes. We then choose the data cut that provides the best fit, using as measure of merit the reduced $\chi^2$ of the fit.
 
-In Fig.~\ref{fig:the_lyap_fit}, we show the result of the fitting procedure of $T_L$ and $T_s$, applied to the two different HL-LHC seeds, both with $\zeta_0=$ \SI{0.3}{\meter}. We can see how different choices of data cut do not lead to strong differences in the values of the parameters of the fit, as long as they do not include the saturated part of the data. We can also observe how the fitting parameters for $T_L$ and $T_s$ are more comparable for the worst seed, which is in fact the one characterized by a stronger non-linear dynamics.
+In Fig.~\ref{fig:the_lyap_fit}, we show the result of the fitting procedure of $T_L$ and $T_s$, applied to the two different HL-LHC seeds, both with $\zeta_0=$ \SI{0.3}{\meter}. We can see how different choices of data cut do not lead to strong differences in the values of the parameters of the fit, as long as they do not include the saturated part of the data. We can also observe how the fitting parameters for $T_L$ and $T_s$ are more comparable for the worst seed, which is in fact the one characterized by a stronger nonlinear dynamics.
 
 In Table~\ref{tab:lyap_fit_results}, we report the fit parameters archived for the 6 HL-LHC configurations we have considered. We can observe how in general the fit routine archives reasonable error estimates for all the datasets, with the exception of the fitting of $T_L$ for the initial conditions with $\delta_0 =$ \SI{0.0}{\metre}, where the small size of chaotic regions, due to the absence of strong chaotic contribution from the longitudinal-induced modulation, makes the fit routine unable to identify a valid Nekhoroshev-like scale law.
 
@@ -416,7 +424,7 @@ The results are shown in Fig.~\ref{fig:gali2_4_chaos}. The mean value of $GALI^{
 \end{figure}
 
 
-\section{Conclusions and future work}
+\section{Conclusions and future work}\label{sec:8:conclusions}
 
 In this Chapter, we have presented a set of dynamic indicators that can be used to inspect the dynamical properties of a realistic accelerator lattice. Dynamic indicators provide information on the chaotic structures in the phase-space and potentially can be used to probe the particle long-term dynamics and gain insights on the scale laws governing the lattice stability and diffusive behaviour.
 

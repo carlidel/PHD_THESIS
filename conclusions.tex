@@ -2,9 +2,26 @@
 \addcontentsline{toc}{chapter}{Conclusions}  
 \chaptermark{Conclusion}
 
+In this thesis, we started with the review of a novel diffusive framework for describing the long-term betatron motion in circular accelerators. The framework consists mainly of a Fokker-Planck evolution law, with its diffusive coefficient having a functional form related to the Nekhorohsev theorem. Such framework has the purpose to provide better insights on the beam distribution evolution, as well of provide a better understanding on the formation of beam-halo and on the scale-laws governing beam losses.
 
-\vspace{3em}
+To test the shape of such diffusion coefficient, consistent with the stability time estimate of the Nekhoroshev theorem, we have proposed and scrutinized through detailed numerical simulations an optimal measurement protocol, which uses collimator scans with a specific pattern and timing. This protocol consists of separating the measured loss signal into a global current and a recovery current, and reconstruct the global current to normalize the recovery currents. The performance of the protocol was simulated in various configurations and found to be capable of reconstructing the parameters of the diffusion coefficient with good accuracy, especially when performed in a phase-space region where the diffusion coefficient has an exponential evolution. The protocol was also shown to provide useful information on possible shortcomings in the data set, such as a high uncertainty band in the global current reconstruction or a reconstructed value of $I_\ast$ that indicates the probed phase-space region is outside the optimal interval.
 
-%\begin{flushright}
-%\textit{Meyrin, 31 January 2021}
-%\end{flushright}
+Such protocol was then applied on existing LHC Run~2 collimator scan data. Despite differences in data collection during LHC Run~2, we were able to analyse loss signals from BLM during collimator scans and obtain a promising reconstruction of recovery currents, indicating Nekhoroshev-like diffusive behaviour. To address missing information, we adapted key elements of our fitting procedure, leading to good reconstruction performance and insights into the global diffusive behaviour of the LHC beam halo. As some collimator scans in LHC Run~3 were able to make use of our proposed protocol, we expect to be able to more accurately characterize nonlinear diffusive behaviour.
+
+Another application we found for this diffusive framework was the analysis of long term effects of beam-beam wire compensators on the beam losses and emittance. The promising results obtained in the various fit reconstructions provided in general a positive insight, suggesting that the wires do not have unwanted side effects on the beam dynamics and that our diffusive model might be a promising tool to assess these long-term effects. Here as well, future studies will be performed on LHC Run~3 data.
+
+As for the sphere of interest of single-particle tracking and simulation of realistic accelerator lattices, we presented and discussed in detail various numerical indicators to identify the chaotic character of orbits of Hamiltonian systems. After measuring the classification performance of the various dynamic indicators on a modulated Hénon map, we have determined which are the most performant in quickly probing the chaotic character of an initial condition, namely, $GALI$ and $REM$, and we used the acquired knowledge to better inspect a realistic HL-LHC magnetic lattice.
+
+This final analysis performed on the realistic lattice provided some interesting elements on the connection between Nekhoroshev scale-laws in stability times and the presence of large chaotic regions in the phase space, as the Lyapunov time, measured by means of the $FLI^{WB}$ dynamic indicator, also showed a comparable scale-law. Moreover, the $GALI$ dynamic indicator was used to first inspect the geometry of the stable tori of the regular initial conditions, providing both some initial insights on their dynamics, and some degeneracies that will require further investigations.
+
+In general, the less known dynamic indicators explored in these studies provided interesting results that are worthy of further inspections and to be eventually included in the toolbox of an accelerator physicist.
+
+The line of research presented in this thesis still requires many more steps and developments to be considered fully accomplished. As we are looking forward to the present and future measurement opportunities offered at the CERN LHC, we hope to be able to confirm and consolidate the initial results achieved in here.
+
+Collimator scans performed following our requirement, as well as new beam-beam wire compensator measurements, will provide new data to be inspected and used to assess the consistency of our proposed diffusive framework. This, along with further developments in assessing the Nekhoroshev character of magnetic lattices via tracking simulations, refined by means of dynamic indicators, shall provide better insights in the complex topic of nonlinear beam dynamics and beam-halo formation.
+
+% \vspace{3em}
+
+% \begin{flushright}
+% \textit{Meyrin, 31 January 2023}
+% \end{flushright}

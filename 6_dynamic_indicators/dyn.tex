@@ -1,14 +1,23 @@
 \chapter{Overview of dynamic indicators}\label{ch:overview_of_dynamic_indicators}
+\noindent\textsf{The content of this chapter, with the due adaptations, has resulted in the article by A.\ Bazzani, M.\ Giovannozzi, C.\ E.\ Montanari, G.\ Turchetti \textit{``Performance analysis of indicators of chaos for nonlinear dynamical systems''}, currently under internal peer review.}
+
+\vspace{3em}
+
+After investigating the applicability of a Nekhoroshev-like diffusive model to the study of beam loss data, we now switch our focus to the topic of single-particle tracking and, consequently, to the problem of characterizing the long-term dynamics of nonlinear symplectic maps, which of course includes realistic accelerator one-turn maps.
+
+In this chapter, we focus on the identification of chaotic behaviour in the orbits of complex dynamical systems by using dynamic indicators. Previous indicators have been proposed, and new ones have been created with the goal of enhancing the detection of chaos through numerical simulations. The difficulty lies in forecasting chaotic behaviour by analysing orbits of a restricted length. To inspect the properties of these various indicators, and assess which ones are the best performing, we perform an accurate analysis of the performance of the indicators briefly introduced above to classify the orbits of a 4\textsc{d} modulated polynomial symplectic map, namely a 4\textsc{d} H\'enon map that is considered a reference model for several applications. 
+
+The chapter is structured as follows. In Section~\ref{sec:dyn:intro}, we give a brief introduction on the topic of chaos indicators, as well of a summary of the dynamic indicators under analysis; in Section~\ref{sec:dyn:review} we define mathematically and discuss in some detail the chaos indicators considered; in Section~\ref{sec:dyn:numerical_implementations} we discuss their numerical implementation; in Section~\ref{sec:dyn:results} we present the numerical results and rank the different indicators in terms of classification efficiency, in particular, studying their predictivity. Finally, some conclusions are drawn in Section~\ref{sec:dyn:conc}. In addition, we report some details on the computational cost of implementing indicators using parallel computing facilities in Appendix~\ref{app:computing}, while some considerations on the time dependence of indicators are presented in Appendix~\ref{app:timedep}. 
 
 \section{\label{sec:dyn:intro}Introduction}
 %
-The study of the long-term evolution of Hamiltonian systems is a very difficult task from both a theoretical and a numerical point of view. The KAM theory\cite{KAM4} cannot be used to solve the stability problem for Hamiltonian systems in more than two dimensions. Therefore, great effort has been devoted to improving time stability estimates after the celebrated Nekhoroshev theorem~\cite{Nekhoroshev:1977aa}. However, the existence of chaotic layers in phase space strongly affects the long-term evolution of the orbits, and for this reason, numerical indicators have been proposed to detect the chaotic character of orbits using a limited number of time iterations. 
+The study of the long-term evolution of Hamiltonian systems is a very difficult task from both a theoretical and a numerical point of view. The KAM theory~\cite{KAM4} cannot be used to solve the stability problem for Hamiltonian systems in more than two dimensions. Therefore, great effort has been devoted to improving time stability estimates after the celebrated Nekhoroshev theorem~\cite{Nekhoroshev:1977aa}. However, the existence of chaotic layers in phase space strongly affects the long-term evolution of the orbits, and for this reason, numerical indicators have been proposed to detect the chaotic character of orbits using a limited number of time iterations. 
 
-For a given Hamiltonian model, one has to tackle the problem of comparing the performance of the various indicators to assess which one provides the optimal classification of the orbits. In applications, this task must be accomplished taking into account the characteristics of the physical problem under consideration. For instance, in the field of accelerator physics, the study of the charged-hadron motion in the magnetic lattice of a circular accelerator is often devoted to the determination of the region of phase space in which bounded motion occurs. The extent of such a region is called dynamic aperture and involves studying the stability of orbits of a 6D polynomial symplectic map in a neighbourhood of an elliptic fixed point, up to $10^8-10^9$ iterations~(see, e.g., \cite{Bazzani:262179}). An exhaustive analysis of the phase-space topology is clearly beyond the current computational capabilities. Therefore, indicators of chaos turn out to be extremely useful to reduce the amount of computational time needed to assess the character of orbits (regular or chaotic). This task may be affected by the presence of orbit diffusion in phase space, which occurs in chaotic layers. The presence of small stochastic effects, which naturally arise in physical systems, may prevent orbit trapping near regular regions, the so-called stickiness phenomenon~\cite{Kandrup1999DiffusionAS,SZEZECH2005394}, thus inducing diffusive behaviour in phase space. 
+For a given Hamiltonian model, one has to tackle the problem of comparing the performance of the various indicators to assess which one provides the optimal classification of the orbits. In applications, this task must be accomplished taking into account the characteristics of the physical problem under consideration. For instance, in the field of accelerator physics, the study of the charged-hadron motion in the magnetic lattice of a circular accelerator is often devoted to the determination of the region of phase space in which bounded motion occurs. The extent of such a region is called dynamic aperture and involves studying the stability of orbits of a 6D polynomial symplectic map in a neighbourhood of an elliptic fixed point, up to $10^8-10^9$ iterations~(see, e.g.,~\cite{Bazzani:262179}). An exhaustive analysis of the phase-space topology is clearly beyond the current computational capabilities. Therefore, indicators of chaos turn out to be extremely useful to reduce the amount of computational time needed to assess the character of orbits (regular or chaotic). This task may be affected by the presence of orbit diffusion in phase space, which occurs in chaotic layers. The presence of small stochastic effects, which naturally arise in physical systems, may prevent orbit trapping near regular regions, the so-called stickiness phenomenon~\cite{Kandrup1999DiffusionAS,SZEZECH2005394}, thus inducing diffusive behaviour in phase space. 
 
 It is worth noting that polynomial symplectic maps are not only central for the analysis of accelerator physics problems, as they are also present in other domains and have been intensively studied to understand the phase space structure of Hamiltonian systems~\cite{Turaev2003}, and are a fundamental tool for long-term integration of orbits~\cite{Bazzani:262179}. 
 
-The main result of this paper is to show that it is possible to determine a classification performance ranking of the main commonly used chaotic indicators when applied to a generic $4d$ cubic polynomial symplectic map of H\'enon-like form (see, e.g., ~\cite{Bazzani:262179}), which is an excellent prototype dynamical system for applications.
+The main result of this chapter is to show that it is possible to determine a classification performance ranking of the main commonly used chaotic indicators when applied to a generic 4\textsc{d} cubic polynomial symplectic map of H\'enon-like form (see, e.g., ~\cite{Bazzani:262179}), which is an excellent prototype dynamical system for applications.
 
 The indicators of chaos are typically based on the existence of positive Lyapunov characteristic exponents, and their numerical performance is strongly affected in the regions where sticky orbits are present.
 
@@ -17,8 +26,6 @@ The family of Fast Lyapunov indicators ($FLI$)~\cite{Froeschle1997} has been pro
 To calculate the sensitivity to small deviations along an orbit, the Reversibility Error Method ($REM$) can be used~\cite{Panichi2016,Panichi2017}. In this case, the linear response to the forward evolution in the presence of small random noise is considered, followed by the unperturbed backward evolution. The covariance matrix of the random process, which provides the final deviation from the initial condition in the limit of zero noise amplitude, can be computed, and its invariants quantify the violation of reversibility. The first invariant for the forward-backward process $BF$ is the square of the reversibility error, which is equal to the sum of the squares of Lyapunov errors computed at each iteration of the map. This invariant can be compared with the results for $REM$, when the stochastic perturbation is generated by the finite numerical precision present in both the forward and backward directions. 
 
 Finally, a completely different indicator introduced by J.Laskar~\cite{Laskar1999,Laskar2003} is represented by the Frequency Map Analysis $FMA$, which computes the variation of the main frequency of a given orbit considering different orbit lengths to detect the chaotic character. 
-
-In this paper, we perform an accurate analysis of the performance of the indicators briefly introduced above to classify the orbits of a $4d$ modulated polynomial symplectic map, namely a $4d$ H\'enon map that is considered a reference model for several applications. In Section~\ref{sec:dyn:review} we define mathematically and discuss in some detail the chaos indicators considered, and in Section~\ref{sec:dyn:numerical_implementations} we discuss their numerical implementation. In Section~\ref{sec:dyn:results} we present the numerical results and rank the different indicators in terms of classification efficiency, in particular, studying their predictivity. Finally, some conclusions are drawn in Section~\ref{sec:dyn:conc}. In addition, we report some details on the computational cost of implementing indicators using parallel computing facilities in Appendix~\ref{app:computing}, while some considerations on the time dependence of indicators are presented in Appendix~\ref{app:timedep}. 
 %
 \section{Definition and main properties of indicators of chaos} \label{sec:dyn:review}
 %
@@ -160,10 +167,8 @@ The reversibility error is obtained by computing the linear response of the dyna
 %
 \begin{equation}
  \begin{split}
-   &\ybf_{n'}  = M(\ybf_{n'-1},n'-1) +\eps\boldsymbol{\xi}_{n'} \, ,  \quad \ybf_0=\xbf \\
-   & \hskip 5 truecm 1\le n'\le n \, ; \\ 
-   &\ybf_{n'} = M^{-1}(\ybf_{ n'-1}, 2n-n')+\eps   \boldsymbol{\xi}_{n' } \, , \\
-   &   \hskip 5 truecm n+1\le n'\le 2n \, .
+   &\ybf_{n'}  = M(\ybf_{n'-1},n'-1) +\eps\boldsymbol{\xi}_{n'} \, ,  \quad \ybf_0=\xbf \, , \quad 1\le n'\le n \, ; \\ 
+   &\ybf_{n'} = M^{-1}(\ybf_{ n'-1}, 2n-n')+\eps   \boldsymbol{\xi}_{n' } \, , \quad n+1\le n'\le 2n \, .
   \end{split}
 \label{eq2-8}
 \end{equation}
@@ -186,12 +191,10 @@ The linear response for the $BF$ process is defined by
 and the cumulative random deviation $\boldsymbol{\Xi}^{BF}_{n'}(\xbf)$satisfies the recurrence 
 %
 \begin{equation}
-  \begin{split}
-  & \boldsymbol{\Xi}_{n'}^{BF} = DM(\xbf_{n'-1},n'-1)\,\boldsymbol{\Xi}_{n'-1}^{BF}(\xbf)+ \boldsymbol{\xi}_{n'} \, , \\ 
-  & \hskip 5 truecm 1\le n'\le n;\\ 
-    & \boldsymbol{\Xi}_{n'}^{BF} = DM^{-1}(\xbf_{2n-n' +1},2n-n')\, \boldsymbol{\Xi}_{n'-1}^{BF}    + \boldsymbol{\xi}_{n'} \, , \\
-    & \hskip 5 truecm n+1 \le n'\le 2n \, .
-  \end{split}
+  \begin{aligned}
+  & \boldsymbol{\Xi}_{n'}^{BF} = DM(\xbf_{n'-1},n'-1)\,\boldsymbol{\Xi}_{n'-1}^{BF}(\xbf)+ \boldsymbol{\xi}_{n'} \, , \quad 1\le n'\le n;\\ 
+    & \boldsymbol{\Xi}_{n'}^{BF} = DM^{-1}(\xbf_{2n-n' +1},2n-n')\, \boldsymbol{\Xi}_{n'-1}^{BF}    + \boldsymbol{\xi}_{n'} \, , \quad n+1 \le n'\le 2n \, .
+  \end{aligned}
 \label{eq2-10}
 \end{equation}
 %
@@ -210,23 +213,20 @@ From the recurrence relation of the tangent map~\eqref{eq2-1} evaluated for $n'$
 Replacing Eq.~\eqref{eq2-11} in Eq.~\eqref{eq2-8} we obtain the final result
 %
 \begin{equation}
-  \begin{split}
-    \boldsymbol{\Xi}_{n}^{BF}(\xbf) & = \,\Lop_n(\xbf)\,\sum_{k=1}^n\,\Lop_k^{-1}(\xbf) \,\boldsymbol{\xi}_k \,; \\  
-     \boldsymbol{\Xi}_{2n}^{BF}(\xbf) &= \Lop_n^{-1}(\xbf)\,\boldsymbol{\Xi}_{n}^{BF}(\xbf)+ \sum_{k=0}^{n-1}\,\Lop^{-1}_k(\xbf)\,
-    \boldsymbol{\xi}_{2n-k} \\ % = \\
-    &  =\sum_{k=1}^{n-1}\,\Lop_k^{-1}(\xbf)\,(\boldsymbol{\xi}_k+\boldsymbol{\xi}_{2n-k}) \,+
-   \,\boldsymbol{\xi}_{2n}+ \Lop_n^{-1}(\xbf) \boldsymbol{\xi}_n .
-   \end{split}
-\label{eq2-12}
-\end{equation}
+    \begin{split}
+      \boldsymbol{\Xi}_{n}^{BF}(\xbf) & = \,\Lop_n(\xbf)\,\sum_{k=1}^n\,\Lop_k^{-1}(\xbf) \,\boldsymbol{\xi}_k \,; \\  
+       \boldsymbol{\Xi}_{2n}^{BF}(\xbf) &= \Lop_n^{-1}(\xbf)\,\boldsymbol{\Xi}_{n}^{BF}(\xbf)+ \sum_{k=0}^{n-1}\,\Lop^{-1}_k(\xbf)\,
+      \boldsymbol{\xi}_{2n-k} \\ % = \\
+      &  =\sum_{k=1}^{n-1}\,\Lop_k^{-1}(\xbf)\,(\boldsymbol{\xi}_k+\boldsymbol{\xi}_{2n-k}) \,+
+     \,\boldsymbol{\xi}_{2n}+ \Lop_n^{-1}(\xbf) \boldsymbol{\xi}_n .
+     \end{split}
+  \label{eq2-12}
+  \end{equation}
 %
 If random deviations are present only in the forward process, the covariance matrix of $\boldsymbol{\Xi}^{BF}_{2n}$ is given by 
 %
 \begin{equation}
-  \begin{split}
-    \Sigma^{2\,\,BF}_n(\xbf) &= \parmean{  \boldsymbol{\Xi}^{BF}_{2n}(\xbf)\bigl(\boldsymbol{\Xi}^{BF}_{2n}(\xbf)\bigr)^T} \\
-    &=\sum_{k=1}^n \,\bigl( \,\Lop_k^T(\xbf)\Lop_k(\xbf)\,\bigr)^{-1}\, .
-   \end{split}
+    \Sigma^{2\,\,BF}_n(\xbf) = \parmean{  \boldsymbol{\Xi}^{BF}_{2n}(\xbf)\bigl(\boldsymbol{\Xi}^{BF}_{2n}(\xbf)\bigr)^T} =\sum_{k=1}^n \,\bigl( \,\Lop_k^T(\xbf)\Lop_k(\xbf)\,\bigr)^{-1}\, .
 \label{eq2-13}
 \end{equation}
 %
@@ -239,12 +239,9 @@ The invariants of the matrix $\Sigma^{2\,\,BF}_n$ provide
 information on the effect of small random perturbations along the orbits. If the map $M$ is symplectic, both $\Lop_n$ and $\Lop_n^T\Lop_n$ are symplectic matrices and the trace of$\Lop_n^T\Lop_n$ and its inverse are equal. As a consequence, it is not difficult to check that the trace of $\Bigl(\sum_{n'}\,\bigl(\Lop_{n'}^T\,\Lop_{n'}\bigr)^{-1}\,\Bigr)^k$ and of $\Bigl(\sum_{n'}\, \Lop_{n'}^T\,\Lop_{n'}\,\Bigr)^k$ are equal and the invariants of the covariance matrices of the $BF$ process become
 %
 \begin{equation}
- \begin{aligned}
-   I^{(k)\,\,BF}_n(\xbf)&= I^{(k)} \parton{\sum_{k'=1}^n\,\Bigl(\Lop_{n'}^T(\xbf)\,\Lop_{n'}(\xbf)\,\Bigr)^{-1}} \\% = \\
-   & =I^{(k)} \parton{\sum_{k'=1}^n\,\Lop_{n'}^T(\xbf)\,\Lop_{n'}(\xbf)\,} \, . \\
+   I^{(k)\,\,BF}_n(\xbf)= I^{(k)} \parton{\sum_{k'=1}^n\,\Bigl(\Lop_{n'}^T(\xbf)\,\Lop_{n'}(\xbf)\,\Bigr)^{-1}} =I^{(k)} \parton{\sum_{k'=1}^n\,\Lop_{n'}^T(\xbf)\,\Lop_{n'}(\xbf)\,} \, .
 %    I^{(k)\,\,FB}_n(\xbf)& = I^{(k)} \parton{\sum_{k'=1}^n\,\Bigl(\Lop_{-n'}^T(\xbf)\,\Lop_{-n'}(\xbf)\,\Bigr)^{-1}} \\% = \\
 %  & =  I^{(k)} \parton{\sum_{k'=1}^n\,\Lop_{-n'}^T(\xbf)\,\Lop_{-n'}(\xbf)\,} .
- \end{aligned}
 \label{eq2_18}
 \end{equation}
 %
@@ -252,14 +249,11 @@ information on the effect of small random perturbations along the orbits. If the
 The first invariant has a very simple relation to the Lyapunov error $LE_n(\xbf)$. Explicitly, we have the following.
 %
 \begin{equation}
- \begin{aligned}
-   \Bigl(E^{BF}_n (\xbf))\Bigr)^2  \equiv I^{(1)\,\,BF}_n(\xbf) &= \sum_{n'=1}^n \,\Tr \Bigl(\Lop^T_{n'}(\xbf)
-   \Lop_{n'}(\xbf) \Bigr) \\
-   &=  \sum_{n'=1}^n \,  \Bigl(LE_n (\xbf))\Bigr)^2 \,. \\ 
+   \Bigl(E^{BF}_n (\xbf))\Bigr)^2  \equiv I^{(1)\,\,BF}_n(\xbf) = \sum_{n'=1}^n \,\Tr \Bigl(\Lop^T_{n'}(\xbf)
+   \Lop_{n'}(\xbf) \Bigr) =  \sum_{n'=1}^n \,  \Bigl(LE_n (\xbf))\Bigr)^2 \,. 
 %   \Bigl(E^{FB}_n (\xbf))\Bigr)^2 \equiv I^{(1)\,\,FB}_n(\xbf) &= \sum_{n'=1}^n \,\Tr \Bigl(\Lop^T_{-n'}(\xbf)
 %  \Lop_{-n'}(\xbf) \Bigr) \\
 %   &=  \sum_{n'=1}^n \,  \Bigl(LE_{-n} (\xbf))\Bigr)^2 \,.
- \end{aligned}
 \label{eq2_19}
 \end{equation}
 %
@@ -285,10 +279,7 @@ We conclude by observing that the $BF$ reversibility error analysis can be appli
 This matrix has a nonzero eigenvalue, with eigenvector $\ybf_{2n}-\xbf$, and a null eigenvalue of multiplicity $2d-1$ with eigenspace orthogonal to $\ybf_{2n}-\xbf$. The noise-induced Reversibility Error Method ($REM$) squared is the nonzero eigenvalue of such a matrix, equal to is trace and given by  
 %
 \begin{equation}
-    \begin{split}
-    \Bigl(REM_n^{BF}(\xbf)\Bigr)^2 &= \Tr\Bigl(   \Xop_{2n}^{BF}(\xbf)\Bigr) \\
-    &= \frac{1}{ 2} \,\, \frac{\ybf_{2n}-\xbf}{ \eps} \cdot \frac{\ybf_{2n}-\xbf}{ \eps} \,.
-    \end{split}
+    \Bigl(REM_n^{BF}(\xbf)\Bigr)^2 = \Tr\Bigl(   \Xop_{2n}^{BF}(\xbf)\Bigr) = \frac{1}{ 2} \,\, \frac{\ybf_{2n}-\xbf}{ \eps} \cdot \frac{\ybf_{2n}-\xbf}{ \eps} \,.
 \label{eq2_21}
 \end{equation}
 %
@@ -344,7 +335,7 @@ literature can be found in~\cite{} with respect to rounding. We first introduce 
 %
 \subsection{Introducing filters}
 %
-We conclude by remarking that the introduction of a filter such as $MEGNO$~\cite{Gozdziewski01, Cincotta2016} that drastically reduces the numerical oscillations of the indicator of chaos may greatly improve the efficiency of the indicator. In principle, the oscillations disappear using suitable normal coordinates for the considered systems, but their computations face the limits and technical difficulties of perturbation theory. Referring to the phase flow that interpolates the orbits at integer times $t=n$, $MEGNO$, applied to $LE_t(\vb{x})$, it has the double-time average of $d\log LE_t(\vb{x})/d\log t$  %= 2t\,d \log E(t)/dt$   
+We conclude by remarking that the introduction of a filter such as $MEGNO$ that drastically reduces the numerical oscillations of the indicator of chaos~\cite{Gozdziewski01, Cincotta2016}, may greatly improve the efficiency of the indicator. In principle, the oscillations disappear using suitable normal coordinates for the considered systems, but their computations face the limits and technical difficulties of perturbation theory. Referring to the phase flow that interpolates the orbits at integer times $t=n$, $MEGNO$, applied to $LE_t(\vb{x})$, it has the double-time average of $d\log LE_t(\vb{x})/d\log t$  %= 2t\,d \log E(t)/dt$   
 %
 \begin{equation}
 \begin{split}
@@ -363,23 +354,20 @@ If the indicator $LE_n(\vb{x})$ grows exponentially as $e^{\lambda t}$, then $ME
 %
 \subsection{Models}
 %
-To test the effectiveness of the proposed indicators of chaos, we consider a $4d$ polynomial symplectic map dependent on time, which is a generalization of the Hénon map~\cite{Bazzani:262179}. The origin is an elliptic fixed point, and the nonlinear terms combine fixed quadratic nonlinearities and variable cubic ones. The map reads:
+To test the effectiveness of the proposed indicators of chaos, we consider a 4\textsc{d} polynomial symplectic map dependent on time, which is a generalization of the Hénon map~\cite{Bazzani:262179}. The origin is an elliptic fixed point, and the nonlinear terms combine fixed quadratic nonlinearities and variable cubic ones. The map reads:
 %\begin{widetext}
 \begin{equation}
-    \begin{split}
     \left(\begin{array}{c}
     x_{n+1} \\
     p_{x, n+1} \\
     y_{n+1} \\
     p_{y, n+1}
-    \end{array}\right) & =R(\omega_{x,n}, \omega_{y, n}) \times \\ 
-    \times & \left(\begin{array}{c}
+    \end{array}\right) =R(\omega_{x,n}, \omega_{y, n}) \left(\begin{array}{c}
     x_{n} \\
     p_{x, n}+x_{n}^{2}-y_{n}^{2} + \mu \left(x_{n}^{3} - 3x_{n}y_{n}^{3}\right) \\
     y_{n} \\
     p_{y, n}-2 x_{n} y_{n} + \mu \left(y_{n}^{3} - 3y_{n} x_{n}^{3}\right)
     \end{array}\right) \,,
-    \end{split}
     \label{eq:henon}
 \end{equation}
 %\end{widetext}
@@ -390,7 +378,7 @@ where $\mu$ represents the intensity of the cubic nonlinearity and $R$ is a $4\t
     0 & R\left(\omega_{y, n}\right)
     \end{array}\right) \,,
 \end{equation}
-with $R\left(\omega_{x, n}\right)$ and $R\left(\omega_{y, n}\right)$ being $2\times 2$ rotation matrices. In the sequel, we refer to the map~\eqref{eq:henon} as the $4d$ Hénon map and remark that it is often used as a reference model in applications such as accelerator physics (see, e.g., \cite{Bazzani:262179, invlog, Bazzani:2019csk}), since it represents the dynamics generated by a magnetic lattice that includes sextupole and octupole magnets~\cite{Bazzani:262179}.
+with $R\left(\omega_{x, n}\right)$ and $R\left(\omega_{y, n}\right)$ being $2\times 2$ rotation matrices. In the sequel, we refer to the map~\eqref{eq:henon} as the 4\textsc{d} Hénon map and remark that it is often used as a reference model in applications such as accelerator physics (see, e.g., \cite{Bazzani:262179, invlog, Bazzani:2019csk}), since it represents the dynamics generated by a magnetic lattice that includes sextupole and octupole magnets~\cite{Bazzani:262179}.
 
 Linear frequencies $\omega_{x, n}$ and $\omega_{y, n}$ are slowly modulated as a function of time $n$ according to
 \begin{equation}
@@ -425,12 +413,12 @@ We have analyzed the performance of chaos indicators as a function of parameters
 %    \label{tab:modulation} 
 %\end{table}
 
-Figure~\ref{fig:survival} shows some survival plots for various configurations of the $4d$ Hénon map. A set of $300\times300$ initial conditions, sampled on a uniform Cartesian grid in the $x-y$ plane, choosing $p_x = p_y = 0$, is tracked up to $n_\mathrm{max}=10^8$ turns. Grid boundaries are selected to sample a region of interest that contains the stability basin of the origin, more specifically $[0.0,\,0.45]$ for case $(\omega_{x0},\,\omega_{y0}) = (0.168,\,0.201)$, or $[0.0,\,0.60]$ for case $(\omega_{x0},\,\omega_{y0}) = (0.28,\,0.31)$. An initial condition is considered stable if its distance from the origin is less than a certain control radius $r_\mathrm{c}$ when $n=n_\mathrm{max}$. Otherwise, the initial condition is considered lost and its tracking is stopped, and the stability time is given by the first value $n_\mathrm{stab}$ for which $\sqrt{x^2_{n_\mathrm{stab}}+ p_{x,n_\mathrm{stab}}^2+y_{n_\mathrm{stab}}^2+p_{y,n_\mathrm{stab}}^2}\geq r_\mathrm{c}$. The choice of $r_\mathrm{c}$ is rather arbitrary (we have considered $r_\mathrm{c}=10^2$) and the dependence of the results on $r_\mathrm{c}$ is very weak since at that amplitude the dynamics of the $4d$ Hénon map is fully dominated by polynomial terms. 
+Figure~\ref{fig:survival} shows some survival plots for various configurations of the 4\textsc{d} Hénon map. A set of $300\times300$ initial conditions, sampled on a uniform Cartesian grid in the $x-y$ plane, choosing $p_x = p_y = 0$, is tracked up to $n_\mathrm{max}=10^8$ turns. Grid boundaries are selected to sample a region of interest that contains the stability basin of the origin, more specifically $[0.0,\,0.45]$ for case $(\omega_{x0},\,\omega_{y0}) = (0.168,\,0.201)$, or $[0.0,\,0.60]$ for case $(\omega_{x0},\,\omega_{y0}) = (0.28,\,0.31)$. An initial condition is considered stable if its distance from the origin is less than a certain control radius $r_\mathrm{c}$ when $n=n_\mathrm{max}$. Otherwise, the initial condition is considered lost and its tracking is stopped, and the stability time is given by the first value $n_\mathrm{stab}$ for which $\sqrt{x^2_{n_\mathrm{stab}}+ p_{x,n_\mathrm{stab}}^2+y_{n_\mathrm{stab}}^2+p_{y,n_\mathrm{stab}}^2}\geq r_\mathrm{c}$. The choice of $r_\mathrm{c}$ is rather arbitrary (we have considered $r_\mathrm{c}=10^2$) and the dependence of the results on $r_\mathrm{c}$ is very weak since at that amplitude the dynamics of the 4\textsc{d} Hénon map is fully dominated by polynomial terms. 
 %
 \begin{figure*}[htp]
     \centering
     \includegraphics[width=\textwidth]{6_dynamic_indicators/fig/stability.png}
-    \caption{Survival plot for various $4d$ modulated Hénon maps with quadratic and cubic nonlinearities. Initial conditions, sampled on an uniform Cartesian $300\times300$ grid in the $x-y$ plane, are tracked up to $n_\text{max}=10^8$ and are considered lost when their distance to the origin exceeds a predefined maximum radius $r_\mathrm{c}=10^2$. The two sets of linear frequencies feature different shapes of the stable region as can be seen by comparing the plots in the two rows. The parameters $\varepsilon$ and $\mu$ induce additional changes, in particular the increase of the size of the transition region between stability up to $n_\mathrm{max}$ and shorter stability time. The color scale is related to the logarithm of the stability time as reported on the right.}
+    \caption{Survival plot for various 4\textsc{d} modulated Hénon maps with quadratic and cubic nonlinearities. Initial conditions, sampled on an uniform Cartesian $300\times300$ grid in the $x-y$ plane, are tracked up to $n_\text{max}=10^8$ and are considered lost when their distance to the origin exceeds a predefined maximum radius $r_\mathrm{c}=10^2$. The two sets of linear frequencies feature different shapes of the stable region as can be seen by comparing the plots in the two rows. The parameters $\varepsilon$ and $\mu$ induce additional changes, in particular the increase of the size of the transition region between stability up to $n_\mathrm{max}$ and shorter stability time. The color scale is related to the logarithm of the stability time as reported on the right.}
     \label{fig:survival}
 \end{figure*}
 %
@@ -461,7 +449,7 @@ The main feature of $LE$, compared to $FLI$, is its independence from the initia
 
 The observed differences are much reduced for a higher number of turns ($n=10^4$, bottom row), as the initial displacement tends to become almost aligned along the direction corresponding to the largest Lyapunov exponent. However, despite the smaller differences between $\log_{10}(\log_{10}(LE)/n)$ and $\log_{10}(FLI/n)$, the behaviour of the various indicators is still not the same. It is worth noting how displacements along $\hat{x}$ and $\hat{y}$ produce similar structures that are, however, different with respect to the case in which displacement is carried out along $\hat{p}_x$ or $\hat{p}_y$. Globally, these observations underline the value of the invariance properties of $LE$, which seems to be more promising than $FLI$ for the analyses that will be discussed in the following sections.
 
-As this dependence on the initial displacement decreases with higher iteration numbers, we will focus only on $FLI(\hat{x})$ for the remainder of the paper, as the rest of the results are not significantly affected by this choice.
+As this dependence on the initial displacement decreases with higher iteration numbers, we will focus only on $FLI(\hat{x})$ for the remainder of the chapter, as the rest of the results are not significantly affected by this choice.
 
 % This evaluation eventually highlights the presence of a bimodal distribution, with one ensemble of regular initial conditions and one of chaotic ones.
 %
@@ -497,12 +485,12 @@ An overview of the time dependence of the dynamic indicators and the distributio
 
 As the development of the bimodal distribution requires various orders of magnitude of the number of turns, we perform our analysis on the logarithm of the seven dynamic indicators, namely $\log_{10}(\log_{10}(LE)/n)$, $\log_{10}(MEGNO(LE)/n)$, $\log_{10}(FLI/n)$, $\log_{10}(FLI^{WB})$, $\log_{10}(GALI^{(4)})$, $\log_{10}(REM)$, and $\log_{10}(FMA)$. The factor $n^{-1}$ is included in the first two indicators to observe a comparable evolution of values over time with the two $FLI$ indicators, since, ultimately, its presence does not alter the outcome of these studies.
 
-To carry out this task, we first construct a ground truth (GT) for different sets of parameters for the $4d$ Hénon map, iterated for $n_\text{max} = 10^8$. The initial conditions are then classified into a binary chaotic/regular classification scheme using the $LE$ indicator. An example is given in Fig.~\ref{fig:ground_truth_bis} where eight cases, the same as those depicted in Fig.~\ref{fig:survival}, are displayed. Dark colors identify regular regions of the phase space, whereas lighter colors denote chaotic regions. It is clearly seen that the frequency modulation and the presence of the cubic nonlinearity increase the extent of the chaotic areas of the phase space, also generating regions in which regular and chaotic orbits are deeply intertwined.  
+To carry out this task, we first construct a ground truth (GT) for different sets of parameters for the 4\textsc{d} Hénon map, iterated for $n_\text{max} = 10^8$. The initial conditions are then classified into a binary chaotic/regular classification scheme using the $LE$ indicator. An example is given in Fig.~\ref{fig:ground_truth_bis} where eight cases, the same as those depicted in Fig.~\ref{fig:survival}, are displayed. Dark colors identify regular regions of the phase space, whereas lighter colors denote chaotic regions. It is clearly seen that the frequency modulation and the presence of the cubic nonlinearity increase the extent of the chaotic areas of the phase space, also generating regions in which regular and chaotic orbits are deeply intertwined.  
 
 \begin{figure*}[htp]
     \centering
     \includegraphics[width=\textwidth]{6_dynamic_indicators/fig/gt_example_colormap.pdf}
-    \caption{Distributions of $\log_{10}(\log_{10}(LE)/n)$ for various $4d$ modulated Hénon maps (the same cases shown in Fig.~\ref{fig:survival}) with quadratic and cubic nonlinearities. $300\times300$ initial conditions, sampled on an uniform Cartesian grid in the $x-y$ plane, are tracked up to $n_\text{max}=10^8$. It is possible to observe how the case for $\varepsilon=0.0,\ \mu=0.0$, corresponding to the absence of modulation and cubic nonlinearities, lead to regular motion almost everywhere, except for a small set of initial conditions. For the other cases, extended regions of chaotic motion are visible. Note that the maximum value registered in the color maps corresponds to numerical saturation.}
+    \caption{Distributions of $\log_{10}(\log_{10}(LE)/n)$ for various 4\textsc{d} modulated Hénon maps (the same cases shown in Fig.~\ref{fig:survival}) with quadratic and cubic nonlinearities. $300\times300$ initial conditions, sampled on an uniform Cartesian grid in the $x-y$ plane, are tracked up to $n_\text{max}=10^8$. It is possible to observe how the case for $\varepsilon=0.0,\ \mu=0.0$, corresponding to the absence of modulation and cubic nonlinearities, lead to regular motion almost everywhere, except for a small set of initial conditions. For the other cases, extended regions of chaotic motion are visible. Note that the maximum value registered in the color maps corresponds to numerical saturation.}
     \label{fig:ground_truth_bis}
 \end{figure*}
 
@@ -535,21 +523,21 @@ Once the GT has been computed, we define as predictive performance of a dynamic 
 \begin{figure*}[htp]
     \centering
     \includegraphics[width=1.0\textwidth]{6_dynamic_indicators/fig/corrected_figs/neo_evolution_idx_3.pdf}
-    \caption{Distribution of values of $\log_{10}(REM)$ (left) and $\log_{10}(FMA)$ (right) as a function of time for a modulated $4d$ Hénon map. The red dashed lines represent threshold values, defined by our algorithm shown in Fig.~\ref{fig:thresholds}, representing our criterion to distinguish regular and chaotic orbits.
+    \caption{Distribution of values of $\log_{10}(REM)$ (left) and $\log_{10}(FMA)$ (right) as a function of time for a modulated 4\textsc{d} Hénon map. The red dashed lines represent threshold values, defined by our algorithm shown in Fig.~\ref{fig:thresholds}, representing our criterion to distinguish regular and chaotic orbits.
     For low values of the iterations $n$, the distribution of both indicators is in general represented by a uni-modal function. For higher values of $n$, we can see the formation of two separate clusters in the case of $REM$, making the distribution bi-modal. For $FMA$, we have in general a different behaviour, as it tends to form a tri-modal distribution. (simulation parameters: $(\omega_{x0},\omega_{y0})= (0.28,\ 0.31),\ \varepsilon=32.0,\ \mu=0.5$).}
     \label{fig:neo_evolution}
 \end{figure*}
 
 The accuracy performance of the dynamic indicator is then evaluated for various $n < n_{\text{max}}$. We expect a good-performing dynamic indicator to achieve high accuracy values when it generates two separate groups, even when $n \ll n_{\text{max}}$. Such behaviour, in fact, enables effective mode detection and consequent effective GT reconstruction. In contrast, a poor-performing dynamic indicator will need a longer tracking time before showing the presence of two separate clusters, causing the threshold determination to be unable to separate the chaotic from the regular initial conditions.
 
-A global comparison of the classification performance of the seven dynamic indicators is carried out, and the accuracy achieved by the dynamic indicators as a function of $n$ is shown in Fig.~\ref{fig:performance}, for different sets of parameter values for the $4d$ Hénon maps. 
+A global comparison of the classification performance of the seven dynamic indicators is carried out, and the accuracy achieved by the dynamic indicators as a function of $n$ is shown in Fig.~\ref{fig:performance}, for different sets of parameter values for the 4\textsc{d} Hénon maps. 
 
 \begin{figure*}[htp]
     \centering
     %\includegraphics[width=1.0\textwidth]{6_dynamic_indicators/fig/performance.pdf}
     \includegraphics[width=1.0\textwidth]{6_dynamic_indicators/fig/corrected_figs/performance.pdf}
 %    \includegraphics[width=1.0\textwidth]{6_dynamic_indicators/fig/performance_bis.pdf}
-    \caption{Time dependence of the accuracy achieved in reconstructing the Ground Truth (computed for $n_\text{max}=10^8$) by the various dynamic indicators for eight cases of the $4d$ modulated Hénon maps (the same cases shown in Fig.~\ref{fig:survival}), differing by cubic nonlinearities and frequency modulation.}
+    \caption{Time dependence of the accuracy achieved in reconstructing the Ground Truth (computed for $n_\text{max}=10^8$) by the various dynamic indicators for eight cases of the 4\textsc{d} modulated Hénon maps (the same cases shown in Fig.~\ref{fig:survival}), differing by cubic nonlinearities and frequency modulation.}
     \label{fig:performance}
 \end{figure*}
 
@@ -600,7 +588,6 @@ i.e., the integral of the accuracy achieved and displayed in Fig.~\ref{fig:perfo
 
 \begin{table*}[htb]
     \centering
-    \caption{Performance estimate of the dynamic indicators for the various Hénon map configurations, evaluated using Eq.~\eqref{eq:final_evaluation} over the interval $n=10^4-10^6$. Values are ranked in decreasing order. It is clearly seen that $GALI^{(4)}$ is the highest scorer and $REM$ is the second-best scorer in most of the cases considered. The uncertainty in the performance estimate is evaluated by applying a variation of the calculated thresholds of $\pm 5\%$.}
     \begin{adjustbox}{width=\textwidth,center}
     \begin{tabular}{lc|lc}
         \hline
@@ -651,6 +638,7 @@ i.e., the integral of the accuracy achieved and displayed in Fig.~\ref{fig:perfo
         \hline
     \end{tabular}
     \end{adjustbox}
+    \caption{Performance estimate of the dynamic indicators for the various Hénon map configurations, evaluated using Eq.~\eqref{eq:final_evaluation} over the interval $n=10^4-10^6$. Values are ranked in decreasing order. It is clearly seen that $GALI^{(4)}$ is the highest scorer and $REM$ is the second-best scorer in most of the cases considered. The uncertainty in the performance estimate is evaluated by applying a variation of the calculated thresholds of $\pm 5\%$.}
     \label{table:values}
 \end{table*}
 
@@ -675,14 +663,14 @@ As a last comment, these features are always present, but frequency modulation s
 %
 \section{\label{sec:dyn:conc} Conclusions}
 %
-In this paper, various numerical indicators to identify the chaotic character of orbits of Hamiltonian systems have been presented and discussed in detail. The powerful Birkhoff averages were used to improve the convergence rate of an indicator in the case of regular initial conditions. The goal of our analysis is to evaluate the performance of the indicators in terms of accuracy in the binary classification of an orbit identified by its initial conditions, as regular or chaotic. An important element in this assessment is whether the correct classification can be achieved by using the information over a limited number of turns, i.e., whether an early chaos detection can be effectively performed, which is equivalent to probing the predictive power of dynamic indicators. 
+In this chapter, various numerical indicators to identify the chaotic character of orbits of Hamiltonian systems have been presented and discussed in detail. The powerful Birkhoff averages were used to improve the convergence rate of an indicator in the case of regular initial conditions. The goal of our analysis is to evaluate the performance of the indicators in terms of accuracy in the binary classification of an orbit identified by its initial conditions, as regular or chaotic. An important element in this assessment is whether the correct classification can be achieved by using the information over a limited number of turns, i.e., whether an early chaos detection can be effectively performed, which is equivalent to probing the predictive power of dynamic indicators. 
 
-The dynamical system that has been selected as a test bed for performance analyzes is a $4d$ H\'enon-like symplectic map, with or without cubic nonlinearity and with or without frequency modulation. This choice is justified by the relevant applications of this map to understand long-term stability problems in particle accelerators. Several configurations have been considered and, for each case, a ground truth classification has been determined with $n=10^8$ iterations. The various indicators have been used to provide an estimate of the classification performance with respect to ground truth as a function of the number of turns used. The classification is based on the bimodal feature of the indicator value distributions, which points out two clusters associated with regular and chaotic orbits. To define a classification threshold, we use a KDE-based algorithm to determine the position of the distribution minimum between the two modes.
+The dynamical system that has been selected as a test bed for performance analyzes is a 4\textsc{d} H\'enon-like symplectic map, with or without cubic nonlinearity and with or without frequency modulation. This choice is justified by the relevant applications of this map to understand long-term stability problems in particle accelerators. Several configurations have been considered and, for each case, a ground truth classification has been determined with $n=10^8$ iterations. The various indicators have been used to provide an estimate of the classification performance with respect to ground truth as a function of the number of turns used. The classification is based on the bimodal feature of the indicator value distributions, which points out two clusters associated with regular and chaotic orbits. To define a classification threshold, we use a KDE-based algorithm to determine the position of the distribution minimum between the two modes.
 
 A ranking of the performance of the various indicators has been established, with $GALI^{(4)}$ slightly outperforming the other indicators in all the cases considered, immediately followed by $REM$. Then we find $FLI^{{WB}}$ and $MEGNO(LE)$. Modulation of the linear frequencies significantly reduces the predictive power of each indicator. It should be noted that the identification errors of the various indicators are largely dominated by the wrong labeling of the initial conditions as regular. 
 %while $FMA$ also tends to wrongly identify the initial conditions as chaotic. 
 
-The conclusions drawn for the case of the $4d$ H\'enon-like map are generic for a polynomial Hamiltonian system in a neighbourhood of elliptic fixed points. Hence, these results can be particularly useful for applications such as nonlinear beam dynamics. The specific choice of an indicator to predict the chaotic character should take into account the performance evaluated in our analysis, as well as the computational efforts needed to compute the various indicators. In this sense, $REM$ could be a very interesting candidate due to its good performance combined with computational efficiency, which is particularly suitable for reducing the CPU time required for the numerical integration of complex physical systems.
+The conclusions drawn for the case of the 4\textsc{d} H\'enon-like map are generic for a polynomial Hamiltonian system in a neighbourhood of elliptic fixed points. Hence, these results can be particularly useful for applications such as nonlinear beam dynamics. The specific choice of an indicator to predict the chaotic character should take into account the performance evaluated in our analysis, as well as the computational efforts needed to compute the various indicators. In this sense, $REM$ could be a very interesting candidate due to its good performance combined with computational efficiency, which is particularly suitable for reducing the CPU time required for the numerical integration of complex physical systems.
 %
 \begin{chapterappendices}
 %
@@ -802,14 +790,14 @@ When considering a large amount of initial conditions to determine the propertie
     \centering
     %\includegraphics[width=\textwidth]{6_dynamic_indicators/fig/overview.pdf}
     \includegraphics[width=\textwidth]{6_dynamic_indicators/fig/corrected_figs/overview.pdf}
-    \caption{Color maps of the various dynamic indicators for a modulated $4d$ Hénon map evaluated at $n=10^5$. It can be seen how the indicators globally highlight the same structures in phase space, with the exception of $FMA$, which also shows structures related to resonances. Note that an arrow at the top of the color bar means that pixels of the top color correspond to a value equal to or greater than the top value. White pixels correspond to initial conditions whose distance from the origin has exceeded a predefined radius ($r_c=10^2$) during the tracking, before reaching the target iteration number $n_\text{max}=10^8$. (Simulation parameters: $(\omega_{x0},\omega_{y0})= (0.28,\ 0.31),\ \varepsilon=32.0,\ \mu=0.5$).}
+    \caption{Color maps of the various dynamic indicators for a modulated 4\textsc{d} Hénon map evaluated at $n=10^5$. It can be seen how the indicators globally highlight the same structures in phase space, with the exception of $FMA$, which also shows structures related to resonances. Note that an arrow at the top of the color bar means that pixels of the top color correspond to a value equal to or greater than the top value. White pixels correspond to initial conditions whose distance from the origin has exceeded a predefined radius ($r_c=10^2$) during the tracking, before reaching the target iteration number $n_\text{max}=10^8$. (Simulation parameters: $(\omega_{x0},\omega_{y0})= (0.28,\ 0.31),\ \varepsilon=32.0,\ \mu=0.5$).}
     \label{fig:generic_example}
 \end{figure*}
 
 \begin{figure*}[ht]
     %\includegraphics[width=\textwidth]{6_dynamic_indicators/fig/evolution.pdf}
     \includegraphics[width=\textwidth]{6_dynamic_indicators/fig/corrected_figs/evolution_idx_3.pdf}
-    \caption{Distribution of values of the various dynamic indicators as a function of time for a modulated $4d$ Hénon map. For low values of the  iterations $n$, the distribution is in general represented by a uni-modal function. For higher values of $n$, we can see the formation of either two separate clusters, making the distribution bi-modal, or an individual cluster with a significant tail. $\log_{10}(FMA)$ constitutes an exception, as it evolves forming a tri-modal distribution (also shown in detail in Fig.~\ref{fig:thresholds}, bottom).
+    \caption{Distribution of values of the various dynamic indicators as a function of time for a modulated 4\textsc{d} Hénon map. For low values of the  iterations $n$, the distribution is in general represented by a uni-modal function. For higher values of $n$, we can see the formation of either two separate clusters, making the distribution bi-modal, or an individual cluster with a significant tail. $\log_{10}(FMA)$ constitutes an exception, as it evolves forming a tri-modal distribution (also shown in detail in Fig.~\ref{fig:thresholds}, bottom).
     %These features are used to define a criterion to distinguish between regular and chaotic orbits.
     The red dashed lines represent threshold values, defined by our algorithm, representing our criterion to distinguish regular and chaotic orbits. (simulation parameters: $(\omega_{x0},\omega_{y0})= (0.28,\ 0.31),\ \varepsilon=32.0,\ \mu=0.5$).}
     \label{fig:generic_example_2}
@@ -822,7 +810,7 @@ The indicators $\log_{10}(LE)/n$, $FLI(\hat{x})/n$, $FLI^{WB}(\hat{x})$, and $ME
 
 By direct inspection of the color maps in Fig.~\ref{fig:generic_example_2}, it can be seen how these four indicators generate bimodal distributions, with the peak corresponding to regular orbits featuring a clear trend towards zero, and this trend appears to be faster for $\log_{10}(FLI^{WB}(\hat{x}))$, and $\log_{10}(MEGNO(LE)/n)$, due to the applied filters. $\log_{10}(FLI(\hat{x})/n)$ and $\log_{10}(FLI^{WB}(\hat{x}))$ feature an increasing spread of values corresponding to chaotic orbits, a clear trend of the distribution of regular orbits toward zero. A similar trend is also observed in $\log_{10}(\log_{10}(LE)/n)$ and $\log_{10}(MEGNO(LE)/n)$, however, the current numerical implementation of $LE$ suffers from numerical saturation for chaotic orbits that exhibit exponential growth in the values of the tangent map. This results in a limitation for the spread of values that can be observed for chaotic orbits at high numbers of turns, but, ultimately, the distinction between clusters remains. 
 
-$GALI^{(4)}$ takes values in the interval $[0,1]$, corresponding to the range of values of the volume of the $4d$ parallelotope, constructed by normalized orthonormal displacements. The unit value is associated with the initial orthonormal displacement, whereas zero implies an exact chaos-induced alignment of at least two displacement vectors along the direction of the maximum Lyapunov exponent. Inspecting the indicator distribution in logarithmic scale, i.e.~$\log_{10}(GALI^{(4)})$, highlights a bimodal distribution, where the peak corresponding to the ensemble of regular orbits moves towards small values of the indicator, following a power law distribution. Moreover, an ensemble of chaotic orbits creates a tail distribution of values lower than the regular ensemble, thus creating a second, smaller-amplitude peak in the indicator distribution. The presence of the logarithm when evaluating the distribution of $GALI^{(4)}$ generates a numerical artifact. Indeed, certain chaotic orbits feature a $4d$ volume, computed using the SVD method, that reaches values below numerical precision, which are consequently registered as zero. We assign to these initial conditions a value of $10^{-64}$, which represents a product of 4 singular values $z_j=\epsilon\sim10^{-16}$ with extended precision. The cluster of these special initial conditions generates yet another peak in the indicator distribution that is, nevertheless, irrelevant in future considerations about the classification of orbits. 
+$GALI^{(4)}$ takes values in the interval $[0,1]$, corresponding to the range of values of the volume of the 4\textsc{d} parallelotope, constructed by normalized orthonormal displacements. The unit value is associated with the initial orthonormal displacement, whereas zero implies an exact chaos-induced alignment of at least two displacement vectors along the direction of the maximum Lyapunov exponent. Inspecting the indicator distribution in logarithmic scale, i.e.~$\log_{10}(GALI^{(4)})$, highlights a bimodal distribution, where the peak corresponding to the ensemble of regular orbits moves towards small values of the indicator, following a power law distribution. Moreover, an ensemble of chaotic orbits creates a tail distribution of values lower than the regular ensemble, thus creating a second, smaller-amplitude peak in the indicator distribution. The presence of the logarithm when evaluating the distribution of $GALI^{(4)}$ generates a numerical artifact. Indeed, certain chaotic orbits feature a 4\textsc{d} volume, computed using the SVD method, that reaches values below numerical precision, which are consequently registered as zero. We assign to these initial conditions a value of $10^{-64}$, which represents a product of 4 singular values $z_j=\epsilon\sim10^{-16}$ with extended precision. The cluster of these special initial conditions generates yet another peak in the indicator distribution that is, nevertheless, irrelevant in future considerations about the classification of orbits. 
 
 The dynamic indicator $REM$ is also considered on a logarithmic scale to better appreciate its behaviour. The measured Euclidean distance for the case of regular orbits ranges from a few orders of magnitude higher than the numerical precision $\epsilon\sim 10^{-16}$ for small values of $n$. These indicator values increase with $n$ following a power law (typically, the peak reaches $~10^{5}$ for $n=10^5$) due to the accumulation of the numerical error. Instead, for chaotic orbits, we observe exponential growth that saturates to an almost constant value. This occurs since chaotic orbits belong to an invariant bounded set of diameter $D$ so that the saturation value is about $\epsilon^{-1} D$. %The origin of such an upper bound in the value of $REM$ is found in the fact that each orbit considered for the evaluation of the indicator is limited within a finite-radius sphere.
 Similarly to $GALI^{(4)}$, we inspect the indicator in logarithmic scale, i.e.~$\log_{10}(REM)$. 
