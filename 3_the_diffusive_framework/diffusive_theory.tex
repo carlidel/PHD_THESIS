@@ -1,11 +1,12 @@
 
 \chapter{Stochastic Hamiltonian systems}\label{ch:the_diffusive_framework}
 
-After having introduced the basic concepts of the theory of stochastic Hamiltonian systems in Chapter~\ref{ch:mathematical_elements}, we now turn to the study of the diffusive properties of these systems. These properties are related to the introduction of a stochastic perturbation in the Hamiltonian describing the system under consideration.
+After having introduced the basic concepts of the theory of stochastic Hamiltonian systems in Chapter~\ref{ch:mathematical_elements}, we now turn to the study of the diffusive properties of these systems. These properties are related to the introduction of a stochastic perturbation in the Hamiltonian describing the system under consideration. The framework we review here for the application of the averaging principle on stochastic Hamiltonian systems follows the line of work presented in~\ref{Bazzani9948, Bazzani:2019lse, bazzani2020diffusion}.
 
-We will first present the general framework of the theory of stochastic Hamiltonian systems, inspecting some simple examples of diffusion over toroidal surfaces. Next, we will focus on the application of the averaging principle to stochastic Hamiltonian systems and show how it is possible to reach an expression of the diffusion process in terms of a Fokker-Planck equation, whose diffusion coefficient $D(I)$ has a functional form related to the stability-time estimate of Nekhoroshev theorem.
+The chapter is structured as follows. We will first present the fundamental concepts of stochastic processes in Section~\ref{sec:diff:stochastic_perturbations}, in which we will define the notation used, and show some simple models of stochastic-induced diffusion over toroidal surfaces and integrable Hamiltonian systems. Next, we will focus in Section~\ref{sec:diff:averaging_principle} on the application of the averaging principle to stochastic Hamiltonian systems, and show how it is possible to reach an expression of the diffusion process in terms of a Fokker-Planck equation. Finally, in Section~\ref{sec:diff:functional_form}, we will show how the diffusion coefficient $D(I)$ has a functional form related to the stability-time estimate of Nekhoroshev theorem.
 
 \section{Stochastic perturbations}
+\label{sec:diff:stochastic_perturbations}
 
 \subsection{Notation for stochastic processes}
 \label{subsec:Diffusion for a stochastically perturbed integrable system}
@@ -138,7 +139,7 @@ so that the relaxation timescale of the angle variable is estimated by
 i.e. $t_\phi\simeq \epsilon^{-2/3}$. The perturbation approach is justified if one chooses $t\simeq t_\phi$ since $t\epsilon^2\simeq \epsilon^{4/3}\ll 1$. It follows that the angle variable can be considered a fast variable in the diffusion process whereas the action is a slow variable.
 
 %
-\section{Averaging principle for stochastic Hamilto\-nians}
+\section{Averaging principle for stochastic Hamilto\-nians}\label{sec:diff:averaging_principle}
 %
 We now present an extension of the averaging principle to the case of generic stochastic perturbed Hamiltonian system in the action-angle variables in presence of a weak chaotic dynamics in the phase space.
 
@@ -311,7 +312,7 @@ which can be easily rewritten in the form
 \end{equation}
 which is the desired functional for.
 
-\section{Functional form for $D(I)$}
+\section{Functional form for $D(I)$}\label{sec:diff:functional_form}
 
 We have reached the result that, under certain conditions, the evolution of an action distribution function $\rho_0(I, t)$ can be described by a Fokker-Planck equation in the form
 \begin{equation}
