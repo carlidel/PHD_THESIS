@@ -1,7 +1,7 @@
 
 \chapter{Stochastic Hamiltonian systems}\label{ch:the_diffusive_framework}
 
-After having introduced the basic concepts of the theory of stochastic Hamiltonian systems in Chapter~\ref{ch:mathematical_elements}, we now turn to the study of the diffusive properties of these systems. These properties are related to the introduction of a stochastic perturbation in the Hamiltonian describing the system under consideration. The framework we review here for the application of the averaging principle on stochastic Hamiltonian systems follows the line of work presented in~\ref{Bazzani9948, Bazzani:2019lse, bazzani2020diffusion}.
+After having introduced the basic concepts of the theory of stochastic Hamiltonian systems in Chapter~\ref{ch:mathematical_elements}, we now turn to the study of the diffusive properties of these systems. These properties are related to the introduction of a stochastic perturbation in the Hamiltonian describing the system under consideration. The framework we review here for the application of the averaging principle on stochastic Hamiltonian systems follows the line of work presented in~\cite{Bazzani9948, Bazzani:2019lse, bazzani2020diffusion}.
 
 The chapter is structured as follows. We will first present the fundamental concepts of stochastic processes in Section~\ref{sec:diff:stochastic_perturbations}, in which we will define the notation used, and show some simple models of stochastic-induced diffusion over toroidal surfaces and integrable Hamiltonian systems. Next, we will focus in Section~\ref{sec:diff:averaging_principle} on the application of the averaging principle to stochastic Hamiltonian systems, and show how it is possible to reach an expression of the diffusion process in terms of a Fokker-Planck equation. Finally, in Section~\ref{sec:diff:functional_form}, we will show how the diffusion coefficient $D(I)$ has a functional form related to the stability-time estimate of Nekhoroshev theorem.
 
@@ -378,13 +378,7 @@ so that $D(I)$ is normalized over the boundaries considered for the Fokker-Planc
 
 Let us now consider this last form of Fokker-Planck equation, along with an absorbing boundary condition at $I_{\mathrm{a}}$, i.e.\ the phase-space limit beyond which an initial condition is considered lost. Note that $D(I)$ and $\rho$ have dimensions $[I^2t^{-1}]$ and $[I^{-1}]$, respectively.
 
-In Fig.~\ref{fig:1} (top and centre), we consider the behaviour of $D(I)$ from Eq.~\eqref{eq:diffusion} for some values of $\kappa$ and for $\epsilon^2 = 1$. We can distinguish three regions for this type of function: $(i)$ a stable core region for $I \ll I_\ast$, for which $D(I)$ has values decreasing to zero exponentially fast; $(ii)$ a ramp-up region for $I \lesssim I_\ast$, where $D(I)$ starts to have non-negligible values and changes from an exponential growth to an almost linear one; $(iii)$ a region for $I >  I_\ast$, where $D(I)$ features an almost linear growth (in logarithmic scale a saturation appears). These three regions are more or less distinguishable depending on the value of $\kappa$. 
-
-In Fig.~\ref{fig:1} (bottom), we also display the result of the numerical integration of Eq.~\eqref{eq:fp} for some values of $\kappa$, performed on an initial distribution $\rho_0(I)=1$ with a Crank-Nicolson scheme~\cite{crank1947practical} (see Appendix~\ref{app_sec:numerical_integration_with_crank_nicolson} for some detail on the integration scheme used in our studies).
-%, using $\varepsilon^2 = 1$ in all numerical simulations performed, and setting the absorbing boundary condition at $I/I_\ast=1.5$. 
-It is also possible to observe in the shape of the distribution function a stable core region, corresponding to $I/I_\ast \ll 1$, where $D(I)$ starts having values very close to zero, a fast decrease region and, finally, a saturation region, for $I/I_\ast = 1$ and beyond, where $\rho(I, t)$ assumes small values.
-
-\begin{figure*}[htp]
+\begin{figure*}[t]
     \centering
     \includegraphics[width=\textwidth]{4_probing_the_diffusive_behavior/figs/diffusion_coefficient.pdf}
     \caption{Top and centre: plot of $D(I)$ both in linear and logarithmic scale for three values of $\kappa$ as a function of $I/I_\ast$.
@@ -392,6 +386,14 @@ It is also possible to observe in the shape of the distribution function a stabl
     Bottom: evolution of an uniform distribution (in grey) over the same time interval corresponding to $(t=10.0 \, [\text{a. u.}])$ for three values of $\kappa$. (Simulations parameter: $(I_\ast = 1.0\,[\sigma^2])$).}
     \label{fig:1}
 \end{figure*}
+
+In Fig.~\ref{fig:1} (top and centre), we consider the behaviour of $D(I)$ from Eq.~\eqref{eq:diffusion} for some values of $\kappa$ and for $\epsilon^2 = 1$. We can distinguish three regions for this type of function: $(i)$ a stable core region for $I \ll I_\ast$, for which $D(I)$ has values decreasing to zero exponentially fast; $(ii)$ a ramp-up region for $I \lesssim I_\ast$, where $D(I)$ starts to have non-negligible values and changes from an exponential growth to an almost linear one; $(iii)$ a region for $I >  I_\ast$, where $D(I)$ features an almost linear growth (in logarithmic scale a saturation appears). These three regions are more or less distinguishable depending on the value of $\kappa$. 
+
+In Fig.~\ref{fig:1} (bottom), we also display the result of the numerical integration of Eq.~\eqref{eq:fp} for some values of $\kappa$, performed on an initial distribution $\rho_0(I)=1$ with a Crank-Nicolson scheme~\cite{crank1947practical} (see Appendix~\ref{app_sec:numerical_integration_with_crank_nicolson} for some detail on the integration scheme used in our studies).
+%, using $\varepsilon^2 = 1$ in all numerical simulations performed, and setting the absorbing boundary condition at $I/I_\ast=1.5$. 
+It is also possible to observe in the shape of the distribution function a stable core region, corresponding to $I/I_\ast \ll 1$, where $D(I)$ starts having values very close to zero, a fast decrease region and, finally, a saturation region, for $I/I_\ast = 1$ and beyond, where $\rho(I, t)$ assumes small values.
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -13,7 +13,7 @@ The chapter is structured as follows. In Section~\ref{sec:4:collimation}, we pre
 
 The LHC layout~\cite{Bruning:782076} can be summarized in a geometric scheme composed of eight straight insert regions (IR) and eight circular arc segments. A simple scheme of this layout is reported in Fig.~\ref{fig:lhc_layout}, left. Within this circular scheme, the main particle physics experiments are located in IR1, IR2, IR5 and IR8, namely, ATLAS~\cite{TheATLASCollaboration_2008}, ALICE~\cite{Alessandro:879894}, CMS~\cite{Chatrchyan:1129810}, and LHCb~\cite{Alves:1129809}. In these four IRs, the two beams intersect and interact in what is referred to as an Interaction Point (IP). The RF cavities for accelerating the beams are in IR4 and IR6 hosts the beam extraction system. Finally, IR3 and IR7 are dedicated, respectively, to the longitudinal and transverse collimation system.
 
-\begin{figure}[hpt]
+\begin{figure}[thp]
     \centering
     \includegraphics[width=0.49\textwidth]{5_Diffusion_measurement_LHC/figs/layout.png}
     \includegraphics[width=0.49\textwidth]{5_Diffusion_measurement_LHC/figs/coll_scheme.png}
@@ -25,7 +25,7 @@ The LHC collimation system is a fundamental component of machine operation and s
 
 The collimation system counts more than 120 individual collimators. Most of these collimators are movable devices made up of two movable jaws made of solid material, which can be brought at different distances from the circulating beam~\cite{Bertarelli:794628}. A summary of the various collimators positioned along the LHC layout is reported in Fig.~\ref{fig:lhc_layout}, right. These jaws are straight and parallel to the beam and have a tapering at both ends, along the axis of the beam. The distance between the start and end of the tapering, where the jaw material is straight, is called the active length of the collimator. Some photos and schemes of these LHC collimators are reported in Fig.~\ref{fig:collimator_pics}.
 
-\begin{figure}[hpt]
+\begin{figure}[thp]
     \centering
     \includegraphics[width=0.75\textwidth]{5_Diffusion_measurement_LHC/figs/collimator_pics.png}
     \caption{Left picture, jaw of a secondary collimator, made of carbon-fiber composite (CFC) and water cooled through copper pipes. Right picture, two collimator jaws are installed in a collimator tank. (From Ref.~\cite{bruce2014simulations})}
@@ -38,7 +38,7 @@ In IR3, instead, a \textit{momentum cleaning} of particles takes place. In that 
 
 To safely clean the beam halo without damaging the magnets or other components of the machine, the LHC collimation system works on the basis of a multistage process. This multistage process consists of a \textit{hierarchy} of individual collimators with the purpose of progressively cleaning and controlling the loss of particles. A scheme of this hierarchy is presented in Fig.~\ref{fig:collimator_hierarchy}.
 
-\begin{figure}[hpt]
+\begin{figure}[t]
     \centering
     \def\svgwidth{1.0\columnwidth}
     \import{5_Diffusion_measurement_LHC/figs}{hierarchy.pdf_tex}
@@ -58,7 +58,7 @@ A multi-stage collimation system allows one to distribute the beam loads over a 
 
 The secondary particle showers represent the point of observation to measure the amount of primary particles absorbed by the TCPs. To quantify this amount, the LHC is equipped with multiple ionization chambers, which make up the beam loss monitor (BLM) system~\cite{blmSystem1, blmSystem2}. The charged particles that pass through the ionization chambers finally provide a measure of \SI{}{Gy \per s}, which can be converted into a corresponding measure of \SI{}{protons \per s} lost using a measured calibration factor, evaluated by controlled collimator-induced losses~\cite{arek}, which are also quantified in parallel by the \textit{DC Beam Current Transformer} (DCBCT)~\cite{Denard:1213275}, which measures the number of protons in the circulating beam by measuring the magnetic field, induced by the moving beam. A picture of an LHC BLM is presented in Fig.~\ref{fig:blm}. The calibrated BLM data are the precise loss signal that we finally expect to use to reconstruct the diffusion behaviour in the transverse plane.
 
-\begin{figure}[hpt]
+\begin{figure}[thp]
     \centering
     \includegraphics[width=0.75\textwidth]{5_Diffusion_measurement_LHC/figs/blm.png}
     \caption{Top picture, ionization chambers of the LHC BLM system, mounted on the side of the LHC Magnets. Bottom picture, inner structure of a BLM ionization chamber. (From Ref.~\cite{blmonline})}
@@ -73,7 +73,7 @@ The scan was performed after executing a beam-based alignment~\cite{valentino201
 
 The measurement is performed with the local beam loss monitoring (BLM) system and is provided in unit of \SI{}{Gy \per s} with \SI{1}{Hz} sampling rate, processed over different \textit{Running Sums} (RS), evaluated by a real-time processing system implemented on FPGA~\cite{4179157}. In this implementation, a time window is moved over the signal sampled by the device, and the maximum peak measured in the time window is considered the final measurement, which is finally reported in \SI{}{Gy \per s}, RSs range from a minimum of \SI{40}{\micro s} to a maximum of \SI{83.89}{s}. A list of the various RS defined in the measurement system is presented in Table~\ref{tab:rs_scheme}.
 
-\begin{table}[hpt]
+\begin{table}[t]
     \centering
     \scalebox{0.80}{
     \begin{tabular}{c|c|c|c|c|c|c}
@@ -107,7 +107,7 @@ The measurement is performed with the local beam loss monitoring (BLM) system an
     \label{tab:rs_scheme}
 \end{table}
 
-\begin{figure}[hpt]
+\begin{figure}[t]
     \centering
     \includegraphics[width=\textwidth]{5_Diffusion_measurement_LHC/figs/raw.pdf}
     \caption{Beam loss data from the two separate BLM monitors corresponding to the TCPs on the vertical and horizontal planes, using RS06 (i.e.\ the maximum spike over a time window of \SI{10.24}{ms}), for Beam~1 and Beam~2, and positions of IR7 TCP jaws measured in the vertical and horizontal plane for the collimator scans carried out in fill 6052. The data acquired represent a complete collimator scan on both planes. The jaw positions are considered from the beam centre position, measured after a beam-based alignment. (Data from Ref.~\cite{PhysRevAccelBeams.23.044802})}
@@ -128,7 +128,7 @@ To address the lack of alternating jaw movements, we selected a region of intere
 
 In Fig.~\ref{fig:first} we present the portion of the data collected in Fill 6052 that we finally selected. Unfortunately, only the scraping performed in the vertical plane meets our quality requirements to apply the fitting of our diffusive model.
 
-\begin{figure}[hpt]
+\begin{figure}[thp]
     \centering
     \includegraphics[width=\textwidth]{5_Diffusion_measurement_LHC/figs/first.pdf}
     \caption{Selected data from Fill 6052 (i.e.\ Fig.~\ref{fig:raw_data}). The data shown correspond to outward jaw movements in the vertical plane. The yellow-marked region of interest (ROI) represents a subset of data meeting our quality requirements for applying the fitting of our diffusive model. The jaw positions are considered from the beam centre position, measured after a beam-based alignment. A corresponding position measured in $\sigma$ units is also reported. (Data from Ref.~\cite{PhysRevAccelBeams.23.044802})}
@@ -148,7 +148,7 @@ To address this issue, we define an initial estimate of the global current shape
 To include this missing information, the fundamental CSI has been multiplied by different constant terms to represent possible different levels of partial recovery of $J_\mathrm{R}(t)$. This procedure is shown in Fig.~\ref{fig:second}. One can see how the fundamental CSI represents the initial lowest estimate of global current, while the different multiplicative constants introduce different gap levels after the terminating points of the recovery currents. This multiplicative can then be treated as a free parameter for reconstructing missing information.
 
 %
-\begin{figure}[hpt]
+\begin{figure}[thp]
     \centering
     \includegraphics[trim={0 2.5mm 0 3mm}, clip, width=\columnwidth]{5_Diffusion_measurement_LHC/figs/second_bis.pdf}
     \caption{Possible estimates of $J_\mathrm{eq}(t)$ for Beam~1 data. An initial estimate is made starting from a Cubic Spline Interpolation (CSI) with positive second derivative passing through the end points of the measured recovery currents (red line). The various curves are obtained by multiplying the fundamental CSI by a constant term, and represent estimates of the partial recovery currents. The multiplicative constant considered is reported in the plot legend.}
@@ -165,14 +165,14 @@ where $M$ is a fixed constant for each jaw movement that represents an unknown a
 
 A scan is performed on different combinations of the multiplicative factor of the CSI and of $M$, while keeping track of the $\chi^2$ achieved by the fitting routine that determines the values of the model parameters $\kappa, I_\ast$. The result of this procedure is shown in Figs.~\ref{fig:fourth} and~\ref{fig:fifth}, where one can observe the existence of an optimal configuration of parameters and the good reconstruction performance achieved by such a configuration. The optimal fit results for Beam~1 and Beam~2 data are reported in Table~\ref{tab:fit_results}.
 
-\begin{figure}[hpt]
+\begin{figure}[thp]
     \centering
     \includegraphics[trim={0 2.5mm 0 1.5mm}, clip, width=0.98\columnwidth]{5_Diffusion_measurement_LHC/figs/fourth.pdf}
     \caption{Fit performance of $\kappa$ and $I_\ast$ for Beam~1 data, using different combinations of CSI multiplicative constants and values of $M$ for Eq.~\eqref{eq:approximated_distribution_beam}. The color map shows the existence of an optimal pair of values at (CSI $\times 1.5$, $750$).}
     \label{fig:fourth}
 \end{figure}
 %
-\begin{table}[hpt]
+\begin{table}[thp]
     \centering
     \begin{tabular}{lcccc}
         \toprule
@@ -189,7 +189,7 @@ A scan is performed on different combinations of the multiplicative factor of th
 
 Note that the values reported in~\cite{bazzani2020diffusion}, namely $\kappa=0.33 $ and $I_\ast \simeq 21$, were obtained for Beam~2 and considering the diffusion in the vertical plane. It should be stressed that these previous measurements were performed with non-colliding bunches, whereas in the beam measurements analysed here, beam-beam effects were present.
 
-\begin{figure}[hpt]
+\begin{figure}[t]
     \centering
     \includegraphics[trim={0 2.5mm 0 3mm}, clip, width=0.95\columnwidth]{5_Diffusion_measurement_LHC/figs/fifth.pdf}
     \caption{Fit results for Beam~1 data for two $M$ values, considering the recovery current obtained by using the optimal CSI multiplicative constant $\times 1.5$. The optimal $M$ value (orange) outperforms a lower $M$ value (blue) and manages to reconstruct the shape of the recovery currents.}
