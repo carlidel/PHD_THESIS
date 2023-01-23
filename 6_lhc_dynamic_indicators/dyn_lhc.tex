@@ -22,15 +22,15 @@ This periodically modified $\vb{y}'_n$, for a given value of $\tau$, reads
 \begin{equation}
     \begin{aligned}
         \vb{y}'_0 =&\, \vb{y}_0 \,;  \\
-        \vb{y}'_i =&\, DM(\vb{x}_{i\tau - 1}, i\tau - 1)DM(\vb{x}_{i\tau - 2}, i\tau - 2)\cdots \\
-        &\cdots DM(\vb{x}_{(i-1)\tau}, (i-1)\tau)\left[\vb{x}_{(i-1)\tau}+\epsilon\,\frac{\vb{y}'_{i-1}-\vb{x}_{(i-1)\tau}}{\norm{\vb{y}'_{i-1}-\vb{x}_{(i-1)\tau}}}\right]\,, \quad 0 \leq i \leq n/\tau \,,        
+        \vb{y}'_i =&\, M(\vb{x}_{i\tau - 1}, i\tau - 1)M(\vb{x}_{i\tau - 2}, i\tau - 2)\cdots \\
+        &\cdots M(\vb{x}_{(i-1)\tau}, (i-1)\tau)\left[\vb{x}_{(i-1)\tau}+\epsilon\,\frac{\vb{y}'_{i-1}-\vb{x}_{(i-1)\tau}}{\norm{\vb{y}'_{i-1}-\vb{x}_{(i-1)\tau}}}\right]\,, \quad 0 \leq i \leq n/\tau \,,        
     \end{aligned}
 \end{equation}
 which, for $\tau=1$, reduces to
 \begin{equation}
 \begin{aligned}
     \vb{y}'_0 &= \vb{y}_0 \,; \\
-    \vb{y}'_i &= DM(\vb{x}_{i-1}, i-1)\left[\vb{x}_{i-1}+\epsilon\,\frac{\vb{y}'_{i-1}-\vb{x}_{i-1}}{\norm{\vb{y}'_{i-1}-\vb{x}_{i-1}}}\right]\,.
+    \vb{y}'_i &= M(\vb{x}_{i-1}, i-1)\left[\vb{x}_{i-1}+\epsilon\,\frac{\vb{y}'_{i-1}-\vb{x}_{i-1}}{\norm{\vb{y}'_{i-1}-\vb{x}_{i-1}}}\right]\,.
 \end{aligned}
 \end{equation}
 
@@ -239,7 +239,7 @@ On the basis of this observation, we will use $FLI^{{WB}}$ to derive $T_\mathrm{
 
 When comparing directly $T_\mathrm{L}$ and $T_\mathrm{s}$, as shown in Fig.~\ref{fig:ts_vs_tl}, we can observe that the two times exhibit a similar behaviour with respect to $r_0$: they both exhibit a saturated plateau for low $r_0$, corresponding to the region dominated by regular orbits, and an exponential decay beyond a certain values of the radius, which varies in sharpness and position depending on the value of $\zeta_0$. In the same figure, we also show different evaluations of $T_\mathrm{L}$ based on $FLI^{WB}$, evaluated at different values of $n$, which clearly show how the value of $T_\mathrm{L}$ for regular orbits increases with the value of $n$, while the value of $T_\mathrm{L}$ for chaotic orbits converges to its true value. Another important feature is clearly seen in the same figure, namely that $T_\mathrm{L}$ extends over a reduced range of $r_0$ values. This is due to the choice that the indicator values have been evaluated only for orbits that are stable up to $10^5$ turns, which explains clearly why, on the other hand, $T_\mathrm{s}$ extends over a wider range of $r_0$ values. 
 
-The curves shown so far are obtained by a process of averaging of the raw data. To better appreciate the situation, the distributions of $T_\mathrm{L}$ and $T_\mathrm{s}$ as a function of $r_0$ are shown in Fig.~\ref{fig:extra_distribution}. There, the distributions are represented using a colour map and the mean values are highlited by the red curves. We can observe how the distributions feature a spread that correlates with the value of $r_0$, i.e. it shrinks towards small values of $r_0$ and grows with increasing values of $r_0$. For the case of $T_\mathrm{s}$, this effect is really striking as for $r_0$ values corresponding to the stable region of phase space the distribution of $T_\mathrm{s}$ is delta-like centred on the value of $10^5$. Indeed, the behaviour of the width of the distributions is not a surprising feature, as the value of $r_0$ is somewhat correlated with the presence of regular or chaotic orbits. 
+The curves shown so far are obtained by a process of averaging of the raw data. To better appreciate the situation, the distributions of $T_\mathrm{L}$ and $T_\mathrm{s}$ as a function of $r_0$ are shown in Fig.~\ref{fig:extra_distribution}. There, the distributions are represented using a colour map and the mean values are highlighted by the red curves. We can observe how the distributions feature a spread that correlates with the value of $r_0$, i.e. it shrinks towards small values of $r_0$ and grows with increasing values of $r_0$. For the case of $T_\mathrm{s}$, this effect is really striking as for $r_0$ values corresponding to the stable region of phase space the distribution of $T_\mathrm{s}$ is delta-like centred on the value of $10^5$. Indeed, the behaviour of the width of the distributions is not a surprising feature, as the value of $r_0$ is somewhat correlated with the presence of regular or chaotic orbits. 
 
 \begin{figure}
     \centering
@@ -331,7 +331,7 @@ If we assume, as we have made so far and verified using the data of numerical si
     \frac{T_\mathrm{s}}{T_{0, \mathrm{s}}} = \exp\left[\left(\frac{I_{\ast, \mathrm{s}}}{I_{\ast, \mathrm{L}}}\right)^{1/2\kappa_\mathrm{s}}\left(\log\frac{T_\mathrm{L}}{T_{0, \mathrm{L}}}\right)^{\kappa_\mathrm{L} / \kappa_\mathrm{s}}\right] \, .
 \end{equation}
 
-If $\kappa_\mathrm{L}/\kappa_\mathrm{s} = 1$, we can recover a polynomial relation between $T_\mathrm{s}$ and $T_\mathrm{L}$ of the form $T_\mathrm{s} = \alpha T_\mathrm{L}^\beta$, with $\alpha = (1/T_{0, \mathrm{L}})^{(I_{\ast, \mathrm{s}}/I_{\ast, \mathrm{L}})^{1/2\kappa_\mathrm{s}}}$ and $\beta= (I_{\ast, \mathrm{s}}/I_{\ast, \mathrm{L}})^{1/2\kappa_\mathrm{s}}$. If, on the other hand, $\kappa_\mathrm{L}/\kappa_\mathrm{s} \neq 1$, the relation assumes the form $T_\mathrm{s} = \alpha \exp(\beta \log{\left (T_\mathrm{L}/T_{0, \mathrm{L}}\right )}^{\kappa_\mathrm{L} / \kappa_\mathrm{s}})$, with $\alpha=T_{0, \mathrm{s}}$ and $\beta=(I_{\ast, \mathrm{s}}/I_{\ast, \mathrm{L}})^{1/2\kappa_\mathrm{s}}$. It is worth noting that in our case the exponential relation between $T_\mathrm{s}$ and $T_\mathrm{L}$ includes a dependence on the logarithm of $T_\mathrm{L}$, which is nonetheless different from the regimes described in Ref.~\cite{morbidelli1995}. The parameters of the relation found in the numerical simulations performed using the HL-LHC magnetic lattices are listed in Table~\ref{tab:ts_tl_relation_parameters}.
+If $\kappa_\mathrm{L}/\kappa_\mathrm{s} = 1$, we can recover a polynomial relation between $T_\mathrm{s}$ and $T_\mathrm{L}$ of the form $T_\mathrm{s} = \alpha T_\mathrm{L}^\beta$, with $\alpha = (1/T_{0, \mathrm{L}})^{(I_{\ast, \mathrm{s}}/I_{\ast, \mathrm{L}})^{1/2\kappa_\mathrm{s}}}$ and $\beta= (I_{\ast, \mathrm{s}}/I_{\ast, \mathrm{L}})^{1/2\kappa_\mathrm{s}}$. If, on the other hand, $\kappa_\mathrm{L}/\kappa_\mathrm{s} \neq 1$, the relation assumes the form $T_\mathrm{s} = \alpha \exp(\beta \log{\left (T_\mathrm{L}/T_{0, \mathrm{L}}\right )}^{\kappa_\mathrm{L} / \kappa_\mathrm{s}})$, with $\alpha=T_{0, \mathrm{s}}$ and $\beta=(I_{\ast, \mathrm{s}}/I_{\ast, \mathrm{L}})^{1/2\kappa_\mathrm{s}}$. It is worth noting that in our case the exponential relation between $T_\mathrm{s}$ and $T_\mathrm{L}$ includes a dependence on the logarithm of $T_\mathrm{L}$, which is nonetheless different from the regimes described in Ref.~\cite{Morbidelli1995}. The parameters of the relation found in the numerical simulations performed using the HL-LHC magnetic lattices are listed in Table~\ref{tab:ts_tl_relation_parameters}.
 
 \begin{table}[htb]
     \centering
