@@ -63,7 +63,7 @@
     \put(0.92296991,0.2521137){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\phi$\end{tabular}}}}%
     \put(0.12670244,0.39871266){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$V(\phi)$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{longitudinal_bis.pdf}}%
-    \put(0.29618099,0.13849779){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\eta > 0$\end{tabular}}}}%
-    \put(0.55398703,0.13849779){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\eta < 0$\end{tabular}}}}%
+    \put(0.29618099,0.13849779){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\gamma < \gamma_\text{tr}$\end{tabular}}}}%
+    \put(0.55398703,0.13849779){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\gamma > \gamma_\text{tr}$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

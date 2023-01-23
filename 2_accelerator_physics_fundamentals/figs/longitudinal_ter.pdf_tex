@@ -59,7 +59,7 @@
     \put(0.39864221,0.28793404){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\phi_1$\end{tabular}}}}%
     \put(0.46393426,0.18515368){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\phi_s$\end{tabular}}}}%
     \put(0.56387254,0.15854714){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\phi_2$\end{tabular}}}}%
-    \put(0.12473407,0.03763365){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\eta < 0$\end{tabular}}}}%
+    \put(0.12473407,0.03763365){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\gamma > \gamma_\text{tr}$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{longitudinal_ter.pdf}}%
   \end{picture}%
 \endgroup%

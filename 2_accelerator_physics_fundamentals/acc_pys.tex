@@ -7,7 +7,7 @@ It should be noted that the following information is not intended to serve as a 
 
 A particle accelerator is a device that uses electromagnetic fields to accelerate a beam of charged particles and allowing for collisions with a target or another particle beam. These machines can be classified as linear or circular depending on their geometry. This study will focus specifically on circular accelerators.
 
-An important consideration when working with particle accelerators is the type of particles that are accelerated. The energy loss of charged particles moving along a curved trajectory, known as synchrotron radiation, depends on the mass of the particle following the relation $m^{-4}$. This effect is negligible for hadron beams, but must be taken into account when working with electron beams. In this research, we will only examine hadron machines and energy scales at which synchrotron radiation can be neglected.
+An important consideration when working with circular particle accelerators is the type of particles that are accelerated. The energy loss of charged particles moving along a curved trajectory with a given energy and radius, known as synchrotron radiation, depends on the mass of the particle following the physical constant $C_\gamma = q^2 / 3\epsilon_0(mc^2)^4$~\cite{sands1970physics}. This effect is negligible for hadron beams, but must be taken into account when working with electron beams in circular accelerators. In this research, we will only examine hadron machines and energy scales at which synchrotron radiation can be neglected.
 
 Additionally, this study will focus on single-particle dynamics, which means that the motion of each individual particle in the beam will be considered independent and the repulsive Coulomb force between charges within the beam will be neglected. 
 
@@ -377,7 +377,7 @@ It is possible to numerically evaluate the amplitude-dependent detuning in singl
 
 If the tunes $\omega_x$ and $\omega_y$ satisfy a 1\textsc{d} or 2\textsc{d} resonance condition, the non-linear magnetic field can eventually lead to severe particle loss. A theoretical approach to this phenomenon is presented in~\cite{Bazzani:262179, wilson}.
 
-When the frequency $\omega_x$ or $\omega_y$ is close to a 1\textsc{d} resonant condition $n\omega_z / 2\pi \in \mathbb{Q}$, according to the Poincaré-Birkhoff theorem, presented in Section~\ref{subsec:poincare-birkhoff}, a chain of islands with extra fixed points appears. These islands, in regular accelerator operations, may reduce the dynamic aperture (for which the definition is given in Subsection~\ref{sec:2:dynamic_aperture}) and, close to separatrices, cause the onset of chaotic motion. When a resonance is crossed due to small, undesired variations of the magnetic field, which cause oscillations of $\omega_x$ and $\omega_y$ values, a growth in beam emittance may be observed~\cite{Guignard:185921}, affecting beam lifetime.
+When the frequency $\omega_x$ or $\omega_y$ is close to a 1\textsc{d} resonant condition $n\omega_z / 2\pi \in \mathbb{Q}$, according to the Poincaré-Birkhoff theorem, presented in Subection~\ref{subsec:poincare-birkhoff}, a chain of islands with extra fixed points appears. These islands, in regular accelerator operations, may reduce the dynamic aperture (for which the definition is given in Section~\ref{sec:2:dynamic_aperture}) and, close to separatrices, cause the onset of chaotic motion. When a resonance is crossed due to small, undesired variations of the magnetic field, which cause oscillations of $\omega_x$ and $\omega_y$ values, a growth in beam emittance may be observed~\cite{Guignard:185921}, affecting beam lifetime.
 
 Other than 1\textsc{d} resonances, in a system with two degrees of freedom, one can have a 2\textsc{d} resonant condition between the $\omega_x$ and $\omega_y$ frequencies, i.e.\ $m\omega_x+n\omega_y = 2\pi\ell$, with $\ell \in \mathbb{Q}$. Only difference resonances ($m>0$, $n<0$) are stable, although they contribute to the motion coupling between the two planes, while sum resonances (when $m$ and $n$ have the same signs) result in unstable motion.
 
@@ -578,9 +578,9 @@ where $\gamma_r$ is the Lorentz factor and $\alpha_{\mathrm{p}}$ is referred to 
 \end{equation}
 where $C$ is the path length of the reference orbit, $\delta$ is the fractional off-momentum $\Delta p / p$, and ${D}(s)$ is the dispersion function~\cite{Lee:2651939}, which quantifies the change in orbit effects given by fractional differences in momentum $\delta$ along the various components of the magnetic lattice.
 
-From this equation we can distinguish two separate regimes. At $\left(\gamma_r^{-2}<\alpha_p\right)$, which corresponds to low energies, the frequency of the revolution decreases with increasing momentum. At $\left(\gamma_r^{-2}>\alpha_{\mathrm{p}}\right)$, which corresponds to high energies, it increases. The energy corresponding to $\gamma_{\mathrm{tr}}=1 / \sqrt{\alpha_{\mathrm{p}}}$ is referred to as \textit{transition energy}, as it delimits the two regimes. We will now focus on the regime below the transition energy.
+From this equation we can distinguish two separate regimes. At $\left(\gamma_r^{-2}<\alpha_p\right)$, which corresponds to low energies, the frequency of the revolution decreases with increasing momentum. At $\left(\gamma_r^{-2}>\alpha_{\mathrm{p}}\right)$, which corresponds to high energies, it increases. The energy corresponding to $\gamma_{\mathrm{tr}}=1 / \sqrt{\alpha_{\mathrm{p}}}$ is referred to as \textit{transition energy}, as it delimits the two regimes. %We will now focus on the regime below the transition energy.
 
-Considering a particle with longitudinal phase $\phi=\phi_s$, momentum $p_0$, and revolution period $T_0$, we will refer to this particle as the \textit{synchronous particle}. In the reference design of an accelerator, we must have that the angular frequency of the RF cavity must match the frequency of the synchronous particle. Such a requirement reads as follows
+Considering a particle with longitudinal phase $\phi=\phi_s$, momentum $p_0$, and revolution period $T_0$, we will refer to this particle as the \textit{synchronous particle}. When designing an accelerator, we must have that the angular frequency of the RF cavity must match the frequency of the synchronous particle. Such a requirement reads as follows
 \begin{equation}
     \omega_{\mathrm{rf}}=h \omega_0\,,
 \end{equation}
@@ -588,25 +588,26 @@ where $\omega_0=\beta_0 c / R_0$ is the angular revolution frequency of the sync
 
 The energy gained by the synchronous particle in each passage through the RF cavity will then be dependent on $\phi_s$ and equal to $\Delta E=e V_0 \sin \left(\phi_s\right)$. However, in a real beam, we will have a spread of particles with different particle momenta, and each of these particles will follow a different off-momentum closed orbit. Therefore, each of these different particles will have a different revolution frequency and will receive a different $\Delta E$ from the RF cavity.
 
-In the regime below the transition, a higher-momentum particle will arrive at the RF cavity ahead of the synchronous particle, i.e.\ $\left(\phi_1<\phi_s\right)$, and will have a lower $\Delta E$. On the contrary, a particle with a lower momentum will arrive at the RF cavity behind the synchronous particle, i.e.\ $\left(\phi_2>\phi_s\right)$, and have a higher $\Delta E$. A simple scheme of this regime is shown in Fig.~\ref{fig:long_1}.
+In the regime below the transition energy $\gamma < \gamma_\text{tr}$, a higher-momentum particle will arrive at the RF cavity ahead of the synchronous particle, i.e.\ $\left(\phi_1<\phi_s\right)$, and will have a lower $\Delta E$ than the synchronous particle, causing a decrease of its phase. On the contrary, a particle with a lower momentum will arrive at the RF cavity behind the synchronous particle, i.e.\ $\left(\phi_2>\phi_s\right)$, and have a higher $\Delta E$ than the synchronous particle, which causes instead an increase of its phase. In the regime above the transition energy $\gamma > \gamma_\text{tr}$, the correlation between difference in $\Delta E$ and phase variation is inverted.
 
-\begin{figure}[t]
+In Fig.~\ref{fig:long_1}, we show a simple scheme for an accelerating synchronous particle for both regimes. We can observe how the two regimes require the synchronous particle to be at a different RF voltage phase in order to achieve a stable accelerating regime. In Fig.~\ref{fig:long_2}, instead, we show a sketch for a stationary synchronous particle above transition energy, along with the resulting potential well described by the RF voltage frequency.
+
+\begin{figure}[p]
     \centering
     \def\svgwidth{0.85\columnwidth}
     \import{2_accelerator_physics_fundamentals/figs/}{longitudinal_bis.pdf_tex}
-    \caption{Sketch of the different $V$ provided at particles with different $\phi$ for an accelerating bucket, and consequent phase evolution respectively in the regime below transition energy (left, $\eta>0$), and in the regime above transition energy (right, $\eta<0$). $\phi_s$ and $\phi'_s$ represent the synchronous particle phase at $\eta>0$ and $\eta<0$, respectively. $\phi_1$ and $\phi_2$ are respectively the phase of a particle with higher and lower longitudinal momentum, the same goes for $\phi'_1$ and $\phi'_2$. The frequency of the RF voltage provides a restoring force towards $\phi_s$, causing a different effect on the phase depending on the value of $\eta$.}
+    \caption{Sketch of the different $V$ provided at particles with different $\phi$ for an accelerating synchronous particle, and consequent phase evolution respectively in the regime below transition energy (left, $\gamma < \gamma_\text{tr}$), and in the regime above transition energy (right, $\gamma > \gamma_\text{tr}$). $\phi_s$ and $\phi'_s$ represent the synchronous particle phase at $\gamma < \gamma_\text{tr}$ and $\gamma > \gamma_\text{tr}$, respectively. $\phi_1$ and $\phi_2$ are respectively the phase of a particle with higher and lower longitudinal momentum, the same goes for $\phi'_1$ and $\phi'_2$. The frequency of the RF voltage provides a restoring force towards $\phi_s$, causing a different effect on the phase depending on the value of $\gamma$.}
     \label{fig:long_1}
-\end{figure}
 
-\begin{figure}[t]
-    \centering
+    \vspace{\floatsep}
+    
     \def\svgwidth{0.85\columnwidth}
     \import{2_accelerator_physics_fundamentals/figs/}{longitudinal_ter.pdf_tex}
-    \caption{Sketch of the different $V$ provided at particles with different $\phi$ for a stationary bucket below transition energy. The synchronous particle $\phi_s$ receives no energy from the RF voltage, while particles at different phase receive a restoring force towards $\phi_s$. The frequency of the RF voltage (black curve) describes a potential well (red curve).}
+    \caption{Sketch of the different $V$ provided at particles with different $\phi$ for a stationary synchronous particle above transition energy. The synchronous particle $\phi_s$ receives no energy from the RF voltage, while particles at different phase receive a restoring force towards $\phi_s$. The frequency of the RF voltage (black curve) describes a potential well with the minimum corresponding to the synchronous particle (red curve).}
     \label{fig:long_2}
 \end{figure}
 
-As long as the phase of the RF cavity obeys the condition $0<\phi_s<\pi / 2$, this regime ensures the phase stability of the longitudinal motion. The resulting motion in the longitudinal plane is called \textit{synchrotron motion}, which is characterized by \textit{synchrotron oscillations}. The fractional off-momentum deviation is then defined as,
+The resulting motion in the longitudinal plane, related to the potential well given by the RF voltage frequency, is called \textit{synchrotron motion}, which is characterized by \textit{synchrotron oscillations}. The fractional off-momentum deviation is then defined as
 \begin{equation}
     \delta=\frac{\Delta p}{p_0}=\frac{\omega_0}{\beta^2 E} \frac{\delta E}{\omega_0} \,.
 \end{equation}
@@ -620,8 +621,9 @@ From this we then obtain the equations of motion for the longitudinal variables.
 \end{equation}
 where $\eta$ is the \textit{slip factor} and reads
 \begin{equation}
-    \eta=\frac{\Delta \omega / \omega_0}{\Delta p / p_0} \,.
+    \eta=\frac{\Delta \omega / \omega_0}{\Delta p / p_0} \,,
 \end{equation}
+and assumes positive values below the transition energy and negative values above the transition energy.
 
 When considering small oscillation amplitudes, we can treat the synchrotron motion as that of a harmonic oscillator, where we consider the linearised equation of motion in the variable $\Delta \phi=\phi-\phi_s$. This approach leads to the differential equation
 \begin{equation}
@@ -632,7 +634,7 @@ We then have the following condition for phase stability
 \begin{equation}
     \eta \cos \left(\phi_s\right)<0 .
 \end{equation}
-This condition delimits different stable areas in the phase space. The area of stable motion is called \textit{RF bucket}. %In Fig.~\ref{} we show a simple schetch of an RF bucket, along with the separatrix orbit that delimits it.
+The separatrix given by the equations of motion delimits different stable areas in the phase space. The area of stable motion is called \textit{RF bucket}. %In Fig.~\ref{} we show a simple schetch of an RF bucket, along with the separatrix orbit that delimits it.
 
 Particles with small off-momentum deviations undergo a synchrotron oscillation during their orbit. This oscillation periodically alters the magnetic lattice effect on their transverse dynamics as well, leading to what we referred to as syncro-betatron coupling.
 
