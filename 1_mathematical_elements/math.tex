@@ -3,7 +3,7 @@
 
 In this chapter, we present a brief review of the fundamental concepts of Hamiltonian mechanics that are used throughout this thesis. Starting from the coordinate transformations, we then focus on the fundamental concepts of perturbation theory, such as the averaging principle.
 
-Next, we present the KAM and Nekhoroshev theorems, two fundamental results of perturbation theory, which constitute the foundation of this thesis. These two theorems give important insights on the behaviour of an otherwise integrable Hamiltonian system under small perturbations, which is exactly the case of the study of the dynamics of a charged particle in the magnetic field of a circular accelerator.
+Next, we present the KAM and Nekhoroshev theorems, two fundamental results of perturbation theory, which constitute the foundation of this thesis. These two theorems give important insights into the behaviour of an otherwise integrable Hamiltonian system under small perturbations, which is exactly the case in the study of the dynamics of a charged particle in the magnetic field of a circular accelerator.
 
 Finally, we introduce the concept of a symplectic map, which is a mathematical object that at the heart of multiple applications in the field of accelerator physics as the one-turn map, and we see how these two theorems can be applied to the study of symplectic maps.
 
@@ -31,7 +31,7 @@ In fact, if one considers the differential of the 1-form
     \dd\omega= \dd p_i\wedge \dd q_i-\pdv{\ham}{q_i}\dd q_i \wedge \dd t-\pdv{\ham}{p_i} \dd p_i \wedge \dd t
     \label{dome}
 \end{equation}
-one defines the vortex lines as the curves in the extended phase space whose tangent is parallel to the null eigenvector of the 2-form $\dd\omega$. Then it is possible to prove that the vortex lines $1$-form have one-to-one projection on the time axis that correspond to the orbits $\vb{q}(t)\, , \, \vb{p}(t)$ which solve the Hamilton equations, 
+one defines the vortex lines as the curves in the extended phase space whose tangent is parallel to the null eigenvector of the 2-form $\dd\omega$. Then it is possible to prove that the vortex lines $1$-form have a one-to-one projection on the time axis that corresponds to the orbits $\vb{q}(t)\, , \, \vb{p}(t)$ that solve the Hamilton equations, 
 
 \begin{comment}
 is described by the motion of a particle in the time interval $[t_0,\,t_1]$ yields
@@ -42,7 +42,7 @@ where $\mathcal{L}=p_i\dot q_i - \ham$ is the Lagrangian, obtained by the Legend
 \end{comment}
 \subsection{Canonical transformations}
 
-The main advantage of having a Hamiltonian formulation of a system is the greater freedom in coordinates choice in the phase space than the corresponding Lagrangian systems. Differently from a Lagrangian formulation, positions and momenta are independent and can be exchanged both in role or mixed to archive optimal formulations, all while the Hamiltonian equation maintains its form. Such changes in coordinates have, however, to maintain the canonical of the Hamiltonian equation defined in Eq.~\eqref{eq:hamem}, also referred to as \textit{symplectic conditions}.
+The advantage of having a Hamiltonian formulation of a system is the freedom to make a convenient coordinate choice in the phase space. For example, positions and momenta are independent and can be exchanged in role or mixed to achieve optimal formulations, which might highlight specific properties and invariants in the system, while the Hamiltonian equation maintains its form. Such changes in coordinates have, however, to maintain the canonical of the Hamiltonian equation defined in Eq.~\eqref{eq:hamem}, also referred to as \textit{symplectic conditions}.
 
 Let us consider a Hamiltonian $\ham(\vb{p},\vb{q},t)$, for which we wish to apply a coordinate transformation $(p_i,q_i)\to(P_i,Q_i)$. To maintain the Hamiltonian properties, we then look for a new Hamiltonian $\mathcal{K}(\vb{P},\vb{Q},t)$ for which
 %
@@ -70,9 +70,9 @@ must be exact. This provides the Hamiltonian transformation laws
 %
 Note that the Hamiltonian function changes if the transformations are time-dependent. The function $F(\vb{q},\vb{Q},t)$ is called the \textit{generating function} of the coordinate transformation.
 
-In the Hamiltonian formulation, the full freedom in coordinate choice is such that even the role of time can be reassigned to another coordinate. We will see in the next chapter how this freedom enables the Courant-Snyder coordinate system, used in accelerator physics.
+In the Hamiltonian formulation, it is also possible to assign the role of time to another coordinate. We will see in Chapter~\ref{ch:accelerator_physics_fundamentals} how this possibility enables the Courant-Snyder coordinate system, used in accelerator physics.
 
-When a coordinate is used to parameterize the orbit, we have that the momentum conjugate to that coordinate, with a minus sign, becomes the new Hamiltonian function.
+When a coordinate is used to parameterize the orbit, we see that the momentum conjugate to that coordinate, with a minus sign, becomes the new Hamiltonian function.
 
 As an example, let us assign the role of time to the $k$th space coordinate $q_k$. Let us indicate the $k$th pair of coordinates as $p_k = \tilde p$, $q_k=\tilde q$. From this we can choose the formally equivalent form
 %
@@ -89,26 +89,26 @@ which highlights the new coordinate roles, as now it is possible to express the 
 \end{split}
 \end{equation}
 
-Finally, the phase flow of a Hamiltonian system is itself a group of canonical transformations as a consequence of the geometrical nature of the variational principle associated to the canonical equations. This property justifies the construction of \textit{symplectic integrators}, i.e.\ algorithms for the numerical integration of Hamilton equations that preserve the Hamiltonian structure of the system.
+Finally, the phase flow of a Hamiltonian system is itself a group of canonical transformations as a consequence of the geometrical nature of the variational principle associated with the canonical equations. This property justifies the construction of \textit{symplectic integrators}, i.e.\ algorithms for the numerical integration of Hamilton equations that preserve the Hamiltonian structure of the system.
 
 
 \subsection{Action-angle variables}
 
-We consider a $n$ degree-of-freedom integrable Hamiltonian system, which will have a $2n$ dimensional phase-space with a symplectic manifold described by the phase variables $(q_.i,\,p_i)$, where $n$ integrals of motion $J_i$ in involution are known (i.e. if one considers $J_i$ as Hamiltonian functions, the corresponding phase flows that solves the canonical equations, commute).
+We consider a $n$ degree-of-freedom integrable Hamiltonian system, which will have a $2n$ dimensional phase space with a symplectic manifold described by the phase variables $(q_.i,\,p_i)$, where $n$ integrals of motion $J_i$ in involution are known (i.e. if one considers $J_i$ as Hamiltonian functions, the corresponding phase flows that solve the canonical equations, commute).
 
 The Liouville theorem states that, if the surfaces $M_{k}$ defined by $J_i=k_i$ are compact, then they are diffeomorphic to $n$ tori $\mathbb{T}^n$, and it is possible to perform a canonical change of variables to the action-angle coordinates $(\phi_i,I_i)$ such that the action $I_i(\vb{J})$ are first integrals of motion and the angles $\phi_i$ evolve according to
 \begin{equation}
     \dot{\phi}_i = \omega_i(I_1\,\dots,\,I_n)\,, 
 \end{equation}
-where $\omega_i$ define the \textit{frequencies} of the motion.
+where $\omega_i$ defines the \textit{frequencies} of the motion.
 
-This implies that if we set as Hamiltonian one of the integrals of the motion, for example, $\ham=J_1(\vb{I}$, we see that the new equations of motion read
+This implies that if we set as Hamiltonian one of the integrals of the motion, for example $\ham=J_1(\vb{I}$, we see that the new equations of motion read
 \begin{equation} 
     \dot I_i = 0\,, \qquad \dot \phi_i = \omega_i(I_1\,\dots,\,I_n) \,,
 \end{equation} 
 
 
-The actions $I_i$ can be explicitly computed. Let us start with the one-di\-men\-sio\-nal case, where the only integral of motion is the Hamiltonian $\ham$ itself, and its conserved value $h$ is the energy, and the set $M_k$ reduces to $M_h$.
+The actions $I_i$ can be explicitly calculated. Let us start with the one-di\-men\-sio\-nal case, where the only integral of motion is the Hamiltonian $\ham$ itself, and its conserved value $h$ is the energy, and the set $M_k$ reduces to $M_h$.
 
 We can then define a canonical transformation starting from the generating function $S(\vb{I},\vb{q})$, which yields
 %
@@ -131,7 +131,7 @@ which implies
 \end{equation} 
 %
 
-The $1-$form $p\,\dd q$ is closed and therefore locally exact on invariant surfaces $M_h$. But if one performs a cycle a level curve $M_h$, the $S$ value changes according to
+The $1-$form $p\,\dd q$ is closed and therefore locally exact on invariant surfaces $M_h$. But if one performs a cycle with a level curve $M_h$, the $S$ value changes according to
 %
 \begin{equation}
     \Delta S(I) = \oint\displaylimits_{M_{h(I)}} \vb{p}\, \dd \vb{q} \,.
@@ -161,7 +161,7 @@ On the other hand, differentiating \eqref{eq:S} in $\vb{I}$ we obtain the follow
     \phi = \frac{1}{2\pi} \pdv{I}\int p\,\dd q\, . 
 \end{equation}  
 
-Generalization to systems with many of degrees of freedom requires to prove that the differential form $\vb{p}\dd \vb{q}$ is closed on the invariant surfaces and the construction $n$ basic cycles $\gamma_1,\dots, \gamma_n$ 1\textsc{d} on the tori $M_{k_i}$. Then one requires that the variation of the angular variable $\phi_i$ integrated along the cycle $\gamma_j$ is equal to $2\pi\delta_{ij}$, where $\delta_{ij}$ is the Kronecker symbol.
+Generalisation to systems with many degrees of freedom requires one to prove that the differential form $\vb{p}\dd \vb{q}$ is closed on the invariant surfaces and the construction $n$ basic cycles $\gamma_1,\dots, \gamma_n$ 1\textsc{d} on the tori $M_{k_i}$. Then the variation of the angular variable $\phi_i$, integrated along the cycle $\gamma_j$, is equal to $2\pi\delta_{ij}$, where $\delta_{ij}$ is the Kronecker symbol.
 
 In such a scenario, the actions variables $\vb{I}_i$ then read as
 %
@@ -177,7 +177,7 @@ Many physical systems can be modelled and described in terms of an ideal integra
 
 Understanding how these perturbations affect the properties of a Hamiltonian system is one of the main problems in dynamical systems, which was called by Poincaré \textit{``fundamental problem of dynamics''}. Multiple approaches to this problem have been explored and grouped under the general topic of \textit{perturbation theory}.
 
-If the evolution timescale of the perturbation is much smaller than the timescale of the unperturbed system, a standard approach that is often proposed in perturbation theory is to \textit{average} over time the perturbations, under the idea that dynamics can be separated into a slow-fast variables evolution. This method is called \textit{averaging principle}. We highlight this specific choice of words, as, Arnold reminds us, it is ``not a theorem, but a physical proposition, that is, a vaguely stated and, strictly speaking, false assertion''. However, ``Such assertions often happen to be fruitful sources for mathematical theorems''~\cite{Arnold:937549}.
+If the evolution timescale of the perturbation is much smaller than the timescale of the unperturbed system, a standard approach that is often proposed in perturbation theory is to \textit{average} over time the perturbations, under the idea that dynamics can be separated into a slow-fast variables evolution. This method is called \textit{averaging principle}. We highlight this specific choice of words, as Arnold reminds us, it is ``not a theorem, but a physical proposition, that is, a vaguely stated and, strictly speaking, false assertion''. However, ``Such assertions often happen to be fruitful sources for mathematical theorems''~\cite{Arnold:937549}.
 
 Let us consider an integrable Hamiltonian system $\ham_0$ with $n$ degrees of freedom. This defines a foliation of a domain of its phase space into invariant tori, which defines the action-angle variables $\vb{I}=(I_1, \ldots, I_n)$, $\boldsymbol{\phi}=(\phi_1, \ldots, \phi_n)$. 
 

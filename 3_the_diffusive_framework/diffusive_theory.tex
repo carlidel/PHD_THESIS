@@ -3,7 +3,7 @@
 
 After having introduced the basic concepts of the theory of stochastic Hamiltonian systems in Chapter~\ref{ch:mathematical_elements}, we now turn to the study of the diffusive properties of these systems. These properties are related to the introduction of a stochastic perturbation in the Hamiltonian describing the system under consideration. The framework we review here for the application of the averaging principle on stochastic Hamiltonian systems follows the line of work presented in~\cite{Bazzani9948, Bazzani:2019lse, bazzani2020diffusion}.
 
-The chapter is structured as follows. We will first present the fundamental concepts of stochastic processes in Section~\ref{sec:diff:stochastic_perturbations}, in which we will define the notation used, and show some simple models of stochastic-induced diffusion over toroidal surfaces and integrable Hamiltonian systems. Next, we will focus in Section~\ref{sec:diff:averaging_principle} on the application of the averaging principle to stochastic Hamiltonian systems, and show how it is possible to reach an expression of the diffusion process in terms of a Fokker-Planck equation. Finally, in Section~\ref{sec:diff:functional_form}, we will show how the diffusion coefficient $D(I)$ has a functional form related to the stability-time estimate of Nekhoroshev theorem.
+The chapter is structured as follows. We will first present the fundamental concepts of stochastic processes in Section~\ref{sec:diff:stochastic_perturbations}, in which we will define the notation used and show some simple models of stochastic-induced diffusion over toroidal surfaces and integrable Hamiltonian systems. Next, we will focus in Section~\ref{sec:diff:averaging_principle} on the application of the averaging principle to stochastic Hamiltonian systems, and show how it is possible to reach an expression of the diffusion process in terms of a Fokker-Planck equation. Finally, in Section~\ref{sec:diff:functional_form}, we will show how the diffusion coefficient $D(I)$ has a functional form related to the stability time estimate of the Nekhoroshev theorem.
 
 \section{Stochastic perturbations}
 \label{sec:diff:stochastic_perturbations}
@@ -11,15 +11,16 @@ The chapter is structured as follows. We will first present the fundamental conc
 \subsection{Notation for stochastic processes}
 \label{subsec:Diffusion for a stochastically perturbed integrable system}
 
-Let us start by defining the following notation: if $\xi(s)$ is a regular stationary stochastic Gaussian process, we set
+Let us start by defining the following notation: If $\xi(s)$ is a regular stationary stochastic Gaussian process, we set
 \begin{equation}
 	w(t) = \int_0^t \xi(s)\,\mathrm{d}s \,, \qquad w_1(t)=\int_0^t w(t)\,\mathrm{d}s \,,
 \end{equation}
-The realizations $\xi(t)$ are continuous, with a correlation function 
+If the realisations $\xi(t)$ are continuous, with a correlation function 
 \begin{equation}
     \langle\xi(t)\xi(t+\tau)\rangle = \Omega(\gamma\tau) \,,\qquad \Omega(\gamma\tau) \simeq \frac{\gamma}{2}e^{-\gamma|\tau|}\,.
+    \label{corrw}
 \end{equation}
-The limit $\gamma\to\infty$ is the white noise limit where the process $\xi(t)$ loses its regularity instantaneously. Then $w(t)$ is the Wiener process. We can write \(w_1(t)\) in the form
+the limit $\gamma\to\infty$ is the white noise limit where the process $\xi(t)$ loses its regularity. The correlation (\ref{corrw}) is generic in many physical systems, since it is satisfied by Markov processes and strongly chaotic systems, and the white noise limit $\gamma\to\infty$ allows one to approximate the physical orbits with the solution of a stochastic differential equations even if the white noise is not a regular function. Then $w(t)$ is the Wiener process. We can write \(w_1(t)\) in the form
 \begin{equation}
 	w_1(t) = \int_0^t \int_0^s \xi(u)\,\mathrm{d}u\,\mathrm{d}s' = \int_0^t \xi(u)\int_u^s\,\mathrm{d}s'\,\mathrm{d}u = \int_0^t (s'-u)\xi(u)\,\mathrm{d}u \,.
 \end{equation}
@@ -32,7 +33,7 @@ where \(K(t,s)\) is called the \textit{kernel} of the noise. We have that \(K=1\
 	\sigma^2(t) = \int_0^t (t-u)^2\,\mathrm{d}u = \frac{t^3}{3} \,.
 \end{equation}
 
-If instead we are considering a noise characterized by a specific spectrum, also referred as coloured noise, we can consider its Fourier expansion, which reads
+If instead we are considering a noise characterised by a specific spectrum, also referred to as coloured noise, we can consider its Fourier expansion, which reads
 \begin{equation}
     \xi(t) = \int_\omega \hat{\xi}(\omega)e^{i\omega t}\,\mathrm{d}\omega\,
 \end{equation}
@@ -40,7 +41,7 @@ where here the random variables $\hat{\xi}(\omega)$ are such that
 \begin{equation}
     \left\langle \hat{\xi}(\omega) \right\rangle = 0 \quad \left\langle \hat{\xi}(\omega)\hat{\xi}'(\omega') \right\rangle = F(\omega)\delta(\omega - \omega')\,
 \end{equation}
-where $\hat{\xi}'(\omega')$ comes from the Fourier expansion of $\xi(t+\tau)$ and $F(\omega)$ is called the \textit{power spectrum} of the noise. The following relation holds
+where $\hat{\xi}'(\omega')$ comes from the Fourier expansion of $\xi(t+\tau)$ and $F(\omega)$ is called \textit{power spectrum} of the noise. The following relation holds
 \begin{equation}
     \left\langle\xi(t+\tau) \xi(t)\right\rangle=\int_\omega \int_{\omega^{\prime}} \left\langle\hat{\xi}(\omega) \overline{\hat{\xi}}\left(\omega^{\prime}\right)\right\rangle e^{i\left(\omega-\omega^{\prime}\right) t+i \omega \tau} \,\mathrm{d} \omega \,\mathrm{d} \omega^{\prime}=\int_\omega F(\omega) e^{i \omega \tau} \,\mathrm{d} \omega\,,
 \end{equation}
@@ -50,7 +51,7 @@ i.e.\ the correlation function is the Fourier transform of the power spectrum $F
 
 \subsubsection*{Diffusion over a toroidal surface}
 
-We start by investigating the fast diffusion process of a probability distribution over a toroidal surface. We are interested in this process as such situation occurs in action-angle Hamiltonian systems for the angle variable.
+We start by investigating the fast diffusion process of a probability distribution on a toroidal surface. We are interested in this process as such a situation occurs in action-angle Hamiltonian systems for the angle variable.
 
 Let us consider a simple example of angular diffusion. Let \(x\) be an angular variable defined over the interval \([0,1]\). We consider the stochastic Hamiltonian dynamics
 \begin{equation}
@@ -66,7 +67,7 @@ The distribution function \(\rho_T(\hat{x},t)\) for the angular variables\(\hat{
  \label{eq:period}
 \end{equation}
 
-In the white noise limit the solution of~\eqref{eq:langevin_toro} on \(\mathbb{R}\) is given by
+In the white noise limit, the solution of~\eqref{eq:langevin_toro} on \(\mathbb{R}\) is given by
 \begin{equation}
 	y = y_0 + \epsilon w(t)\,, \qquad x = x_0 + (\omega + \epsilon y_0) t + \epsilon w_1(t) \,,
 \end{equation}
@@ -105,7 +106,7 @@ while for the Wiener process $y(t)$ the diffusion timescale is $t\simeq \epsilon
 
 \subsubsection*{Application to an integrable Hamiltonian system}
 
-We now consider the simplest stochastic perturbed Hamiltonian system and observe how the perturbation causes a fast diffusion on the angular variable. Some of the methods used here will be similarly used for the more generic scenario. Let us consider the following stochastic perturbed Hamiltonian
+We now consider the simplest stochastic perturbed Hamiltonian system and observe how the perturbation causes a fast diffusion on the angular variable. Some of the methods used here will be used similarly for the more generic scenario. Let us consider the following stochastic perturbed Hamiltonian
 \begin{equation}
 	\ham = \ham_0(I) - \epsilon \phi \xi(t)\,.
 \end{equation}
@@ -124,7 +125,7 @@ Therefore, the action is a Gaussian process with average value $I_0$ and varianc
 \begin{equation}
 	\sigma_{I}^2=\epsilon^2t\,.
 \end{equation}
-In a perturbation approach $\epsilon\ll 1$ we study the evolution of the system for a time $t\ll \epsilon^{-2}$. Then in the  Taylor expansion for \({\phi'}\), we obtain
+In a perturbation approach $\epsilon\ll 1$ we study the evolution of the system over time $t\ll \epsilon^{-2}$. Then in the Taylor expansion for \({\phi'}\), we obtain
 \begin{equation}
 	{\phi'} = \omega(I_0) + \omega'(I_0)\epsilon w(t) + \mathcal{O}(\epsilon^2)\,,
 \end{equation}
@@ -136,23 +137,23 @@ so that the relaxation timescale of the angle variable is estimated by
 \begin{equation}
 	\sigma_{\phi}^2 \propto \epsilon^2 t_\phi^3\simeq 1
 \end{equation}
-i.e. $t_\phi\simeq \epsilon^{-2/3}$. The perturbation approach is justified if one chooses $t\simeq t_\phi$ since $t\epsilon^2\simeq \epsilon^{4/3}\ll 1$. It follows that the angle variable can be considered a fast variable in the diffusion process whereas the action is a slow variable.
+i.e. $t_\phi\simeq \epsilon^{-2/3}$. The perturbation approach is justified if one chooses $t\simeq t_\phi$ since $t\epsilon^2\simeq \epsilon^{4/3}\ll 1$. It follows that the angle variable can be considered a fast variable in the diffusion process, whereas the action is a slow variable.
 
 %
 \section{Averaging principle for stochastic Hamilto\-nians}\label{sec:diff:averaging_principle}
 %
-We now present an extension of the averaging principle to the case of generic stochastic perturbed Hamiltonian system in the action-angle variables in presence of a weak chaotic dynamics in the phase space.
+We now present an extension of the averaging principle to the case of generic stochastic perturbed Hamiltonian system in the action-angle variables in the presence of weak chaotic dynamics in the phase space.
 
-As the perturbation causes the breakdown of the KAM tori in certain regions of the phase-space, we observe an overlapping of a regular dynamics and a random dynamics characterized by a small Lyapunov exponent (i.e.\ a small chaotic character), depending on the initial condition. We set as working hypotheses that it is possible to archive a phenomenological description of the dynamics of the system by means of a stochastic perturbed Hamiltonian description in the form of
+As the perturbation causes the breakdown of the KAM tori in certain regions of the phase-space, we observe an overlapping of a regular dynamics and a random dynamics characterised by a small Lyapunov exponent (i.e.\ a small chaotic character), depending on the initial condition. We set as working hypotheses that it is possible to archive a phenomenological description of the dynamics of the system by means of a stochastic perturbed Hamiltonian description in the form of
 \begin{equation}
     \ham_0(I)+\xi(t) \ham_1(\phi,I) \,,
     \label{sec:diff:ham_stoc}
 \end{equation}
-where $(\phi,I)$ are the action-angle variables and the noise realization also depends on the orbit initial condition. The use of these models is due to their ability to capture the impact of combining an integrable Hamiltonian with a chaotic Hamiltonian environment that causes variations in the phase space. Additionally, they can simulate the effects of weak layers of chaos in the phase space that lead to pseudo-random disruptions in the evolution of the action variables. In order to keep the symplectic nature of the dynamics intact, we take into account regular (i.e., coloured) stationary noise.
+where $(\phi,I)$ are the action-angle variables and the noise realisation also depends on the orbit initial condition. The use of these models is due to their ability to capture the impact of combining an integrable Hamiltonian with a chaotic Hamiltonian environment that causes variations in the phase space. Additionally, they can simulate the effects of weak layers of chaos in the phase space that lead to pseudo-random disruptions in the evolution of the action variables. In order to keep the symplectic nature of the dynamics intact, we take into account regular (i.e., coloured) stationary noise.
 
-Each orbit is a superposition of a regular dynamic and small variations due to random disturbances in the phase space. The perturbation $\ham_1(\phi,I)$ represents the intensity of the variations, while the ``noise'' $\xi(t)$ takes into account the correlation properties of the fluctuations: the noise instances $\xi(t)$ are based on a probability space, which can encompass hidden degrees of freedom and the correlation of the associated stochastic process, linked to the chaotic nature of the dynamics.
+Each orbit is the result of a superposition of a regular dynamic and small variations due to random disturbances in the phase space. The perturbation $\ham_1(\phi,I)$ represents the intensity of the variations, while the ``noise'' $\xi(t)$ takes into account the correlation properties of the fluctuations: the noise instances $\xi(t)$ are based on a probability space, which can encompass hidden degrees of freedom and the correlation of the associated stochastic process, linked to the chaotic nature of the dynamics.
 
-In the case of a weak chaotic region, the instances depend on the initial condition, and the system \eqref{sec:diff:ham_stoc} is an effective representation of the dynamics. Of course, the measurement of the chaotic region should be large to avoid the dynamical traps of Hamiltonian systems which are caused by the stickiness of trajectories to certain specific domains in phase space. In the case of weak chaos, the white noise approximation cannot be applied directly to the process $\xi(t)$, but one can assume that $\Vert \ham_1\Vert \ll 1$, where $\Vert\ \Vert$ is the $L^2$ so that it is possible to introduce a slow diffusion time $\tau \propto \Vert \ham_1\Vert^2 t$ for the action variable at which the white noise approximation is valid.
+In the case of a weak chaotic region, instances depend on the initial condition, and the system \eqref{sec:diff:ham_stoc} is an effective representation of the dynamics. Of course, the measure of the chaotic region should be large to avoid the dynamical traps of Hamiltonian systems, which are caused by the stickiness of trajectories to certain specific domains in phase space. In the case of weak chaos, the white noise approximation cannot be applied directly to the process $\xi(t)$, but one can assume that $\Vert \ham_1\Vert \ll 1$, where $\Vert\ \Vert$ is the $L^2$ so that it is possible to introduce a slow diffusion time $\tau \propto \Vert \ham_1\Vert^2 t$ for the action variable at which the white noise approximation is valid.
 
 Specifically, the ``noise'' depends on the angle variables that can be regarded as a fast variable, which are independent on a timescale much shorter than the diffusion timescale. To archive this, let us consider the slow variables
 \begin{equation}
@@ -163,7 +164,7 @@ where $\Omega(I)=\partial\ham_0/\partial I$, which we use to define the new Hami
     \xi(t)\ham_1\left(\theta + \Omega(I)t, I\right) \,.
 \end{equation}
 
-To reach an approximate solution of the stochastic dynamics of \eqref{sec:diff:ham_stoc}, we consider the evolution of angle-action variables $(\theta, I)$ for a time $T$, this gives us the following map expression:
+To reach an approximate solution of the stochastic dynamics of \eqref{sec:diff:ham_stoc}, we consider the evolution of angle-action variables $(\theta, I)$ for a time $T$, which gives us the following map expression:
 \begin{equation}
     \begin{aligned}
     \Delta \theta_j &= \int_0^T \pdv{\ham_1}{I_j}\left(\theta+\Omega(I)t,I\right) \xi(t)\,\mathrm{d}t \, -
@@ -173,15 +174,15 @@ To reach an approximate solution of the stochastic dynamics of \eqref{sec:diff:h
 \end{equation}
 where $\Delta \theta=\theta(T)-\theta(0)$ and $\Delta I=I(T)-I(0)$.
 
-The time interval $T$ should be long enough to consider the noises $\xi(t)$ and $\xi(t+T)$ as independent, yet it should be short in comparison to the evolution time of the action and the slow phase. We can observe the distinct nature of the fluctuations in the action $I$ and the angle $\theta$ due to the presence of the slow evolving term $\propto t \frac{\partial \Omega}{\partial I}$, resulting in an increase in sensitivity to the fluctuations of the process $\xi(t)$ during the time interval $T$. The stationary solution for the angle distribution is a uniform distribution, however if $\Delta \theta$ is small during a time interval $T$, the existence of resonances $k\Omega(I)=0$ does not allow for averaging the angles in the action dynamics.
+The time interval $T$ should be long enough to consider the noises $\xi(t)$ and $\xi(t+T)$ independent, but should be short in comparison to the evolution time of the action and the slow phase. We can observe the distinct nature of the fluctuations in the action $I$ and the angle $\theta$ due to the presence of the slow evolving term $\propto t \frac{\partial \Omega}{\partial I}$, which results in an increase in sensitivity to the fluctuations of the process $\xi(t)$ during the time interval $T$. The stationary solution for the angle distribution is a uniform distribution, however, if $\Delta \theta$ is small during a time interval $T$, the existence of resonances $k\Omega(I)=0$ does not allow for averaging the angles in the action dynamics.
 
-Let us now estimate the variance of the angle variables using the dominant term for an evolution time $T_\theta$ under the assumption that the action variables can be considered constant during such time interval. We obtain the following
+Let us now estimate the variance of angle variables using the dominant term for an evolution time $T_\theta$ under the assumption that the action variables can be considered constant during such a time interval. We obtain the following
 \begin{multline}
     \operatorname{Var}(\Delta \theta)_{ij} \propto 
     \int_0^{T_\phi}\int_0^{T_\phi}  \pdv{\ham_1}{\phi_k}\left(\theta+\Omega(I)t,I\right)
     \pdv{\ham_1}{\phi_m}\left(\theta+\Omega(I)s,I\right)\times\\\times\pdv{\Omega_m}{I_i}\pdv{\Omega_k}{I_j} ts\Phi(t-s)\, \mathrm{d}t\, \mathrm{d}s \,,
 \end{multline}
-which leads us to the following estimate:
+which leads to the following estimate:
 \begin{equation}
     \left \Vert \textrm{Var}(\Delta \theta)\right \Vert\propto \left \Vert \left (\frac{\partial \Omega}{\partial I}\right )^2 \right \Vert (\Vert \ham_1\Vert^2)\frac{T_\theta^3}{2}\,,
 \end{equation}
@@ -189,7 +190,7 @@ where $T_\theta$ is the relaxation timescale. To get a consistent expression for
 \begin{equation}
     \ham_1(\phi,I)=\epsilon \hat \ham_1(\phi, I)\,,
 \end{equation}
-where $\Vert \hat \ham_1 \Vert=\mathcal{O}(1)$. The relaxation timescale for the slow angle variables can be approximated as $\epsilon^{-2/3}$. Once this time has passed, it can be assumed that the angles are distributed uniformly. It's important to note that this estimate is based on the assumption that
+where $\Vert \hat \ham_1 \Vert=\mathcal{O}(1)$. The relaxation timescale for the slow angle variables can be approximated as $\epsilon^{-2/3}$. Once this time has passed, it can be assumed that the angles are distributed uniformly. It is important to note that this estimate is based on the assumption that
 \begin{equation}
     \frac{\partial \Omega}{\partial I}=\mathcal{O}(1)\,,
 \end{equation}
@@ -199,7 +200,7 @@ so that the evolution of the action dynamics does not alter the distribution of 
 \end{equation}
 the previous estimate gives a relaxation timescale $T_\phi\simeq \epsilon^{-4/3}$.
 
-Let us now consider for such system a time interval $T$ for the evolution such that both the actions and the slow angles evolves, we have the following
+Let us now consider for such a system a time interval $T$ for its evolution, such that both the actions and the slow angles evolve; we have the following
 \begin{multline}
     \Delta I_j = -\int_0^T\pdv{\ham_1}{\phi_j}\xi(s)\,\mathrm{d}s + \int_0^T\int_0^t
     \frac{\partial^2 \ham_1}{\partial I_k\partial \phi_j}\pdv{\ham_1}{\phi_k}\xi(t)\xi(s)\,\mathrm{d}s\,\mathrm{d}t \\
@@ -238,7 +239,7 @@ it is possible to prove that the limit
 \begin{equation}
     \Delta(I)=\lim_{T\to\infty}\frac{4}{T} \int_\omega\frac{\sin^2\left((k\Omega(I)+\omega)\frac{T}{2}\right)}{(k\Omega(I)+\omega)^2}F(\omega)\,\mathrm{d}\omega
 \end{equation}
-is finite, with the main contribution given by the condition $k\Omega(I)\simeq \omega$. That is, the action values at which the unperturbed frequencies satisfy a resonant condition with a Fourier component in the noise. This implies that, if we are considering a noise power spectrum with a peak at $\omega_\ast$, the variance of the action fluctuations is maximal at $I=I_\ast$, such that $k\Omega(I_\ast)=\omega_\ast$. If $F(\omega)=\mathrm{const}$, that is, the white noise limit, we can prove that
+is finite, with the main contribution given by the condition $k\Omega(I)\simeq \omega$. That is, the action values at which the unperturbed frequencies satisfy a resonant condition with a Fourier component in the noise. This implies that, if we consider a noise power spectrum with a peak at $\omega_\ast$, the variance of the action fluctuations is maximal at $I=I_\ast$, so that $k\Omega(I_\ast)=\omega_\ast$. If $F(\omega)=\mathrm{const}$, that is, the white noise limit, we can prove that
 \begin{equation}
     D(I)=\sum_{k,n} k_j k_l |h_k(I)|^2 =\epsilon^2\left \langle \frac{\partial \hat \ham_1}{\partial \phi_j}\frac{\partial \hat \ham_1}{\partial \phi_l}\right \rangle_\phi\,.
 \end{equation}
@@ -251,12 +252,12 @@ is satisfied. If that is the case, we have a finite contribution to the integral
 \begin{equation}
     D(I,\theta)\simeq \sum_{k,n}^{res} k_j n_l h_k(I) \overline{h}_n(I) e^{i (k-n)\theta}\Delta (I)\,,
 \end{equation}
-where the sum runs on the resonant harmonic that depends on the action values. In this scenario, the variance is influenced by the angles $\theta$, resulting in the uniform distribution in the angle variables not being invariant for the action fluctuations. However, if the actions can be considered constant for a time interval on the order of $\mathcal{O}(\epsilon^{-2/3})$, it is possible to average over the angle variables the variance $D(I,\theta)$, as each orbit can cover all angle values at a fixed action prior to diffusion occurring. In this case, the impact of resonances between the noise spectral components and the perturbation components can be disregarded, and we regain the desired result
+where the sum runs on the resonant harmonic that depends on the action values. In this scenario, the variance is influenced by the angles $\theta$, resulting in a uniform distribution in the angle variables that are not invariant for the action fluctuations. However, if the actions can be considered constant for a time interval of the order of $\mathcal{O}(\epsilon^{-2/3})$, it is possible to average the variance $D(I,\theta)$ over the angle variables, as each orbit can cover all angle values at a fixed action before diffusion occurs. In this case, the impact of resonances between the noise spectral components and the perturbation components can be disregarded, and we regain the desired result
 \begin{equation}
     D_{i,j}(I)=\sum_{k} k_j k_l |h_k(I)|^2 \Delta(I)\,.
     \label{diffcoef}
 \end{equation}
-Indeed, if it is assumed that the relaxation time of the angles $\theta$ is much shorter than the diffusion time of the action variables, the angles can be considered as fast random variables that define the various noise instances independently of the random perturbation $\xi(t)$, then we can examine the action average dynamics in regard to both the random perturbation and the angles $\theta$
+In fact, if it is assumed that the relaxation time of the angles $\theta$ is much shorter than the diffusion time of the action variables, the angles can be considered as fast random variables that define the various noise instances independently of the random perturbation $\xi(t)$, then we can examine the average dynamics of the action with regard to both the random perturbation and the angles $\theta$
 \begin{equation}
     \begin{aligned}
     E(\Delta I_j)_\theta&=\frac{1}{2}\frac{\partial}{\partial I_k}\int_0^T\int_0^T
@@ -285,7 +286,7 @@ We now introduce the diffusion timescale $\epsilon^2 T\ll 1$ to apply a diffusio
     \frac{T_\theta\epsilon^2}{2} \frac{\partial}{\partial I_l}D_{j,l}(I) \,,
     \label{stocproc}
 \end{equation}
-where $D(I)$ is defined by the equation (\ref{diffcoef})and $\hat \xi_l$ are independent and identically distributed random variables with zero mean value and unitary variance.
+where $D(I)$ is defined by the equation (\ref{diffcoef})and $\hat \xi_l$ are independent and identically distributed random variables with zero mean value and unit variance.
 
 If we now define the action diffusion timescale $\tau=\epsilon^2 t$, we can write the estimate 
 \begin{equation}
@@ -298,7 +299,7 @@ which holds in the limit $\epsilon\to 0$. Then, we can approximate with the rela
     \label{stocaction}
 \end{equation}
 
-From this final expression, we have that the evolution of the distribution function $\rho(I,\tau)$ at the diffusion timescale is well approximated by the solution of the Fokker-Planck equation
+From this final expression, we have that the evolution of the distribution function $\rho(I,\tau)$ on the diffusion time scale is well approximated by the solution of the Fokker-Planck equation
 \begin{equation}
     \frac{\partial \rho}{\partial \tau}=- \frac{1}{2} \frac{\partial }{\partial I_j}
     \left [\frac{\partial}{\partial I_k}D_{j,k}(I) \right ]\rho(I,\tau)
@@ -315,7 +316,7 @@ which is the desired functional for.
 
 \section{Functional form for $D(I)$}\label{sec:diff:functional_form}
 
-We have reached the result that, under certain conditions, the evolution of an action distribution function $\rho_0(I, t)$ can be described by a Fokker-Planck equation in the form
+We have reached the result that, under certain conditions, the evolution of an action distribution function $\rho_0(I, t)$ can be described by a Fokker-Planck equation of the form
 \begin{equation}
     \pdv{\rho}{\tau}=\frac{1}{2}\pdv{}{I_j} D_{j,k}(I) \pdv{}{I_k}\rho(I,\tau)\,,
     \label{eq:final-fp}
@@ -325,7 +326,7 @@ where the diffusion coefficient $D_{j,k}(I)$ reads
     D_{j,k}(I) = \left\langle\pdv{\hat\ham_1}{\phi_j}\pdv{\hat\ham_1}{\phi_k}\right\rangle \,.
 \end{equation}
 
-In the context of accelerator physics, we have seen how the betatron motion can be described in terms of two action variables $(I_x, I_y)$, which define the two non-linear invariants for the two separate transverse planes. However, if we make the assumption that such a diffusive process takes place mainly along a one-dimensional direction, we can justify a 1\textsc{d} approach and reduce Eq.~\eqref{eq:final-fp} to the one-degree-of-freedom case.
+In the context of accelerator physics, we have seen how the betatron motion can be described in terms of two action variables $(I_x, I_y)$, which define the two non-linear invariants for the two separate transverse planes. However, if we assume that such a diffusive process takes place mainly along a one-dimensional direction, we can justify a 1\textsc{d} approach and reduce Eq.~\eqref{eq:final-fp} to the one-degree-of-freedom case.
 
 With the generic Hamiltonian notation, the resulting Fokker-Planck equation reads
 \begin{equation}
@@ -343,9 +344,9 @@ If we want to work with regular time units $t$, we can consider this form of Fok
 \end{equation}
 where now $\epsilon^2 = \lambda\norm{\ham_1}^2$ represents the timescale constant of the diffusive process.
 
-Now we are interested in having an effective generic functional form for $D(I)$. To archive this, we follow the construction presented in~\cite{Bazzani:2019lse}, and references therein.
+Now we are interested in having an effective generic functional form for $D(I)$. To archive this, we follow the construction presented in~\cite{Bazzani:2019lse}, and the references therein.
 
-To estimate the norm of $\ham_1$, we have that perturbation theory suggests a possible estimate based on the asymptotic character of the perturbation series. Assuming that there are no low-order resonances in the phase space, we can rely on the progressive expansion of the perturbative series, which gives us the following generic estimate~\cite{Bazzani:1990aa}:
+To estimate the norm of $\ham_1$, we see that the perturbation theory suggests a possible estimate based on the asymptotic character of the perturbation series. Assuming that there are no low-order resonances in the phase space, we can rely on the progressive expansion of the perturbative series, which gives us the following generic estimate~\cite{Bazzani:1990aa}:
 \begin{equation}
     \norm{R_n(I)} \propto (n!)^\kappa \left(\frac{I}{I_\ast}\right)^{n/2}\,,
 \end{equation}
@@ -370,13 +371,13 @@ This estimate enables us to define the following functional form for the diffusi
     D(I) = c \exp\left[-2\left(\frac{I_\ast}{I}\right)^{1/2\kappa}\right]\,,
     \label{eq:diffusion}
 \end{equation}
-where $c$ is a normalization constant evaluated according to
+where $c$ is a normalisation constant evaluated according to
 \begin{equation}
     c \int_0^{I_\text{a}} D(I)\,\mathrm{d}I = 1 \,,
 \end{equation}
-so that $D(I)$ is normalized over the boundaries considered for the Fokker-Planck system, as $I_\text{a}$ represents the absorbing boundary condition, i.e.\ a overlinerier over which we can consider a particle as ``lost''. With this notation, the timescale of the process is completely determined by $\epsilon^2$, however, variation of this notation can be freely considered.
+so that $D(I)$ is normalised over the boundaries considered for the Fokker-Planck system, as $I_\text{a}$ represents the absorbing boundary condition, i.e.\ a overlinerier over which we can consider a particle as ``lost''. With this notation, the timescale of the process is completely determined by $\epsilon^2$, however, variation of this notation can be freely considered.
 
-Let us now consider this last form of Fokker-Planck equation, along with an absorbing boundary condition at $I_{\mathrm{a}}$, i.e.\ the phase-space limit beyond which an initial condition is considered lost. Note that $D(I)$ and $\rho$ have dimensions $[I^2t^{-1}]$ and $[I^{-1}]$, respectively.
+Let us now consider this last form of the Fokker-Planck equation, along with an absorbing boundary condition at $I_{\mathrm{a}}$, i.e.\ the phase-space limit beyond which an initial condition is considered lost. Note that $D(I)$ and $\rho$ have dimensions $[I^2t^{-1}]$ and $[I^{-1}]$, respectively.
 
 \begin{figure*}[t]
     \centering
@@ -389,9 +390,9 @@ Let us now consider this last form of Fokker-Planck equation, along with an abso
 
 In Fig.~\ref{fig:1} (top and centre), we consider the behaviour of $D(I)$ from Eq.~\eqref{eq:diffusion} for some values of $\kappa$ and for $\epsilon^2 = 1$. We can distinguish three regions for this type of function: $(i)$ a stable core region for $I \ll I_\ast$, for which $D(I)$ has values decreasing to zero exponentially fast; $(ii)$ a ramp-up region for $I \lesssim I_\ast$, where $D(I)$ starts to have non-negligible values and changes from an exponential growth to an almost linear one; $(iii)$ a region for $I >  I_\ast$, where $D(I)$ features an almost linear growth (in logarithmic scale a saturation appears). These three regions are more or less distinguishable depending on the value of $\kappa$. 
 
-In Fig.~\ref{fig:1} (bottom), we also display the result of the numerical integration of Eq.~\eqref{eq:fp} for some values of $\kappa$, performed on an initial distribution $\rho_0(I)=1$ with a Crank-Nicolson scheme~\cite{crank1947practical} (see Appendix~\ref{app_sec:numerical_integration_with_crank_nicolson} for some detail on the integration scheme used in our studies).
+In Fig.~\ref{fig:1} (bottom), we also display the result of the numerical integration of Eq.~\eqref{eq:fp} for some values of $\kappa$, performed on an initial distribution $\rho_0(I)=1$ with a Crank-Nicolson scheme~\cite{crank1947practical} (see Appendix~\ref{app_sec:numerical_integration_with_crank_nicolson} for some details on the integration scheme used in our studies).
 %, using $\varepsilon^2 = 1$ in all numerical simulations performed, and setting the absorbing boundary condition at $I/I_\ast=1.5$. 
-It is also possible to observe in the shape of the distribution function a stable core region, corresponding to $I/I_\ast \ll 1$, where $D(I)$ starts having values very close to zero, a fast decrease region and, finally, a saturation region, for $I/I_\ast = 1$ and beyond, where $\rho(I, t)$ assumes small values.
+It is also possible to observe in the shape of the distribution function a stable core region, corresponding to $I/I_\ast \ll 1$, where $D(I)$ starts having values very close to zero, a fast decrease region, and finally a saturation region, for $I/I_\ast = 1$ and beyond, where $\rho(I, t)$ assumes small values.
 
 
 
