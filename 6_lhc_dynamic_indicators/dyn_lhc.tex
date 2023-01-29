@@ -211,7 +211,7 @@ The behaviour of the distribution of the indicator values can be appreciated by 
 
 \subsection{Considerations on stability time and Lyapunov time}
 
-It is of interest to inspect the average value of the Lyapunov time $T_\mathrm{L}$, that is, the inverse of the maximum Lyapunov exponent~\cite{Tancredi_2001}, for different values of the amplitude in $x-y$ space. The maximum Lyapunov exponent is estimated directly by the dynamic indicators $FLI/n$ or $FLI^{{WB}}$. In particular, we are interested in evaluating whether $T_\mathrm{L}$ follows a Nekhoroshev-like scaling law, which would indicate that the chaotic regions are those contributing to the diffusion-like process that has been introduced in the proposed framework. In other words, we want to inspect whether $T_\mathrm{L}$ scales with the amplitude $I$ of an initial condition, as in Eq.~\eqref{nekest}. This study is motivated by the well-known fact that the dynamic aperture follows a Nekhoroshev-like evolution~\cite{Bazzani:2019csk}, discussed in Section~\ref{sec:2:dynamic_aperture}, which implies a scaling law that describes an exponential reduction in the stability time $T_\mathrm{s}$ of the initial conditions as a function of their initial action $I$.
+It is of interest to inspect the average value of the Lyapunov time $T_\mathrm{L}$, that is, the inverse of the maximum Lyapunov exponent~\cite{Tancredi_2001}, for different values of the amplitude in the $x-y$ space. The maximum Lyapunov exponent is estimated directly by the dynamic indicators $FLI/n$ or $FLI^{{WB}}$. In particular, we are interested in evaluating whether $T_\mathrm{L}$ follows a Nekhoroshev-like scaling law, which would indicate that the chaotic regions are those contributing to the diffusion-like process that has been introduced in the proposed framework. In other words, we want to inspect whether $T_\mathrm{L}$ scales with the amplitude $I$ of an initial condition, as in Eq.~\eqref{nekest}. This study is motivated by the well-known fact that the dynamic aperture follows a Nekhoroshev-like evolution~\cite{Bazzani:2019csk}, discussed in Section~\ref{sec:2:dynamic_aperture}, which implies a scaling law that describes an exponential reduction in the stability time $T_\mathrm{s}$ of the initial conditions as a function of their initial action $I$.
 
 To make use of our numerical simulation data and inspect $T_\mathrm{s}$ and $T_\mathrm{L}$ as functions of the initial radius $r = \sqrt{x^2 + y^2}$ of an initial condition, we evaluated the mean values of $T_\mathrm{s}$ and $T_\mathrm{L}$ for a set of initial conditions in the amplitude interval $[r-\Delta r/2, r +\Delta r/2]$ and the angular sector comprised between $[0,\pi/2]$. The mean values of $T_\mathrm{s}$ and $T_\mathrm{L}$ are then calculated for each interval and the resulting values are plotted as a function of $r$. Note that for our Nekhoroshev-like scaling laws, $I$ and $r$ are related by $I = r^2$.
 
@@ -224,7 +224,7 @@ To evaluate an optimal choice for $\Delta r$, we first calculate the mean values
     \label{fig:ts_vs_r0}
 \end{figure}
 
-To estimate the Lyapunov time $T_\mathrm{L}$, we can use $FLI/n$ or $FLI^{{WB}}$, as both provide an estimate of the maximal Lyapunov exponent and therefore of $T_\mathrm{L}$. In Fig.~\ref{fig:lyapunov_time_fli_vs_wb}, we present the results of this analysis for the same seed of the HL-LHC lattice. For regular orbits, the maximal Lyapunov exponent is zero, and therefore $T_\mathrm{L}$ is infinite. For chaotic orbits, however, the maximal Lyapunov exponent is finite, and therefore $T_\mathrm{L}$ is finite as well. However, since the $FLI/n$ and $FLI^{WB}$ dynamic indicators are evaluated at a finite time $n$, it is inevitable to observe a non-zero value of the maximal Lyapunov exponent, and hence a finite value of $T_\mathrm{L}$, also for regular orbits. This can be observed in Fig.~\ref{fig:lyapunov_time_fli_vs_wb}, since for values of $r$ corresponding to the regular regions of the phase space, i.e. close to zero, $T_\mathrm{L}$ as computed using $FLI/n$ tends to $10^5$, the maximum number of turns used in the numerical simulations. The situation is different for the case of $FLI^{{WB}}$. In fact, thanks to its superconvergence properties, it provides the same mean $T_\mathrm{L}$ value as $FLI/n$ for $r$ in the chaotic regions, i.e. corresponding to large values of $r$. Moreover, it provides higher values of $T_\mathrm{L}$ for $r$ corresponding to regular regions. 
+To estimate the Lyapunov time $T_\mathrm{L}$, we can use $FLI/n$ or $FLI^{{WB}}$, as both provide an estimate of the maximal Lyapunov exponent and therefore of $T_\mathrm{L}$. In Fig.~\ref{fig:lyapunov_time_fli_vs_wb}, we present the results of this analysis for the same seed of the HL-LHC lattice. For regular orbits, the maximal Lyapunov exponent is zero and, therefore, $T_\mathrm{L}$ is infinite. For chaotic orbits, however, the maximal Lyapunov exponent is finite and therefore $T_\mathrm{L}$ is finite as well. However, since the $FLI/n$ and $FLI^{WB}$ dynamic indicators are evaluated at a finite time $n$, it is inevitable to observe a non-zero value of the maximal Lyapunov exponent, and hence a finite value of $T_\mathrm{L}$, also for regular orbits. This can be observed in Fig.~\ref{fig:lyapunov_time_fli_vs_wb}, since for values of $r$ corresponding to the regular regions of the phase space, i.e. close to zero, $T_\mathrm{L}$ as computed using $FLI/n$ tends to $10^5$, the maximum number of turns used in the numerical simulations. The situation is different for the case of $FLI^{{WB}}$. In fact, thanks to its superconvergence properties, it provides the same mean $T_\mathrm{L}$ value as $FLI/n$ for $r$ in the chaotic regions, i.e. it corresponds to large values of $r$. Moreover, it provides higher values of $T_\mathrm{L}$ for $r$ corresponding to regular regions. 
 Based on this observation, we will use $FLI^{{WB}}$ to derive $T_\mathrm{L}$ in the following.
 
 \begin{figure}
@@ -252,7 +252,7 @@ The curves shown so far are obtained by a process of averaging of the raw data. 
     \label{fig:extra_distribution}
 \end{figure}
 
-It is worth noting that given the shape of the distributions, the mean value does not correspond to the most probable one, i.e. the position of the maximum of the distribution. Therefore, we have evaluated the curves that represent the most probable values of $T_\mathrm{s}$ and $T_\mathrm{L}$ and used them for the following analyses. However, it turned out that the results of the fit discussed in the following are much less stable and because of this observation, the use of the most probable value of the distributions of $T_\mathrm{s}$ or $T_\mathrm{L}$ was abandoned, and the use of the mean value was retained for the rest of the analyses.   
+It is worth noting that given the shape of the distributions, the mean value does not correspond to the most probable one, i.e. the position of the maximum of the distribution. Therefore, we have evaluated the curves that represent the most probable values of $T_\mathrm{s}$ and $T_\mathrm{L}$ and used them for the following analyses. However, it turned out that the results of the fit discussed below are much less stable and because of this observation, the use of the most probable value of the distributions of $T_\mathrm{s}$ or $T_\mathrm{L}$ was abandoned, and the use of the mean value was retained for the rest of the analyses.   
 
 We now want to study the possibility of fitting a Nekhoroshev-like function
 \begin{equation}
@@ -338,25 +338,29 @@ If $\kappa_\mathrm{L}/\kappa_\mathrm{s} = 1$, we can recover a polynomial relati
 
 \begin{table}[htb]
     \centering
+    \begin{adjustbox}{width=\textwidth,center}
     \begin{tabular}{l|c|ccc}
         \toprule
         \multicolumn{2}{c|}{Relation $T_\mathrm{s}$, $T_\mathrm{L}$} & $\zeta_0=$ \SI{0.0}{\meter} & $\zeta_0=$ \SI{0.15}{\meter} & $\zeta_0=$ \SI{0.3}{\meter} \\
         \midrule
-        \multirow{3}{*}{\makecell{Worst\\seed}}  & $\kappa_\mathrm{L}/\kappa_\mathrm{s}$ & $2.38$ & $1.56$ & $1.56$   \\
-        & $\alpha$ & $5.9\times10^{-2}$ & $2.4\times10^{-4}$ & $3.4\times10^{-3}$ \\
-        & $\beta$ & $1.6\times10^{-4}$ & $1.4$ & $1.1$ \\
+        \multirow{3}{*}{\makecell{Worst\\seed}}  & $\kappa_\mathrm{L}/\kappa_\mathrm{s}$ & $2 \pm 6$ & $1.56 \pm 0.08$ & $1.56 \pm 0.09$    \\
+        & $\alpha$ & $(5.9 \pm 0.5)\times10^{-2}$ & $(1.1 \pm 0.2)\times10^{-1}$  & $(1.6 \pm 0.2)\times10^{-1}$ \\
+        & $\beta$ & $(1.6 \pm 3.1)\times10^{-4}$ & $1.4 \pm 1.6$ & $1.1 \pm 1.0$ \\
         \midrule
 
-        \multirow{3}{*}{\makecell{Best\\seed}}  & $\kappa_\mathrm{L}/\kappa_\mathrm{s}$ & $2.0$ & $1.03$ & $1.13$  \\
-        & $\alpha$ & $6.9\times10^{-3}$ & $2.2\times10^{-10}$ & $2.8\times10^{-16}$  \\
-        & $\beta$ & $2.2\times10^{-3}$ & $7.4$ & $9.4$  \\
+        \multirow{3}{*}{\makecell{Best\\seed}}  & $\kappa_\mathrm{L}/\kappa_\mathrm{s}$ & $2.0 \pm 1.3$ & $1.03 \pm 0.03$ & $1.13 \pm 0.06$  \\
+        & $\alpha$ & $(0.7 \pm 0.5)\times10^{-2}$ & $(1.2 \pm 0.7)\times10^{-2}$ & $(1.51 \pm 0.01)\times10^{-2}$  \\
+        & $\beta$ & $(2.2 \pm 2.0)\times10^{-3}$ & $7 \pm 6$ & $9 \pm 8$  \\
         \bottomrule
     \end{tabular}
-    \caption{Parameters of the relation between $T_\mathrm{s}$ and $T_\mathrm{L}$ obtained from the fit parameters reported in Table~\ref{tab:lyap_fit_results}.}
+    \end{adjustbox}
+    \caption{Parameters of the relation between $T_\mathrm{s}$ and $T_\mathrm{L}$ obtained from the fit parameters reported in Table~\ref{tab:lyap_fit_results}. All the parameters are evaluated considering the case $\kappa_{\mathrm{L}}/\kappa_{\mathrm{s}} \neq 1$.}
     \label{tab:ts_tl_relation_parameters}
 \end{table}
 
 The parameters found show drastic differences between the various cases, confirming the difference in dynamics and the fact that the relationship between $T_\mathrm{s}$ and $T_\mathrm{L}$ is strongly model dependent. It should also be noted that the parameters values for $\zeta_0=0.0$ exhibit strong differences from those obtained for $\zeta_0 \neq 0$ values. This can be mainly related to the poor fit performances obtained for the fit of the Nekhoroshev law on $T_\mathrm{L}$ for these cases.
+
+Of all the cases inspected, that corresponding to the best seed and $\zeta_0 =$ \SI{0.15}{\meter} appears to be the only one with the ratio $\kappa_\mathrm{L}/\kappa_{\mathrm{s}}$ comparable to one, if we consider the propagated uncertainty. If we consider the corresponding parameters $\alpha$ and $\beta$ for this specific case, we have, respectively, $\alpha = (0.2\pm3.3)\times10^{-9}$ and $\beta = 7\pm6$. Note that the $\alpha$ parameter ends up having an uncertainty higher than the nominal value. This is inevitably due to the relatively high uncertainty evaluated in the fit of $I_\ast$ using the current fit routine. %Possible strategies to tackle this issue involve using a different method for estimating the uncertainty on the fitting parameters.
 
 \subsection{Time evolution of $GALI^{(k)}$ for chaotic orbits}
 
@@ -447,13 +451,17 @@ The results are shown in Fig.~\ref{fig:gali2_4_chaos}. The mean values of $GALI^
 \begin{figure}
     \centering
     \includegraphics[width=1.0\textwidth]{6_lhc_dynamic_indicators/figs/updated/evolution_gali_4_chaos.pdf}
-    \caption{Mean value evolution of $GALI^{(2)}$ and $GALI^{(4)}$ for various displacement choices, and of $GALI^{(6)}$. An ensemble of $10ˆ3$ chaotic initial conditions was considered. The mean value of the two $GALI$ indicators both follow an exponential decay, which is in agreement with the expected behaviour for chaotic orbits. $GALI^{(4)}$ shows roughly double the decay rate of $GALI^{(2)}$. The displacement choice $(\hat{\zeta}, \hat{\delta})$ in $GALI^{(2)}$ has a decay rate faster than the other choices. (HL-LHC lattice used: worst seed, $\zeta_0=$\SI{0.3}{\meter}.)}
+    \caption{Mean value evolution of $GALI^{(2)}$ and $GALI^{(4)}$ for various displacement choices, and of $GALI^{(6)}$. An ensemble of $10^3$ chaotic initial conditions was considered. The mean value of the two $GALI$ indicators both follow an exponential decay, which is in agreement with the expected behaviour for chaotic orbits. $GALI^{(4)}$ shows roughly double the decay rate of $GALI^{(2)}$. The displacement choice $(\hat{\zeta}, \hat{\delta})$ in $GALI^{(2)}$ has a decay rate faster than the other choices. (HL-LHC lattice used: worst seed, $\zeta_0=$\SI{0.3}{\meter}.)}
     \label{fig:gali2_4_chaos}
 \end{figure}
 
 \section{Conclusions and future work}\label{sec:8:conclusions}
 
 In this chapter, we used a set of dynamic indicators to study the beam dynamics generated by a realistic accelerator magnetic lattice. Given the ability of dynamic indicators to provide information on the chaotic character of the dynamics, they can be used to probe the long-term dynamics of charged particles in a circular accelerator, in order to gain insights on the phase-space structures and the scaling laws governing the beam dynamics, which are closely linked to stability and diffusive behaviour.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\FloatBarrier
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Five indicators have been considered, namely $FLI/n$, $FLI^{WB}$, $GALI^{(k)}$, $REM$, and $FMA$, based on the experience gained from the study of the dynamics generated by the H\'enon map. The computational aspects and numerical implementation of these indicators have been discussed, and they were then tested on an HL-LHC realistic accelerator lattice, and the information provided by each indicator was discussed, also with emphasis on their features.
 

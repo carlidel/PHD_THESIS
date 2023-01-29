@@ -147,15 +147,6 @@ To address this issue, we define an initial estimate of the global current shape
 
 To include this missing information, the fundamental CSI has been multiplied by different constant terms to represent possible different levels of partial recovery of $J_\mathrm{R}(t)$. This procedure is shown in Fig.~\ref{fig:second}. One can see how the fundamental CSI represents the initial lowest estimate of global current, while the different multiplicative constants introduce different gap levels after the terminating points of the recovery currents. This multiplicative can then be treated as a free parameter for reconstructing missing information.
 
-%
-\begin{figure}[thp]
-    \centering
-    \includegraphics[trim={0 2.5mm 0 3mm}, clip, width=\columnwidth]{5_Diffusion_measurement_LHC/figs/second_bis.pdf}
-    \caption{Possible estimates of $J_\mathrm{eq}(t)$ for Beam~1 data. An initial estimate is made starting from a Cubic Spline Interpolation (CSI) with positive second derivative passing through the end points of the measured recovery currents (red line). The various curves are obtained by multiplying the fundamental CSI by a constant term, and represent estimates of the partial recovery currents. The multiplicative constant considered is reported in the plot legend.}
-    \label{fig:second}
-\end{figure}
-%
-
 Finally, the rapid sequence of jaw movements introduces another issue: the difference distribution $\rho^\ast$ cannot be described with certainty by Eq.~\eqref{eq:outward_difference}, or its approximated form by Eq.~\eqref{eq:outward_difference_approx}. To address this issue, we replace the $D(I)$-dependent integral terms in Eq.~\eqref{eq:outward_difference_approx} with the approximation
 \begin{equation}
     \rho_{\mathrm{app}}^{\ast}(I)= \begin{cases} -M & \text { if } I\leq I_{\mathrm{a}}\\ -\left(\frac{I_{\mathrm{a}}^{\prime }-I}{I_{\mathrm{a}}^{ \prime}-I_{\mathrm{a}}}\right) M & \text { if } I>I_{\mathrm{a}}  \end{cases} \, ,
@@ -165,8 +156,15 @@ where $M$ is a fixed constant for each jaw movement that represents an unknown a
 
 A scan is performed on different combinations of the multiplicative factor of the CSI and of $M$, while keeping track of the $\chi^2$ achieved by the fitting routine that determines the values of the model parameters $\kappa, I_\ast$. The result of this procedure is shown in Figs.~\ref{fig:fourth} and~\ref{fig:fifth}, where one can observe the existence of an optimal configuration of parameters and the good reconstruction performance achieved by such a configuration. The optimal fit results for Beam~1 and Beam~2 data are reported in Table~\ref{tab:fit_results}.
 
-\begin{figure}[thp]
+\begin{figure}[p]
     \centering
+    \includegraphics[trim={0 2.5mm 0 3mm}, clip, width=\columnwidth]{5_Diffusion_measurement_LHC/figs/second_bis.pdf}
+    \caption{Possible estimates of $J_\mathrm{eq}(t)$ for Beam~1 data. An initial estimate is made starting from a Cubic Spline Interpolation (CSI) with positive second derivative passing through the end points of the measured recovery currents (red line). The various curves are obtained by multiplying the fundamental CSI by a constant term, and represent estimates of the partial recovery currents. The multiplicative constant considered is reported in the plot legend.}
+    \label{fig:second}
+% \end{figure}
+    \vspace{\floatsep}
+% \begin{figure}[thp]
+%     \centering
     \includegraphics[trim={0 2.5mm 0 1.5mm}, clip, width=0.98\columnwidth]{5_Diffusion_measurement_LHC/figs/fourth.pdf}
     \caption{Fit performance of $\kappa$ and $I_\ast$ for Beam~1 data, using different combinations of CSI multiplicative constants and values of $M$ for Eq.~\eqref{eq:approximated_distribution_beam}. The color map shows the existence of an optimal pair of values at (CSI $\times 1.5$, $750$).}
     \label{fig:fourth}
@@ -191,7 +189,7 @@ Note that the values reported in~\cite{bazzani2020diffusion}, namely $\kappa=0.3
 
 \begin{figure}[t]
     \centering
-    \includegraphics[trim={0 2.5mm 0 3mm}, clip, width=0.95\columnwidth]{5_Diffusion_measurement_LHC/figs/fifth.pdf}
+    \includegraphics[trim={0 2.5mm 0 3mm}, clip, width=1.0\textwidth]{5_Diffusion_measurement_LHC/figs/fifth.pdf}
     \caption{Fit results for Beam~1 data for two $M$ values, considering the recovery current obtained by using the optimal CSI multiplicative constant $\times 1.5$. The optimal $M$ value (orange) outperforms a lower $M$ value (blue) and manages to reconstruct the shape of the recovery currents.}
     \label{fig:fifth}
 \end{figure}

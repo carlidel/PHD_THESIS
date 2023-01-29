@@ -1,18 +1,19 @@
-\chapter{Diffusive model application on wire compensators losses}\label{ch:wire-compensators}
+\chapter{Application of the diffusive model to describe beam losses in the presence of wire compensators}\label{ch:wire-compensators}
+\chaptermark{Diffusive model in the presence of wire compensators}
 
 In this chapter, we examine the case of beam-beam wire compensators, which play an important role in counteracting the detrimental effects of beam-beam interactions in the LHC. Our original contribution to this field is the application of our diffusive model to assess the long-term effects of wire compensators on beam losses and emittance.
 
-Through the study of the LHC Beam~2 data, collected during a Run~2 measurement campaign, we aim to understand the effectiveness of wire compensators in mitigating beam-beam effects without causing unwanted effects such as increased emittance. The results of this analysis provide insight into the potential benefits of utilizing wire compensators in present and future accelerator design and show how this diffusive model can be applied to assess long-term effects of new components in the accelerator via inspection of the beam loss data.
+Through the study of the LHC Beam~2 data, collected during a Run~2 measurement campaign, we aim to understand the effectiveness of wire compensators in mitigating beam-beam effects without causing unwanted effects such as increased emittance. The results of this analysis provide insight into the potential benefits of utilising wire compensators in present and future accelerator design and show how this diffusive model can be applied to assess long-term effects of new components in the accelerator via inspection of the beam loss data.
 
 The chapter is structured as follows. In Section~\ref{sec:5:wire-compensators}, we present the generalities of wire compensators and their implementation in the LHC. In Section~\ref{sec:5:wire-data}, we give an overview of the data gathered during the dedicated wire compensators' measurement campaign in Run~2. In Section~\ref{sec:5:wire-model}, we discuss how our diffusive model can be applied to the data and, in Section~\ref{sec:5:results}, we present the results of the analysis. Finally, in Section~\ref{sec:5:conclusions}, we draw our conclusions and discuss the potential future applications of the diffusive model in light of the results and difficulties encountered in this analysis.
 
-\section{Generalities on LHC beam-beam wire compensators}\label{sec:5:wire-compensators}
+\section{Generalities on the LHC beam-beam wire compensators}\label{sec:5:wire-compensators}
 
 One of the most significant limits in the present LHC design and the future HL-LHC is given by the electromagnetic interactions between the two counter-rotating beams in the shared sections of the machine that occur around the interaction points~\cite{Arduini_2016}. These beam-beam interactions lead to what can be distinguished as head-on beam-beam effects, which occur when the beam bunches overlap at the interaction point, and long-range beam-beam effects, occurring when the two beams are transversely separated in the remaining part of the shared region.
 
-In the LHC, the beams are set in collision with a \textit{crossing angle}, which has the purpose of separating bunches immediately upstream and downstream of the collision point~\cite{Arduini_2016} to reduce the strength of long-range beam-beam effects. However, an increase in the crossing angle also implies a reduction in integrated luminosity, that is, the total number of collisions that have occurred over a given period of time, typically measured in inverse femtobarns \SI{}{fb}$^{-1}$~\cite{Herr:941318}, as the overlap of the bunches decreases. A schematic visualization of two different crossing angles and their consequent effect on beam separation and bunch overlap is presented in Fig.~\ref{fig:crossing-angles}. The nominal full crossing angle for LHC is set at $\theta_c =$ \SI{285}{\micro\radian}, while for HL-LHC the expected baseline parameter will be set at $\theta_c =$ \SI{500}{\micro\radian}~\cite{BejarAlonso:2749422}. 
+In the LHC, the beams are set in collision with a \textit{crossing angle}, which has the purpose of separating bunches immediately upstream and downstream of the collision point~\cite{Arduini_2016} to reduce the strength of long-range beam-beam effects. However, an increase in the crossing angle also implies a reduction in integrated luminosity, that is, the total number of collisions that have occurred over a given period of time, typically measured in inverse femtobarns \SI{}{fb}$^{-1}$~\cite{Herr:941318}, as the overlap of the bunches decreases. A schematic visualisation of two different crossing angles and their consequent effect on beam separation and bunch overlap is presented in Fig.~\ref{fig:crossing-angles}. The nominal full crossing angle for LHC is set at $\theta_c =$ \SI{285}{\micro\radian}, while for HL-LHC the expected baseline parameter will be set at $\theta_c =$ \SI{500}{\micro\radian}~\cite{BejarAlonso:2749422}. 
 
-\begin{figure}[hpt]
+\begin{figure}[th]
     \centering
     \def\svgwidth{1.0\textwidth}
     \import{5_wire_compensators_LHC/figs/}{crossing_angle_basics.pdf_tex}
@@ -20,31 +21,31 @@ In the LHC, the beams are set in collision with a \textit{crossing angle}, which
     \label{fig:crossing-angles}
 \end{figure}
 
-To address long-range beam-beam effects while maintaining a small crossing angle, a corrective approach based on electromagnet lenses was presented in~\cite{Koutchouk:692058}. The concept of wire compensators can be traced back to the early 2000s, when the resemblance between the long-range beam-beam kicks and the $1/r$ dependence of a kick caused by a DC wire was observed~\cite{PhysRevSTAB.5.074001, Koutchouk:692058}. This similarity is more accurate with larger beam-beam separations. Since the initial proposal, various experiments have been conducted, including installing and testing different types of wires at facilities such as the RHIC~\cite{PhysRevSTAB.14.091001} at Brookhaven National Laboratory, DAFNE~\cite{https://doi.org/10.48550/arxiv.0803.1544} at INFN in Italy, and the SPS at CERN~\cite{Zimmermann:1955353,Koutchouk:793423}. In 2015, a study using a resonance compensation criterion to optimize the position and current of the wires was conducted~\cite{Fartoukh:2052448}, where it was shown that the non-linear kicks from distributed long-range beam-beam interactions could be approximated by two equivalent kicks on either side of the IP. A sketch of the concept of compensation given by the beam-beam wire compensators, which we will refer to as BBCW, is presented in Fig.~\ref{fig:wire-baseline}. In the sketch, the weak-strong approximation is represented~\cite{Pellegrini_2017,Banfi:1742126}, i.e.\ it is assumed that one beam, referred to as the "strong beam", will not be affected by the other beam, while the "weak beam" experiences kicks caused by the electromagnetic fields generated by the strong beam.
+To address long-range beam-beam effects while maintaining a small crossing angle, a corrective approach based on electromagnet lenses was presented in~\cite{Koutchouk:692058}. The concept of wire compensators can be traced back to the early 2000s, when the resemblance between long-range beam-beam kicks and the $1/r$ dependence of a kick caused by a DC wire was observed~\cite{PhysRevSTAB.5.074001, Koutchouk:692058}. This similarity is more accurate with larger beam-beam separations. Since the initial proposal, various experiments have been conducted, including installing and testing different types of wires at facilities such as the RHIC~\cite{PhysRevSTAB.14.091001} at Brookhaven National Laboratory, DAFNE~\cite{https://doi.org/10.48550/arxiv.0803.1544} at INFN in Italy, and at the CERN Super Proton Synchrotron (SPS) CERN~\cite{Zimmermann:1955353,Koutchouk:793423}. In 2015, a study was conducted using a resonance compensation criterion to optimise the position and current of the wires~\cite{Fartoukh:2052448}, where it was shown that the non-linear kicks from distributed long-range beam-beam interactions could be approximated by two equivalent kicks on either side of the IP. A sketch of the concept of compensation given by beam-beam wire compensators, which we will refer to as BBCW, is presented in Fig.~\ref{fig:wire-baseline}. In the sketch, the weak-strong approximation is represented~\cite{Pellegrini_2017,Banfi:1742126}, i.e.\ it is assumed that one beam, called \textit{strong beam}, will not be affected by the other beam, called \textit{weak beam} that, in contrast, experiences kicks caused by the electromagnetic fields generated by the strong beam.
 
-\begin{figure}[hpt]
+\begin{figure}[th]
     \centering
     \def\svgwidth{1.0\textwidth}
     \import{5_wire_compensators_LHC/figs/}{crossing_angle_kick.pdf_tex}
-    \caption{Left, sketch of the long-range beam-beam effects experienced by Beam~2 from Beam~1, following the weak-strong approximation (i.e.\ we consider the effect of Beam~1 on Beam~2 and not vice versa). Right, sketch of the principle of the compensation given by the BBCW. The long-range beam-beam effects (red arrow) are compensated by the DC wires (green arrow), which are placed in the beam path before and after the interaction point.}
+    \caption{Left, sketch of the long-range beam-beam effects experienced by Beam~2 from Beam~1, assuming the weak-strong approximation (i.e.\ we consider the effect of Beam~1 on Beam~2 and not vice versa). Right, sketch of the principle of the compensation given by the BBCW. The long-range beam-beam effects (red arrow) are compensated by the DC wires (green arrow), which are placed in the beam path before and after the interaction point.}
     \label{fig:wire-baseline}
 \end{figure}
 
-The resulting tool is called \textit{``beam-beam wire compensator''} (BBCW), and it has been tested in multiple iterations on various accelerator complexes (a complete list of experimental applications up to early 2022 is available in~\cite{axel.wires}).
+The BBCW has been tested in multiple iterations on various accelerator complexes (a complete list of experimental applications up to early 2022 is available in~\cite{axel.wires}).
 
-In the LHC, the BBCW are installed for Beam~2 only, as it was the only beam that was expected to operate with a coronograph~\cite{Goldblatt:2313940}, which is a device that is expected to allow transverse beam halo measurements in the future, and enable the inspection of beam-halo properties with and without BBCW. The wires are embedded in the tertiary collimators placed upstream and downstream of IP1 and IP5~\cite{Rossi:2696270}. These wire collimators are still part of the collimator hierarchy, presented in Section~\ref{sec:4:collimation}, and are placed near the IPs to locally protect the triplets of superconductive quadrupoles from potentially damaging losses. A scheme of a wire collimator, along with a picture of one of the collimators deployed in the LHC, is reported in Fig.~\ref{fig:wire_compensator_photo}.
+In LHC, BBCW are installed for Beam~2 only, as it was the only beam that was expected to operate with a coronograph~\cite{Goldblatt:2313940}, which is a device that is expected to allow transverse beam-halo measurements in the future and allow inspection of beam-halo properties with and without BBCW. The wires are embedded in the tertiary collimators placed upstream and downstream of IP1 and IP5~\cite{Rossi:2696270}. These wire collimators are still part of the collimator hierarchy, presented in Section~\ref{sec:4:collimation}, and are placed near the IPs to locally protect the superconducting triplet quadrupoles from debris generated at the interaction point. A scheme of a wire collimator, along with a picture of one of the collimators deployed in the LHC, is reported in Fig.~\ref{fig:wire_compensator_photo}.
 
-\begin{figure}
+\begin{figure}[t]
     \centering
     \includegraphics[width=0.45\textwidth]{5_wire_compensators_LHC/figs/wire_real_2.png}
     \includegraphics[width=0.45\textwidth]{5_wire_compensators_LHC/figs/wire_real_1.png}
-    \caption{Left, section view of a wire collimator. These  collimators are composed by tungsten jaw into which a copper wire with a thin silicon dioxide insulator is embedded. (Source:~\cite{Rossi:2696270}, details on the components can be found in references therein). Right, photo of the wire collimator currently installed in the LHC tunnel on the left side of IP5. (Source:~\cite{axel.wires}).}
+    \caption{Left: section view of a wire collimator. These  collimators are composed of tungsten jaws into which a copper wire with a thin silicon dioxide insulator is embedded (from Ref.~\cite{Rossi:2696270}, details on the components can be found in references therein). Right: photo of the wire collimator currently installed in the LHC on the left side of IP5 (from Ref.~\cite{axel.wires}).}
     \label{fig:wire_compensator_photo}
 \end{figure}
 
 A collimator hosts two separate wires (one per jaw), and each wire can carry up to \SI{350}{\ampere}. These two separate wires are cabled in series so that they have the same polarity. This configuration enables a specific 2-jaw powering setup with the characteristics of doubling the odd multipolar strength of the kick, while the even ones cancel out. This choice is motivated by the need to compensate for octupolar resonances~\cite{Poyet:2703503}. The two possible configurations are presented in Fig.~\ref{fig:wire-configs}. The first, called the \textit{single wire} configuration, powers only the internal wires. The second one, called \textit{quadrupolar configuration}, powers both wires.
 
-\begin{figure}[hpt]
+\begin{figure}[th]
     \centering
     \def\svgwidth{1.0\textwidth}
     \import{5_wire_compensators_LHC/figs/}{crossing_angle_configs.pdf_tex}
@@ -56,9 +57,9 @@ A collimator hosts two separate wires (one per jaw), and each wire can carry up 
 
 For the application of our diffusive framework, we consider the experimental data gathered at the CERN LHC during the 2018 LHC Machine Development (MD) programme, during the BBCW measurements campaign~\cite{Poyet:2703503}. More specifically, we consider the data gathered during fill 7386, as it has the configuration closest to an operational scenario.
 
-During this MD measurement, the BBCW prototypes installed for Beam~2 were tested in various long-range beam-beam-dominated scenarios. During fill 7386, three trains of symmetric bunches, that is, bunches that are filling the same slots in both Beam~1 and Beam~2, enabling collisions at the IPs, were tested at flat-top energy with collisions at different crossing angles, smaller than the nominal one to enhance long-range beam-beam effects. During this operational-like fill, the wire compensators were set in the quadrupolar configuration. The calibrated loss signals measured by the various BLMs for the two beams are shown in Fig.~\ref{fig:wire-data}, note that the measurement unit is in \SI{}{protons \per s}, as we are considering the calibrated losses, which is the original \SI{}{Gy \per s} BLM signal converted with up-to-date parameters~\cite{4439981}. In addition to the BLM data, the beam intensity measured by the DCBCTs, the current in the wire, the octupole powering, and the crossing angles are also reported. 
+During this MD measurement, the BBCW prototypes installed for Beam~2 were tested in various long-range beam-beam-dominated scenarios. During fill 7386, three trains of symmetric bunches, that is, bunches that fill the same slots in Beam~1 and Beam~2, enabling collisions only at IP1 and IP5, were tested at flat-top energy with collisions at different crossing angles, smaller than the nominal one to enhance long-range beam-beam effects. During this operational-like fill, the wire compensators were set in the quadrupolar configuration. The calibrated loss signals measured by the various BLMs for the two beams are shown in Fig.~\ref{fig:wire-data}, note that the measurement unit is in \SI{}{protons \per s}, since we are considering calibrated losses, which are a combination of the original \SI{}{Gy \per s} BLMs signal located in IR7~\cite{blmcalibratedlosses}, converted into an estimate of the corresponding protons lost by a conversion factor established with dedicated measurements and simulation studies~\cite{4439981}. In addition to the BLM data, the beam intensity measured by the DCBCTs, the current in the wire, the octupole powering, and the crossing angles are also reported. 
 
-\begin{figure}[hpt]
+\begin{figure}[th]
     \centering
     \includegraphics[width=1.0\textwidth]{5_wire_compensators_LHC/figs/wire_summary.pdf}
     \caption{Overview of the data gathered during fill 7386. BLM calibrated losses and DCBCT beam intensity measurements were taken at different combinations of crossing angles, wire power, and octupole power.}
@@ -75,16 +76,16 @@ We will now discuss how our diffusive framework can be applied to this loss sign
 
 \section{Application of the diffusive model}\label{sec:5:wire-model}
 
-Let us consider the Fokker-Planck equation presented in Eq.~\eqref{eq:fp}, with the Nekhoroshev-like form of the diffusion coefficient. We recall that the system is fully characterized by the three free parameters $\epsilon$, $I_\ast$, and $\kappa$.
+Let us consider the Fokker-Planck equation presented in Eq.~\eqref{eq:fp}, with the Nekhoroshev-like form of the diffusion coefficient. We recall that the system is fully characterised by the three free parameters $\epsilon$, $I_\ast$, and $\kappa$.
 
-To apply this model to the BLM data and reconstruct $D(I)$ for the various states of the system, we perform a fitting approach inspired by the procedure used in the work of Bazzani et al.~\cite{bazzani2020diffusion}, where the same Fokker-Planck model is used to reconstruct the evolution of the normalized beam intensity.
+To apply this model to the BLM data and reconstruct $D(I)$ for the various states of the system, we perform a fitting approach inspired by the procedure used in the work of Bazzani et al.~\cite{bazzani2020diffusion}, where the same Fokker-Planck model is used to reconstruct the evolution of the normalised beam intensity.
 
-Starting from the BLM and DCBCT data collected, we want to construct a measure of the normalized intensity of the beam as a function of the number of turns. We first convert the measurements from seconds to the number of turns, considering that in LHC Run2, a reference proton at \SI{6.5}{TeV} performs 11245 turns every second. We then evaluate the relative intensity lost over an interval $[N_0, N_1]$, as the DCBCT data are not sensitive enough to measure the small differences in loss rates, we consider the amount of protons lost from the integrated BLM signal, and we take the DCBCT value registered at the beginning of the interval considered as the reference intensity, as it is the moment at which the first peak in BLM losses was measured. This procedure is illustrated in Fig.~\ref{fig:blm-to-intensity}.
+From the collected BLM and DCBCT data, we want to construct a measure of the normalised intensity of the beam as a function of the number of turns. We first convert the measurements from seconds to the number of turns, considering that in LHC Run2, a reference proton at \SI{6.5}{TeV} performs 11245 turns every second. We then evaluate the relative intensity lost over an interval $[N_0, N_1]$, as the DCBCT data are not sensitive enough to measure the small differences in the loss rates, we consider the amount of protons lost from the integrated BLM signal, and we take the DCBCT value registered at the beginning of the interval considered as the reference intensity, as it is the moment at which the first peak in the BLM losses was measured. This procedure is illustrated in Fig.~\ref{fig:blm-to-intensity}.
 
-\begin{figure}[hpt]
+\begin{figure}[th]
     \centering
     \includegraphics[width=1.0\textwidth]{5_wire_compensators_LHC/figs/stationary_transient_example_chunk.pdf}
-    \caption{Example of the procedure used to evaluate the relative intensity lost over an interval $[N_0, N_1]$. The BLM signal is integrated over the interval, and the DCBCT value registered at $N_0=3.5\times10^6$ turns is used as the reference intensity. A comparison between the integrated losses measured in the stationary state of the chunk and the transient state, whose definition is given in a later paragraph and in Fig.~\ref{fig:transient-state}, is also reported. As the losses in the transient state are much lower than the losses in the stationary state, our working hypothesis still holds.}
+    \caption{Example of the procedure used to evaluate the relative intensity lost over an interval $[N_0, N_1]$. The BLM signal is integrated over the interval, and the DCBCT value registered at $N_0=3.5\times10^6$ turns is used as the reference intensity. A comparison between the integrated losses measured in the stationary state of the chunk and the transient state, whose definition is given later and in Fig.~\ref{fig:transient-state}, is also reported. As the losses in the transient state are much lower than the losses in the stationary state, our working hypothesis still holds.}
     \label{fig:blm-to-intensity}
 \end{figure}
 
@@ -94,7 +95,7 @@ When the BBCW, the crossing angle, and the octupoles are in a stationary state, 
 
 When, instead, a variation in any of the accelerator elements occurs, e.g.\ a BBCW is switched on or the crossing angle is varied, the parameters of the Fokker-Planck equation vary as well into a new value. This variation does not necessarily occur in a negligible time. As can be seen in Fig.~\ref{fig:transient-state}. In fact, switching the BBCW DC current to the target voltage takes a significant number of seconds, leading to a time interval in which the system is in a transient state. During such a transient state, we cannot make assumptions about the evolution of the transverse beam or the evolution of the values of $\epsilon$, $I_\ast$, and $\kappa$, and therefore we are forced to discard these data slices.
 
-\begin{figure}[hpt]
+\begin{figure}[th]
     \centering
     \includegraphics[width=1.0\textwidth]{5_wire_compensators_LHC/figs/stationary_transient.pdf}
     \caption{Visualization of the difference between stationary state and transient state for a data slice. We define as stationary state the time interval in which all the parameters of the system are in a steady state, while the transient state is the time interval in which the system is undergoing a variation. Here, the BBCW DC current is switched on to the target value, causing a transient state along the process.}
@@ -103,7 +104,7 @@ When, instead, a variation in any of the accelerator elements occurs, e.g.\ a BB
 
 In Fig.~\ref{fig:chunks}, we show the BLM data for Beam~2 divided into enumerated chunks where the system is in stationary state. We can see how the stationary states are generally longer than the transient states, except for the part where the octupoles change powering.
 
-\begin{figure}[hpt]
+\begin{figure}[th]
     \centering
     \includegraphics[width=1.0\textwidth]{5_wire_compensators_LHC/figs/chunks_names.pdf}
     \caption{Experimental data for Beam~2 divided in chunks, where each chunk is in a stationary state. Each chunk is characterized by a different set of parameters, and the system is in a transient state when the parameters are changed. Each chunk has a number assigned, which will be used to identify it for the rest of the analysis. Red corresponds to stationary state data, while black represents transient state data.}
@@ -112,20 +113,20 @@ In Fig.~\ref{fig:chunks}, we show the BLM data for Beam~2 divided into enumerate
 
 We assume that the beam distribution at the end of a stationary state can be used as the initial condition of the next stationary state. Therefore, we completely neglect the transient state losses between the two stationary states. However, to justify this approach, we must verify that the integrated loss in the transient state is significantly smaller than the integrated loss in the stationary state.
 
-In Fig.~\ref{fig:wire_loss_comp}, this comparison is shown for each individual chunk, and it is possible to see how the interval where the octupole state changes has higher relative transient losses. Such comparable losses led us to the decision not to inspect this chunk of data characterized by varying octupoles, and we performed our fitting procedure only to the data up to those variations. It must be noted that also chunk 5 and 10 display a comparable level of high losses in transient state, this is mainly due to the fact that, for these two specific chunks, a change in parameters was performed after a very short number of turns, if compared to the other chunks. Such short time, inevitably, makes the losses in stationary state almost comparable to the ones in transient state. 
+In Fig.~\ref{fig:wire_loss_comp}, this comparison is shown for each individual chunk, and it is possible to see how the interval where the octupole state changes has higher relative transient losses. Such comparable losses led us to the decision not to inspect this chunk of data characterised by varying octupole currents, and we performed the fitting procedure only on the data up to those variations. It must be noted that also chunks 5 and 10 display a comparable level of high losses in the transient state; this is mainly due to the fact that, for these two specific chunks, a change in parameters was performed after a very short number of turns, compared to the other chunks. Such a short time, inevitably, makes the losses in the stationary state almost comparable to those in the transient state. 
 
-\begin{figure}[hpt]
+\begin{figure}[th]
     \centering
     \includegraphics[width=1.0\textwidth]{5_wire_compensators_LHC/figs/losses_comparison.pdf}
     \caption{Comparison of the integrated losses in transient state and in stationary state for each chunk of data. The chunk number follows the nomenclature defined in Fig.~\ref{fig:chunks}. A higher relative loss in the transient states can be seen for the chunk where the octupoles current is changed.}
     \label{fig:wire_loss_comp}
 \end{figure}
 
-After defining the properties of the data to be inspected, we fit our diffusive model following the same procedure as in the work of Bazzani et al.~\cite{bazzani2020diffusion}. As an initial condition, we consider a Gaussian beam in action variable $I$, as it represents the non-linear invariant of the system. This then gives us the following exponential distribution
+After defining the properties of the data to be inspected, we fit our diffusive model following the same procedure as in the work of Bazzani et al.~\cite{bazzani2020diffusion}. We consider a Gaussian beam in the action variable $I$, as an initial condition. This then gives us the following exponential distribution
 \begin{equation}
     \rho_0(I) = \sigma^{-2}\exp\left(-\frac{I}{\sigma^2}\right)\,
 \end{equation}
-where $\sigma^2$ stands for the measured beam emittance. For convenience, it is possible to scale the action variable $I\to I/\sigma^2$ and set $\sigma=1$ in the simulations without affecting the beam loss rate. As for the absorbing boundary condition, we consider the position of the TCPs in IR7, which were set at nominal position. To fit the data, then, we scan the values $\kappa$ and $I_\ast$, and integrate the evolution of the FP equation~\eqref{eq:fp} as a function of the number of turns. The $\epsilon^2$ parameter is then fixed by requiring that the initial and final values of the relative intensity, evaluated at the beginning and at the end of the fragment, are equal. The scan on $\kappa$ and $I_\ast$ is first done as a brute-force grid scan on a range of candidate values, next, a least-square fitting is performed with starting point on the best parameters found with the preliminary scan.
+where $\sigma^2$ stands for the measured beam emittance. For convenience, it is possible to scale the action variable $I\to I/\sigma^2$, which corresponds to the setting $\sigma=1$ in the simulations without affecting the beam loss rate. As for the absorbing boundary condition, we consider the position of the TCPs in IR7, which were set at nominal position. To fit the data, we then scan the values $\kappa$ and $I_\ast$, and integrate the evolution of the FP equation~\eqref{eq:fp} as a function of the number of turns. The parameter $\epsilon^2$ is then fixed by requiring that the initial and final values of the relative intensity, evaluated at the beginning and at the end of the fragment, are equal. The scan in $\kappa$ and $I_\ast$ is first performed as a brute-force grid scan on a range of candidate values; then a least-square fitting is performed with starting point on the best parameters found with the preliminary scan.
 
 As we assume that the beam distribution at the end of a stationary state can be used as the initial condition of the next stationary state, we can use the evolved beam distribution as the initial condition for the next chunk. This procedure, iterated for all parts, finally gives us the reconstructed $D(I)$ for the various states of the system. Note that this working hypothesis forces us to include in the fitting process also chunk 5 and chunk 10, despite their significant relative losses in the transient state.
 
@@ -135,67 +136,81 @@ We perform the fitting procedure using the data for both Beam~1 and Beam~2. As t
 
 \subsection*{Beam~1 data}
 
-We first consider the data of Beam~1 divided in chunks only where the crossing angle is varied. In Fig.~\ref{fig:reconstruction_1}, we show the relative intensity loss, along with the fit reconstruction. Note that we considered Beam~1 data up to the point at which the octupole current is varied. In Fig.~\ref{fig:reconstruction_2}, we show the reconstructed $D(I)$ for the various crossing angles.
+We first consider the data of Beam~1 divided in chunks only where the crossing angle is varied. In Fig.~\ref{fig:reconstruction_1}, we show the relative intensity loss, along with the fit reconstruction. Note that we considered Beam~1 data up to the point at which the octupole current is varied. In Fig.~\ref{fig:reconstruction_2}, we show the reconstructed $D(I)$ for the various crossing angles, with the resulting parameters reported in Tab.~\ref{tab:reconstruction_2}.
 
 We can see how $D(I)$ increases as the crossing angle is lowered, as expected from the fact that long-range beam-beam effects become more important, and we can also observe how, in general, the fitting procedure manages to reproduce the data with high precision, as can be seen from the plotted fit residual in Fig.~\ref{fig:reconstruction_1}. %The evolution of the three parameters, $\epsilon$, $I_\ast$, and $\kappa$, is shown in Fig.~\ref{fig:parameters_1}. No significant patterns can be observed in the evolution of the parameters.%; however, the resulting $D(I)$ given by the three parameters increases as the crossing angle is lowered.
 
-\begin{figure}[hpt]
+\begin{figure}[th]
     \centering
     \includegraphics[width=0.95\textwidth]{5_wire_compensators_LHC/figs/losses_b1.pdf}
     \caption{Relative loss of intensity for the data of Beam~1 divided in chunks where the crossing angle is varied. The fit reconstruction is also shown. A good agreement between the data and the fit is observed.}
     \label{fig:reconstruction_1}
-% \end{figure}
-    \vspace{\floatsep}
-% \begin{figure}[hpt]
-%     \centering
-    \includegraphics[width=0.85\textwidth]{5_wire_compensators_LHC/figs/fokker_planck_b1_D.pdf}
+\end{figure}
+    % \vspace{\floatsep}
+\begin{figure}[th]
+    \centering
+    \includegraphics[width=\textwidth]{5_wire_compensators_LHC/figs/fokker_planck_b1_D.pdf}
     \caption{Reconstructed $D(I)$ for the data of Beam~1 divided in chunks where the crossing angle is varied. The $D(I)$ increases as the crossing angle is lowered.}
     \label{fig:reconstruction_2}
 \end{figure}
 
-%\begin{figure}[hpt]
+\begin{table}[th]
+    \centering
+    \begin{tabular}{c|cccc}
+        \toprule
+        $\theta_c$ & \SI{160}{\micro\radian} & \SI{150}{\micro\radian} & \SI{140}{\micro\radian} & \SI{130}{\micro\radian} \\
+        \midrule
+        $I_\ast$ & $90\pm30$ & $123\pm10$ & $140\pm30$ & $63.33\pm0.02$ \\
+        $\kappa$ & $0.72\pm0.06$ & $0.72\pm0.01$ & $0.73\pm0.03$ & $0.6250\pm0.0003$ \\
+        $\epsilon^2$ & $6.8\times10^{-7}$ & $1.1\times10^{-6}$ & $2.8\times10^{-6}$ & $5.3\times10^{-6}$ \\
+        \bottomrule
+    \end{tabular}
+    \caption{Fit parameters for the reconstructed $D(I)$ for the data of Beam~1 divided in chunks where the crossing angle is varied. The uncertainty reported represents the standard deviation of the fit parameters evaluated by the least-squares method.}
+    \label{tab:reconstruction_2}
+\end{table}
+
+%\begin{figure}[th]
 %    \centering
     % \includegraphics[]{}
 %    \caption{Evolution of the three parameters, $\epsilon$, $I_\ast$, and $\kappa$, for the data of Beam~1 divided in chunks where the crossing angle is varied. No significant patterns can be observed in the evolution of the parameters.}
 %    \label{fig:parameters_1}
 %\end{figure}
 
-We now inspect the data of Beam~1 divided in chunks where the wire compensators are switched on and off, a comparison of the reduced $\chi^2$ values of the fit for the two different slicing methods is shown in Fig.~\ref{fig:chi2}. We can see that the reduced $\chi^2$ values are mostly lower when smaller fragments are considered, but not consistently, as some individual chunks achieve a higher value than the fit performed on entire chunks with the same crossing angle. We can also observe how the reduced $\chi^2$ value ranges between various orders of magnitude for the different smaller chunks. This suggests that, in some individual situations, overfitting issues may be occurring, especially in the cases in which the reduced $\chi^2$ value falls the most.
+We now inspect the data of Beam~1 divided in chunks where the wire compensators, acting on Beam~2, are switched on and off. A comparison of the reduced $\chi^2$ values of the fit for the two different slicing methods is shown in Fig.~\ref{fig:chi2}. We can see that the reduced $\chi^2$ values are mainly lower when smaller fragments are considered, but not consistently, as some individual chunks achieve a higher reduced $\chi^2$ value than the fit performed on entire chunks with the same crossing angle. We can also observe how the reduced $\chi^2$ value ranges between various orders of magnitude for the different smaller fragments. This suggests that in some individual situations, overfitting issues may occur, especially in the cases where the reduced $\chi^2$ value drops the most.
 
-We can see how the $D(I)$ reconstructed, presented in Fig.~\ref{fig:reconstruction_3}, while manifesting differences, does not show a consistent different diffusion value between the two states, as the wires appear to affect the diffusion coefficient in an inconsistent way. Moreover, extreme differences are also obtained from the $D(I)$ reconstructed from the entire chunk also at lower $I$ values, where the diffusion is expected to be close orders of magnitude lower than its value at higher $I$ values. This suggests that the fitting procedure might be affected by overfitting when the chunks are too small and not rich enough in information, giving non-physical results.
+We can see how the reconstructed $D(I)$, presented in Fig.~\ref{fig:reconstruction_3}, although manifesting differences, does not show a consistent different diffusion value between the two states, as the wires appear to affect the diffusion coefficient inconsistently. Furthermore, extreme differences are also obtained from the $D(I)$ reconstruction of the whole section, also at lower $I$ values, where the diffusion is expected to be close to orders of magnitude lower than its value at higher $I$ values. This suggests that the fitting procedure might be affected by overfitting when the chunks are too small and not rich enough in information, giving non-physical results.
 
-Overall, from this analysis, it is impossible to detect a consistent effect of the wires on the diffusion coefficient of Beam~1.
+From this analysis, it is impossible to detect a consistent effect of the wires on the diffusion coefficient of Beam~1, which leads to the conclusion that the impact of the BBWC on Beam~1 is negligible, and therefore the data analysis should not take into account the status (on or off) of the wire.
 
-\begin{figure}[ht]
+\begin{figure}[th]
     \centering
     \includegraphics[width=1.0\textwidth]{5_wire_compensators_LHC/figs/chi_comparison.pdf}
-    \caption{Comparison of the reduced $\chi^2$ values of the fit for the two different chunking methods of Beam~1. The black dashed lines represent the reduced $\chi^2$ achieved when fitting the entire data chunk with the same crossing angle, without considering the wire effect. The reduced $\chi^2$ values varies over multiple orders of magnitude when smaller chunks are considered, and in two cases is higher than the reduced $\chi^2$ achieved by the larger chunk fitting. This may suggest overfitting issues for when the reduced $\chi^2$ exhibits the lowest values. The numbers follow the nomenclature in Fig.~\ref{fig:chunks}.}
+    \caption{Comparison of the reduced $\chi^2$ values of the fit for the two different chunking methods of Beam~1. The black dashed lines represent the reduced $\chi^2$ obtained when fitting the entire data chunk with the same crossing angle, without considering the wire status. The reduced $\chi^2$ values vary over multiple orders of magnitude when smaller chunks are considered, and in two cases is higher than the reduced $\chi^2$ obtained by the larger chunk fitting. This may suggest overfitting issues for when the reduced $\chi^2$ exhibits the lowest values. The numbers representing the chunks follow the nomenclature in Fig.~\ref{fig:chunks}.}
     \label{fig:chi2}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[th]
     \centering
     \includegraphics[width=1.0\textwidth]{5_wire_compensators_LHC/figs/fokker_planck_b1_turbo_bis.pdf}
-    \caption{Reconstructed $D(I)$ for the data of Beam~1 divided in chunks where the wire compensators are switched on and off, compared with the $D(I)$ reconstructed using the full chunk corresponding to the crossing angle. The $D(I)$ does not show a consistent different diffusion value between the two states and, in multiple situations, the values obtained for $D(I)$ on the smaller samples obtain extremely different results from the full fitting result for low values of $I$. This suggests overfitting issues. The numbers follow the nomenclature in Fig.~\ref{fig:chunks}.}
+    \caption{Reconstructed $D(I)$ for the data of Beam~1 divided in chunks where the wire compensators are switched on and off, compared with the $D(I)$ reconstructed using the full chunk corresponding to the crossing angle. The $D(I)$ does not show a consistent different diffusion value between the two states and, in many situations, the values obtained for $D(I)$ on the smaller samples obtain extremely different results from the full fitting result for low values of $I$. This suggests overfitting issues. The numbers representing the chunks follow the nomenclature in Fig.~\ref{fig:chunks}.}
     \label{fig:reconstruction_3}
 \end{figure}
-
 
 \subsection*{Beam~2 data}
 
 Now we inspect the data of Beam~2, where the wires are installed. We consider the data divided into chunks as presented in Fig.~\ref{fig:chunks}. In Fig.~\ref{fig:reconstruction_4}, we show the relative intensity loss, along with the fit reconstruction. In Fig.~\ref{fig:reconstruction_5}, we show the reconstructed $D(I)$ for the various crossing angles and the various states of the wire.
 
-It can be seen that, in general, the fit reconstruction is able to reproduce the data quite well. Furthermore, it is possible to see how the reconstructed $D(I)$ is consistently different when the wires are switched on and off, with generally higher diffusion values when the wires are off. This is in agreement with the expectation that the wires are able to reduce the long-range beam-beam effects and thus the diffusion. Moreover, it is possible to see how such a reconstructed $D(I)$ for wire on  also has lower values for low $I$ amplitudes. This suggests that indeed the BBCWs might provide a better long-term stability of the beam.
+It can be seen that, in general, the fit reconstruction is able to reproduce the data quite well. Furthermore, it is possible to see how the reconstructed $D(I)$ is consistently different when the wires are switched on and off, with generally higher diffusion values when the wires are off. This is in agreement with the expectation that the wires are able to reduce the long-range beam-beam effects and thus the diffusion. Moreover, it is possible to see how such a reconstructed $D(I)$ for the wire on also has lower values for low $I$ amplitudes. This suggests that indeed the BBCWs might provide better long-term stability of the beam.
 
-The values of the two parameters, $I_\ast$ and $\kappa$, are shown in Fig.~\ref{fig:parameters_3}. In addition, in this case, no significant patterns can be observed in the evolution of the parameters for the different states of the system. However, a strong correlation pattern can be observed between $I_\ast$ and $\kappa$. A similar correlation trend was observed and commented in Chapter~\ref{ch:probing}, as it was noted how the final linear fitting on the Nekhoroshev diffusion highlighted a strong correlation between the $I_\ast$ and $\kappa$ parameters. In future studies, this correlation trend can be investigated and tackled by enforcing the same $\kappa$ value on multiple fittings, as it is a parameter expected to be dependent on the geometry of the phase space and, therefore, constant in comparable physical systems. 
+The values of the two parameters, $I_\ast$ and $\kappa$, are shown in Fig.~\ref{fig:parameters_3} and, in this case, no significant patterns can be observed in the evolution of the parameters for the different states of the system. However, a strong correlation can be observed between $\kappa$ and $I_\ast$. A similar correlation was also observed and commented on in Chapter~\ref{ch:probing}. In future studies, this correlation trend will be investigated and tackled by imposing the same $\kappa$ value on multiple fittings, as this parameter is expected to depend only on the geometry of the phase space and, therefore, to be constant in physical systems with the same phase-space dimensionality. 
 
 %To quantify the effects of the wires on the long-term beam dynamics, we can take the various reconstructed $D(I)$ for one of the crossing angles and consider the evolution of the relative intensity and emittance of a Gaussian distribution with a Fokker-Planck evolution over a number of turns of a higher order of magnitude. In Fig.~\ref{fig:evolution}, we show the evolution of the relative intensity and emittance for the various $D(I)$ reconstructed for the crossing angle of \SI{150}{\micro\radian}. We can see how the wires are able to archive a lower relative intensity. The emittance appear to decrease faster for cases where $D(I)$ is higher, this is due to the functional shape of $D(I)$ that, we recall, implies a semi-stationary distribution following Eq.~\eqref{}, which can be seen in Fig.~\ref{}. Such distribution describes a slow erosion that implies a reduction in emittance.
 
-\begin{figure}[ht]
+\begin{figure}[th]
     \centering
     \includegraphics[width=0.95\textwidth]{5_wire_compensators_LHC/figs/losses_b2.pdf}
     \caption{Relative intensity loss and fit reconstruction for the data of Beam~2 divided in chunks, following the nomenclature of Fig.~\ref{fig:chunks}. 
-    The fit reconstruction shows a good agreement with the data, as can be seen from the fit residuals.}
+    The fit reconstruction shows a very good agreement with the data, as can be seen from the fit residuals.}
     \label{fig:reconstruction_4}
 \end{figure}
 
@@ -206,14 +221,14 @@ The values of the two parameters, $I_\ast$ and $\kappa$, are shown in Fig.~\ref{
     \label{fig:reconstruction_5}
 % \end{figure}
     \vspace{\floatsep}
-% \begin{figure}[hpt]
+% \begin{figure}[th]
 %     \centering
     \includegraphics[width=0.85\textwidth]{5_wire_compensators_LHC/figs/fokker_planck_b2.pdf}
-    \caption{Evolution of the parameters $I_\ast$, and $\kappa$, for the data of Beam~2 divided in chunks, following the nomenclature of Fig.~\ref{fig:chunks}. No significant patterns can be observed in the evolution of the parameters, other than a strong correlation trend between $\kappa$ and $I_\ast$.}
+    \caption{Evolution of the parameters $I_\ast$, and $\kappa$, for the Beam~2 data divided in chunks, following the nomenclature of Fig.~\ref{fig:chunks}. No significant patterns can be observed as a function of the crossing angle, except a strong correlation between $\kappa$ and $I_\ast$.}
     \label{fig:parameters_3}
 \end{figure}
 
-%\begin{figure}[hpt]
+%\begin{figure}[th]
 %    \centering
 %    \includegraphics[width=1.0\textwidth]{5_wire_compensators_LHC/figs/sim_emittance.pdf}
 %    \caption{Evolution of the relative intensity and emittance for the various $D(I)$ reconstructed for the crossing angle of \SI{160}{\micro\radian}. The evolution is obtained by simulating a Fokker-Planck process, with a Gaussian distribution as initial condition. A lower $D(I)$ yields lower relative losses and lower emittance decrease.}
@@ -222,11 +237,11 @@ The values of the two parameters, $I_\ast$ and $\kappa$, are shown in Fig.~\ref{
 
 \section{Final remarks}\label{sec:5:conclusions}
 
-We have performed an initial study of the effects of the BBCWs on the long-term beam dynamics of the LHC using our diffusive framework. We have used the data of the LHC Beam~1 and Beam~2, collected during an MD measurement campaign of Run~2, and we have reconstructed the diffusion coefficient of various system configurations. Ultimately, we have found that the wires are able to reduce the long-range beam-beam effects and thus the diffusion. Moreover, we have observed that our model suggests that the wires are consistently able to reduce the intensity loss. As expected, the model did not highlight significant BBCWs effects on Beam~1.
+We have performed an initial study of the effects of the BBCWs on the long-term beam dynamics of the LHC using our diffusive framework. We have used the data of the LHC Beam~1 and Beam~2, collected during an MD measurement campaign of Run~2, and we have reconstructed the diffusion coefficient of various system configurations. Ultimately, we have found that the wires are able to reduce the long-range beam-beam effects and thus the diffusion. Moreover, we have observed that our model suggests that the wires are consistently able to reduce intensity loss. As expected, the model did not highlight significant BBCWs effects on Beam~1.
 
-As pointed out in the overview of the experimental data, a large portion of the data had to be discarded because of the large amount of losses occurring during transient periods. Moreover, multiple chunks considered in the analysis are characterized by a very short time span, which might be too short to be representative of long-term beam dynamics. This is a limitation of the collected data that could have had a significant impact on the results.
+As noted in the overview of the experimental data, a large portion of the data had to be discarded because of the large losses occurring during transient periods. Moreover, multiple chunks considered in the analysis are characterised by a very short time span, which might be too short to be representative of long-term beam dynamics. This is a limitation of the collected data that could have had a significant impact on the results.
 
-However, the promising results obtained in the fit reconstruction seem to suggest that this diffusive framework may provide some insight into the long-term effects of BBCWs on beam dynamics. This has motivated us to consider a different data collection strategy for the scheduled MD measurements of LHC Run~3. More specifically, we planned to measure the BLM losses while keeping the BBCWs on and off for longer time spans, to better characterize the long-term effects of the wires.
+However, the promising results obtained in the fit reconstruction seem to suggest that this diffusive framework may provide some insight into the long-term effects of BBCWs on beam dynamics. This has motivated us to consider a different data collection strategy for the scheduled MD measurements of LHC Run~3. More specifically, we planned to measure the BLM losses while keeping the BBCWs on and off for longer time spans to better characterise the long-term effects of the wires.
 
 Additionally, we planned to perform collimation scans with BBCWs on and off, in order to directly inspect the beam tail population and measure $D(I)$ following the protocol presented in Chapter~\ref{ch:probing}. The purpose was to compare the values obtained with the two different methodologies.
 

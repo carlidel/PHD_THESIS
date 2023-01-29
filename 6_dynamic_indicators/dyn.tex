@@ -415,7 +415,7 @@ We have analysed the performance of chaos indicators as a function of the parame
 
 Figure~\ref{fig:survival} shows some survival plots for various configurations of the 4\textsc{d} Hénon map. A set of $300\times300$ initial conditions, sampled on a uniform Cartesian grid in the $x-y$ plane, choosing $p_x = p_y = 0$, is tracked up to $n_\mathrm{max}=10^8$ turns. Grid boundaries are selected to sample a region of interest that contains the stability basin of the origin, more specifically $[0.0,\,0.45]$ for case $(\omega_{x0},\,\omega_{y0}) = (0.168,\,0.201)$, or $[0.0,\,0.60]$ for case $(\omega_{x0},\,\omega_{y0}) = (0.28,\,0.31)$. An initial condition is considered stable if its distance from the origin is less than a certain control radius $r_\mathrm{c}$ when $n=n_\mathrm{max}$. Otherwise, the initial condition is considered lost and its tracking is stopped, and the stability time is given by the first value $n_\mathrm{stab}$ for which $\sqrt{x^2_{n_\mathrm{stab}}+ p_{x,n_\mathrm{stab}}^2+y_{n_\mathrm{stab}}^2+p_{y,n_\mathrm{stab}}^2}\geq r_\mathrm{c}$. The choice of $r_\mathrm{c}$ is rather arbitrary (we have considered $r_\mathrm{c}=10^2$) and the dependence of the results on $r_\mathrm{c}$ is very weak since at that amplitude the dynamics of the 4\textsc{d} Hénon map is fully dominated by polynomial terms. 
 %
-\begin{figure*}[htp]
+\begin{figure*}[th]
     \centering
     \includegraphics[width=\textwidth]{6_dynamic_indicators/fig/stability.png}
     \caption{Survival plot for various 4\textsc{d} modulated Hénon maps with quadratic and cubic non-linearities. Initial conditions, sampled on an uniform Cartesian $300\times300$ grid in the $x-y$ plane, are tracked up to $n_\text{max}=10^8$ and are considered lost when their distance to the origin exceeds a predefined maximum radius $r_\mathrm{c}=10^2$. The two sets of linear frequencies feature different shapes of the stable region as can be seen by comparing the plots in the two rows. The parameters $\varepsilon$ and $\mu$ induce additional changes, in particular the increase of the size of the transition region between stability up to $n_\mathrm{max}$ and shorter stability time. The color scale is related to the logarithm of the stability time as reported on the right.}
@@ -432,7 +432,7 @@ In the following, we report the results of the numerical study of the dynamic in
 
 The main feature of $LE$, compared to $FLI$, is its independence from the initial choice of direction of the unitary displacement vector $\vb{\xi}$. To highlight this, in Fig.~\ref{fig:le_fli_compare_short_long}, we directly compare the calculated values of $\log_{10}(\log_{10}(LE)/n)$ with those of $\log_{10}(FLI/n)$, calculated with an initial displacement along one of the four orthonormal base vectors $\hat{x},\,\hat{p}_x,\,\hat{y},\,\text{and }\hat{p}_y$. These calculations are carried out for a set of $300\times300$ initial conditions, sampled on a uniform Cartesian grid in the $x-y$ plane. It is possible to see how, at low turn number ($n=10^2$, top row), the different choice of displacement highlights the structures in $FLI$ that are missing in $LE$. This can be explained by considering that the displacement vector is not fully aligned along the largest Lyapunov exponent yet. In contrast, these structures are missing for $LE$, which has smoother behaviour.
 
-\begin{figure*}[htp]
+\begin{figure*}[th]
     \centering
     \includegraphics[width=\textwidth]{6_dynamic_indicators/fig/corrected_figs/LE_FLI_NEO.pdf}
     % \includegraphics[width=0.6\textwidth]{6_dynamic_indicators/fig/LE_FLI_high.pdf}
@@ -459,7 +459,7 @@ As an additional analysis of the time dependence of chaos indicators, we compare
 
 \begin{figure}[htp]
     \centering
-    \includegraphics[width=0.6\textwidth]{6_dynamic_indicators/fig/lyap_birkhoff.pdf}
+    \includegraphics[width=0.8\textwidth]{6_dynamic_indicators/fig/lyap_birkhoff.pdf}
     \caption{Time evolution of $FLI$ computed using either a standard mean or the Birkhoff averaging. Top plot: indicators computed for a set of 100 regular initial conditions, the fit highlights a faster convergence rate for the Birkhoff averaging. Bottom plot: indicators computed for a set of 100 chaotic initial conditions. A similar improvement in convergence rate is observed for low $n$ values, before reaching a saturation value of the indicator of the order of $10^{-3}$. (Simulation parameters: $(\omega_{x0},\omega_{y0})= (0.28,\ 0.31),\ \varepsilon=32.0,\ \mu=0.5$).}
     \label{fig:fli_compare_mean_birk}
 \end{figure}
@@ -470,7 +470,7 @@ The improvement caused by the Birkhoff averages is also clearly visible in Fig.~
 
 \begin{figure}[htp]
     \centering
-    \includegraphics[width=0.6\textwidth]{6_dynamic_indicators/fig/lyapunov_birkhoff_map.pdf}
+    \includegraphics[width=0.8\textwidth]{6_dynamic_indicators/fig/lyapunov_birkhoff_map.pdf}
     \caption{Time evolution of the distribution of the values of $FLI$ (top) and $FLI^{WB}$ (bottom) indicators for the whole set of 15684 initial conditions that survived up to $n_\text{max}=10^8$. The Birkhoff averaging leads to faster convergence towards zero of the regular initial conditions, which are represented by the yellow band. Furthermore, the width of such a band is narrower for $FLI^{WB}$ with respect to $FLI$. The red dashed lines represent threshold values, defined by our algorithm, representing the attempt to perform the binary classification in regular and chaotic initial conditions. (Simulation parameters: $(\omega_{x0},\omega_{y0})= (0.28,\ 0.31),\ \varepsilon=32.0,\  \mu=0.1$).}
     \label{fig:fli_colormap_mean_birk}
 \end{figure}
@@ -487,7 +487,7 @@ As the development of the bimodal distribution requires various orders of magnit
 
 To carry out this task, we first construct a ground truth (GT) for different sets of parameters for the 4\textsc{d} Hénon map, iterated for $n_\text{max} = 10^8$. The initial conditions are then classified into a binary chaotic/regular classification scheme using the $LE$ indicator. An example is given in Fig.~\ref{fig:ground_truth_bis} where eight cases, the same as those depicted in Fig.~\ref{fig:survival}, are displayed. Dark colours identify regular regions of the phase space, whereas lighter colours denote chaotic regions. It is clearly seen that the frequency modulation and the presence of the cubic non-linearity increase the extent of the chaotic areas of the phase space, also generating regions in which regular and chaotic orbits are deeply intertwined.  
 
-\begin{figure*}[htp]
+\begin{figure*}[th]
     \centering
     \includegraphics[width=\textwidth]{6_dynamic_indicators/fig/gt_example_colormap.pdf}
     \caption{Distributions of $\log_{10}(\log_{10}(LE)/n)$ for various 4\textsc{d} modulated Hénon maps (the same cases shown in Fig.~\ref{fig:survival}) with quadratic and cubic non-linearities. $300\times300$ initial conditions, sampled on an uniform Cartesian grid in the $x-y$ plane, are tracked up to $n_\text{max}=10^8$. It is possible to observe how the case for $\varepsilon=0.0,\ \mu=0.0$, corresponding to the absence of modulation and cubic non-linearities, lead to regular motion almost everywhere, except for a small set of initial conditions. For the other cases, extended regions of chaotic motion are visible. Note that the maximum value registered in the color maps corresponds to numerical saturation.}
@@ -513,7 +513,7 @@ This choice is somewhat arbitrary, but the features of the distribution clearly 
 
 \begin{figure}[htp]
     \centering
-    \includegraphics[width=0.6\textwidth]{6_dynamic_indicators/fig/edited_edited_thresholds.pdf}
+    \includegraphics[width=0.7\textwidth]{6_dynamic_indicators/fig/edited_edited_thresholds.pdf}
     \caption{Example of the KDE-based procedure for computing a threshold for the binary classification (regular/chaotic) of initial conditions. Top: application to $\log_{10}(REM)$ (evaluated at $n=10^5$). KDEs with various bandwidth are used until the two main peaks of the bi-modal distribution are detected, the threshold is then placed at the position of the minimum of the distribution between them. This procedure is applied to all dynamic indicators except for $FMA$. Bottom: application of the procedure to $\log_{10}(FMA)$ (evaluated at $n=10^5$), which clearly exhibits a three-mode distribution. The procedure is applied so that it detects the three main modes of the distribution, and then sets the threshold at the minimum of the distribution between the two modes at higher values. (Simulation parameters:  $(\omega_{x0},\omega_{y0})= (0.28,\ 0.31),\ \varepsilon=32.0,\ \mu=0.5$).}
     \label{fig:thresholds}
 \end{figure}
@@ -551,40 +551,6 @@ To provide a quantitative assessment of the performance of the dynamic indicator
     \label{eq:final_evaluation}
 \end{equation}
 i.e., the integral of the accuracy achieved and displayed in Fig.~\ref{fig:performance} normalized to the integral of the ideal case with unit accuracy throughout the turn interval. The reasons for such a definition are twofold: First, it avoids the possible bias introduced by indicators that are more efficient in detecting the chaotic behaviour at low number of turns but that are not so efficient afterwards; second, it probes the predictive power of the indicator by setting an upper bound that is lower than the turn number used for determining the GT. Equation~\eqref{eq:final_evaluation} has been numerically evaluated using the trapezoidal rule and considering 50 values of $n$ equally spaced on a logarithmic scale over the interval $10^4-10^6$.  The performance estimate values for the dynamic indicators for the various H\'enon maps are reported in Table~\ref{table:values}. 
-%\begin{table*}[h]
-%    \centering
-%    \begin{tabular}{l|c|c|c|c|}
-%        \toprule
-%         & \multicolumn{4}{c}{$(\omega_x, \omega_y) = (0.168, 0.201)$} \\
-%         & $(\varepsilon = 0.0; \mu = 0.0)$ & $(\varepsilon = 0.0; \mu = 0.5)$ & $(\varepsilon = 0.32; \mu = 0.0)$ & $(\varepsilon = 0.32; \mu = 0.5)$\\
-%        \midrule
-%        $\log_{{10}}(LE)$ & 0.996 & 0.994 & 0.924 & 0.888 \\
-%        $\log_{{10}}(FLI(\hat{{x}})/n)$ & 0.944 & 0.908 & 0.863 & 0.843 \\
-%        $\log_{{10}}(FLI^{{WB}}(\hat{{x}}))$ & 0.997 & 0.995 & 0.914 & 0.890 \\
-%        $MEGNO(LE)$ & 0.996 & 0.993 & 0.933 & 0.902 \\
-%        $\log_{{10}}(REM)$ & 0.996 & 0.994 & 0.933 & 0.910 \\
-%        $\log_{{10}}(GALI^{{(4)}})$ & 0.997 & 0.996 & 0.945 & 0.924 \\
-%        $\log_{{10}}(FMA)$ & 0.870 & 0.869 & 0.849 & 0.779 \\
-%        \bottomrule
-%    \end{tabular}
-    
-%    \begin{tabular}{l|c|c|c|c|}
-%        \toprule
-%         & \multicolumn{4}{c}{$(\omega_x, \omega_y) = (0.28, 0.31)$} \\
-%         & $(\varepsilon = 0.0; \mu = 0.0)$ & $(\varepsilon = 0.0; \mu = 0.5)$ & $(\varepsilon = 32.0; \mu = 0.0)$ & $(\varepsilon = 0.32; \mu = 0.5)$\\
-%        \midrule
-%        $\log_{{10}}(FLI(\hat{{x}}))$ & 0.981 & 0.987 & 0.863 & 0.877 \\
-%        $\log_{{10}}(FLI(\hat{{x}})/n)$ & 0.982 & 0.986 & 0.849 & 0.857 \\
-%        $\log_{{10}}(FLI^{{WB}}(\hat{{x}}))$ & 0.986 & 0.989 & 0.850 & 0.874 \\
-%        $MEGNO(LE)$ & 0.980 & 0.986 & 0.868 & 0.889 \\
-%        $\log_{{10}}(REM)$ & 0.987 & 0.989 & 0.888 & 0.892 \\
-%        $\log_{{10}}(GALI^{{(4)}})$ & 0.990 & 0.991 & 0.903 & 0.914 \\
-%        $\log_{{10}}(FMA)$ & 0.921 & 0.935 & 0.822 & 0.859 \\
-%        \bottomrule
-%    \end{tabular}
-%    \caption{Performance scores achieved by the dynamic indicators for the various Hénon map configurations, evaluated using Eq.~\eqref{eq:final_evaluation} over the interval $n=10^4-10^8$. It can be seen how $GALI^{(4)}$ and $REM$ archives the higher scores consistently.  \textcolor{red}{DECIDETE VOI QUALE DELLE DUE TENERE}}
-%    \label{table:values}
-%\end{table*}
 
 \begin{table*}[htb]
     \centering
@@ -786,7 +752,7 @@ A similar limitation is present in the $BF$ reversibility error, since its direc
 
 When considering a large amount of initial conditions to determine the properties of the corresponding orbits by means of dynamic indicators, it is possible to obtain an accurate picture of the phase-space structures, such as regions characterized by regular dynamics and regions where frequency modulation and non-linearities induce chaotic behaviour. In Fig.~\ref{fig:generic_example}, the seven chaos indicators computed for $n=10^5$ are presented for a set of initial conditions that turned out to be stable up to $n_\text{max}=10^8$. All indicators highlight a region of regular motion close to the origin and chaotic structures at higher amplitudes. Generally speaking, the various dynamic indicators reconstruct very similar shapes for the regular and chaotic regions of the phase space, with the exception of $FMA$. Indeed, this indicator provides a lot of structure even inside the region that is classified as regular by the other indicators, and in which the values of the other indicators are to a high degree of accuracy constant. We inspect the distribution of values of the various dynamic indicators, computed at a large number of turns. It is possible to observe the formation of bimodal or, as we shall see for the case of $FMA$, three-modal distributions. In Fig.~\ref{fig:generic_example_2}, the time evolution of the distribution of the indicator value is shown. The red lines represent the threshold that we use to distinguish between regular and chaotic orbits, whose definition was given in Section~\ref{subsec:dyn:classification}.
 
-\begin{figure*}[ht]
+\begin{figure*}[th]
     \centering
     %\includegraphics[width=\textwidth]{6_dynamic_indicators/fig/overview.pdf}
     \includegraphics[width=\textwidth]{6_dynamic_indicators/fig/corrected_figs/overview.pdf}
@@ -794,7 +760,7 @@ When considering a large amount of initial conditions to determine the propertie
     \label{fig:generic_example}
 \end{figure*}
 
-\begin{figure*}[ht]
+\begin{figure*}[th]
     %\includegraphics[width=\textwidth]{6_dynamic_indicators/fig/evolution.pdf}
     \includegraphics[width=\textwidth]{6_dynamic_indicators/fig/corrected_figs/evolution_idx_3.pdf}
     \caption{Distribution of values of the various dynamic indicators as a function of time for a modulated 4\textsc{d} Hénon map. For low values of the  iterations $n$, the distribution is in general represented by a uni-modal function. For higher values of $n$, we can see the formation of either two separate clusters, making the distribution bi-modal, or an individual cluster with a significant tail. $\log_{10}(FMA)$ constitutes an exception, as it evolves forming a tri-modal distribution (also shown in detail in Fig.~\ref{fig:thresholds}, bottom).

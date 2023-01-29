@@ -37,9 +37,10 @@
 \usepackage{makecell}
 \usepackage{comment}
 \usepackage{adjustbox}
+\usepackage{placeins}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{showlabels}
+% \usepackage{showlabels}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -194,6 +195,10 @@
      \andothersdelim\bibstring[\emph]{andothers}}
     {}}
 \renewbibmacro{in:}{}
+
+\AtEveryBibitem{%
+  \clearfield{note}%
+}
 
 \usepackage{rotating}
 %\usepackage{subfig}
