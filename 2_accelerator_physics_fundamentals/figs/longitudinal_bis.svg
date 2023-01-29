@@ -183,68 +183,68 @@
        xml:space="preserve"
        style="font-size:1.41111px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
        x="24.798077"
-       y="23.924952"
+       y="24.19417"
        id="text9096"><tspan
          sodipodi:role="line"
          id="tspan9094"
          style="font-size:1.41111px;stroke-width:0.264583"
          x="24.798077"
-         y="23.924952">$\phi_1$</tspan></text>
+         y="24.19417">$\phi_1$</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:1.41111px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
        x="28.694687"
-       y="23.910076"
+       y="24.179295"
        id="text9096-7"><tspan
          sodipodi:role="line"
          id="tspan9094-5"
          style="font-size:1.41111px;stroke-width:0.264583"
          x="28.694687"
-         y="23.910076">$\phi_s$</tspan></text>
+         y="24.179295">$\phi_s$</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:1.41111px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
        x="32.426613"
-       y="23.951122"
+       y="24.220341"
        id="text9096-3"><tspan
          sodipodi:role="line"
          id="tspan9094-56"
          style="font-size:1.41111px;stroke-width:0.264583"
          x="32.426613"
-         y="23.951122">$\phi_2$</tspan></text>
+         y="24.220341">$\phi_2$</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:1.41111px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
        x="48.088573"
-       y="23.924952"
+       y="24.19417"
        id="text9096-9"><tspan
          sodipodi:role="line"
          id="tspan9094-3"
          style="font-size:1.41111px;stroke-width:0.264583"
          x="48.088573"
-         y="23.924952">$\phi_1$</tspan></text>
+         y="24.19417">$\phi'_1$</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:1.41111px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
        x="51.985184"
-       y="23.910076"
+       y="24.179295"
        id="text9096-7-6"><tspan
          sodipodi:role="line"
          id="tspan9094-5-0"
          style="font-size:1.41111px;stroke-width:0.264583"
          x="51.985184"
-         y="23.910076">$\phi_s$</tspan></text>
+         y="24.179295">$\phi'_s$</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:1.41111px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
        x="55.71711"
-       y="23.951122"
+       y="24.220341"
        id="text9096-3-6"><tspan
          sodipodi:role="line"
          id="tspan9094-56-26"
          style="font-size:1.41111px;stroke-width:0.264583"
          x="55.71711"
-         y="23.951122">$\phi_2$</tspan></text>
+         y="24.220341">$\phi'_2$</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:1.41111px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
@@ -290,24 +290,24 @@
     <text
        xml:space="preserve"
        style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
-       x="28.214001"
-       y="26.935476"
+       x="26.33049"
+       y="28.327547"
        id="text5273"><tspan
          sodipodi:role="line"
          id="tspan5271"
          style="font-size:2.11667px;stroke-width:0.264583"
-         x="28.214001"
-         y="26.935476">$\eta &gt; 0$</tspan></text>
+         x="26.33049"
+         y="28.327547">$\gamma &lt; \gamma_\text{tr}$</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:2.11667px;line-height:1.25;font-family:sans-serif;stroke-width:0.264583"
-       x="51.132957"
-       y="26.935476"
+       x="49.249447"
+       y="28.327547"
        id="text5273-23"><tspan
          sodipodi:role="line"
          id="tspan5271-7"
          style="font-size:2.11667px;stroke-width:0.264583"
-         x="51.132957"
-         y="26.935476">$\eta &lt; 0$</tspan></text>
+         x="49.249447"
+         y="28.327547">$\gamma &gt; \gamma_\text{tr}$</tspan></text>
   </g>
 </svg>
