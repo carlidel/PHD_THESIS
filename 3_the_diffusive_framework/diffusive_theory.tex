@@ -15,12 +15,12 @@ Let us start by defining the following notation: If $\xi(s)$ is a regular statio
 \begin{equation}
 	w(t) = \int_0^t \xi(s)\,\mathrm{d}s \,, \qquad w_1(t)=\int_0^t w(t)\,\mathrm{d}s \,,
 \end{equation}
-If the realisations $\xi(t)$ are continuous, with a correlation function 
+If the realizations $\xi(t)$ are continuous, with a correlation function 
 \begin{equation}
     \langle\xi(t)\xi(t+\tau)\rangle = \Omega(\gamma\tau) \,,\qquad \Omega(\gamma\tau) \simeq \frac{\gamma}{2}e^{-\gamma|\tau|}\,.
     \label{corrw}
 \end{equation}
-the limit $\gamma\to\infty$ is the white noise limit where the process $\xi(t)$ loses its regularity. The correlation (\ref{corrw}) is generic in many physical systems, since it is satisfied by Markov processes and strongly chaotic systems, and the white noise limit $\gamma\to\infty$ allows one to approximate the physical orbits with the solution of a stochastic differential equations even if the white noise is not a regular function. Then $w(t)$ is the Wiener process. We can write \(w_1(t)\) in the form
+the limit $\gamma\to\infty$ is the white noise limit where the process $\xi(t)$ loses its regularity. The correlation (\ref{corrw}) is generic in many physical systems, since it is satisfied by Markov processes and strongly chaotic systems, and the white noise limit $\gamma\to\infty$ allows one to approximate the physical orbits with the solution of a stochastic differential equation even if the white noise is not a regular function. Then $w(t)$ is the Wiener process. We can write \(w_1(t)\) in the form
 \begin{equation}
 	w_1(t) = \int_0^t \int_0^s \xi(u)\,\mathrm{d}u\,\mathrm{d}s' = \int_0^t \xi(u)\int_u^s\,\mathrm{d}s'\,\mathrm{d}u = \int_0^t (s'-u)\xi(u)\,\mathrm{d}u \,.
 \end{equation}
@@ -33,7 +33,7 @@ where \(K(t,s)\) is called the \textit{kernel} of the noise. We have that \(K=1\
 	\sigma^2(t) = \int_0^t (t-u)^2\,\mathrm{d}u = \frac{t^3}{3} \,.
 \end{equation}
 
-If instead we are considering a noise characterised by a specific spectrum, also referred to as coloured noise, we can consider its Fourier expansion, which reads
+If instead we are considering a noise characterized by a specific spectrum, also referred to as coloured noise, we can consider its Fourier expansion, which reads
 \begin{equation}
     \xi(t) = \int_\omega \hat{\xi}(\omega)e^{i\omega t}\,\mathrm{d}\omega\,
 \end{equation}
@@ -144,12 +144,12 @@ i.e. $t_\phi\simeq \epsilon^{-2/3}$. The perturbation approach is justified if o
 %
 We now present an extension of the averaging principle to the case of generic stochastic perturbed Hamiltonian system in the action-angle variables in the presence of weak chaotic dynamics in the phase space.
 
-As the perturbation causes the breakdown of the KAM tori in certain regions of the phase-space, we observe an overlapping of a regular dynamics and a random dynamics characterised by a small Lyapunov exponent (i.e.\ a small chaotic character), depending on the initial condition. We set as working hypotheses that it is possible to archive a phenomenological description of the dynamics of the system by means of a stochastic perturbed Hamiltonian description in the form of
+As the perturbation causes the breakdown of the KAM tori in certain regions of the phase-space, we observe an overlapping of a regular dynamics and a random dynamics characterized by a small Lyapunov exponent (i.e.\ a small chaotic character), depending on the initial condition. We set as working hypotheses that it is possible to archive a phenomenological description of the dynamics of the system by means of a stochastic perturbed Hamiltonian description in the form of
 \begin{equation}
     \ham_0(I)+\xi(t) \ham_1(\phi,I) \,,
     \label{sec:diff:ham_stoc}
 \end{equation}
-where $(\phi,I)$ are the action-angle variables and the noise realisation also depends on the orbit initial condition. The use of these models is due to their ability to capture the impact of combining an integrable Hamiltonian with a chaotic Hamiltonian environment that causes variations in the phase space. Additionally, they can simulate the effects of weak layers of chaos in the phase space that lead to pseudo-random disruptions in the evolution of the action variables. In order to keep the symplectic nature of the dynamics intact, we take into account regular (i.e., coloured) stationary noise.
+where $(\phi,I)$ are the action-angle variables and the noise realization also depends on the orbit initial condition. The use of these models is due to their ability to capture the impact of combining an integrable Hamiltonian with a chaotic Hamiltonian environment that causes variations in the phase space. Additionally, they can simulate the effects of weak layers of chaos in the phase space that lead to pseudo-random disruptions in the evolution of the action variables. In order to keep the symplectic nature of the dynamics intact, we take into account regular (i.e., coloured) stationary noise.
 
 Each orbit is the result of a superposition of a regular dynamic and small variations due to random disturbances in the phase space. The perturbation $\ham_1(\phi,I)$ represents the intensity of the variations, while the ``noise'' $\xi(t)$ takes into account the correlation properties of the fluctuations: the noise instances $\xi(t)$ are based on a probability space, which can encompass hidden degrees of freedom and the correlation of the associated stochastic process, linked to the chaotic nature of the dynamics.
 
@@ -299,7 +299,7 @@ which holds in the limit $\epsilon\to 0$. Then, we can approximate with the rela
     \label{stocaction}
 \end{equation}
 
-From this final expression, we have that the evolution of the distribution function $\rho(I,\tau)$ on the diffusion time scale is well approximated by the solution of the Fokker-Planck equation
+From this final expression, we have that the evolution of the distribution function $\rho(I,\tau)$ on the diffusion timescale is well approximated by the solution of the Fokker-Planck equation
 \begin{equation}
     \frac{\partial \rho}{\partial \tau}=- \frac{1}{2} \frac{\partial }{\partial I_j}
     \left [\frac{\partial}{\partial I_k}D_{j,k}(I) \right ]\rho(I,\tau)
@@ -371,11 +371,11 @@ This estimate enables us to define the following functional form for the diffusi
     D(I) = c \exp\left[-2\left(\frac{I_\ast}{I}\right)^{1/2\kappa}\right]\,,
     \label{eq:diffusion}
 \end{equation}
-where $c$ is a normalisation constant evaluated according to
+where $c$ is a normalization constant evaluated according to
 \begin{equation}
     c \int_0^{I_\text{a}} D(I)\,\mathrm{d}I = 1 \,,
 \end{equation}
-so that $D(I)$ is normalised over the boundaries considered for the Fokker-Planck system, as $I_\text{a}$ represents the absorbing boundary condition, i.e.\ a overlinerier over which we can consider a particle as ``lost''. With this notation, the timescale of the process is completely determined by $\epsilon^2$, however, variation of this notation can be freely considered.
+so that $D(I)$ is normalized over the boundaries considered for the Fokker-Planck system, as $I_\text{a}$ represents the absorbing boundary condition, i.e.\ a overlinerier over which we can consider a particle as ``lost''. With this notation, the timescale of the process is completely determined by $\epsilon^2$, however, variation of this notation can be freely considered.
 
 Let us now consider this last form of the Fokker-Planck equation, along with an absorbing boundary condition at $I_{\mathrm{a}}$, i.e.\ the phase-space limit beyond which an initial condition is considered lost. Note that $D(I)$ and $\rho$ have dimensions $[I^2t^{-1}]$ and $[I^{-1}]$, respectively.
 
