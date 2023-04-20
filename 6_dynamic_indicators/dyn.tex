@@ -105,7 +105,7 @@ The diagonal entries of $\Lambda$ are the Lyapunov exponents, and the columns of
 which is the square of the Lyapunov error $LE_n(\xbf)$. Note that it does not depend on the initial deviation vector or on the chosen orthogonal reference frame, and its asymptotic behaviour is determined by the first, i.e., largest, Lyapunov exponent $\lambda_1$.
 
 The other invariants $I^{(k)}$ are the sum of all products that combine $k$ distinct eigenvalues if they are simple. The geometric interpretation is straightforward. Letting $\ebf_j$ be the standard base vectors, we have $\Lop_n=(\ebf_{1\,\,n},\ldots,\ebf_{2d\,\,n})$where $\ebf_{j\,\,n}=\Lop_n\,\ebf_j$. %  is   the image of the base vector $j$  by the tangent map.
-As a consequence, the invariant $I_n^{(k)}(\xbf)$ is the sum of the squared volumes of the $\genfrac(){0pt}{2}{2d}{k}$ parallelotopes whose sides are the vectors $\ebf_{j_1\,\,n}(\xbf),\ldots,\ebf_{j_k\,\,n}(\xbf)$.
+Therefore, the invariant $I_n^{(k)}(\xbf)$ is the sum of the squared volumes of the $\genfrac(){0pt}{2}{2d}{k}$ parallelotopes whose sides are the vectors $\ebf_{j_1\,\,n}(\xbf),\ldots,\ebf_{j_k\,\,n}(\xbf)$.
 
 The difference with respect to $GALI^{\,(k)}_{\,n}$ indicators (see Section~\ref{subsec:dyn:other}), is that the $I^{(k)}_n(\xbf)$ are  independent of the initial displacements. 
 
@@ -159,7 +159,7 @@ Replacing the standard mean with $w(t)$ in Eq.~\eqref{eq:fli_mean} leads to the 
 %
 We expect that $FLI_n^{WB}(\vb{x}_0, \boldsymbol{\xi})$ converges faster than $FLI_n(\vb{x}_0, \boldsymbol{\xi})/n$ to their common limit in the case of regular orbits, at least.
 
-To simplify the notation, in the numerical analysis we refer to $FLI_n(\vb{x}_0, \boldsymbol{\xi})/n$ and $FLI_n^{WB}(\vb{x}_0, \boldsymbol{\xi})$ as $FLI_n(\boldsymbol{\xi})/n$ and $FLI_n^{WB}(\boldsymbol{\xi})$, respectively, specifying the choice made for the initial unitary displacement $\boldsymbol{\xi}$. 
+To simplify the notation, we will refer to $FLI_n(\vb{x}_0, \boldsymbol{\xi})/n$ and $FLI_n^{WB}(\vb{x}_0, \boldsymbol{\xi})$ as $FLI_n(\boldsymbol{\xi})/n$ and $FLI_n^{WB}(\boldsymbol{\xi})$, respectively, specifying the choice made for the initial unitary displacement $\boldsymbol{\xi}$. 
 %
 \subsection{Backward-Forward reversibility error\label{subsection:bf}}
 %
@@ -621,7 +621,7 @@ Important insights on the performance of the various indicators can be gained by
 \end{figure*}
 %
 
-The behaviour of the false positive error reveals a fundamental difference between $FMA$ and the other indicators. In fact, $FMA$ shows an error value that is only slightly dependent on the turn number and drops to small values for very large $n$. For the other indicators, for a low number of turns, this type of error is large, and then, around $10^4$ turns, it drops essentially to zero. This feature is related to the fact that, for a low number of turns, the bimodal structure is not yet present. It is also worth noting that, for the case of $FLI^(\hat{{x}})$ the Birkhoff averaging introduces a clear improvement by pushing the position of the sudden drop to zero of the false positive error to a lower number of turns.
+The behaviour of the false positive error reveals a fundamental difference between $FMA$ and the other indicators. In fact, $FMA$ shows an error value that is only slightly dependent on the turn number and drops to small values for very large $n$. For the other indicators, for a low number of turns, this type of error is large, and then, around $10^4$ turns, it drops essentially to zero. This feature is related to the fact that, for a low number of turns, the bimodal structure is not yet present. It is also worth noting that, for the case of $FLI^{WB}(\hat{{x}})$ the Birkhoff averaging introduces a clear improvement by pushing the position of the sudden drop to zero of the false positive error to a lower number of turns.
 
 The false negative error increases sharply at a turn number close to that corresponding to the abrupt decrease in the false positive error. After this turn number, two behaviours are observed: In the first case, the error level is approximately constant until it drops to a low value after $n \approx 10^7$. This value is relatively close to that used to determine the GT, which indicates a limited predictive power of the indicator. In the second case, the error level decreases almost linearly as a function of $n$. This is the key to achieving good performance and is the feature shown by $REM$ and $GALI^{(4)}$. It should be noted that $FMA$ also behaves in this way, i.e., with a linear decrease in the false positive error. However, when the false negative error drops, a jump in the false positive error is observed. This error then shows a decrease that is almost negligible up to $n_\mathrm{max}$. These characteristics, related to the characteristics of the distribution of the $FMA$ values, prevent this indicator from reaching a good performance level. 
 
